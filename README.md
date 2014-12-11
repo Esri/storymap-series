@@ -5,9 +5,13 @@ The Story Map Series app lets you present a series of maps via tabs, numbered bu
 
 ![App](map-series-storytelling-template-js.png)
 
-[View it live](http://links.esri.com/storymaps/map_series_example_tabbed) | 
-[Map Series page on Esri Story Maps website](http://storymaps.arcgis.com/en/app-list/) |
-[Application Download (source code not included)](http://links.esri.com/storymaps/map_series_template_zip)
+[View it live: tab layout](http://links.esri.com/storymaps/map_series_example_tabbed) | 
+[View it live: accordion layout](http://links.esri.com/storymaps/map_series_example_accordion) | 
+[View it live: bullet layout](http://links.esri.com/storymaps/map_series_example_bullet)
+
+
+[Download](http://links.esri.com/storymaps/map_series_template_zip) |
+[Map Series page on Esri Story Maps website](http://storymaps.arcgis.com/en/app-list/)
 
 **Latest release is version 1.0.0**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
 
