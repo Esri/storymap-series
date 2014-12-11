@@ -6,7 +6,7 @@ The Story Map Series app lets you present a series of maps via tabs, numbered bu
 ![App](map-series-storytelling-template-js.png)
 
 [View it live: tab layout](http://links.esri.com/storymaps/map_series_example_tabbed) | 
-[View it live: accordion layout](http://links.esri.com/storymaps/map_series_example_accordion) | 
+[View it live: accordion layout](http://links.esri.com/storymaps/map_series_example_side_accordion) | 
 [View it live: bullet layout](http://links.esri.com/storymaps/map_series_example_bullet)
 
 
