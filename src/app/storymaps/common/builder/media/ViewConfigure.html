@@ -1,0 +1,163 @@
+<div class="mediaSelectorConfigure">
+	<form role="form">
+		<div class="form-group">
+			<label><%= lblURL %></label>
+			<input type="text" class="form-control mediaURL" placeholder="<%= lblURLPH %>">
+			<p class="mediaURLError"><%= lblURLError %></p>
+		</div>
+		<% if ( mode == "inlineText" ) { %>
+			<div class="inline-image">
+				<div class="form-group">
+					<label style="display: block"><%= lblLabel %></label>
+					<textarea class="form-control mediaTitle" placeholder="<%= lblLabelPH %>" style="height: 74px; margin-top: 5px;"></textarea>
+				</div>
+				<div class="form-group">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" value="opt-maximize"> 
+							<%= lblMaximize %>
+							<a href="#" class="maximizeHelp" data-toggle="tooltip" data-placement="right" data-title="<%= lblMaximizeHelp %>">
+								<img src="resources/tpl/builder/icons/builder-help.png"/>
+							</a>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="inline-video">
+				<label style="display: block; margin-bottom: 15px; margin-left: 122px;"><%= lblPosition %></label>
+				<div style="text-align: center">
+					<div class="media-configure-position" data-val="fit">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-fit.png" />
+						<div class="position-lbl"><%= lblPosition3 %></div>
+						<div><%= lblPosition3Explain2 %></div>
+					</div>
+					
+					<div class="media-configure-position" data-val="custom">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-custom.png" />
+						<div class="position-lbl"><%= lblPosition5 %></div>
+						<div class="position-params">
+							<div>
+								<input type="text" class="form-control input-sm posCustomW" placeholder="<%= phWidth %>" style="display: inline-block; width: 65px;">
+								<a href="#" class="dimHelp" data-toggle="tooltip">
+									<img src="resources/tpl/builder/icons/builder-help.png"/>
+								</a>
+							</div>
+							<div style="margin-top: 2px;">
+								<input type="text" class="form-control input-sm posCustomH" placeholder="<%= phHeight %>" style="display: inline-block; width: 65px;">
+								<a href="#" class="dimHelp2" data-toggle="tooltip">
+									<img src="resources/tpl/builder/icons/builder-help.png"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--
+			<div class="form-group">
+				<label style="display: block">Alignment</label>
+				<label class="checkbox-inline" style="margin-left: -18px;">
+					<input type="radio" name="mediaDisplay" value="none"> None
+				</label>
+				<label class="checkbox-inline">
+					<input type="radio" name="mediaDisplay" value="left"> Left
+				</label>
+				<label class="checkbox-inline">
+					<input type="radio" name="mediaDisplay" value="center"> Center
+				</label>
+				<label class="checkbox-inline">
+					<input type="radio" name="mediaDisplay" value="right"> Right
+				</label>
+			</div>
+			-->
+		<% } if ( mode == "mainMedia" ) { %>
+			<div class="form-group position-image">
+				<label style="display: block; margin-bottom: 15px;"><%= lblPosition %></label>
+				<div>
+					<div class="media-configure-position" data-val="fill">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-fill.png" />
+						<div class="position-lbl"><%= lblPosition2 %></div>
+						<div><%= lblPosition2Explain %></div>
+					</div>
+					
+					<div class="media-configure-position" data-val="fit">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-fit.png" />
+						<div class="position-lbl"><%= lblPosition3 %></div>
+						<div><%= lblPosition3Explain %></div>
+					</div>
+					
+					<div class="media-configure-position" data-val="stretch">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-stretch.png" />
+						<div class="position-lbl"><%= lblPosition4 %></div>
+						<div><%= lblPosition4Explain %></div>
+					</div>
+					
+					<div class="media-configure-position" data-val="center">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-center.png" />
+						<div class="position-lbl"><%= lblPosition1 %></div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group position-video">
+				<label style="display: block; margin-bottom: 15px; margin-left: 7px;"><%= lblPosition %></label>
+				<div style="text-align: center">
+					<div class="media-configure-position" data-val="fit">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-fit.png" />
+						<div class="position-lbl"><%= lblPosition3 %></div>
+						<div><%= lblPosition3Explain %></div>
+					</div>
+					
+					<div class="media-configure-position" data-val="stretch">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-stretch.png" />
+						<div class="position-lbl"><%= lblPosition4 %></div>
+						<div><%= lblPosition4Explain %></div>
+					</div>
+					
+					<div class="media-configure-position" data-val="center">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-center.png" />
+						<div class="position-lbl"><%= lblPosition1 %></div>
+					</div>
+					
+					<div class="media-configure-position" data-val="custom">
+						<div class="position-selected"></div>
+						<img class="position-img" src="app/storymaps/common/_resources/icons/media-configure-position-custom.png" />
+						<div class="position-lbl"><%= lblPosition5 %></div>
+						<div class="position-params">
+							<div>
+								<input type="text" class="form-control input-sm posCustomW" placeholder="<%= phWidth %>" style="display: inline-block; width: 65px;">
+								<a href="#" class="dimHelp" data-toggle="tooltip">
+									<img src="resources/tpl/builder/icons/builder-help.png"/>
+								</a>
+							</div>
+							<div style="margin-top: 2px;">
+								<input type="text" class="form-control input-sm posCustomH" placeholder="<%= phHeight %>" style="display: inline-block; width: 65px;">
+								<a href="#" class="dimHelp2" data-toggle="tooltip">
+									<img src="resources/tpl/builder/icons/builder-help.png"/>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% } %>
+		<div class="form-group mediaUnloadStrategy">
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" class="navigateOutUnload" />
+					<%= unloadLbl %>
+					<a href="#" class="unloadHelp" data-toggle="tooltip" data-title="<%= unloadHelp %>">
+						<img src="resources/tpl/builder/icons/builder-help.png"/>
+					</a>
+				</label>
+			</div>
+		</div>
+	</form>
+</div>

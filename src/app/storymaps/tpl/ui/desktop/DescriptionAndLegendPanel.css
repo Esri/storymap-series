@@ -1,0 +1,66 @@
+.descLegendPanel {
+	width: 200px;
+	border-radius: 0 0 20px 0;
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+body.has-builder-mask .descLegendPanel {
+	overflow-y: visible;
+}
+
+.descLegendPanel .descLegendPanelInner {
+	position: relative;
+	padding: 15px;
+}
+
+.descLegendPanel .backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0.8;
+}
+
+.descLegendPanel .descriptions,
+.descLegendPanel .legends {
+	opacity: 0.99;
+}
+	
+body.layout-tab-right .descLegendPanel,
+body.layout-bullet-right .descLegendPanel {
+	border-radius: 0 0 0 20px;
+}
+
+.descLegendPanel.no-radius {
+	border-radius: inherit !important;
+}
+
+.descLegendPanel .entry {
+	display: none;
+}
+
+.descLegendPanel .entry.active {
+	display: block;
+}
+
+/*
+ * Legend
+ */
+
+.descLegendPanel .legendContainer > .content {
+	margin-bottom: 0;
+}
+
+.descLegendPanel .legendWrapper {
+ 	display: none !important;
+}
+
+.descLegendPanel.hasDescription .legendWrapper {
+	margin-top: 35px;
+}
+
+.descLegendPanel .legendWrapper.active {
+ 	display: block !important;
+}

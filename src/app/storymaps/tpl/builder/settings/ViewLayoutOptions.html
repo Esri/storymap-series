@@ -1,0 +1,73 @@
+<div class="settings-layoutoptions">
+	<div class="checkbox opt-description-container">
+		<label>
+			<input type="checkbox" class="opt-checkbox-description" />
+			<%= lblDescription %>
+		</label>
+	</div>
+	
+	<div class="opt-container opt-legend-container">
+		<strong><%= lblLegend %></strong>
+		<a href="#" class="help" data-toggle="tooltip" data-placement="right" title="<%= tooltipLegend %>">
+			<img class="helpImg" src="resources/tpl/builder/icons/builder-help.png">
+		</a>
+		<div class="form-group container-padding" style="margin-top: -5px">
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsLegend" value="panel">
+					<span></span>
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsLegend" value="dropdown">
+					</span><%= lblDropdown %></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="opt-container opt-panel-container">
+		<strong class="opt-panel-container-lbl"></strong>
+		<div class="container-padding" style="margin-top: 8px">
+			<div class="btn-group btn-position">
+				<button type="button" class="btn btn-default btn-xs" data-value="left"><%= cfgLeft %></button>
+				<button type="button" class="btn btn-default btn-xs" data-value="right"><%= cfgRight %></button>
+			</div>
+			
+			<div class="btn-group btn-size">
+				<button type="button" class="btn btn-default btn-xs" data-value="small"><%= cfgSmall %></button>
+				<button type="button" class="btn btn-default btn-xs" data-value="medium"><%= cfgMedium %></button>
+				<button type="button" class="btn btn-default btn-xs" data-value="large"><%= cfgLarge %></button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="opt-container opt-extras-container">
+		<div class="checkbox opt-numbering-container">
+			<label>
+				<input type="checkbox" class="opt-checkbox-numbering" />
+				<%= lblNumbering %>
+			</label>
+		</div>
+		<div class="checkbox opt-reverse-container">
+			<label>
+				<input type="checkbox" class="opt-checkbox-reverse" />
+				<%= lblReverse %>
+			</label>
+		</div>
+	</div>
+	
+	<div class="opt-container opt-panel-map-overlap-container">
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" class="opt-checkbox-overlap" />
+				<span class="lbl-checkbox-overlap"></span>
+			</label>
+		</div>
+	</div>
+	
+	<div class="preview"></div>
+	
+	<!-- <div class="debug">DEBUG</div>  -->
+</div>

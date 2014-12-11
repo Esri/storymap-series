@@ -1,0 +1,29 @@
+<div class="entry <%= optHtmlClass %>">
+	<div class="accordion-header"> 					<!-- todo rename all that prefixing -->
+		<div class="accordion-header-arrow"></div>
+		<table class="accordion-header-content"> <!-- tabindex="0" -->
+			<tr>
+				<td class="accordion-header-number"><%= index %></td>
+				<td class="accordion-header-title">
+					<div class="accordion-header-title-wrapper"><%= title %></div>
+				</td>
+			</tr>
+		</table>
+		<% if ( isInBuilder ) { %>
+			<div class="panelEditBtn">
+				<div class="panelEditBtnInner"></div>
+			</div>
+		<% } %>
+	</div>
+	<div class="accordion-content">
+		<% if ( ! isInBuilder ) { %>
+			<div class="description">
+				<%= description %>
+			</div>
+		<% } else { %>
+			<textarea name="descriptionEditor" class="descriptionEditor" placeholder="<%= editorPlaceholder %>">
+				<%= description  %>
+			</textarea>
+		<% } %>
+	</div>
+</div>

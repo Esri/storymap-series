@@ -1,0 +1,21 @@
+/*
+ * Explain
+ */
+.settings-layout .explain {
+	font-size: 1.25em;
+	color: #AAAAAA;
+}
+
+/*
+ * Start
+ */
+ 
+.settings-layout .start-btn-container {
+	margin-top: 15px;
+	margin-bottom: -18px;
+	text-align: center;
+}
+
+.settings-layout .start-btn-container .btn {
+	text-transform: uppercase;
+}

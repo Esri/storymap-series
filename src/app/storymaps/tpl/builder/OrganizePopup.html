@@ -1,0 +1,33 @@
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-logo"></div>
+		<div class="modal-header">
+			<h4 class="modal-title"><%= title %></h4>
+		</div>
+
+		<div class="modal-body">
+			<div><%= lblHeader %></div>
+			
+			<div class="organizeTableContainer">
+				<table class="organizeTable table table-striped">
+					<thead>
+					<tr style="height: 39px">
+						<th class="moverHeader">&nbsp;</th>
+						<th><%= lblColTitle %></th>
+						<th style="width: 80px;"><%= lblColStatus %></th>
+						<th style="width: 44px;"></th>
+					</tr>
+					</thead>
+					<tbody class="rows">
+						<!-- rows -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="modal-footer">
+			<button type="button" class="btn btnApply btn-primary"></button>
+			<button type="button" class="btn btnCancel btn-naked btn-close" data-dismiss="modal"><%= btnCancel %></button>
+		</div>
+	</div>
+</div>

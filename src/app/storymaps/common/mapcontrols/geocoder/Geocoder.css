@@ -1,0 +1,49 @@
+.geocoderBtn {
+	position: absolute;
+	top: 125px;
+	border: none !important;
+	left: 20px;
+}
+
+.mapContainer.has-locator .geocoderBtn {
+	top: 170px;
+}
+
+.geocoderBtn .esriGeocoderContainer {
+	width: inherit !important;
+}
+
+.geocoderBtn .esriGeocoder {
+	width: 30px;
+	height: 28px;
+	overflow: hidden;
+}
+
+.geocoderBtn .esriGeocoderContainer:hover .esriGeocoder {
+	width: inherit;
+	height: inherit;
+	overflow: inherit;
+}
+
+.geocoderBtn .esriGeocoderContainer:not(:hover) .esriGeocoder {
+	border: 1px solid #57585A;
+	border-radius: 5px;
+}
+
+.geocoderBtn .esriGeocoderContainer:hover .esriGeocoderResults {
+	width: calc(100% - 2px);
+}
+
+.geocoderBtn .esriGeocoderContainer:not(:hover) .esriGeocoderResults {
+	display: none !important;	
+}
+
+.geocoderBtn .esriGeocoderSearch {
+	background: url(../../_resources/icons/geocoder-search.png) 1px 0px !important;
+	background-size: 16px !important;
+}
+
+.geocoderBtn .esriGeocoderSearch:hover {
+	opacity: 1.0 !important;
+	cursor: default !important;
+}

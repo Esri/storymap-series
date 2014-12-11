@@ -1,0 +1,234 @@
+/*
+.esriSignInDialog {
+	display: none !important;
+}
+*/
+
+/*
+ * Command panel
+ */
+
+#builderPanel .appTitle {
+	position: absolute;
+	top: 13px;
+	left: 15px;
+	width: 264px;
+	height: 31px;
+	background: url(../../../../resources/tpl/builder/icons/builder-logo.png);
+	background-repeat: no-repeat;
+}
+
+#builderPanel .buttons {
+	left: 280px;
+}
+
+#builderPanel .builder-save {
+	background-color: #428BC9;
+	border-color: #428BC9;
+	color: #FFF;
+}
+
+/* CKEDITOR
+ *  Remove popup white background
+ *  Mandatory for image editing as can't prevent double click from opening the default popup
+ */
+.cke_dialog_background_cover {
+	display: none !important;
+}
+
+/*
+ * Landing
+ */
+ 
+#builderLanding {
+	display: none; 
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	margin: auto;
+	height: 220px;
+	z-index: 100;
+}
+
+@media screen {
+	#builderQuotes {
+		padding: 5% 0px !important;
+	}
+}
+
+/*
+ * Builder initialization specific rules
+ */
+
+body.isBuilderLanding #headerDesktop .textArea {
+	display: none;
+}
+
+/*
+ * Map configuration layout specific rules
+ */
+
+body.layout-tab-right .mapConfigOverlay.toc,
+body.layout-accordion-right .mapConfigOverlay.toc,
+body.layout-bullet-right .mapConfigOverlay.toc {
+	left: 0;
+	right: inherit;
+	border-left: none;
+	border-right: 1px solid #428BC9;
+}
+
+body.layout-bullet .mapConfigOverlay.toc {
+	top:  50px;
+}
+
+/*
+ * Share popup app specific image
+ */
+
+#sharePopup .switchBuilderImg {
+	display: inline-block;
+	width: 362px;
+	height: 46px;
+	background: url(../../../../resources/tpl/builder/icons/builder-share-switch.png);
+}
+
+/*
+ * Layout thumbnails
+ */
+ 
+.layout-thumbnail {
+	display: inline-block;
+	position: relative;
+	width: 150px; 
+	height: 115px;
+	margin-right: 0;
+	margin-top: 0;
+	border-radius: 8px;
+	padding: 6px 0; /* should need a padding */
+	background-color: #EFEFEF;
+	-webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+.layout-thumbnail .layout-header {
+	position: relative;
+	width: 94%;
+	margin: 0px 3%;
+}
+
+.layout-thumbnail .header-tabs {
+	position: absolute;
+	bottom: -1px;
+}
+
+.layout-thumbnail .header-tab {
+	display: inline-block;
+	font-size: 9px;
+	margin: 0 3px;
+	padding: 2px 4px 1px 4px;
+}
+
+.layout-thumbnail .header-bullets {
+	position: absolute;
+	bottom: -10px;
+	z-index: 2;
+}
+
+.layout-thumbnail .header-bullet {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	padding: 0 6px;
+	margin: 0 3px;
+	border-radius: 80px;
+	box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 3px !important;
+}
+
+.layout-thumbnail .layout-block {
+	position: relative;
+}
+
+.layout-thumbnail .number,
+.layout-thumbnail .size,
+.layout-thumbnail .panel-lbl:not(.rotate) {
+	position: absolute;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	top: 50%;
+	bottom: 50%;
+	left: 50%;
+	right: 50%;
+	margin-top: -16px;
+	margin-left: -16px;
+}
+
+ .layout-thumbnail .thumb-content {
+ 	color: black;
+ }
+	
+/* Float specific */
+.layout-thumbnail .layout-block.layout-float:nth-child(2) .thumb-content {
+	margin-left: -40px;
+}
+
+/* Float specific */
+.layout-thumbnail .layout-block.layout-float.layout-left:nth-child(2) .thumb-content {
+	margin-left: 10px;
+}
+
+.layout-thumbnail .size {
+	font-family: 'open_sanssemibold', sans-serif;
+	font-size: 1.3em;
+	margin-left: -17px;
+}
+
+.layout-thumbnail .panel-lbl {
+	display: block;
+	font-family: 'open_sanssemibold', sans-serif;
+	font-weight: 1.2em;
+	text-align: center;
+}
+
+.layout-thumbnail .panel-lbl:not(.rotate) {
+	margin-top: -22px;
+}
+
+.layout-thumbnail .panel-lbl.rotate {
+	width: 110px;
+	height: 100px;
+	-webkit-transform: rotate(-90deg); 
+	-moz-transform: rotate(-90deg);	
+	transform: rotate(-90deg);
+}
+
+.layout-thumbnail .layout-selected {
+	position: absolute;
+	display: none;
+	top: -20px;
+	left: -16px;
+	width: 40px;
+	height: 40px;
+	z-index: 3;
+}
+
+.layout-thumbnail.selected .layout-selected {
+	display: block;
+	background: url(../../../../resources/tpl/builder/icons/builder-check.png);
+	background-repeat: no-repeat;
+}
+
+/*
+ * Layout/size/position text rotation adjustement
+ */
+
+.layout-thumbnail span.rotate {
+	margin-top: 15px;
+}

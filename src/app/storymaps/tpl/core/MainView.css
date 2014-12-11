@@ -1,0 +1,110 @@
+/*
+ * Using a table to properly align Side Accordion Panel and Main Stage seems to be 
+ * the only way to have the edit button to properly overflow the Side Panel
+ */
+.containerPanelInner {
+	table-layout: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+/*
+ * Accordion
+ */
+
+#accordionPanel {
+	display: none;
+	position: relative;
+	height: 100%;
+	opacity: 1.0;
+	vertical-align: top;
+}
+
+body.layout-accordion:not(.isBuilderLanding) #accordionPanel {
+	display: table-cell;
+}
+
+/*
+ * Tab and bullet description
+ */
+ 
+#descLegendPanel {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: none;
+	z-index: 2;
+}
+
+body.layout-tab:not(.isBuilderLanding) #descLegendPanel,
+body.layout-bullet:not(.isBuilderLanding) #descLegendPanel {
+	display: block;
+}
+
+body.layout-tab:not(.isBuilderLanding) #nav-bar,
+body.layout-bullet:not(.isBuilderLanding) #nav-bar {
+	display: block;
+}
+
+body.layout-bullet #descLegendPanel .descLegendPanelInner {
+	padding-top: 35px;
+}
+
+/*
+ * Tab and bullet right panel alignment
+ */
+
+body.layout-tab-right #descLegendPanel,
+body.layout-bullet-right #descLegendPanel {
+	left: inherit;
+	right: 0;	
+}
+
+/*
+ * Right layout Map attribution
+ */
+
+body.layout-tab-right:not(.mobile-view) .esriAttribution,
+body.layout-bullet-right:not(.mobile-view) .esriAttribution {
+	margin-top: 18px;
+	float: right;
+}
+
+/*
+ * Map controls legend
+ */
+ 
+body.layout-accordion .mainMediaContainer .legendContainer,
+body.layout-tab .mainMediaContainer .legendContainer,
+body.layout-bullet .mainMediaContainer .legendContainer {
+	right: 20px;
+}
+
+/*
+ * Bullet - Map control placement
+ */
+ 
+body:not(.mobile-view).layout-bullet .esriSimpleSlider {
+	top: 40px;
+}
+
+body:not(.mobile-view).layout-bullet .mapCommandLocation {
+	top: 145px;
+}
+
+body:not(.mobile-view).layout-bullet .geocoderBtn {
+	top: 145px;
+}
+
+body:not(.mobile-view).layout-bullet .mapContainer.has-locator .geocoderBtn {
+	top: 190px;
+}
+
+/*
+ * Builder mask never display in viewer
+ */
+
+.builder-mask {
+	display: none;
+}

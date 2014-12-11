@@ -1,0 +1,98 @@
+/*
+ * The popup 
+ * Markup defined in ui/MainMediaContainer*
+ */
+
+.mobilePopup {
+	display: none;
+	position: absolute;
+	width: 90%;
+	top: auto;
+	bottom: 45px;
+	right: 5%;
+	max-height: 200px;
+	padding: 15px;
+	border-radius: 3px;
+	box-shadow: 0px 0px 8px 0px #444;
+	/* on top of map commands */
+	z-index: 1200;
+	background-color: #FFF;
+	overflow: visible !important;
+}
+
+.mobilePopup:after {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	width: 28px;
+	height: 28px;
+	
+	padding: 3px;
+	font-size: 22px;
+	border-radius: 20px;
+	background-color: inherit;
+	cursor: pointer;
+	box-shadow: 0px 0px 8px 0px #444;
+	
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	
+	content: "\e014";
+}
+
+.mobilePopup.hideContent > div {
+	opacity: 0;
+}
+
+.mobilePopup .description {
+	overflow-y: auto;
+	max-height: 100%;
+}
+
+/*
+ * Info
+ */
+
+.mobileInfo {
+	height: 100%;
+}
+
+.mobileInfo .content-toggles {
+	text-align: center;
+}
+
+.mobileInfo .content-containers {
+	margin-top: 10px;
+	height: 100%;
+}
+
+.mobilePopup.noToggle .content-containers {
+	margin-top: 0;
+}
+
+.mobilePopup .content-container {
+	overflow-y: auto;
+	max-height: calc(100% - 50px);
+}
+
+.mobilePopup.noToggle .content-container {
+	max-height: 100%;
+}
+
+/*
+ * Map InfoWindow
+ */
+
+/* the infowindow will always be 200px height but seems to be the only way to not have content overlap */
+.mobileInfoWindow {
+	height: 100%;
+}
+
+.mobilePopup .dijitContainer {
+	overflow-y: auto;
+	max-height: 100%;
+}

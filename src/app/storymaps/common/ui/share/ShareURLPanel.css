@@ -1,0 +1,20 @@
+.share-url-container .bitlylink {
+	display: inline-block;
+	width: 230px;
+	height: 34px; 
+	text-align: center;
+	font-size: 20px; 
+	cursor: text;
+	padding: 6px 0;
+	line-height: 20px;
+}
+
+body.mobile-view .share-url-container .bitlylink {
+	width: 200px;	
+}
+
+.share-url-container .btn {
+	margin-left: 8px;
+	text-transform: uppercase;
+	vertical-align: 2px;
+}

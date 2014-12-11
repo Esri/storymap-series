@@ -1,0 +1,23 @@
+.mobileInfoBtn {
+	display: none;
+}
+
+body.mobile-view .mobileInfoBtn {
+	display: block;
+}
+
+.mobileInfoBtn {
+	position: absolute;
+	top: 8px;
+	right: 5px;
+	width: 40px;
+	height: 40px;
+	background: url(../../../../../resources/tpl/viewer/icons/mobile-info.png);
+	cursor: pointer;
+	opacity: 0.9;
+	z-index: 2;
+}
+
+.mobileInfoBtn:hover {
+	opacity: 1.0;
+}

@@ -1,0 +1,20 @@
+<div class="settings-layout settings-layout-vertical">
+	<% if ( initMode ) { %>
+		<p class="explain">
+			<%= explain %>
+			<a href="#" class="help" data-toggle="tooltip" title="<%= helpExplain %>">
+				<img src="resources/tpl/builder/icons/builder-help.png" style="vertical-align: -4px;"/>
+			</a>
+		</p>
+	<% } %>
+	
+	<div class="layouts">
+		<!-- ViewLayoutVerticalItem are injected here -->
+	</div>
+	
+	<% if ( initMode ) { %>
+		<div class="start-btn-container">
+			<button type="button" class="btn btn-primary btn-start" disabled="disabled"><%= start %></button>
+		</div>
+	<% } %>
+</div>

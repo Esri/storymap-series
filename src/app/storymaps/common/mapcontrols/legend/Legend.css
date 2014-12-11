@@ -1,0 +1,85 @@
+.legend {
+	display: none;
+}
+
+.legendContainer {
+	overflow-y: auto;
+	max-height: 100%;
+	max-height: calc(100% - 2px);
+	z-index: 30;
+	box-shadow: rgba(0, 0, 0, 0.498039) 0px 4px 7px !important;
+}
+
+.legendContainer:not(.isInlined) {
+	position: absolute;
+	top: 0;
+	right: 15%;
+	width: 200px;
+}
+
+.legendContainer .glyphicon-chevron-up,
+.legendContainer .glyphicon-chevron-down {
+	display: none !important;
+}
+
+/* TODO need an option on map control that define anchor */
+
+.legendContainer .collapseBtn {
+	margin-top: 0 !important;
+}
+
+.legendContainer.collapsed .collapseBtn {
+	margin-top: 1px !important;
+}
+
+.legendContainer:not(.collapsed) .glyphicon-chevron-up {
+	display: block !important;
+}
+
+.legendContainer.collapsed .glyphicon-chevron-down {
+	display: block !important;
+}
+
+.legendContainer .content {
+	overflow-y: auto;
+	max-height: 400px;
+	overflow-x: hidden;
+	margin-right: -10px;
+}
+
+.legendContainer.isInlined .content {
+	max-height: inherit;
+} 
+
+.legendContainer .content.settingsOpen {
+	min-height: 55px
+}
+
+.legendContainer, 
+.legendContainer .settingsOverlay {
+	-webkit-border-bottom-right-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+/*
+ * Inline mode
+ */
+ 
+.legendContainer.isInlined .titleBtn {
+ 	display: none;
+}
+
+.legendContainer.isInlined {
+ 	border-radius: 0;
+ 	color: inherit !important;
+	background-color: inherit !important;
+	box-shadow: none !important;
+}
+
+.legendContainer.isInlined .content {
+ 	display: block !important;
+}

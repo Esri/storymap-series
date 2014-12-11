@@ -1,0 +1,10 @@
+<div class="mainMediaContainer">
+    <% if ( url ){ %>
+    	<iframe class="embedContainer" data-src="<%= url %>" data-unload="<%= unload %>" allowfullscreen="1"></iframe>
+    <% } else if ( frameTag ){ %>
+    	<%= frameTag %>
+    <% } %>
+    <div class="mobilePopup mobileInfo hideContent">
+    	<div class="description textEditorContent"></div>
+    </div>
+</div>

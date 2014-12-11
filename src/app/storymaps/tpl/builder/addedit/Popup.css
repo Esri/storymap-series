@@ -1,0 +1,71 @@
+/*
+ * Modal
+ */
+.addEditPopup .modal-dialog {
+	width: 610px;
+}
+
+.addEditPopup .modal-footer {
+	padding-top: 20px;
+}
+
+.addEditPopup .modal-logo {
+	position: absolute;
+	top: -19px;
+	left: -20px;
+	width: 48px;
+	height: 48px;
+	background: url(../../../../../resources/tpl/builder/icons/builder-add.png);
+	background-repeat: no-repeat;
+	background-position: 0 -41px;
+	background-size: 40px;
+	border: 4px solid #FFF;
+	border-radius: 24px;
+}
+
+.addEditPopup .modal-logo.edit {
+	background: url(../../../../../resources/tpl/builder/icons/builder-edit-noborder.png);
+	background-position: 0 -41px;
+}
+
+/*
+ * Header
+ */
+
+.addEditPopup .titleContainerAdd {
+	position: relative;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.addEditPopup .titleContainer.has-feedback .form-control-feedback {
+	display: block;
+}
+
+.addEditPopup .titleContainerEdit {
+	margin: 10px 0 15px 0;
+}
+
+/*
+ * Views navigation & containers
+ */
+
+.addEditPopup .viewMediaSelectorContainer {
+	min-height: 304px;
+}
+
+/*
+ * Footer
+ */
+
+.addEditPopup .btnSubmitWrapper {
+	display: inline-block;
+}
+
+/*
+ * TODO
+ */
+ 
+.addEditPopup .webmapSelector {
+	margin-bottom: -15px;
+} 

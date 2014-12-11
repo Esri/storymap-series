@@ -1,0 +1,203 @@
+#nav-bar {
+	display: none;
+	width: 100%;
+	cursor: default;
+	position: relative;
+	z-index: 3;
+}
+
+.nav-bar.isTab {
+	height: 40px;
+}
+
+.nav-bar.isBullet {
+	height: 27px;
+}
+
+.nav-bar .entries,
+.nav-bar .builder {
+	display: inline-block;
+}
+
+.nav-bar .entries {
+	margin: 0 10px 0 20px;
+}
+
+/*
+ * Tab & bullet entries
+ */
+
+.nav-bar .nav-tabs {
+	border-bottom: none;
+}
+
+/*
+ * Tab entries
+ */
+
+.nav-bar.isTab .nav-tabs > li > a,
+.nav-bar.isTab .dropdown-toggle {
+	margin: 3px 5px 0px 3px;
+	padding: 7px 12px 10px 12px;
+	font-weight: normal;
+	border: none;
+	border-radius: 6px 6px 0 0;
+}
+
+.nav-bar.isTab .entry:first-child .entryLbl {
+	margin-left: 0;
+}
+
+.nav-bar .nav-tabs .visible {
+	display: block;
+}
+
+.nav-bar .nav-tabs li {
+	display: none;
+}
+
+.nav-bar .nav-tabs li.visible {
+	display: block;
+}
+
+.nav-bar .hidden-entry {
+	opacity: 0.4;
+}
+
+/*
+ * Bullet entries
+ */
+ 
+.nav-bar.isBullet .nav-tabs > li > a,
+.nav-bar.isBullet .dropdown-toggle {
+	width: 54px;
+	height: 54px;
+	font-family: 'open_sanssemibold', sans-serif;
+	font-size: 21px;
+	line-height: 52px;
+	font-weight: normal;
+	text-align: center;
+	padding: 0;
+	margin: 0 6px;
+	border-radius: 27px;
+	border: none;
+}
+
+.nav-bar.isBullet .entry:first-child .entryLbl {
+	margin-left: 0;
+}
+
+.nav-bar.isBullet .dropdown-toggle {
+	padding: 15px 0 !important;
+	border: none;
+}
+
+.nav-bar.isBullet .dropdown.open .dropdown-menu {
+	overflow: visible;
+	margin-top: 0;
+	right: 5px;
+}
+
+/*
+ * Styling
+ */
+
+.nav-bar.isBullet .nav > .entry .entryLbl {
+	box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 3px !important;
+}
+
+/* Visible entries, all entries hover and dropdown */
+/*
+.nav-bar .nav-tabs > li > a,
+.nav-bar .nav-tabs li > a:hover,
+.nav-bar .dropdown-toggle {
+	color: #FFF;
+}
+*/
+
+/* Visible entries and dropdown */
+/*
+.nav-bar .nav-tabs > li > a,
+.nav-bar .dropdown-toggle {
+	background-color: #5F788B;
+}
+*/
+
+/* Active entry and hover */
+/*
+.nav-bar .nav-tabs li.active > a,
+.nav-bar .nav-tabs .dropdown:hover > a,
+.nav-bar .nav-tabs li:not(.active) > a:hover {
+	background-color: #58ACCB;
+}
+*/
+
+ /* Bullet entries tooltip and builder add disabled */ 
+/*
+.nav-bar .nav-tabs > .tooltip .tooltip-arrow,
+.nav-bar .builder-content-panel .tooltip-arrow {
+	border-top-color: #58ACCB;
+}
+
+.nav-bar .dropdown .tooltip-arrow {
+	border-left-color: #58ACCB;
+}
+
+.nav-bar .tooltip-inner {
+	background-color: #58ACCB;
+	color: #FFF;
+}
+*/
+
+/*
+ * More toggle
+ */
+ 
+ .nav-bar .dropdown.open .dropdown-menu {
+	right: 4px;
+	max-height: 250px;
+	overflow-y: auto;
+}
+
+/*
+ * More toggle - Tab
+ */
+
+.nav-bar.isTab .dropdown .dropdown-toggle {
+	border: none;
+	font-size: 12px;
+	padding-bottom: 11px;
+	padding-top: 9px;
+}
+
+.nav-bar.isTab .dropdown .caret {
+	vertical-align: 2px;
+}
+
+/*
+ * More toggle - Bullet
+ */
+
+.nav-bar.isBullet .dropdown .dropdown-toggle {
+	font-size: 16px;
+	line-height: inherit;
+}
+
+/*
+ * Builder
+ */
+
+.nav-bar.isBullet .builder-mask {
+	height: 55px;
+}
+
+.nav-bar .builder-content-panel {
+	display: none;
+	vertical-align: top;
+	padding-right: 10px;
+	margin-top: 5px;
+}
+
+.nav-bar.isBullet .builder-content-panel {
+	margin-top: 12px;
+}

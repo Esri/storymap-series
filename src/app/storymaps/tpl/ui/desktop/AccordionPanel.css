@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'Average-Regular';
+    src: url('../../../../../resources/tpl/viewer/font-accordion/average-regular-webfont.eot');
+    src: url('../../../../../resources/tpl/viewer/font-accordion/average-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../../../../resources/tpl/viewer/font-accordion/average-regular-webfont.ttf') format('truetype'),
+         url('../../../../../resources/tpl/viewer/font-accordion/fonts/average-regular-webfont.svg#averageregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+ * Container
+ */
+
+.accordionPanel {
+	width: 200px;
+}
+
+.accordionPanel .content {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.accordionPanel .entry {
+	border-top: 1px solid #FFF;
+}
+
+.accordionPanel .entry:nth-of-type(1) {
+	border-top: none;
+}
+
+.accordionPanel .accordion-header,
+.accordionPanel .accordion-content {
+	position: relative;
+	padding: 10px 25px 0 25px;
+	overflow-y: auto;
+}
+
+/*
+ * Header
+ */
+
+.accordionPanel .accordion-header {
+	height: 102px;
+}
+
+.accordionPanel .entry:not(.active) .accordion-header:hover {
+	cursor: pointer;
+}
+
+.accordionPanel .hidden-entry .accordion-header {
+	opacity: 0.4;
+}
+
+.accordion-header-content {
+	height: 82px;
+	overflow: hidden;
+}
+
+.accordionPanel .accordion-header-title {
+	font-size: 20px;
+	font-family: 'open_sanssemibold', sans-serif;
+}
+
+.accordionPanel .accordion-header-title-wrapper {
+	max-height: 82px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.accordionPanel .accordion-header-number {
+	padding: 0 10px;
+	color: #FFF;
+	font-size: 72px;
+	font-family: 'Average-Regular';
+	line-height: 1.0;
+}
+
+.accordionPanel:not(.is-numbered) .accordion-header-number {
+	display: none;
+}
+
+.accordionPanel .accordion-header-arrow {
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 0; 
+	height: 0; 
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;	
+	border-left: 20px solid #FFF;
+}
+
+/*
+ * Description
+ */
+
+.accordionPanel .accordion-content {
+	display: none;
+	/*overflow: auto;*/
+}
+
+/*
+ * Builder
+ */
+ 
+.accordionPanel .builder {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px;
+	text-align: center;
+}
+
+.accordionPanel .entry.active .panelEditBtn {
+	display: block;
+	top: 25px;
+	right: 5px;
+	margin-top: 0;
+}
+
+/*
+ * Description editor
+ */
+
+.accordionPanel .entry .descriptionEditor {
+	display: none;
+	padding-left: 20px;
+}
+
+.accordionPanel .entry .cke_editor_descriptionEditor {
+	display: none;
+}
+
+.accordionPanel .entry.active .descriptionEditor,
+.accordionPanel .entry.active .cke_editor_descriptionEditor {
+	display: block;
+}

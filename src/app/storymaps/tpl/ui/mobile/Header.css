@@ -1,0 +1,140 @@
+#headerMobile {
+	display: none;
+	background-color: #000;
+	color: #FFF;
+}
+
+/*
+ * Header
+ */
+
+.headerMobile .header {
+	height: 40px;
+	padding: 5px 10px;
+	font-size: 1.7em;
+}
+
+.headerMobile .titleArea,
+.headerMobile .rightArea {
+	display: inline-block;
+}
+
+.headerMobile .glyphicon {
+	cursor: pointer;
+}
+
+/* bigger button target on mobile */
+body.hasTouch .headerMobile .glyphicon {
+	padding: 10px;
+	margin: -10px;
+}
+
+/*
+ * Header: title area
+ */
+
+.headerMobile .titleArea {
+	width: 100%;
+	margin-top: -3px;
+}
+
+/* to have an ellipsis on the title the title div need a block display */
+.headerMobile .menu-btn {
+	position: absolute;
+	top: 7px;
+	left: 10px;	
+}
+
+.headerMobile .title {
+	padding: 0 30px;
+	vertical-align: 2px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/*
+ * Header: right area
+ */
+ 
+.headerMobile .rightArea {
+	position: absolute;
+	top: 5px;
+	right: 10px;	
+}
+
+.headerMobile .share-all:not(.active) {
+	display: none;
+}
+
+/*
+ * Buttons styling for desktop
+ */
+
+body:not(.hasTouch) .headerMobile .glyphicon {
+	opacity: 0.9;
+}
+
+body:not(.hasTouch) .headerMobile .glyphicon:hover {
+	opacity: 1.0;
+}
+
+/*
+ * Menu
+ */
+
+.headerMobile .menu {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/* !important to make the jq slide anim smoother */
+	margin-top: 40px !important;
+	padding: 10px !important;
+	overflow-y: auto;
+	/* on top of footer tooltip */
+	z-index: 1100;
+	background-color: #CCC;
+}
+
+.headerMobile .menu-header .linkContainer a {
+	font-size: 1.1em;
+	font-weight: normal;
+	color: inherit !important;
+}
+
+.headerMobile .menu-header.centered td {
+	text-align: center !important;
+}
+
+.headerMobile .subtitle {
+	padding: 10px 0;
+	font-size: 1.5em;	
+}
+
+.headerMobile .menu-entry {
+	padding: 5px;
+	border-bottom: 1px solid grey;
+}
+
+.headerMobile .menu-entry:not(.active) {
+	cursor: pointer;
+}
+
+.headerMobile .menu-entry .menu-title {
+	font-size: 1.1em;
+}
+
+.headerMobile .menu-entry.active .menu-title {
+	font-weight: bold;
+}
+
+.headerMobile .menu-entry .menu-description {
+	margin: 5px 10px;
+}
+
+.headerMobile .menu-entry:not(.active) .menu-description {
+	display: none;	
+}

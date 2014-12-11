@@ -1,0 +1,28 @@
+<div class="legendContainer mapControls">
+	<div class="titleBtn">
+		<span class="collapseBtn">
+			<div class="glyphicon glyphicon-chevron-down"></div>
+			<div class="glyphicon glyphicon-chevron-up"></div>
+		</span>
+		<%= title %>
+	</div>
+	
+	<div class="content">
+		<div class="legendDijitContainer"></div>
+		<% if ( isInBuilder ) { %>
+			<div class="settingsGear glyphicon glyphicon-wrench"></div>
+			<div class="settingsOverlay">
+				<div class="settings-title"><%= settings %></div>
+				<div class="settings-content">
+					<!-- Open by default -->
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" class="expandStartup" />
+							<%= openDefault %>
+						</label>
+					</div>
+				</div>
+			</div>
+		<% } %>
+	</div>
+</div>

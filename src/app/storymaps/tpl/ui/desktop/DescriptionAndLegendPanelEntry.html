@@ -1,0 +1,13 @@
+<div class="entry <%= optHtmlClass %>">
+	<div class="entry-inner">
+		<% if ( ! isInBuilder ) { %>
+			<div class="description">
+				<%= description %>
+			</div>
+		<% } else { %>
+			<textarea name="descriptionEditor" class="descriptionEditor" placeholder="<%= editorPlaceholder %>">
+				<%= description  %>
+			</textarea>
+		<% } %>
+	</div>
+</div>

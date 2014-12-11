@@ -1,0 +1,17 @@
+/*
+ * Rules for CKEditor content
+ */
+
+.textEditorContent {
+	font-size: 0.9em;
+}
+
+.textEditorContent img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.textEditorContent ul {
+	margin: inherit;
+	padding: 10px 40px;
+}

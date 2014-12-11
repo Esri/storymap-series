@@ -1,0 +1,40 @@
+.settings-layoutoptions {
+	margin-top: 10px;
+	padding-right: 275px;
+}
+
+.settings-layoutoptions .opt-container {
+	margin-top: 15px;
+}
+
+.settings-layoutoptions .container-padding {
+	margin-left: 20px;
+}
+
+.settings-layoutoptions .disabled {
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+/* Side panel toggles */
+.settings-layoutoptions .btn-group {
+	display: block;
+	clear: both;
+	min-height: 28px;
+}
+
+/* panel/map overlap */
+.settings-layoutoptions[data-layout=tab] .opt-panel-map-overlap-container {
+	position: absolute;
+}
+
+.settings-layoutoptions .preview {
+	position: absolute;
+	top: 15px;
+	right: 20px;
+}
+
+.settings-layoutoptions .layout-thumbnail {
+	width: 250px;
+	height: 187px;
+}

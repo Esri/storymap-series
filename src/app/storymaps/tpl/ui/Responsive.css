@@ -1,0 +1,83 @@
+/*
+ * Viewer
+ */
+body.mobile-view #loadingOverlay {
+	top: 0px;
+}
+
+body.mobile-view #headerDesktop, 
+body.mobile-view #nav-bar, 
+body.mobile-view #accordionPanel,
+body.mobile-view #descLegendPanel {
+	display: none !important;
+}
+
+body.mobile-view .mobileView {
+	display: block !important;
+}
+
+body:not(.mobile-view) .footerTooltip {
+	display: none !important;
+}
+
+/*
+ * Main Stage floating panel media rules
+ */
+ 
+body.mobile-view .mainMediaContainer .embedContainer.center,
+body.mobile-view .mainMediaContainer .embedContainer.custom {
+	left: 0 !important;
+	right: 0 !important;
+}
+
+/*
+ * Map, Map extras
+ */
+
+body.mobile-view .overview, 
+body.mobile-view .overview 
+body.mobile-view .esriOverviewMap, 
+body.mobile-view .overview img {
+	z-index: 0 !important;
+	visibility: hidden !important;
+}
+
+body.mobile-view .esriControlsBR {
+	left: inherit !important;
+	right: 5px !important;
+}
+
+body.mobile-view .legend {
+	display: none !important;
+}
+
+body.mobile-view .legendContainer {
+	background-color: none !important;
+}
+
+
+body:not(.mobile-view) #mobileInfoBtn,
+body:not(.mobile-view) .mobilePopup {
+	display: none !important;
+}
+
+/*
+ * Builder
+ */
+
+body.mobile-view #builderPanel, 
+body.mobile-view #builderLanding {
+	display: none !important;
+}
+
+body.mobile-view .modal, 
+body.mobile-view .modal-backdrop {
+	display: none !important;
+}
+
+body.mobile-view #builderHelp, 
+body.mobile-view #builderHelpMaskOverlay, 
+body.mobile-view #builderLanding, 
+body.mobile-view #builderQuotes {
+	display: none !important;
+}
