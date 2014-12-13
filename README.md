@@ -108,11 +108,11 @@ The Series data are stored in a Web Application Item in ArcGIS Online or Portal 
 The image and videos that you include in your Series using the builder are not copied in ArcGIS Online. You have to make sure that those medias as well as the webmaps you are using are and will remain accessible to your audience.
 
 #### Can I deploy Map Series on Portal for ArcGIS?
-Yes, Map Series is not included in Portal for ArcGIS 10.3 but you can deploy it yourself. Map Series will be included in a further version of Portal for ArcGIS.
+Yes, Map Series is not included in Portal for ArcGIS 10.3 but you can deploy it yourself. Map Series will be included in further version of Portal for ArcGIS.
 
 Map Series is not compatible with Portal for ArcGIS prior version 10.3.
 
-Open the folder `ArcGIS\Portal\webapps\arcgis#home\webmap\templates\MapSeries`, make sure to first delete all of its content. Then refer your Portal documentation for instructions on [publishing a new web application item](http://resources.arcgis.com/en/help/main/10.2/index.html#/Adding_applications/019300000031000000/) and adding it to a group and [configuring the web application gallery](http://resources.arcgis.com/en/help/main/10.2/index.html#/Configure_map_viewer/017s00000024000000/) to use that group. If you choose to deploy the template in another folder, some configuration will be required (see the configuration section in index.html). 
+Open the folder `ArcGIS\Portal\webapps\arcgis#home\webmap\templates\MapSeries`, make sure to first delete all of its content and extract the content of the [Map Series archive](http://links.esri.com/storymaps/map_series_template_zip). Then refer your Portal documentation for instructions on [publishing a new web application item](http://resources.arcgis.com/en/help/main/10.2/index.html#/Adding_applications/019300000031000000/) and adding it to a group and [configuring the web application gallery](http://resources.arcgis.com/en/help/main/10.2/index.html#/Configure_map_viewer/017s00000024000000/) to use that group. If you choose to deploy the template in another folder, some configuration will be required (see the configuration section in index.html). 
 
 Also note that the web application gallery preview feature redirects to the StoryMaps website, the target page can be modified in `app/config.js > HELP_URL`.
 
