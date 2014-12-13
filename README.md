@@ -32,10 +32,10 @@ The Story Map Series app lets you present a series of maps via tabs, numbered bu
 A Map Series application can be created from [ArcGIS Online](http://arcgis.com), from the [Esri Story Maps website](http://storymaps.arcgis.com/) or from a [Portal for ArcGIS](http://www.esri.com/software/arcgis/arcgisserver/extensions/portal-for-arcgis) deployment. The Series's data are stored in a Web Application Item (this includes the narrative content, reference to the webmap(s), pictures, videos and the settings).
 This repository provides the application source code for developers that want to customize Map Series.
 
-For more information about the Map Series, including a gallery of examples and a step-by-step tutorial, please see the [Map Series](http://storymaps.arcgis.com/en/app-list/map-series/tutorial/) page on the [Esri Story Maps website](http://storymaps.arcgis.com/).
+For more information about the Map Series, including a gallery of examples and a step-by-step tutorial, please see the [Map Series](http://links.esri.com/storymaps/map_series_app) page on the [Esri Story Maps website](http://storymaps.arcgis.com/).
 
 ## Instructions
-First create your Map Series in ArcGIS Online using the [step-by-step tutorial](http://storymaps.arcgis.com/en/app-list/).
+First create your Map Series in ArcGIS Online using the [step-by-step tutorial](http://storymaps.arcgis.com/en/app-list/map-series/tutorial/).
 Once your story is ready, you have to find its ID in ArcGIS Online. The ID is a 32 character string that you will find in your web browser's address bar when you are viewing your series.
 
 ![App ID](map-series-help-application-id.png)
