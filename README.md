@@ -32,7 +32,7 @@ The Story Map Series app lets you present a series of maps via tabs, numbered bu
 A Map Series application can be created from [ArcGIS Online](http://arcgis.com), from the [Esri Story Maps website](http://storymaps.arcgis.com/) or from a [Portal for ArcGIS](http://www.esri.com/software/arcgis/arcgisserver/extensions/portal-for-arcgis) deployment. The Series's data are stored in a Web Application Item (this includes the narrative content, reference to the webmap(s), pictures, videos and the settings).
 This repository provides the application source code for developers that want to customize Map Series.
 
-For more information about the Map Series, including a gallery of examples and a step-by-step tutorial, please see the [Map Series](http://storymaps.arcgis.com/en/app-list/) page on the [Esri Story Maps website](http://storymaps.arcgis.com/).
+For more information about the Map Series, including a gallery of examples and a step-by-step tutorial, please see the [Map Series](http://storymaps.arcgis.com/en/app-list/map-series/tutorial/) page on the [Esri Story Maps website](http://storymaps.arcgis.com/).
 
 ## Instructions
 First create your Map Series in ArcGIS Online using the [step-by-step tutorial](http://storymaps.arcgis.com/en/app-list/).
@@ -53,7 +53,7 @@ See [customize the look and feel section](#customize-the-look-and-feel) or [deve
 We would love to hear from you!
 * [StoryMaps Website](http://storymaps.arcgis.com/)
 * [Let us know about your application](http://storymaps.arcgis.com/en/gallery/submission-form/)
-* [Story Maps forum on GeoNet](https://geonet.esri.com/community/gis/web-gis/storymaps/content)
+* [Story Maps forum on GeoNet](http://links.esri.com/storymaps/story_maps_geonet)
 * [@EsriStoryMaps](http://twitter.com/EsriStoryMaps)
 * [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
 
