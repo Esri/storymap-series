@@ -602,7 +602,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 											$.each(Object.keys(app.maps), function(i, webmapId){
 												if ( newWebmapId != webmapId ) {
 													mainView.setMapExtent(
-														response.map.extent,
+														mainView.getLayoutExtent(response.map.extent, true),
 														app.maps[webmapId].response.map 
 													);
 												}
@@ -743,6 +743,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					else if ( ! extent && ! isMapSync(index) ) {
 						extent = Helper.getLayoutExtent(map._params.extent, true);
 						extent = Helper.getLayoutExtent(extent, false);
+					}
+					else if ( ! extent && isMapSync(index) && app.lastMapExtent ) {
+						extent = Helper.getLayoutExtent(app.lastMapExtent, true);
 					}
 					else if ( ! extent ) {
 						extent = Helper.getLayoutExtent(map._params.extent, true);
@@ -1045,7 +1048,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 							left: 0,
 							right: 0
 						})
-						.css('background-image', 'url(' + pictureContainer.data('src') + ')');
+						.css('background-image', 'url("' + pictureContainer.data('src') + '")');
 					
 					_this.updateMainStageWithLayoutSettings();
 					

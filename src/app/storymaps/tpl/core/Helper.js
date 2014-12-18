@@ -16,6 +16,9 @@ define(["./WebApplicationData",
 				
 				console.log("tpl.core.Helper - getLayoutExtent", reverse, isPanelLeft, isPanelRight, WebApplicationData.getPanelMapOverlap());
 				
+				if ( ! extent )
+					return extent;
+				
 				if ( ! isPanelLeft && ! isPanelRight )
 					return extent;
 				
