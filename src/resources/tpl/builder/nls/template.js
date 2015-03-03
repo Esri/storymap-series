@@ -4,10 +4,16 @@ define({
 			layouts: {
 				tabTitle: "Tabbed",
 				tabDescr: "Present maps and other content using tabs with an optional panel for descriptive text.",
+				tabItem: "Tab",
+				tabItems: "Tabs",
 				sideTitle: "Side Accordion",
 				sideDescr: "Present maps and other content using an expandable control that includes descriptive text.",
+				sideItem: "Entry",
+				sideItems: "Entries",
 				bulletTitle: "Bulleted",
-				bulletDescr: "Present maps and other content using bullets with an optional panel for descriptive text."
+				bulletDescr: "Present maps and other content using bullets with an optional panel for descriptive text.",
+				bulletItem: "Bullet",
+				bulletItems: "Bullets"
 			},
 			common: {
 				lblStatus1: "Published",
@@ -21,18 +27,19 @@ define({
 				lblDropdown: "Dropdown",
 				lblBelowDesc: "Below the description",
 				lblOnPanel: "As a panel",
-				lblPanelDescAndLegend: "Description and legend Panel",
-				lblPanelDescAndOrLegend: "Description and/or legend Panel",
-				lblPanelDesc: "Description Panel",
-				lblPanelLegend: "Legend Panel",
-				lblPanelAccordion: "Accordion Panel",
+				lblPanelDescAndLegend: "Description and legend panel",
+				lblPanelDescAndOrLegend: "Description and/or legend panel",
+				lblPanelDesc: "Description panel",
+				lblPanelLegend: "Legend panel",
+				lblPanelAccordion: "Accordion panel",
 				cfgLeft: "Left",
 				cfgRight: "Right",
 				cfgSmall: "Small",
 				cfgMedium: "Medium",
 				cfgLarge: "Large",
-				lblNumbering: "Entry numbering",
-				lblReverse: "Reverse entry numbering"
+				lblNumbering: "Display numbers",
+				lblReverse: "Reverse numbering",
+				canOverlapMap: "can overlap map location"
 			},
 			settingsMapOptions: {
 				title: "Map options",
@@ -51,11 +58,11 @@ define({
 			addEditPopup: {
 				lblAdd: "Add",
 				lblEdit: "Edit",
-				disabled: "Add Entry is disabled because the maximum number of allowed sections has been reached.",
-				titleAdd: "Add Entry",
-				titleEdit: "Edit Entry",
-				stepMainStageNextTooltip: "Enter the Entry title and content",
-				titlePlaceholder: "Entry title..."
+				disabled: "Add is disabled because the maximum number of allowed %LBL_LAYOUT% has been reached.",
+				titleAdd: "Add",
+				titleEdit: "Edit",
+				stepMainStageNextTooltip: "Enter the %LBL_LAYOUT% title and content",
+				titlePlaceholder: "%LBL_LAYOUT% title..."
 			},
 			textEditor: {
 				placeholder1: "Add text, links, and small graphics here.",
@@ -63,10 +70,10 @@ define({
 			},
 			organizePopup: {
 				title: "Organize",
-				lblHeader: "Drag and drop entries to organize your series.",
+				lblHeader: "Drag and drop %LBL_LAYOUT% to organize your series.",
 				lblColTitle: "Title",
 				lblColStatus: "Status",
-				btnApplyWarning: "Confirm deletion of %NB% entries",
+				btnApplyWarning: "Confirm deletion of %NB% %LBL_LAYOUT%",
 				deleteTooltip: "Delete",
 				firstSectionExplain: "(The home section cannot be moved)"
 			},
@@ -109,6 +116,7 @@ define({
 	"cs": 1,
 	"da": 1,
 	"de": 1,
+	"el": 1,
 	"es": 1,
 	"et": 1,
 	"fi": 1,

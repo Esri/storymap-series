@@ -26,7 +26,7 @@ define(["lib-build/css!./InlineEditor",
 					extraPlugins: 'storymapsInlineMedia,autogrow',
 					resize_enabled: false,
 					toolbar: [
-						{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline'/*, 'RemoveFormat'*/ ] },
+						{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'RemoveFormat' ] },
 						{ name: 'colors', items: [ 'TextColor' ] },
 						{ name: 'styles', items: [ 'FontSize' ] },
 						{ name: 'insert', groups: [ 'storymapsInlineMedia' ], items: [ 'InlineMedia' ] },

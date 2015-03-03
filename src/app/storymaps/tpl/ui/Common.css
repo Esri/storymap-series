@@ -4,9 +4,12 @@
 
 .textEditorContent {
 	font-size: 0.9em;
+	word-wrap: break-word;
+	word-break: break-word;
 }
 
 .textEditorContent img {
+	height: auto;
 	max-width: 100%;
 	max-height: 100%;
 }

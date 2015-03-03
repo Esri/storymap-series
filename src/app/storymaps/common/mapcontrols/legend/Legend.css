@@ -48,7 +48,9 @@
 }
 
 .legendContainer.isInlined .content {
-	max-height: inherit;
+	/* This makes IE10 to crash when opening a Map Series that contains an inlined legend for first entry */
+	/*max-height: inherit;*/
+	max-height: initial;
 } 
 
 .legendContainer .content.settingsOpen {
@@ -68,7 +70,7 @@
 /*
  * Inline mode
  */
- 
+
 .legendContainer.isInlined .titleBtn {
  	display: none;
 }

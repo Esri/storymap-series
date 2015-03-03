@@ -2,14 +2,16 @@ define(["lib-build/tpl!./AccordionPanelEntry",
 		"lib-build/css!./AccordionPanel",
 		"lib-build/css!./Common",
 		"../StoryText",
-		"storymaps/common/utils/CommonHelper"
+		"storymaps/common/utils/CommonHelper",
+		"dojo/topic"
 	], 
 	function(
 		viewEntryTpl,
 		viewCss,
 		commonCss,
 		StoryText,
-		CommonHelper
+		CommonHelper,
+		topic
 	){		
 		return function AccordionPanel(container, isInBuilder, navigationCallback)
 		{
@@ -126,27 +128,46 @@ define(["lib-build/tpl!./AccordionPanelEntry",
 					});
 				});
 				if ( ! app.isInBuilder )
-					container.find('.content').html(StoryText.prepareContentIframe(contentHTML));
+					container.find('.content').html(
+						StoryText.prepareContentIframe(
+							StoryText.prepareEditorContent(contentHTML)
+						)
+					);
 				else
 					container.find('.content').html(contentHTML);
 				
-				/*
-				container.find(".accordion-content").click(function(){
-					if($("#application-window").width() <= 780){
-						$("#side-pane").slideUp();
-					}
-				});
-				*/
 				container.find(".accordion-header").click(onEntryClick);
 				
-				/*
-				container.find('.accordion-header-content').keypress(function(e) {
-					if(e.which == 13) {
-						$(this).parents('.accordion-header').click();
+				var accordionHeaders = container.find('.accordion-header-content');
+				
+				// Fire a click event when focusing through keyboard and prevent double event when clicking with mouse
+				accordionHeaders
+					.focus(function(){
+						if (!$(this).data("mouseDown"))
+							$(this).click();
+					})
+					.mousedown(function(){
+						$(this).data("mouseDown", true);
+					})
+					.mouseup(function(){
+						$(this).removeData("mouseDown");
+					});
+				
+				// Find the last entry header or "element" of it's description
+				var lastTabElement = accordionHeaders.last();
+				if( lastTabElement.siblings(".accordion-content").find("[tabindex=0]").length )
+					lastTabElement = lastTabElement.siblings(".accordion-content").find("[tabindex=0]").last();
+				
+				// Tab on the last element has to navigate to the header
+				lastTabElement.on('keydown', function(e) {
+					if( e.keyCode === 9 && ! e.shiftKey ) {
+						topic.publish("story-tab-navigation", { 
+							from: "panel", 
+							direction: "forward"
+						});
 						return false;
 					}
 				});
-				*/
 				
 				//setAccordionContentHeight();
 			}

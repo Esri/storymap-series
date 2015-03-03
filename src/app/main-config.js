@@ -74,9 +74,7 @@ function defineDojoConfig()
 		aliases: [
 			['text', 'lib-build/text'],
 			['underscore', 'lib-build/lodash']
-		],
-		// Force english locale for V1.0
-		locale: 'en'
+		]
 	};
 }
 

@@ -125,10 +125,18 @@ define(["lib-build/tpl!./BuilderView",
 				
 				app.cfg.LAYOUTS[0].title = i18n.builder.layouts.tabTitle;
 				app.cfg.LAYOUTS[0].description = i18n.builder.layouts.tabDescr;
+				app.cfg.LAYOUTS[0].itemLbl = i18n.builder.layouts.tabItem;
+				app.cfg.LAYOUTS[0].itemsLbl = i18n.builder.layouts.tabItems;
+				
 				app.cfg.LAYOUTS[1].title = i18n.builder.layouts.sideTitle;
 				app.cfg.LAYOUTS[1].description = i18n.builder.layouts.sideDescr;
+				app.cfg.LAYOUTS[1].itemLbl = i18n.builder.layouts.sideItem;
+				app.cfg.LAYOUTS[1].itemsLbl = i18n.builder.layouts.sideItems;
+				
 				app.cfg.LAYOUTS[2].title = i18n.builder.layouts.bulletTitle;
 				app.cfg.LAYOUTS[2].description = i18n.builder.layouts.bulletDescr;
+				app.cfg.LAYOUTS[2].itemLbl = i18n.builder.layouts.bulletItem;
+				app.cfg.LAYOUTS[2].itemsLbl = i18n.builder.layouts.bulletItems;
 				
 				//
 				// Layout specificity related to handling events
@@ -234,12 +242,16 @@ define(["lib-build/tpl!./BuilderView",
 				
 				$(".builder-add")
 					.toggleClass("disabled", disableAddButton)
-					.tooltip(disableAddButton ? {
+					.tooltip('destroy');
+				
+				if ( disableAddButton ) {
+					$(".builder-add").tooltip({
 						trigger: 'hover',
 						placement: 'top',
 						html: true,
-						title: i18n.builder.addEditPopup.disabled
-					} : 'destroy');
+						title: i18n.builder.addEditPopup.disabled.replace('%LBL_LAYOUT%', app.data.getWebAppData().getLayoutProperties().itemsLbl.toLowerCase())
+					});
+				}
 				
 				/*
 				if ( disableAddButton ) {

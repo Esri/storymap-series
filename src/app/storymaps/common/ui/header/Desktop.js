@@ -44,10 +44,10 @@ define(["lib-build/css!./Desktop",
 					var isCompact = headerCfg.compactSize === undefined ? defaultToCompact : headerCfg.compactSize;
 					if ( ! isCompact ) {
 						container.find('.title').css({
-							paddingTop: 40,
+							paddingTop: 30,
 							height: 90
 						});
-						container.find('.subtitle').css("height", 32);
+						container.find('.subtitle').css("height", 32).attr("tabindex", "-1");
 					}
 				}
 	
@@ -104,6 +104,37 @@ define(["lib-build/css!./Desktop",
 			};
 			
 			/*
+			 * 508 tab navigation
+			 */
+			
+			this.focus = function(p)
+			{
+				if ( ! p || p.area == "social" ) {
+					$("#headerDesktop .shareIcon").attr("tabindex", "0");
+					
+					if ( $("#headerDesktop .linkContainer a").length )
+						$("#headerDesktop .linkContainer a").attr("tabindex", "0")[0].focus();
+					else if ( $("#headerDesktop .linkContainer").length )
+						$("#headerDesktop .linkContainer").attr("tabindex", "0")[0].focus();
+					else if ( $("#headerDesktop .shareIcon:visible").length )
+						$("#headerDesktop .shareIcon")[0].focus();
+					else 
+						focusTitleOrSubtitle();
+				}
+				else {
+					focusTitleOrSubtitle();
+				}
+			};
+			
+			function focusTitleOrSubtitle()
+			{
+				if ( $("#headerDesktop .subtitle:visible").length )
+					$("#headerDesktop .subtitle")[0].focus();
+				else
+					$("#headerDesktop .title")[0].focus();
+			}
+			
+			/*
 			 * Styling
 			 */
 			
@@ -147,7 +178,7 @@ define(["lib-build/css!./Desktop",
 			{
 				setTimeout(function(){ 
 					topic.publish("HEADER_EDITED", {
-						src: $(src).attr("class"), 
+						src: $(src).attr("class").split(' ')[0], 
 						value: value
 					});
 					// TODO only if the value has changed

@@ -64,7 +64,11 @@ define(["lib-build/css!./EntryInfo",
 					description = _entries[_entryIndex].description;
 				
 				if ( ! popupContainer.is(":visible") ) {
-					popupContainer.find('.description').html(StoryText.prepareContentIframe(description));
+					popupContainer.find('.description').html(
+						StoryText.prepareContentIframe(
+							StoryText.prepareEditorContent(description)
+						)
+					);
 					
 					// If it's a map can toggle description and legend
 					if ( popupContainer.find('.content-toggles') ) {

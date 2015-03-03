@@ -103,6 +103,9 @@ define(["lib-build/css!./Builder",
 		
 		function headerEdited(param)
 		{
+			if ( ! param.src )
+				return;
+			
 			if ( param.value == i18n.commonCore.inlineFieldEdit.editMe )
 				param.value = "";
 			

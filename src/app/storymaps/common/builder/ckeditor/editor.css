@@ -148,7 +148,7 @@ figure
 	margin: 15px 0;
 	display: block; /* For IE8 */
 	/* Storymaps */
-	display: inline-block;
+	/*display: inline-block;*/
 	max-width: 100%; 
 }
 

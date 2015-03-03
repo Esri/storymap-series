@@ -2,14 +2,18 @@ define(["lib-build/tpl!./NavBar",
         "lib-build/css!./NavBar",
         "lib-build/tpl!./NavBarEntry",
         "lib-build/tpl!./NavBarEntryMore",
-        "storymaps/common/utils/CommonHelper"
+        "storymaps/common/utils/CommonHelper",
+        "dojo/topic",
+        "dojo/has"
 	], 
 	function(
 		viewTpl,
 		viewCss,
 		viewEntryTpl,
 		viewEntryMoreTpl,
-		CommonHelper
+		CommonHelper,
+		topic,
+		has
 	){		
 		return function NavBarTab(container, isInBuilder, navigationCallback)
 		{
@@ -95,11 +99,27 @@ define(["lib-build/tpl!./NavBar",
 				// The entry is visible
 				if ( index < nbEntryVisible ) {
 					container.find('.entry').eq(index).addClass('active');
+					
+					if ( ! app.isLoading ) {
+						container.find('.entry').eq(index).find('.entryLbl').focus();
+						// Close the dropdown if open
+						if ( container.find('.dropdown').hasClass("open") )
+							container.find('.dropdown-toggle').click();
+					}
 				}
 				// The entry is in the more list
 				else {
 					container.find('.dropdown').addClass('active');
 					container.find('.dropdown .entry').eq(index).addClass('active');
+					
+					if ( ! app.isLoading ) {
+						// Open the dropdown if not open
+						if ( ! container.find('.dropdown').hasClass("open") )
+							container.find('.dropdown-toggle').click();
+						
+						// Focus on the dropdown entry
+						container.find('.dropdown .entry').eq(index).focus();
+					}
 				}
 				
 				_entryIndex = index;
@@ -135,6 +155,11 @@ define(["lib-build/tpl!./NavBar",
 					if ( ! value )
 						value = isInBuilder ? ('<span style="color: red;">' + i18n.commonCore.inlineFieldEdit.editMe + '</span>') : '&nbsp;';
 					
+					// Add the entry title has hidden element for accessibility
+					if ( layout == "bullet" ) {
+						value += '<div style="height:0; width: 0; overflow: hidden;"><div>;</div><div>' + entry.title + '</div></div>';
+					}
+					
 					entriesHTML += viewEntryTpl({
 						value: value,
 						tooltip: layout == "bullet" ? entry.title : "",
@@ -147,7 +172,8 @@ define(["lib-build/tpl!./NavBar",
 					+ viewEntryMoreTpl({ entries: entriesHTML }) 
 				);
 				
-				if ( layout == "bullet" ) {
+				// On touch device for some reason enabling the tooltip sometimes make touching one bullet go to the following
+				if ( layout == "bullet" && ! has("touch") ) {
 					container.find('.nav-tabs > .entry').tooltip({
 						placement: 'top'
 					});
@@ -159,33 +185,39 @@ define(["lib-build/tpl!./NavBar",
 				
 				container.find('.entry').click(onTitleClick);
 				
-				/*
-				container.find('.entryLbl').keypress(function(e) {
-					if(e.which == 13) {
-						$(this).parent().click();
+				// Tab navigation
+				container.find('.entryLbl').on('keydown', function(e) {
+					if( e.keyCode === 9 ) {
+						topic.publish("story-tab-navigation", { 
+							from: "nav", 
+							direction: e.shiftKey ? "backward" : "forward"
+						});
 						return false;
 					}
 				});
 				
-				container.find('li.dropdown').keypress(function(e) {
-					if(e.which == 13) {
-						$(this).find('.dropdown-toggle').click();
-						return false;
-					}
-				}); 
-				*/
+				// Fire a click event when focusing through keyboard and prevent double event when clicking with mouse
+				container.find('.entryLbl').eq(0)
+					.focus(function(){
+						if (!$(this).data("mouseDown") && ! $(this).parent('.entry').hasClass("active")){
+							$(this).parent('.entry').click();
+						}
+					})
+					.mousedown(function(){
+						$(this).data("mouseDown", true);
+					})
+					.mouseup(function(){
+						$(this).removeData("mouseDown");
+					});
 				
 				_this.resize();
 			}
 			
-			function setLayout(layout, layoutOptions)
+			function setLayout(layout/*, layoutOptions*/)
 			{
-				console.log(layout, layoutOptions);
-				
 				container.find('.nav-bar')
 					.toggleClass("isTab", layout == "tab")
 					.toggleClass("isBullet", layout == "bullet");
-				
 			}
 			
 			function setColor(colors)

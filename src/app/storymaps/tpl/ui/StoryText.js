@@ -18,6 +18,27 @@ define(["dojo/topic",
 		var _fullScreenMediaIsOpening = false; 
 	
 		/*
+		 * Prepare all content that come from the rich text editor for display
+		 * (entry content)
+		 */
+		function prepareEditorContent(str)
+		{
+			// Replace &nbsp; by a space space is not the only character of a tag
+			//  i.e. <p>&nbsp;<p> or <p class="foo">&nbsp;</p> is not changed but all others &nbsp; are replaced by a space
+			var str2 = str.replace(/(?!>)(&nbsp;)(?!<\/)/g, ' ');
+			
+			// Add tabindex to not empty elements
+			str2 = $(str2);
+			str2.find('.description > *').each(function(i, elem){
+				var $elem = $(elem);
+				if ( $elem.html() != "&nbsp;" )
+					$elem.attr("tabindex", "0");
+			});
+
+			return str2;
+		}
+		
+		/*
 		 * Prepare story text content for display
 		 * All panels have to call that function
 		 */
@@ -62,9 +83,10 @@ define(["dojo/topic",
 		{
 			/* TODO floating panel width is approximate has padding is in % */
 			
-			resizeSectionIframe($("#sidePanel .sections"), $("#sidePanel .sections").width() - 40);
-			resizeSectionIframe($("#floatingPanel .sections"), $("#floatingPanel .sections").width() - 34);
-			resizeSectionIframe($("#mobileView .swiper-wrapper"), $("#mobileView").width() - 30);
+			resizeSectionIframe($(".descLegendPanel .textEditorContent"), $(".descLegendPanel").width() - 40);
+			resizeSectionIframe($(".accordionPanel .textEditorContent"), $(".accordionPanel").width() - 34);
+			// TODO mobile view video size not adjusted
+			//resizeSectionIframe($(".mobilePopup .textEditorContent"), $(".mainMediaContainer").width() - 80);
 		}
 		
 		/*
@@ -126,6 +148,7 @@ define(["dojo/topic",
 					.addClass(hasWidth ? "has-width" : "no-width")
 					.addClass(floatRight ? "float-right" : "");
 				$(node)
+					.wrap("<div class='image-wrapper'></div>")
 					.after($('<span class="btn-fullscreen"></span>').click(mediaFullScreen))
 					.click(mediaFullScreen);
 			});
@@ -300,6 +323,7 @@ define(["dojo/topic",
 		}
 		
 		return {
+			prepareEditorContent: prepareEditorContent,
 			createMainMediaActionLink: createMainMediaActionLink,
 			createMediaFullScreenButton: createMediaFullScreenButton,
 			performAction: performAction,

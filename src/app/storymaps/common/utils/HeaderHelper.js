@@ -87,10 +87,15 @@ define([
 			},
 			toggleSocialBtnAppSharing: function(container, disable)
 			{
+				// TODO has to reset the correct title here so if user share the app the "Share on xyz" is present
+				if ( disable ) {
+					container.find(".shareIcon").attr("title", "");
+				}
+				
 				container.find(".shareIcon")
 					.toggleClass("disabled", !! disable)
 					.tooltip(disable ? {
-						title: i18n.commonCore.builderPanel.tooltipNotShared,
+						title: i18n.commonCore ? i18n.commonCore.builderPanel.tooltipNotShared : "This isn't available until you share", // TODO i18n
 						container: 'body'
 					} : 'destroy');
 			},
@@ -152,6 +157,14 @@ define([
 							twitter: !! $(this).data("share-twitter")
 						}
 					);
+				});
+				
+				// Bind keyboard enter to click
+				container.find(".shareIcon, .share-all").off('keypress').keypress(function (e) {
+					if(e.which == 13) {
+						$(this).click();
+						return false;  
+					}
 				});
 				
 				$(window).resize(function(){

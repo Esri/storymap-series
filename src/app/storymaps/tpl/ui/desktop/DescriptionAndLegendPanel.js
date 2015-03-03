@@ -3,7 +3,8 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 		"lib-build/css!./Common",
 		"../../core/WebApplicationData",
 		"../StoryText",
-		"storymaps/common/utils/CommonHelper"
+		"storymaps/common/utils/CommonHelper",
+		"dojo/topic"
 	], 
 	function(
 		viewEntryTpl,
@@ -11,7 +12,8 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 		commonCss,
 		WebApplicationData,
 		StoryText,
-		CommonHelper
+		CommonHelper,
+		topic
 	){		
 		return function DescriptionAndLegendPanel(container, isInBuilder)
 		{
@@ -35,6 +37,23 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 				render();
 				this.update(layoutOptions, colors, entryLayoutCfg);
 				this.showEntryIndex(entryIndex, false, entryLayoutCfg);
+				
+				container.on('keydown', function(e) {
+					if( e.keyCode === 9 ) {
+						var focusElem = $(':focus');
+
+						if ( focusElem ) {
+							var nextFocusable = e.shiftKey ? focusElem.prevAll("*[tabindex=0]") : focusElem.nextAll("*[tabindex=0]");
+							if ( ! nextFocusable.length ) {
+								topic.publish("story-tab-navigation", { 
+									from: "panel", 
+									direction: e.shiftKey ? "backward" : "forward" 
+								});
+								return false;
+							}
+						}				
+					}
+				});
 				
 				isInBuilder && initBuilder();
 			};
@@ -114,6 +133,11 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 				return container.find('.legendWrapper[data-webmap=' + id + ']');
 			};
 			
+			this.focus = function()
+			{
+				container.find('.entry.active .description > *[tabindex=0]').eq(0).focus();
+			};
+			
 			/*
 			 * Entries rendering
 			 */
@@ -139,7 +163,11 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 				});
 				
 				if ( ! app.isInBuilder )
-					container.find('.descriptions').html(StoryText.prepareContentIframe(contentHTML));
+					container.find('.descriptions').html(
+						StoryText.prepareContentIframe(
+							StoryText.prepareEditorContent(contentHTML)
+						)
+					);
 				else
 					container.find('.descriptions').html(contentHTML);
 			}
@@ -147,10 +175,8 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 			function setLayout(entryLayoutCfg)
 			{
 				// Panel visibility depend on layout and entry configuration 
-				container.toggle(
-					! app.isInitializing 
-					&& ( entryLayoutCfg.description || entryLayoutCfg.legend )
-				);
+				var panelIsVisible = ! app.isInitializing  && (entryLayoutCfg.description || entryLayoutCfg.legend);
+				container.toggle(panelIsVisible);
 				
 				container.find('.descriptions').toggle(_layoutOptions.description);
 				container.css("width", _layoutOptions.panel.sizeVal);

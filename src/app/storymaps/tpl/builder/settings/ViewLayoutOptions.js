@@ -186,7 +186,7 @@ define(["lib-build/tpl!./ViewLayoutOptions",
 					.toggle(layoutIsTab || layoutIsBullet)
 					.toggleClass("disabled", hasNoPanel);
 				
-				_contentContainer.find('.lbl-checkbox-overlap').html(targetPanelLbl + " can overlap map location"); // TODO i18n
+				_contentContainer.find('.lbl-checkbox-overlap').html(targetPanelLbl + " " + i18n.builder.settingsLayoutOptions.canOverlapMap);
 				
 				// Preview
 				_contentContainer.find(".preview").html(app.appCfg.getLayoutThumbnail({ 

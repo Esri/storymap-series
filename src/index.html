@@ -19,6 +19,7 @@
 		<meta name="description" content="This story map was created with the Story Map Series application in ArcGIS Online.">
 		
 		<!-- Facebook sharing -->
+		<meta property="og:type" content="article"/>
 		<meta property="og:title" content="Story Map Series"/>
 		<meta property="og:description" content="This story map was created with the Story Map Series application in ArcGIS Online."/>
 		<meta property="og:image" content="resources/common/icons/esri-globe.png"/>
@@ -59,8 +60,8 @@
 		
 		<script type="text/javascript">
 			var app = {
-				version: '1.0.1',
-				pathJSAPI: '//js.arcgis.com/3.12/'
+				version: '1.1.0',
+				pathJSAPI: '//js.arcgis.com/3.13/'
 			};
 		</script>
 	</head>
@@ -88,19 +89,15 @@
 				<div class="menu"></div>
 			</div>
 			<!-- Desktop header -->
-			<div id="headerDesktop">
-				<div class="textArea">
-					<h1 class="title"></h1>
-					<h2 class="subtitle"></h2>
-				</div>
+			<div id="headerDesktop" aria-hidden="true">
 				<div class="rightArea">
 					<div class="linkSocialContainer">
 						<button type="button" class="switchBuilder btn btn-xs btn-primary" tabindex="-1"></button>
 						<span class="linkContainer"></span>
 						<span class="shareBtns">
-							<i class="shareIcon blackHover share_facebook icon-facebook-squared"></i>
-							<i class="shareIcon blackHover share_twitter icon-twitter"></i>
-							<i class="shareIcon blackHover share_bitly icon-link"></i>
+							<i class="shareIcon blackHover share_facebook icon-facebook-squared" title="Share on Facebook"></i>
+							<i class="shareIcon blackHover share_twitter icon-twitter" title="Share on Twitter"></i>
+							<i class="shareIcon blackHover share_bitly icon-link" title="Share a short link"></i>
 						</span>
 					</div>
 					<div class="logoContainer">
@@ -114,6 +111,10 @@
 							</tr>
 						</table>
 					</div>
+				</div>
+				<div class="textArea">
+					<h1 class="title" tabindex="0"></h1>
+					<h2 class="subtitle" tabindex="0"></h2>
 				</div>
 				<div class="builder-mask"></div>
 			</div>
@@ -172,11 +173,11 @@
 						</div>
 						
 						<!-- Description and legend floating panel -->
-						<div id="descLegendPanel" class="descLegendPanel">
+						<div id="descLegendPanel" class="descLegendPanel" tabindex="0">
 							<div class="descLegendPanelInner">
 								<div class="backdrop"></div>
 								<div class="descriptions textEditorContent"></div>
-								<div class="legends"></div>
+								<div class="legends" aria-hidden="true"></div>
 								<div class="builder-mask"></div>
 							</div>
 						</div>

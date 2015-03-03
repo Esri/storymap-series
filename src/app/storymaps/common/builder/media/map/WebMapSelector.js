@@ -238,7 +238,7 @@ define(["lib-build/tpl!./WebMapSelector",
 			{
 				container.find('.webmaps-list').append(
 					'<li class="' + cssClass + '">'
-					+  '<a href="#">'
+					+  '<a data-href="#">'
 					+   '<span class="webmap-entry" data-webmap="' + webmap + '">'
 					+    '<span class="title">' + title + '</span>'
 					+    '<span class="info">' + info + '</span>'

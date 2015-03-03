@@ -24,7 +24,6 @@ define([
 
 			container.append(viewTpl({
 				title: i18n.builder.organizePopup.title,
-				lblHeader: i18n.builder.organizePopup.lblHeader,
 				lblColTitle: i18n.builder.organizePopup.lblColTitle,
 				lblColStatus: i18n.builder.organizePopup.lblColStatus,
 				btnCancel: i18n.commonCore.common.cancel
@@ -44,6 +43,10 @@ define([
 				
 				if ( ! _initDone )
 					initUI();
+				
+				container.find('.organizeHeader').html(
+					i18n.builder.organizePopup.lblHeader.replace('%LBL_LAYOUT%', app.data.getWebAppData().getLayoutProperties().itemsLbl.toLowerCase())
+				);
 					
 				// Table entries
 				var entriesLength = _cfg.story.entries.length;
@@ -176,7 +179,10 @@ define([
 			{
 				if ( _nbRowDeleted )
 					container.find('.btnApply')
-						.html(i18n.builder.organizePopup.btnApplyWarning.replace('%NB%', _nbRowDeleted))
+						.html(i18n.builder.organizePopup.btnApplyWarning
+							.replace('%NB%', _nbRowDeleted)
+							.replace('%LBL_LAYOUT%', app.data.getWebAppData().getLayoutProperties()[_nbRowDeleted > 1 ? 'itemsLbl' : 'itemLbl'])
+						)
 						.removeClass('btn-primary')
 						.addClass('btn-danger');
 				else

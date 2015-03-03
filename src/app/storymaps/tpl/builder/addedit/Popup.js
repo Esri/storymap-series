@@ -24,7 +24,6 @@ define(["lib-build/tpl!./Popup",
 		return function Popup(container) 
 		{
 			container.append(viewTpl({
-				titlePlaceholder: i18n.builder.addEditPopup.titlePlaceholder,
 				btnCancel: i18n.commonCore.common.cancel,
 				btnBack: i18n.commonCore.common.back
 			}));
@@ -59,14 +58,27 @@ define(["lib-build/tpl!./Popup",
 				// Title / submit
 				if ( cfg.mode == "add" ) {
 					container.find('.modal-logo').removeClass("edit");
-					container.find('.modal-title').html(i18n.builder.addEditPopup.titleAdd);
+					container.find('.modal-title').html(
+						i18n.builder.addEditPopup.titleAdd
+						+ " "
+						+ app.data.getWebAppData().getLayoutProperties().itemLbl
+					);
 					_btnSubmit.html(i18n.commonCore.common.add);
 				}
 				else {
 					container.find('.modal-logo').addClass("edit");
-					container.find('.modal-title').html(i18n.builder.addEditPopup.titleEdit);
+					container.find('.modal-title').html(
+						i18n.builder.addEditPopup.titleEdit
+						+ " "
+						+ app.data.getWebAppData().getLayoutProperties().itemLbl
+					);
 					_btnSubmit.html(i18n.commonCore.common.save);
 				}
+				
+				container.find(".title").attr(
+					"placeholder", 
+					i18n.builder.addEditPopup.titlePlaceholder.replace('%LBL_LAYOUT%', app.data.getWebAppData().getLayoutProperties().itemLbl)
+				);
 				
 				// TODO
 				container.toggleClass("isAdding", cfg.mode == "add");
@@ -263,11 +275,14 @@ define(["lib-build/tpl!./Popup",
 				_btnSubmit.attr("disabled", disableButton);
 				if ( disableButton ) {
 					var tooltip = i18n.builder.addEditPopup.stepMainStageNextTooltip;
-						
-					container.find('.btnSubmitWrapper').tooltip({
-						container: '.btnSubmitTooltipContainer',
-						title: tooltip
-					});
+					
+					container.find('.btnSubmitWrapper')
+						.tooltip('destroy')
+						.tooltip({
+							container: '.btnSubmitTooltipContainer',
+							title: tooltip.replace('%LBL_LAYOUT%', app.data.getWebAppData().getLayoutProperties().itemLbl.toLowerCase())
+						}
+					);
 				}
 				else
 					container.find('.btnSubmitWrapper').tooltip('destroy');

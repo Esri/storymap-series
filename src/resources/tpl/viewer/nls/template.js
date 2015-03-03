@@ -34,7 +34,9 @@ define({
 			},
 			mobileInfo: {
 				legend: "Legend",
-				description: "Description"
+				description: "Description",
+				lblLegendMobileError: "Sorry, the legend is unavailable. Please reload the application.",
+				lblLegendMobileErrorExplain: "The legend is not available when the device is rotated to portrait mode after the application is loaded."
 			},
 			mobileFooter: {
 				swipeInvite: "Swipe to navigate the story",
@@ -69,6 +71,7 @@ define({
 	"cs": 1,
 	"da": 1,
 	"de": 1,
+	"el": 1,
 	"es": 1,
 	"et": 1,
 	"fi": 1,

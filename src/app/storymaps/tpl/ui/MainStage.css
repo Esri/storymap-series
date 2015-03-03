@@ -163,6 +163,11 @@ body.hasTouch .legendMobileErrorExplain {
 	display: none;
 }
 
+/* Somehow there is a conflict */
+.esriPopup .titlePane .spinner {
+	display: none !important;
+}
+
 /*
  * Loading
  */

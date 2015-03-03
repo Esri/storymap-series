@@ -14,7 +14,6 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 		"esri/geometry/webMercatorUtils",
 		"esri/symbols/SimpleMarkerSymbol",
 		//"esri/dijit/PopupMobile",
-		"esri/tasks/QueryTask",
 		"esri/tasks/query",
 		"dojo/topic",
 		"dojo/on",
@@ -39,7 +38,6 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 		webMercatorUtils,
 		SimpleMarkerSymbol,
 		//PopupMobile,
-		QueryTask,
 		Query,
 		topic,
 		on,
@@ -61,7 +59,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					webmapid: webmap, 
 					isTemporary: true,
 					lblDescription: i18n.viewer.mobileInfo.description,
-					lblLegend: i18n.viewer.mobileInfo.legend
+					lblLegend: i18n.viewer.mobileInfo.legend,
+					lblLegendMobileError: i18n.viewer.mobileInfo.lblLegendMobileError,
+					lblLegendMobileErrorExplain: i18n.viewer.mobileInfo.lblLegendMobileErrorExplain
 				}));
 			}
 			
@@ -83,7 +83,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 							webmapid: webmap, 
 							isTemporary: false,
 							lblDescription: i18n.viewer.mobileInfo.description,
-							lblLegend: i18n.viewer.mobileInfo.legend
+							lblLegend: i18n.viewer.mobileInfo.legend,
+							lblLegendMobileError: i18n.viewer.mobileInfo.lblLegendMobileError,
+							lblLegendMobileErrorExplain: i18n.viewer.mobileInfo.lblLegendMobileErrorExplain
 						}));
 				});
 				
@@ -107,7 +109,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				$.each(images, function(i, imageUrl){
 					var imageContainer = $('.imgContainer[data-src="' + imageUrl + '"]');
 					if ( ! imageContainer.length )
-						$("#mainStagePanel .medias").append( mainMediaContainerImageTpl({ url: imageUrl }) );
+						$("#mainStagePanel .medias").append(mainMediaContainerImageTpl({ 
+							url: imageUrl
+						}));
 				});
 				
 				// Remove unused containers
@@ -123,9 +127,12 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				// Add new container
 				$.each(embeds, function(i, embedInfo) {
 					// TODO this has to be reviewed to not allow content to be loaded too early? or give the same option for url?
-					var embedContainer = $('.embedContainer[data-src="' + (embedInfo.url || embedInfo.ts) + '"]');
+					var embedContainer = $('.embedContainer[data-src="' + btoa(embedInfo.url) + '"]');
 					if ( ! embedContainer.length ) {
-						
+						embedContainer = $('.embedContainer[data-ts="' + embedInfo.ts + '"]');
+					}
+					
+					if ( ! embedContainer.length ) {
 						//
 						// Frametag are added straight to the dom without any container
 						//  a class and a data attribute are added below
@@ -134,7 +141,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						//
 						
 						$("#mainStagePanel .medias").append(mainMediaContainerEmbedTpl({ 
-							url: embedInfo.url,
+							url: btoa(embedInfo.url),
 							frameTag: embedInfo.frameTag,
 							// Introduced in V1.1
 							unload: !!(embedInfo.unload === undefined || embedInfo.unload)
@@ -158,7 +165,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				
 				// Remove unused containers
 				$('.embedContainer').each(function() {
-					var embedSRC = $(this).data('ts') || $(this).data('src');
+					var embedSRC = $(this).data('ts') || atob($(this).data('src'));
 					var embedInUse = $.grep(embeds, function(embed){
 						return embedSRC == embed.url || embedSRC == embed.ts;
 					}).length > 0;
@@ -514,6 +521,12 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 									app.mapConfig = app.maps[newWebmapId];
 								}
 								
+								// Popup
+								if ( response.map.infoWindow ) {
+									$(response.map.infoWindow.domNode).addClass("light");
+									response.map.infoWindow.markerSymbol = new SimpleMarkerSymbol().setSize(0);
+								}
+								
 								updateMainMediaMapsStep2(
 									response.map,
 									mapContainer, 
@@ -567,12 +580,6 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 									response.map.on("pan-end", onPanOrZoomEnd);
 								}
 								
-								// Popup
-								if ( response.map.infoWindow ) {
-									$(response.map.infoWindow.domNode).addClass("light");
-									response.map.infoWindow.markerSymbol = new SimpleMarkerSymbol().setSize(0);
-								}
-
 								if ( ! isPreloading ) {
 									setTimeout(function(){
 										stopMainStageLoadingIndicator();
@@ -636,7 +643,13 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 									response.map.infoWindow.set("popupWindow", ! isOnMobileView);
 								});
 								
-								response.map.infoWindow.on("selection-change", function(){
+								/*
+								response.map.infoWindow.on("selection-change", function(e, f){
+									setPopupPosition(response.map, response.map.infoWindow);
+								});
+								*/
+								
+								aspect.after(response.map.infoWindow, "show", function() {
 									setPopupPosition(response.map, response.map.infoWindow);
 								});
 								
@@ -834,100 +847,67 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			
 			function applyPopupConfiguration(map, popupCfg, index)
 			{
-				var msLayerIdx = "";
-				
 				// When an action is performed the popup will be closed
 				// But features aren't cleared so it can be restored
-				map.infoWindow && map.infoWindow.hide();
+				if ( map.infoWindow )
+					map.infoWindow.hide();
 				
 				if ( popupCfg ) {
 					var layer = map.getLayer(popupCfg.layerId);
 					
 					map.infoWindow.clearFeatures();
-					
-					if ( ! layer ) {					
-						// MapService trick
-						var newLayerId = popupCfg.layerId.split(/_([0-9]+)$/);
-						if ( newLayerId.length == 3 ) {
-							layer = map.getLayer(newLayerId[0]);
-							
-							// Check that layer was really a MapService
-							if ( layer && ! layer.url.match(/\/MapServer$/) )
-								layer = null;
-							else
-								msLayerIdx = newLayerId[1];
-						}
-					}
 
 					if ( layer ) 
-						applyPopupConfigurationStep2(map, layer, popupCfg, index, msLayerIdx);
+						applyPopupConfigurationStep2(map, popupCfg, index);
 					// On FS the layer will be null until loaded...
 					else
-						var handle = map.on("update-end", function(){
+						var handle = app.map.on("update-end", function(){
 							applyPopupConfiguration(map, popupCfg, index);
 							handle.remove();
 						});
 				}
 			}
-
-			function applyPopupConfigurationStep2(map, layer, popupCfg, index, msLayerIdx)
-			{
-				// Server layer
-				if ( layer.url ) {
-					var queryTask = new QueryTask(layer.url + (msLayerIdx !== "" ? "/" + msLayerIdx : "")),
-						query = new Query();
-						query.objectIds = [popupCfg.fieldValue];
-						query.returnGeometry = true;
-						query.outFields = ["*"];
-						query.outSpatialReference = map.spatialReference;
-
-					queryTask.execute(query, function(result){
-						var feature = result.features[0];
-						if ( feature ) {
-							if( ! feature.infoTemplate ) {
-								if ( msLayerIdx !== "" )
-									feature.setInfoTemplate(layer.infoTemplates[msLayerIdx].infoTemplate);
-								else
-									feature.setInfoTemplate(layer.infoTemplate);
-							}
-							// need to store the reference to the layer manually for the builder map popup configuration
-							feature.MJlayerRef = layer;
-							applyPopupConfigurationStep3(map, popupCfg, feature, index);
-						}
-					});
-				}
-				// Client side layer
-				else {
-					var feature = null;
-					
-					$.each(layer.graphics, function(i, g){
-						if ( g.attributes[popupCfg.fieldName] == popupCfg.fieldValue )
-							feature = g;
-					});
-					
-					if ( feature )
-						applyPopupConfigurationStep3(map, popupCfg, feature, index);
-				}
-			}
 			
-			function applyPopupConfigurationStep3(map, popupCfg, feature, index)
+			function applyPopupConfigurationStep2(map, popupCfg, index)
 			{
-				if ( ! feature )
+				var query = new Query(),
+					layer = map.getLayer(popupCfg.layerId);
+				
+				if ( ! layer )
 					return;
 				
-				var geom = feature.geometry,
-					center = null;
+				query.objectIds = [popupCfg.fieldValue];
 				
+				// Feature Service
+				if (!layer._collection) {
+					query.returnGeometry = true;
+					query.outFields = ["*"]; // popupCfg.fieldName ?
+					query.outSpatialReference = app.map.spatialReference;
+				}
+				
+				layer.queryFeatures(query).then(function(featureSet) {
+					applyPopupConfigurationStep3(map, popupCfg, featureSet.features, index);
+				});
+			}
+			
+			function applyPopupConfigurationStep3(map, popupCfg, features, index)
+			{
+				if ( !map || ! popupCfg || ! features || ! features.length )
+					return;
+				
+				var geom = features[0].geometry,
+					center = null;
+					
 				if ( popupCfg.anchorPoint )
 					center = new Point(popupCfg.anchorPoint);
 				else
 					center = geom.getExtent() ? geom.getExtent().getCenter() : geom;
 				
-				map.infoWindow.setFeatures([feature]);
+				map.infoWindow.setFeatures(features);
 				map.infoWindow.show(center);
 				
 				// Center the map is the geometry isn't visible
-				if ( ! map.extent.contains(center) ) {
+				if ( ! app.map.extent.contains(center) ) {
 					map.centerAt(center);
 					// Show back btn only if it's a Main Stage action
 					if ( index === null ) {
@@ -991,14 +971,16 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				
 				// If there is a tab/bullet panel 
 				if ( posPanel ) {
-					// Left anchored
-					if ( posPanel.left === 0 ) {
-						if ( pos.x < $(".descLegendPanel:visible").width() )
-							$('.esriPopup').addClass('app-hidden');
-					}
-					else {
-						if ( pos.x > posPanel.left )
-							$('.esriPopup').addClass('app-hidden');
+					if ( pos.y < $(".descLegendPanel:visible").height() + 20 ) {
+						// Left anchored
+						if ( posPanel.left === 0 ) {
+							if ( pos.x < $(".descLegendPanel:visible").width() )
+								$('.esriPopup').addClass('app-hidden');
+						}
+						else {
+							if ( pos.x > posPanel.left )
+								$('.esriPopup').addClass('app-hidden');
+						}
 					}
 				}
 				
@@ -1060,8 +1042,10 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			// Management of Main Stage: embed (video and webpage) 
 			//
 			
-			function updateMainMediaEmbed(url, cfg, animateTransition)
+			function updateMainMediaEmbed(rawUrl, cfg, animateTransition)
 			{
+				var url = btoa(rawUrl);
+				
 				$('.mainMediaContainer').removeClass('active');
 				
 				// URL can be an URL or the timestamp in case of an iframe tag
@@ -1069,9 +1053,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				
 				// Not found, must be an iframe tag
 				if ( ! embedContainer.length ) {
-					embedContainer = $('.embedContainer[data-ts="' + url + '"]');
+					embedContainer = $('.embedContainer[data-ts="' + rawUrl + '"]');
 					// The correct URL is in data-src
-					url = embedContainer.data('src');
+					url = btoa(embedContainer.data('src'));
 				}
 				
 				if ( embedContainer.length ) {
@@ -1089,7 +1073,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					if ( ! embedContainer.attr('src') )
 						// TODO youtube recommand an origin param "&origin=" + encodeURIComponent(document.location.origin)
 						// https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
-						embedContainer.attr('src', url);
+						embedContainer.attr('src', atob(url));
 					
 					var width = cfg.width || '560',
 						height = cfg.height || '315';
