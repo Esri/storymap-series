@@ -72,6 +72,68 @@ Map Series authoring is supported on Internet Explorer 10 and above, on the most
 
 We actively test the application in all major browsers but if you experience difficulties especially with the builder, we recommend that you use [Chrome](https://www.google.com/intl/en_us/chrome/browser/).
 
+### Tips for your content
+
+#### Link between entries
+One popular request is to add the ability to navigate between Series's entries using map features popup. This can for example allow the first entry map to be the spatial index to your story. To do that you need to download the application and include a piece of code in `index.html`, look at the end of the file and modify it as below. Follow the instructions to configure the web map and the layer that will receive the click event.
+
+
+```
+require(["dojo/topic"], function(topic) {
+	// The application is ready
+	topic.subscribe("tpl-ready", function(){
+		/* */
+	});
+
+	/*
+	 * Set up a click handler on the feature of the map to navigate the story
+	 */
+	
+	var WEBMAP_ID = "0bb11c0469f042b3afaf8b0d76572822";
+	var LAYER_ID = "csv_7673_0";
+	
+	var clickHandlerIsSetup = false;
+	
+	topic.subscribe("story-loaded-map", function(result){
+		if ( result.id == WEBMAP_ID && ! clickHandlerIsSetup ) {
+			var map = app.maps[result.id].response.map,
+				layer = map.getLayer(LAYER_ID);
+			
+			console.log(map.graphicsLayerIds);
+			
+			if ( layer ) {
+				layer.on("mouse-over", function(e){
+					map.setMapCursor("pointer");
+					map.infoWindow.setContent("<b>"+e.graphic.attributes.name.split(",")[0]+"</b><br/><i>Click to zoom</i>");
+					map.infoWindow.show(e.graphic.geometry);
+				});
+				
+				layer.on("mouse-out", function(e){
+					map.setMapCursor("default");
+					map.infoWindow.hide();
+				});
+				
+				layer.on("click", function(e){
+					var index = e.graphic.attributes["__OBJECTID"];
+					
+					// Temporarily prevent the new bullet to be focused
+					app.isLoading = true;
+					
+					topic.publish("story-navigate-entry", index);
+					
+					// Set back isLoading
+					setTimeout(function(){
+						app.isLoading = false;
+					}, 100);
+				});
+			}
+			
+			clickHandlerIsSetup = true;
+		}
+	});
+});
+```
+
 ### Security
 
 #### Can I keep my Series private?
