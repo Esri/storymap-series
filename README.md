@@ -177,10 +177,10 @@ Yes, Map Series is not included in Portal for ArcGIS 10.3 but you can deploy it 
 Map Series is not compatible with Portal for ArcGIS prior version 10.3.
 
 Steps:
-- [Download the latest version](http://links.esri.com/storymaps/map_journal_template_zip)
-- Find your Portal `apps/MapJournal` folder (depending on your installation and version of Portal, this is either `C:\Program Files\ArcGIS\Portal\apps\MapSeries` or `C:\Program FilesArcGIS\Portal\webapps\arcgis#home\webmap\templates\MapJournal`). 
+- [Download the latest version](http://links.esri.com/storymaps/map_series_template_zip)
+- Find your Portal `apps/Series` folder (depending on your installation and version of Portal, this is either `C:\Program Files\ArcGIS\Portal\apps\MapSeries` or `C:\Program FilesArcGIS\Portal\webapps\arcgis#home\webmap\templates\MapSeries`). 
  - Remove the content of that folder
- - Extract the archive so that `index.html` is located at `MapJournal\index.html` 
+ - Extract the archive so that `index.html` is located at `MapSeries\index.html` 
 
  If Map Series was already included in your Portal you are done (Portal for ArcGIS 10.3.1+).
 
