@@ -176,9 +176,24 @@ Yes, Map Series is not included in Portal for ArcGIS 10.3 but you can deploy it 
 
 Map Series is not compatible with Portal for ArcGIS prior version 10.3.
 
-Open the folder `ArcGIS\Portal\webapps\arcgis#home\webmap\templates\MapSeries`, make sure to first delete all of its content and extract the content of the [Map Series archive](http://links.esri.com/storymaps/map_series_template_zip). Then refer your Portal documentation for instructions on [publishing a new web application item](http://resources.arcgis.com/en/help/main/10.2/index.html#/Adding_applications/019300000031000000/) and adding it to a group and [configuring the web application gallery](http://resources.arcgis.com/en/help/main/10.2/index.html#/Configure_map_viewer/017s00000024000000/) to use that group. If you choose to deploy the template in another folder, some configuration will be required (see the configuration section in index.html). 
+Steps:
+- [Download the latest version](http://links.esri.com/storymaps/map_journal_template_zip)
+- Find your Portal `apps/MapJournal` folder (depending on your installation and version of Portal, this is either `C:\Program Files\ArcGIS\Portal\apps\MapSeries` or `C:\Program FilesArcGIS\Portal\webapps\arcgis#home\webmap\templates\MapJournal`). 
+ - Remove the content of that folder
+ - Extract the archive so that `index.html` is located at `MapJournal\index.html` 
 
-Also note that the web application gallery preview feature redirects to the StoryMaps website, the target page can be modified in `app/config.js > HELP_URL`.
+ If Map Series was already included in your Portal you are done (Portal for ArcGIS 10.3.1+).
+
+If Map Series was not available in your Portal:
+ - Log into Portal for ArcGIS and open My Content > Add Item > Application > Web Mapping Application > Configurable. Configure the URL to `https://portal.domain.com/arcgis/apps/MapSeries`. More details in the following documentation [publishing a new web application item](http://resources.arcgis.com/en/help/main/10.2/index.html#/Adding_applications/019300000031000000/).
+ - Create a new group that will reference the template available in your Portal
+ - Share the newly created item with that group
+ - Open My Organization > Edit Settings > Map  and set the `Web App Templates` to the newly created group. More details in the following documentation [configuring the web application gallery](http://resources.arcgis.com/en/help/main/10.2/index.html#/Configure_map_viewer/017s00000024000000/)
+ - Now when you share a web map, the template should be an option
+
+_Note that the archive you downloaded is using the ArcGIS API for JavaScript hosted in ArcGIS Online. This can create some incompatibility with your Portal, if you run into issue, please see the next section to update it._
+
+Also note that the web application gallery preview feature redirects to the StoryMaps website, the target page can be modified in `app/config.js > HELP_URL_PORTAL`.
 
 #### Can the template be used offline?
 Yes, by using Portal for ArcGIS and configuring the template to use the ArcGIS API for Javascript included with the Portal. 
