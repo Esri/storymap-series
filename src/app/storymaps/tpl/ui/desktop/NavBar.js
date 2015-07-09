@@ -301,6 +301,7 @@ define(["lib-build/tpl!./NavBar",
 				container.find('.builder-content-panel').css('display', 'inline-block');
 				
 				container.find('.builder-edit')
+					.off('click')
 					.click(onClickEdit)
 					.find(".builder-lbl").html(i18n.builder.addEditPopup.lblEdit);
 			}

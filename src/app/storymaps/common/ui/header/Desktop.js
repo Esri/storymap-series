@@ -14,8 +14,12 @@ define(["lib-build/css!./Desktop",
 	){
 		return function Desktop(container, isInBuilder)
 		{
+			var _this = this;
+			
 			this.init = function(hide, title, subtitle, headerCfg, colors, displaySwitchBuilderButton, defaultToCompact)
 			{
+				setColor(colors);
+				
 				if (hide) {
 					container.addClass('hideDesktop');
 					return;
@@ -58,12 +62,15 @@ define(["lib-build/css!./Desktop",
 						.show();
 				}
 	
-				setColor(colors);
+				
 				setHeader(headerCfg, defaultToCompact);
 			};
 			
 			this.resize = function(widthViewport)
 			{
+				if ( ! widthViewport )
+					widthViewport = $(document).width();
+				
 				var rightAreaWidth = Math.max(container.find(".logoImg").outerWidth() + 50, container.find(".rightArea").outerWidth() + 20);
 				container.find(".textArea").width(widthViewport - rightAreaWidth - 15);
 			};
@@ -149,7 +156,7 @@ define(["lib-build/css!./Desktop",
 			{
 				var isCompact = headerCfg.compactSize === undefined ? defaultToCompact : headerCfg.compactSize;
 				
-				HeaderHelper.setLogo(container, headerCfg);
+				HeaderHelper.setLogo(container, headerCfg, _this.resize);
 				HeaderHelper.setLink(container, headerCfg);
 				HeaderHelper.setSocial(container, headerCfg);
 				HeaderHelper.initEvents(container, "bottom");

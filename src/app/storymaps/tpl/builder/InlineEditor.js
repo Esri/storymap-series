@@ -60,9 +60,14 @@ define(["lib-build/css!./InlineEditor",
 					// TODO make a clean callback
 					var tmpCallback = function(){
 						var editorContainer = $(editor.container.$).parents('.entry');
+						var text = editor.getData();
+						
+						// That special character that can be copy/pasted from word would break the story after it his saved on Portal and reloaded  
+						text = text.replace(new RegExp(String.fromCharCode(8232), 'g')," ");
+						
 						topic.publish("BUILDER-UPDATE-ENTRY-DESCRIPTION", {
 							index: editorContainer.index(),
-							value: editor.getData()
+							value: text
 						});
 					};
 					

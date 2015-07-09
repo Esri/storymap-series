@@ -19,6 +19,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 		"dojo/topic",
 		"dojo/on",
 		"dojo/_base/lang",
+		"dojo/_base/array",
 		"dojo/Deferred",
 		"dojo/DeferredList",
 		"dojo/query",
@@ -45,6 +46,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 		topic,
 		on,
 		lang,
+		array,
 		Deferred,
 		DeferredList,
 		query,
@@ -108,8 +110,21 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			
 			document.title = app.cfg.TPL_NAME;
 			
+			//
+			// Instantiate FastClick to make the app more responsive except on the map popup due to conflict with charts
+			//
+			
 			if( has("touch") )
 				$("body").addClass("hasTouch");
+			
+			FastClick.prototype._needsClick = FastClick.prototype.needsClick;
+			FastClick.prototype.needsClick = function(target) {
+				if ($(target).parents('.esriPopup').length) {
+					return true;
+				}
+				return FastClick.prototype._needsClick.call(this, target);
+			};
+			
 			FastClick.attach(document.body);
 			
 			// App is embedded
@@ -347,6 +362,19 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 						}
 					}
 					
+					// App proxies
+					if (itemRq && itemRq.appProxies) {
+						var layerMixins = array.map(itemRq.appProxies, function (p) {
+							return {
+								"url": p.sourceUrl,
+								"mixin": {
+									"url": p.proxyUrl
+								}
+							};
+						});
+						app.data.setAppProxies(layerMixins);
+					}
+					
 					// If in builder, check that user is app owner or org admin
 					if (app.isInBuilder && isProd() && !app.data.userIsAppOwner()) {
 						initError("notAuthorized");
@@ -415,13 +443,10 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			);
 		}
 
-		function webMapInitCallback(/*response*/)
+		function webMapInitCallback(response)
 		{
 			console.log("common.core.Core - webMapInitCallback");
 			
-			console.error("FATAL ERROR");
-			return;
-			/*
 			app.maps[response.itemInfo.item.id] = _mainView.getMapConfig(response); 
 			app.map = response.map;
 			app.data.setWebMap(response.itemInfo);
@@ -431,7 +456,6 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			initializeUI();
 
 			_mainView.firstWebmapLoaded();
-			*/
 		}
 		
 		function redirectToExternalHelp()
@@ -585,6 +609,14 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 				}
 				else if (! app.map.extent.contains(geom)) 
 					app.map.centerAt(geom);
+			}
+			else {
+				$(".mainMediaContainer.active .mapLocationMsg").html("Location not available"); // TODO i18n
+				$(".mainMediaContainer.active .mapLocationError").fadeIn();
+				
+				setTimeout(function(){
+					$(".mainMediaContainer.active .mapLocationError").fadeOut();
+				}, 5000);
 			}
 		}
 
@@ -885,6 +917,20 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 				app.cfg.AUTHORIZED_IMPORT_SOURCE.featureService = false;
 
 			app.isPortal = !! app.portal.isPortal;
+			
+			// Help URL on Portal for ArcGIS
+			if ( app.isPortal && app.portal.helpBase && app.portal.portalHostname ) {
+				// app.cfg.HELP_URL_PORTAL contains the page in the help doc 
+				// app.portal.helpBase contains the path to the home of help
+				// app.portal.helpBase should always be relative to the hostname and include the optional portal instance name
+				// app.portal.portalHostname also include the portal instance name so we remove it first
+				
+				// Skip if the URL is already a full path
+				if ( ! app.cfg.HELP_URL_PORTAL.startsWith('//') ) {
+					var portalHost = app.portal.portalHostname.split('/')[0];
+					app.cfg.HELP_URL_PORTAL = '//' + portalHost + app.portal.helpBase + app.cfg.HELP_URL_PORTAL;
+				}
+			}
 		}
 		
 		//

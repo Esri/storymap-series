@@ -60,3 +60,16 @@ body.mobile-view .mapCommandHomeBtn.loading.touch {
 .mapCommandLocation:hover {
 	background-color: #eee;
 }
+
+.mapCommandLocation.loading {
+	 background: url(../../_resources/icons/mapcommand-loader.gif);
+	 background-repeat:no-repeat;
+	 background-size: 24px 24px;
+	 background-position: 3px 3px;
+	 background-color: #FFF;
+	 cursor: default;
+}
+
+.mapCommandLocation.loading img {
+	display: none;
+}

@@ -11,7 +11,7 @@
 }
 
 .nav-bar.isBullet {
-	height: 27px;
+	height: 40px;
 }
 
 .nav-bar .entries,
@@ -70,16 +70,16 @@
  
 .nav-bar.isBullet .nav-tabs > li > a,
 .nav-bar.isBullet .dropdown-toggle {
-	width: 54px;
-	height: 54px;
+	width: 34px;
+	height: 34px;
 	font-family: 'open_sanssemibold', sans-serif;
-	font-size: 21px;
-	line-height: 52px;
+	font-size: 18px;
+	line-height: 32px;
 	font-weight: normal;
 	text-align: center;
 	padding: 0;
 	margin: 0 6px;
-	border-radius: 27px;
+	border-radius: 17px;
 	border: none;
 }
 
@@ -199,5 +199,5 @@
 }
 
 .nav-bar.isBullet .builder-content-panel {
-	margin-top: 12px;
+	margin-top: 1px;
 }

@@ -19,6 +19,7 @@ define(["lib-build/css!./MainView",
 		"storymaps/common/mapcontrols/overview/Overview",
 		"storymaps/common/mapcontrols/geocoder/Geocoder",
 		"lib-build/css!storymaps/common/ui/Modal.css",
+		"lib-build/css!storymaps/common/_resources/font/sharing/css/fontello.css",
 		"lib-build/css!storymaps/common/utils/SocialSharing.css",
 		"lib-build/css!storymaps/common/ui/loadingIndicator/LoadingIndicator.css",
 		// Utils
@@ -52,6 +53,7 @@ define(["lib-build/css!./MainView",
 		Overview,
 		Geocoder,
 		modalCss,
+		socialSharingIconCss,
 		socialSharingCss,
 		loadingIndicatorCss,
 		CommonHelper, 
@@ -73,6 +75,26 @@ define(["lib-build/css!./MainView",
 			this.init = function(core) 
 			{			
 				_core = core;
+				
+				//----------------------------------------------
+				// Development - TODO to be removed for release
+				//----------------------------------------------
+				/*
+				if ( app.isProduction ) {
+					require(["esri/IdentityManager", "dojo/on"], function(IdentityManager, on){
+						CommonHelper.isArcGISHosted = function(){ return true; };
+						
+						on(IdentityManager, 'dialog-create', function(){
+							on(IdentityManager.dialog, 'show', function(){
+								IdentityManager.dialog.txtUser_.set('value', window.configOptions.username);
+								IdentityManager.dialog.txtPwd_.set('value', window.configOptions.password);
+								IdentityManager.dialog.btnSubmit_.onClick();
+							});
+						});
+					});
+				}
+				*/
+				//----------------------------------------------
 				
 				// Do not allow builder under IE 10
 				if( app.isInBuilder && has("ie") && has("ie") < 10) {
@@ -245,7 +267,8 @@ define(["lib-build/css!./MainView",
 					usePopupManager: true,
 					ignorePopups: false,
 					bingMapsKey: commonConfig.bingMapsKey,
-					editable: false
+					editable: false,
+					layerMixins: app.data.getAppProxies()
 				}); 
 			};
 			
@@ -747,6 +770,9 @@ define(["lib-build/css!./MainView",
 					animateMainStageTransition = false;
 				
 				console.log("tpl.core.MainView - navigateStoryToIndex - ", index);
+				
+				if ( index < 0 || index > app.data.getStoryLength() - 1 )
+					return;
 				
 				if ( app.data.getCurrentSection() ) {
 					var currentEntry = app.data.getCurrentSection(),

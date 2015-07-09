@@ -47,10 +47,6 @@ body.layout-bullet:not(.isBuilderLanding) #nav-bar {
 	display: block;
 }
 
-body.layout-bullet #descLegendPanel .descLegendPanelInner {
-	padding-top: 35px;
-}
-
 /*
  * Tab and bullet right panel alignment
  */
@@ -82,29 +78,31 @@ body.layout-bullet .mainMediaContainer .legendContainer {
 }
 
 /*
- * Bullet - Map control placement
- */
- 
-body:not(.mobile-view).layout-bullet .esriSimpleSlider {
-	top: 40px;
-}
-
-body:not(.mobile-view).layout-bullet .mapCommandLocation {
-	top: 145px;
-}
-
-body:not(.mobile-view).layout-bullet .geocoderBtn {
-	top: 145px;
-}
-
-body:not(.mobile-view).layout-bullet .mapContainer.has-locator .geocoderBtn {
-	top: 190px;
-}
-
-/*
  * Builder mask never display in viewer
  */
 
 .builder-mask {
 	display: none;
+}
+
+/*
+ * Header layout
+ */
+
+body.layout-bullet #headerDesktop.compact {
+	height: 47px;
+}
+
+body.layout-bullet #headerDesktop .textArea {
+	padding-top: 6px;
+}
+
+body.layout-bullet #headerDesktop .rightArea {
+	padding-top: 18px;
+}
+
+body.layout-bullet #headerDesktop.hideDesktop {
+	height: 6px;
+	/* hide the bullet tooltip */
+	z-index: 9;
 }

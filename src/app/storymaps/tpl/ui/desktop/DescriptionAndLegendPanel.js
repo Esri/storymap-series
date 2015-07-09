@@ -180,6 +180,14 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 				
 				container.find('.descriptions').toggle(_layoutOptions.description);
 				container.css("width", _layoutOptions.panel.sizeVal);
+				
+				container.removeClass("bullet-embed");
+				if ( $("body").hasClass("layout-bullet") ) {
+					var currentEntry = app.data.getCurrentEntry();
+					if ( currentEntry && currentEntry.media && (currentEntry.media.type == "video" || currentEntry.media.type == "webpage") ) {
+						container.addClass("bullet-embed");
+					}
+				}
 			}
 			
 			function unloadActiveIframe(container)

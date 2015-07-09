@@ -1,9 +1,14 @@
 #mainStagePanel {
-     position: relative;
+    position: relative;
     background-size: 100% 100%;
 	-webkit-box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
 	-moz-box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
 	box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
+}
+
+body.layout-tab #mainStagePanel,
+body.layout-bullet #mainStagePanel {
+	width: 100%;
 }
 
 #mainStagePanelInner {
@@ -66,7 +71,7 @@ html.dj_ie9 .mainMediaContainer.active {
 	left: 50%;
 	right: 50%;
 	margin-left: -110px;
-	margin-top: -86px;
+	margin-top: -48px;
 	opacity: 0.0;
 }
 
@@ -120,6 +125,25 @@ body.hasTouch .legendMobileErrorExplain {
 
 .mapContainer.legend {
 	display: none;
+}
+
+.mainMediaContainer .mapLocationError {
+	display: none;
+	position: absolute;
+	bottom: 5px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	z-index: 999;
+}
+
+.mainMediaContainer .mapLocationMsg {
+	display: inline-block;
+	background-color: black;
+	color: white;
+	z-index: 999;
+	padding: 5px 8px;
+	border-radius: 10px;
 }
 
 /*

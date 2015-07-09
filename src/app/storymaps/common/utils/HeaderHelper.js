@@ -22,7 +22,7 @@ define([
 		}
 		
 		return {
-			setLogo: function(container, headerCfg)
+			setLogo: function(container, headerCfg, resizeCallback)
 			{
 				if ( ! headerCfg.logoURL || headerCfg.logoURL == "NO_LOGO" ) {
 					container.find('.logoImg').hide();
@@ -38,6 +38,8 @@ define([
 					
 					container.find('.logoImg')[0].onload = function(){
 						resizeLinkContainer(container);
+						if ( resizeCallback && typeof(resizeCallback) === "function" )
+							resizeCallback();
 					};
 					container.find('.logoImg')[0].onerror = function(){
 						resizeLinkContainer(container);

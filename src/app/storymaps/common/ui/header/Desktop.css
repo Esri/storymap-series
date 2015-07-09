@@ -22,7 +22,7 @@
 }
 
 #headerDesktop.compact {
-	height: 60px;	
+	height: 60px;
 }
 
 #header.hideDesktop {
@@ -31,6 +31,10 @@
 
 #header.hideDesktop #headerDesktop {
 	display: none;
+}
+
+#headerDesktop.hideDesktop {
+	height: 0px;
 }
 
 #headerDesktop .title {
@@ -111,6 +115,10 @@
 	display: inline-block;
 	margin: -22px 0 0 16px;
 	float: right;
+}
+
+#headerDesktop .logoLink {
+	outline: none;
 }
 
 #headerDesktop .shareBtns {

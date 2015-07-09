@@ -126,8 +126,16 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				
 				// Add new container
 				$.each(embeds, function(i, embedInfo) {
-					// TODO this has to be reviewed to not allow content to be loaded too early? or give the same option for url?
-					var embedContainer = $('.embedContainer[data-src="' + btoa(embedInfo.url) + '"]');
+					var embedUrl = embedInfo.url,
+						embedhash = "";
+										
+					if ( embedUrl.lastIndexOf('#') > 0 ) {
+						embedUrl = embedUrl.substring(0, embedUrl.lastIndexOf('#'));
+						embedhash = embedInfo.url.substring(embedInfo.url.lastIndexOf('#') + 1);
+						embedInfo.hash = embedhash;
+					}
+					
+					var embedContainer = $('.embedContainer[data-src="' + btoa(embedUrl) + '"]');
 					if ( ! embedContainer.length ) {
 						embedContainer = $('.embedContainer[data-ts="' + embedInfo.ts + '"]');
 					}
@@ -141,7 +149,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						//
 						
 						$("#mainStagePanel .medias").append(mainMediaContainerEmbedTpl({ 
-							url: btoa(embedInfo.url),
+							url: btoa(embedUrl),
 							frameTag: embedInfo.frameTag,
 							// Introduced in V1.1
 							unload: !!(embedInfo.unload === undefined || embedInfo.unload)
@@ -167,7 +175,12 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				$('.embedContainer').each(function() {
 					var embedSRC = $(this).data('ts') || atob($(this).data('src'));
 					var embedInUse = $.grep(embeds, function(embed){
-						return embedSRC == embed.url || embedSRC == embed.ts;
+						var embedUrl = embed.url;
+						
+						if ( embedUrl.lastIndexOf('#') > 0 )
+							embedUrl = embedUrl.substring(0, embedUrl.lastIndexOf('#'));
+
+						return embedSRC == embedUrl || embedSRC == embed.ts;
 					}).length > 0;
 					
 					if ( ! embedInUse )
@@ -229,8 +242,14 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					updateMainMediaPicture(media.image.url, media.image.display, animateTransition);
 				else if ( media.type == "video" )
 					updateMainMediaEmbed(media.video.url, media.video, animateTransition);
-				else if ( media.type == "webpage" )
-					updateMainMediaEmbed(media.webpage.url || media.webpage.ts, media.webpage, animateTransition);
+				else if ( media.type == "webpage" ) {
+					var embedUrl = media.webpage.url;
+					
+					if ( embedUrl.lastIndexOf('#') > 0 )
+						embedUrl = embedUrl.substring(0, embedUrl.lastIndexOf('#'));
+					
+					updateMainMediaEmbed(embedUrl || media.webpage.ts, media.webpage, animateTransition);
+				}
 			}
 			
 			function startMainStageLoadingIndicator()
@@ -712,7 +731,17 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						
 						if ( layer.layerObject) {
 							override = $(layerCfg).filter(function(i, l){ return l.id == layer.layerObject.id; });
-							layer.layerObject.setVisibility(override.length ? override[0].visibility : layer.visibility);
+							
+							var updateVisibility = function()
+							{
+								layer.layerObject.setVisibility(override.length ? override[0].visibility : layer.visibility);
+							};
+							
+							if ( layer.layerObject.loaded )
+								updateVisibility();
+							else {
+								layer.layerObject.on("load", updateVisibility);
+							}
 						}
 						else if ( layer.featureCollection && layer.featureCollection.layers ) {
 							$.each(layer.featureCollection.layers, function(i, fcLayer){
@@ -1068,12 +1097,19 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 							right: 0
 						});
 					
+					url = atob(url);
+					
+					if ( cfg.hash ) {
+						url = url + '#' + cfg.hash;
+						embedContainer.attr('src', url);
+					}
+					
 					// TODO this fail if no src attr is set on the iframe (srcdoc)
 					//  as a workaround <iframe srcdoc="http://" src="about:blank></iframe>
 					if ( ! embedContainer.attr('src') )
 						// TODO youtube recommand an origin param "&origin=" + encodeURIComponent(document.location.origin)
 						// https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
-						embedContainer.attr('src', atob(url));
+						embedContainer.attr('src', url);
 					
 					var width = cfg.width || '560',
 						height = cfg.height || '315';
