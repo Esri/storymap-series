@@ -791,19 +791,20 @@ define(["lib-build/css!./MainView",
 				// Change current section
 				app.data.setCurrentSectionIndex(index);
 				
-				// Refresh Main Stage
-				app.ui.mainStage.updateMainMediaWithStoryMainMedia(index, animateMainStageTransition);
 				
 				var layoutEntryCfg = getCurrentEntryLayoutCfg(),
 					hasPanel = layout == "accordion" || layoutEntryCfg.description || layoutEntryCfg.legend;
 				
-				//
-				// Refresh Story panels
-				//
-				
 				$("body")
 					.toggleClass("layout-" + layout + "-" + layoutOpt.panel.position, hasPanel)
 					.toggleClass("layout-" + layout + "-" + layoutOpt.panel.position + "-" + layoutOpt.panel.sizeLbl, hasPanel);
+				
+				// Refresh Main Stage
+				app.ui.mainStage.updateMainMediaWithStoryMainMedia(index, animateMainStageTransition);
+				
+				//
+				// Refresh Story panels
+				//
 				
 				if ( layout == "accordion" )
 					app.ui.accordionPanel.showEntryIndex(index);
