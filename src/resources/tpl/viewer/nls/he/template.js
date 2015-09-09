@@ -46,7 +46,9 @@
 			headerFromCommon: {
 				storymapsText: "מפת סיפור",
 				builderButton: "ערוך",
-				bitlyTooltip: "קבל קישור קצר לאפליקציה",
+				facebookTooltip: "שתף בפייסבוק",
+				twitterTooltip: "שתף בטוויטר",
+				bitlyTooltip: "קבל קישור קצר",
 				templateTitle: "קבע כותרת לתבנית",
 				templateSubtitle: "קבע כותרת משנה לתבנית",
 				share: "שתף"

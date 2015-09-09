@@ -64,6 +64,11 @@
 	opacity: 0.4;
 }
 
+.nav-bar .tooltip.in {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
 /*
  * Bullet entries
  */
@@ -179,8 +184,17 @@
  */
 
 .nav-bar.isBullet .dropdown .dropdown-toggle {
-	font-size: 16px;
+	font-size: 15px;
 	line-height: inherit;
+}
+
+.nav-bar.isBullet .dropdown-toggle  .glyphicon-th-list {
+	top: -7px;
+}
+
+.nav-bar.isBullet .dropdown-toggle  .caret {
+	margin-top: -18px;
+	margin-left: -1px;
 }
 
 /*

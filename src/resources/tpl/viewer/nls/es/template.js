@@ -46,7 +46,9 @@
 			headerFromCommon: {
 				storymapsText: "Un story map",
 				builderButton: "Editar",
-				bitlyTooltip: "Obtén un enlace corto a la aplicación",
+				facebookTooltip: "Compartir en Facebook",
+				twitterTooltip: "Compartir en Twitter",
+				bitlyTooltip: "Obtén un vínculo corto",
 				templateTitle: "Establecer título de plantilla",
 				templateSubtitle: "Establecer subtítulo de plantilla",
 				share: "Compartir"

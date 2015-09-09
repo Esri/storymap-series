@@ -12,7 +12,7 @@
  * Partially duplicated in storymaps/common/builder/ckeditor/editor.css
  */
 
-.section a:not([data-storymaps]) {
+.textEditorContent .entry a:not([data-storymaps]) {
 	text-decoration: underline;
 }
 
@@ -32,7 +32,7 @@
 }
 */
 
-.section a[data-storymaps] {
+.textEditorContent .entry a[data-storymaps] {
  	border-bottom: 1px dashed #555;
 	text-decoration: none;
 	cursor: pointer;
@@ -198,6 +198,10 @@ p[tabindex='0'] > .image-wrapper {
 /*
  * Iframe
  */
+
+.textEditorContent iframe {
+	border: none;
+}
 
 .iframe-container.custom iframe {
 	max-width: 100%;

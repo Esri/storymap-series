@@ -18,7 +18,6 @@ define(["lib-build/css!./MainView",
 		"storymaps/common/mapcontrols/legend/Legend",
 		"storymaps/common/mapcontrols/overview/Overview",
 		"storymaps/common/mapcontrols/geocoder/Geocoder",
-		"lib-build/css!storymaps/common/ui/Modal.css",
 		"lib-build/css!storymaps/common/_resources/font/sharing/css/fontello.css",
 		"lib-build/css!storymaps/common/utils/SocialSharing.css",
 		"lib-build/css!storymaps/common/ui/loadingIndicator/LoadingIndicator.css",
@@ -52,7 +51,6 @@ define(["lib-build/css!./MainView",
 		Legend,
 		Overview,
 		Geocoder,
-		modalCss,
 		socialSharingIconCss,
 		socialSharingCss,
 		loadingIndicatorCss,
@@ -799,9 +797,6 @@ define(["lib-build/css!./MainView",
 					.toggleClass("layout-" + layout + "-" + layoutOpt.panel.position, hasPanel)
 					.toggleClass("layout-" + layout + "-" + layoutOpt.panel.position + "-" + layoutOpt.panel.sizeLbl, hasPanel);
 				
-				// Refresh Main Stage
-				app.ui.mainStage.updateMainMediaWithStoryMainMedia(index, animateMainStageTransition);
-				
 				//
 				// Refresh Story panels
 				//
@@ -819,6 +814,9 @@ define(["lib-build/css!./MainView",
 					app.ui.mobileEntryInfo.showEntryIndex(index, layoutEntryCfg);
 					app.ui.mobileFooter.showEntryIndex(index);
 				}
+				
+				// Refresh Main Stage
+				app.ui.mainStage.updateMainMediaWithStoryMainMedia(index, animateMainStageTransition);
 				
 				$('.mediaBackContainer').hide();
 			}

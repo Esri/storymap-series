@@ -15,6 +15,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 		"esri/symbols/SimpleMarkerSymbol",
 		//"esri/dijit/PopupMobile",
 		"esri/tasks/query",
+		"esri/tasks/QueryTask",
 		"dojo/topic",
 		"dojo/on",
 		"dojo/aspect",
@@ -39,6 +40,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 		SimpleMarkerSymbol,
 		//PopupMobile,
 		Query,
+		QueryTask,
 		topic,
 		on,
 		aspect,
@@ -218,9 +220,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				// If it's a video player this will stop current video playback 
 				var activeFrame = $(".mainMediaContainer.active > iframe[data-unload=true]");
 				if ( activeFrame.length ) {
-					setTimeout(function(){
-						activeFrame.attr('src', activeFrame.attr('src'));
-					}, 500);
+					activeFrame.attr('src', '');
 				}
 				
 				// Fade out active container
@@ -882,12 +882,24 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					map.infoWindow.hide();
 				
 				if ( popupCfg ) {
-					var layer = map.getLayer(popupCfg.layerId);
+					var layer = map.getLayer(popupCfg.layerId),
+						// TODO some MapService layer seems to require this
+						// need to investigate more to make sure there is no other way
+						// also if the popup contains multiple features, only the first feature will be displayed
+						serviceId = popupCfg.layerId ? popupCfg.layerId.split('_').slice(0, -1).join('_') : '',
+						layer2 = map.getLayer(serviceId);
 					
 					map.infoWindow.clearFeatures();
 
 					if ( layer ) 
 						applyPopupConfigurationStep2(map, popupCfg, index);
+					// TODO
+					else if ( layer2 ) {
+						var layerIdx = popupCfg.layerId.split('_').slice(-1).join('_'),
+							layerUrl = layer2.url + '/' + layerIdx;
+						
+						applyPopupConfigurationStep2Alt(map, popupCfg, index, serviceId, layerIdx, layerUrl);
+					}
 					// On FS the layer will be null until loaded...
 					else
 						var handle = app.map.on("update-end", function(){
@@ -919,7 +931,27 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				});
 			}
 			
-			function applyPopupConfigurationStep3(map, popupCfg, features, index)
+			// TODO
+			function applyPopupConfigurationStep2Alt(map, popupCfg, index, serviceId, layerIdx, layerUrl)
+			{
+				var queryTask = new QueryTask(layerUrl),
+					query = new Query(),
+					layer = map.getLayer(serviceId);
+				
+				if ( ! layer )
+					return;
+				
+				query.objectIds = [popupCfg.fieldValue];
+				query.returnGeometry = true;
+				query.outFields = ["*"]; // popupCfg.fieldName ?
+				query.outSpatialReference = app.map.spatialReference;
+				
+				queryTask.execute(query, function(featureSet) {
+					applyPopupConfigurationStep3(map, popupCfg, featureSet.features, index, serviceId, layerIdx);
+				});
+			}
+			
+			function applyPopupConfigurationStep3(map, popupCfg, features, index, serviceId, layerIdx)
 			{
 				if ( !map || ! popupCfg || ! features || ! features.length )
 					return;
@@ -932,9 +964,16 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				else
 					center = geom.getExtent() ? geom.getExtent().getCenter() : geom;
 				
-				map.infoWindow.setFeatures(features);
-				map.infoWindow.show(center);
+				// TODO
+				if ( serviceId ) {
+					features[0].infoTemplate = map.getLayer(serviceId).infoTemplates[layerIdx].infoTemplate;
+					map.infoWindow.setContent(features[0].getContent());
+				}
+				else {
+					map.infoWindow.setFeatures(features);
+				}
 				
+				map.infoWindow.show(center);
 				// Center the map is the geometry isn't visible
 				if ( ! app.map.extent.contains(center) ) {
 					map.centerAt(center);
@@ -1051,19 +1090,39 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				$('.mainMediaContainer').removeClass('active');
 				
 				var pictureContainer = $('.imgContainer[data-src="' + url + '"]');
+				
 				if ( pictureContainer ) {
-					pictureContainer
-						.removeClass("center fit fill stretch")
-						.addClass(display)
-						.css({
-							left: 0,
-							right: 0
-						})
-						.css('background-image', 'url("' + pictureContainer.data('src') + '")');
+					// If image hasn't been loaded, display loading indicator
+					if ( pictureContainer.css('background-image') == 'none' ) {
+						startMainStageLoadingIndicator();
+					}
 					
-					_this.updateMainStageWithLayoutSettings();
+					pictureContainer.parent()
+						.addClass('active')
+						.toggleClass("animate", !! animateTransition);
 					
-					pictureContainer.parent().addClass('active').toggleClass("animate", !! animateTransition);
+					// Load a hidden image in JS
+					var tmpImg = new Image();
+					tmpImg.src = url;
+					tmpImg.onload = function() {
+						// Display the image through CSS background, thanks to browser cache no reload is needed
+						pictureContainer
+							.removeClass("center fit fill stretch")
+							.addClass(display)
+							.css({
+								left: 0,
+								right: 0
+							})
+							.css('background-image', 'url("' + pictureContainer.data('src') + '")');
+						
+						_this.updateMainStageWithLayoutSettings();
+						
+						// If the section is still active, stop the loading indicator 
+						//  after a little delay to accomodate heavy image that takes a while to display
+						if ( pictureContainer.parent().hasClass('active') ) {
+							setTimeout(stopMainStageLoadingIndicator(), 100);
+						}
+					};
 				}
 			}
 			
@@ -1106,10 +1165,15 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					
 					// TODO this fail if no src attr is set on the iframe (srcdoc)
 					//  as a workaround <iframe srcdoc="http://" src="about:blank></iframe>
-					if ( ! embedContainer.attr('src') )
+					if ( ! embedContainer.attr('src') ){
+						// Loading indicator
+						embedContainer.load(stopMainStageLoadingIndicator);
+						startMainStageLoadingIndicator();
+					
 						// TODO youtube recommand an origin param "&origin=" + encodeURIComponent(document.location.origin)
 						// https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
 						embedContainer.attr('src', url);
+					}
 					
 					var width = cfg.width || '560',
 						height = cfg.height || '315';

@@ -43,7 +43,7 @@
 			},
 			settingsMapOptions: {
 				title: "Žemėlapio parinktys",
-				lblOverview: "Apžvalgos žemėlapis",
+				lblOverview: "Apžvalga",
 				tooltipOverview: "Kartu su pagrindiniu žemėlapiu rodyti mažą apžvalgos žemėlapį.",
 				lblLocate: "Vietos nustatymo mygtukas",
 				tooltipLocate: "Šis funkcija palaikoma daugelyje mobilių prietaisų ir asmeninių kompiuterių naršyklėse (Internet Explorer 9).",
@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "Tvarkyti",
-				lblHeader: "Nuvilkite %LBL_LAYOUT% ir tvarkykite serijas.",
+				lblHeader: "Nuvilkite %LBL_LAYOUT%, galėtumėte tvarkyti serijas.",
 				lblColTitle: "Pavadinimas",
 				lblColStatus: "Būsena",
 				btnApplyWarning: "Patvirtinkite %NB% %LBL_LAYOUT% pašalinimą",

@@ -51,7 +51,13 @@ define(["lib-build/css!./InlineEditor",
 						+ ',h1,h2,h3,h4,h5,h6',
 					// Copy/paste magic
 					pasteFromWordRemoveFontStyles: false,
-					pasteFromWordRemoveStyles: false
+					pasteFromWordRemoveStyles: false,
+					
+					/*
+					 * Spell checker
+					 */
+					removePlugins: 'liststyle,tableresize,tabletools,contextmenu',
+					disableNativeSpellChecker: false
 				};
 				
 				CKEDITOR.on('instanceCreated', function(event) {
@@ -196,6 +202,32 @@ define(["lib-build/css!./InlineEditor",
 						infoTab.get('urlOptions').children[0].children[0].style = 'display: none';
 						infoTab.get('urlOptions').children[0].widths = ["0%", "100%"];
 						//infoTab.get('urlOptions').children[0].children.shift();
+						
+						// Prevent the dialog from stripping the protocol and forcing to https
+						var url = infoTab.get('url');
+						url.onKeyUp = function(){};
+						url.setup = function(data) {
+							this.allowOnChange = false;    
+							if (data.url) {
+								var value = '';        
+								if (data.url.protocol) {
+									value += data.url.protocol;
+								}
+								if (data.url.url) {
+									value += data.url.url;
+								}
+								this.setValue(value);
+							}
+							this.allowOnChange = true;
+						};
+						url.commit = function(data) {
+							var url = this.getValue();
+							if ( ! url.match(/^http:\/\/|https:\/\/|ftp:|mailto:|\/\//) ) {
+								url = 'http://' + url;
+							}
+						
+							data.url = { protocol: '', url: url };
+						};
 					}
 					
 					// Open inline media cfg on image double click 

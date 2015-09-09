@@ -174,6 +174,9 @@ define(["lib-build/tpl!./BuilderView",
 						sectionIndex: CommonHelper.getUrlParams().debugIndex || 0 
 					});
 				
+				if ( ! app.isProduction && CommonHelper.getUrlParams().debug == "share" )
+					openSharePopup();
+				
 				updateAddButtonStatus();
 			};
 			

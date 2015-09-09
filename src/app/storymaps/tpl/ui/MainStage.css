@@ -20,6 +20,11 @@ body.layout-bullet #mainStagePanel {
     height: 100%;
 }
 
+/* Chrome 45 issue with layout accordion and builder initialization screen */
+.builder-mode.isBuilderLanding.layout-accordion #mainStagePanel {
+	width: 100%;
+}
+
 /*
  * One container with Map or any media
  */

@@ -30,11 +30,11 @@ define(["lib-build/css!./Desktop",
 					container.addClass('isBuilder');
 					title =  "<div class='text_edit_label'>" + (title || i18n.commonCore.inlineFieldEdit.editMe) + "</div>";
 					title += "<div class='text_edit_icon' title='" + i18n.commonCore.header.title.replace("%TPL_NAME%", app.cfg.TPL_NAME) + "'></div>";
-					title += "<textarea rows='1' class='text_edit_input form-control' type='text'></textarea>";
+					title += "<textarea rows='1' class='text_edit_input form-control' type='text' spellcheck='true'></textarea>";
 	
 					subtitle =  "<span class='text_edit_label'>" + (subtitle || i18n.commonCore.inlineFieldEdit.editMe) + "</span>";
 					subtitle += "<div class='text_edit_icon' title='" + i18n.commonCore.header.subtitle.replace("%TPL_NAME%", app.cfg.TPL_NAME) + "'></div>";
-					subtitle += "<textarea rows='3' class='text_edit_input form-control' type='text'></textarea>";
+					subtitle += "<textarea rows='3' class='text_edit_input form-control' type='text' spellcheck='true'></textarea>";
 				}
 	
 				container.find('.title').html(title);
