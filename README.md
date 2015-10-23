@@ -91,8 +91,8 @@ require(["dojo/topic"], function(topic) {
 	 * Set up a click handler on the feature of the map to navigate the story
 	 */
 	
-	//
-	// *************************************
+        //
+        // *************************************
         // Configure the webmap id and layer id
         // *************************************
         //
