@@ -91,16 +91,16 @@ require(["dojo/topic"], function(topic) {
 	 * Set up a click handler on the feature of the map to navigate the story
 	 */
 	
-        //
-        // *************************************
-        // Configure the webmap id and layer id
-        // *************************************
-        //
-        // You can find the webmap id in the URL of your browser when you open the map in Map Viewer
-        // To get the layer id, first paste the webmap id below and open the application in your browser, 
-        //   then open the developer console and find the part where  all the layer ids are printed,
-        //   find the correct one and paste it below
-        // After this setup, when you click on the 3rd feature of your layer, it will navigate to the third entry
+	//
+	// *************************************
+	// Configure the webmap id and layer id
+	// *************************************
+	//
+	// You can find the webmap id in the URL of your browser when you open the map in Map Viewer
+	// To get the layer id, first paste the webmap id below and open the application in your browser, 
+	//   then open the developer console and find the part where  all the layer ids are printed,
+	//   find the correct one and paste it below
+	// After this setup, when you click on the 3rd feature of your layer, it will navigate to the third entry
 	var WEBMAP_ID = "0bb11c0469f042b3afaf8b0d76572822";
 	var LAYER_ID = "csv_7673_0";
 	
