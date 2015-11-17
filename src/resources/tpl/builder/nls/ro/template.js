@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "Organizare",
-				lblHeader: "Glisaţi şi fixaţi %LBL_LAYOUT% pentru a vă organiza seria.",
+				lblHeader: "Trageţi şi plasaţi %LBL_LAYOUT% pentru a vă organiza povestea.",
 				lblColTitle: "Titlu",
 				lblColStatus: "Stare",
 				btnApplyWarning: "Confirmare ştergere %NB% %LBL_LAYOUT%",

@@ -18,6 +18,8 @@ define(["lib-build/tpl!./BuilderView",
 		// Template
 		"./addedit/Popup",
 		"./OrganizePopup",
+		// Map Editor
+		"storymaps/common/builder/media/map/EditDialog",
 		// Utils
 		"dojo/Deferred",
 		"dojo/topic",
@@ -48,6 +50,8 @@ define(["lib-build/tpl!./BuilderView",
 		// Template
 		AddEditPopup,
 		OrganizePopup, 
+		// Map Editor
+		MapEditDialog,
 		// Utils
 		Deferred,
 		topic,
@@ -59,12 +63,14 @@ define(["lib-build/tpl!./BuilderView",
 			
 			var _this = this,
 				_settingsPopup = null,
+				_handleMyStoriesFirstAdd = null,
 				_landingUI = new Landing($("#builderLanding"), firstAdd, clickHelp),
 				_helpUI = new Help($("#builderHelp")),
 				_initPopup = new InitPopup($("#initPopup")),
 				_sharePopup = new SharePopup($('#sharePopup')),
 				_addEditPopup = new AddEditPopup($('#addEditPopup')),
-				_organizePopup = new OrganizePopup($('#organizePopup'));
+				_organizePopup = new OrganizePopup($('#organizePopup')),
+				_mapEditDialog = new MapEditDialog($('#mapEditPopup'));
 
 			this.init = function(settingsPopup)
 			{
@@ -96,6 +102,8 @@ define(["lib-build/tpl!./BuilderView",
 				app.builder.openSharePopup = openSharePopup;
 				app.builder.openEditPopup = openEditPopup;
 				app.builder.openHelpPopup = openHelpPopup;
+				app.builder.getAddEditEntryTitle = getAddEditEntryTitle;
+				app.builder.openMapViewer = openMapViewer;
 				
 				CKEDITOR.disableAutoInline = true;
 				
@@ -155,6 +163,13 @@ define(["lib-build/tpl!./BuilderView",
 						app.ui.floatingPanel.enableSwiperKeybordEvent();
 					}
 				});
+				
+				//
+				// My Stories
+				//
+				
+				topic.subscribe("MY-STORIES-EDIT-MEDIA", myStoriesEditMedia);
+				topic.subscribe("MY-STORIES-EDIT-MAP", myStoriesEditMap);
 			};
 			
 			this.appInitComplete = function()
@@ -175,7 +190,7 @@ define(["lib-build/tpl!./BuilderView",
 					});
 				
 				if ( ! app.isProduction && CommonHelper.getUrlParams().debug == "share" )
-					openSharePopup();
+					setTimeout(openSharePopup, 1000);
 				
 				updateAddButtonStatus();
 			};
@@ -203,6 +218,13 @@ define(["lib-build/tpl!./BuilderView",
 				topic.publish("CORE_UPDATE_UI");
 				
 				clickAdd();
+				
+				if ( ! _handleMyStoriesFirstAdd ) {
+					_handleMyStoriesFirstAdd = topic.subscribe("BUILDER-MY-STORIES-CHECK", function(){
+						setTimeout(window.myStoriesInit, 300);
+						_handleMyStoriesFirstAdd.remove();
+					});
+				}
 			}
 			
 			function clickAdd()
@@ -231,6 +253,9 @@ define(["lib-build/tpl!./BuilderView",
 						
 						// After first section added - placement of Add/Orga - TODO remove after title optimization
 						topic.publish("CORE_RESIZE");
+						
+						// Check the story
+						topic.publish("BUILDER-MY-STORIES-CHECK");
 					},
 					function(){
 						checkForTemporaryMaps();
@@ -315,15 +340,25 @@ define(["lib-build/tpl!./BuilderView",
 							index: cfg.entryIndex,
 							section: updatedSection
 						});
+						
 						topic.publish("BUILDER_INCREMENT_COUNTER", 1);
 						popupDeferred.resolve();
+						
+						// Check the story
+						topic.publish("BUILDER-MY-STORIES-CHECK");
 					},
 					function(){
 						checkForTemporaryMaps();
+						popupDeferred.reject();
 					}
 				);
 				
 				return popupDeferred;
+			}
+			
+			function getAddEditEntryTitle()
+			{
+				return _addEditPopup.getAddEditEntryTitle();
 			}
 			
 			//
@@ -366,6 +401,9 @@ define(["lib-build/tpl!./BuilderView",
 						
 						topic.publish("story-update-entries");
 						topic.publish("BUILDER_INCREMENT_COUNTER", 1); // TODO
+						
+						// Check the story
+						topic.publish("BUILDER-MY-STORIES-CHECK");
 					},
 					function(){
 						_this.updateUI();
@@ -465,7 +503,7 @@ define(["lib-build/tpl!./BuilderView",
 			
 			function openSharePopup(isFirstSave)
 			{
-				_sharePopup.present(isFirstSave);
+				_sharePopup.present(isFirstSave, Core.getHeaderUserCfg());
 			}
 			
 			//
@@ -527,10 +565,74 @@ define(["lib-build/tpl!./BuilderView",
 				}, 50);
 			}
 			
+			//
+			// My Stories
+			//
+			
+			function myStoriesEditMedia(params)
+			{
+				params = params || {};
+				
+				var index = parseInt(params.index, 10);
+				
+				if ( index < 0 || index > app.data.getStoryLength() - 1 ) {
+					return;
+				}
+				
+				$(".builderShare").modal('hide');
+				
+				topic.publish("story-navigate-entry", params.index);
+				
+				if ( params.type == 'main-stage' ) {
+					app.builder.openEditPopup({
+						entryIndex: params.index
+					}).then(function(){
+						app.builder.openSharePopup();
+					}, function(){
+						app.builder.openSharePopup();
+					});
+				}
+			}
+			
+			function myStoriesEditMap(params)
+			{
+				params = params || {};
+				
+				if ( $.inArray(params.id, app.data.getWebmaps()) < 0 ) {
+					return;
+				}
+				
+				$(".builderShare").modal('hide');
+				
+				openMapViewer({
+					id: params.id
+				}).then(
+					function(){
+						app.builder.openSharePopup();
+					},
+					function(){
+						app.builder.openSharePopup();
+					}
+				);
+			}
+			
+			//
+			// Map Viewer
+			//
+			
+			function openMapViewer(params)
+			{
+				return _mapEditDialog.present(params);
+			}
+			
 			/*jshint -W098 */
 			this.resize = function(cfg)
 			{
-				//
+				// On Firefox and share dialog is displayed
+				if ( has("ff") && $("#sharePopup").hasClass("in") ) {
+					_sharePopup.updateMyStoriesPosition();
+				}
+				
 			};
 	
 			this.initLocalization = function()

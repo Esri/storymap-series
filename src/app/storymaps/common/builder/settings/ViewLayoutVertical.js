@@ -24,7 +24,10 @@ define(["lib-build/tpl!./ViewLayoutVertical",
 					start: i18n.commonCore.common.start
 				}));
 				
-				_contentContainer.find('.help').tooltip({placement: 'right'});
+				_contentContainer.find('.help').tooltip({
+					placement: 'right',
+					trigger: 'hover'
+				});
 				_contentContainer.find('.btn-start').click(onClickStart);
 			};
 			

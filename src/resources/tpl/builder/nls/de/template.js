@@ -3,7 +3,7 @@
 		builder: {
 			layouts: {
 				tabTitle: "Mit Registerkarten",
-				tabDescr: "Vorhandene Karten und andere Inhalte mit Registerkarten präsentieren und ein optionales Fenster für beschreibenden Text verwenden.",
+				tabDescr: "Vorhandene Karten und andere Inhalte mit Registerkarten präsentieren und einen optionalen Bereich für beschreibenden Text verwenden.",
 				tabItem: "Registerkarte",
 				tabItems: "Registerkarten",
 				sideTitle: "Side Accordion",
@@ -11,7 +11,7 @@
 				sideItem: "Eintrag",
 				sideItems: "Einträge",
 				bulletTitle: "Mit Aufzählungszeichen",
-				bulletDescr: "Vorhandene Karten und andere Inhalte mit Aufzählungszeichen und einem optionalen Fenster für beschreibenden Text präsentieren.",
+				bulletDescr: "Vorhandene Karten und andere Inhalte mit Aufzählungszeichen und einen optionalen Bereich für beschreibenden Text präsentieren.",
 				bulletItem: "Aufzählungszeichen",
 				bulletItems: "Aufzählungszeichen"
 			},
@@ -26,12 +26,12 @@
 				tooltipLegend: "Festlegen, wo die Kartenlegende angezeigt werden soll. Sie können die Legende für jede Karte aktivieren, wenn Sie sie hinzufügen und konfigurieren.",
 				lblDropdown: "Dropdown",
 				lblBelowDesc: "Unterhalb der Beschreibung",
-				lblOnPanel: "Als Fenster",
-				lblPanelDescAndLegend: "Beschreibungs- und Legendenfenster",
-				lblPanelDescAndOrLegend: "Fenster \"Beschreibung und/oder Legende\"",
-				lblPanelDesc: "Fenster \"Beschreibung\"",
-				lblPanelLegend: "Fenster \"Legende\"",
-				lblPanelAccordion: "Fenster \"Accordion\"",
+				lblOnPanel: "Als Bereich",
+				lblPanelDescAndLegend: "Beschreibungs- und Legendenbereich",
+				lblPanelDescAndOrLegend: "Bereich \"Beschreibung und/oder Legende\"",
+				lblPanelDesc: "Bereich \"Beschreibung\"",
+				lblPanelLegend: "Bereich \"Legende\"",
+				lblPanelAccordion: "Bereich \"Accordion\"",
 				cfgLeft: "Links",
 				cfgRight: "Rechts",
 				cfgSmall: "Klein",
@@ -66,11 +66,11 @@
 			},
 			textEditor: {
 				placeholder1: "Text, Links und kleine Grafiken hier hinzufügen.",
-				placeholder2: "Wenn das Fenster leer bleibt, wird es ausgeblendet."
+				placeholder2: "Wenn der Bereich leer bleibt, wird er ausgeblendet."
 			},
 			organizePopup: {
 				title: "Organisieren",
-				lblHeader: "Serien per Drag & Drop von %LBL_LAYOUT%% organisieren.",
+				lblHeader: "Story durch Ziehen und Ablegen von %LBL_LAYOUT% organisieren.",
 				lblColTitle: "Titel",
 				lblColStatus: "Status",
 				btnApplyWarning: "Löschen von %NB% %LBL_LAYOUT% bestätigen",

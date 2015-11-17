@@ -56,6 +56,8 @@ define(["lib-build/tpl!./InitPopup",
 				// topic.publish("CORE_RESIZE");
 				
 				_layoutChangeEventHandler = topic.subscribe("SETTINGS_LAYOUT_CHANGE", showNextView);
+				
+				$("body").bind("keydown", enterEvent);
 						
 				return _initCompleteDeferred;
 			};
@@ -93,8 +95,6 @@ define(["lib-build/tpl!./InitPopup",
 					if ( $(this).parent().index() )
 						_btnNext.html(i18n.builder.initPopup.startBtn).removeAttr("disabled").removeClass('btn-primary').addClass('btn-success');
 				});
-				
-				$("body").bind("keydown", enterEvent);
 			}
 			
 			this.initLocalization = function()

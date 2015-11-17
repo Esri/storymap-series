@@ -64,7 +64,7 @@
 				url: "URL van een Vimeo-video"
 			},
 			videoSelectorOther: {
-				explain1: "De applicatie kan geen raw video\'s (bijv. avi, mpeg) afspelen maar het kan gehoste videobestanden afspelen die ingebouwde spelers hebben (bijv. YouTube of Vimeo).",
+				explain1: "Het verhaal geen raw video\'s (bijv. avi, mpeg) afspelen maar het kan gehoste videobestanden afspelen die ingebouwde spelers hebben (bijv. YouTube of Vimeo).",
 				explain2: "De meeste online videoservices bieden deze functie. U moet de optie vinden om de video in te kunnen sluiten, de verstrekte code kopieren en de %WEBPAGE% gebruiken.",
 				explain3: "Als u de video zelf wilt hosten, kunt u een HTML-pagina maken die een videospeler gebruikt zoals %EXAMPLE%. Host die pagina en gebruik tevens de %WEBPAGE%.",
 				webpage: "Functie webpagina"

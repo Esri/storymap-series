@@ -445,6 +445,7 @@ app.cfg = {
 	
 	// Text to be used as the browser page title during app creation
 	TPL_NAME: "Map Series",
+	TPL_ID: "mapseries",
 	WEBAPP_TAG: ["Story Map", "Map Series"],
 	WEBAPP_KEYWORD_GENERIC: ["JavaScript", "Map", "Mapping Site", "Online Map", "Ready To Use", "selfConfigured", "Web Map"],
 	WEBAPP_KEYWORD_APP: ["Story Map", "Story Maps", "MapSeries"],

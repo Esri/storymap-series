@@ -104,7 +104,7 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 					setLayout(entryLayoutCfg);
 					
 					container.toggleClass("hasDescription", !! (_layoutOptions.description && entryLayoutCfg.description));
-					container.toggleClass("hasLegend", !! entryLayoutCfg.legend);
+					container.toggleClass("hasLegend", !! (entryLayoutCfg.legend && _layoutOptions.legend == "panel"));
 					
 					this.resize();
 
@@ -175,7 +175,7 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 			function setLayout(entryLayoutCfg)
 			{
 				// Panel visibility depend on layout and entry configuration 
-				var panelIsVisible = ! app.isInitializing  && (entryLayoutCfg.description || entryLayoutCfg.legend);
+				var panelIsVisible = ! app.isInitializing  && (entryLayoutCfg.description || (entryLayoutCfg.legend && _layoutOptions.legend == "panel"));
 				container.toggle(panelIsVisible);
 				
 				container.find('.descriptions').toggle(_layoutOptions.description);

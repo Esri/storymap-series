@@ -61,7 +61,11 @@ define(["lib-build/css!./Desktop",
 						.click(CommonHelper.switchToBuilder)
 						.show();
 				}
-	
+				
+				if ( ! app.isInBuilder && app.data.userIsAppOwner() ) {
+					container.find('.error-status').addClass('enabled');
+					topic.subscribe("MYSTORIES_SCAN", updateErrorStatus);
+				}
 				
 				setHeader(headerCfg, defaultToCompact);
 			};
@@ -169,6 +173,36 @@ define(["lib-build/css!./Desktop",
 					setTimeout(function(){
 						container.find(".rightArea").show();
 					}, 0);
+				}
+			}
+			
+			/*
+			 * My Stories
+			 */
+			
+			function updateErrorStatus(status)
+			{
+				var checkBtn = container.find('.check-story');
+				
+				if ( status == "start" ) {
+					checkBtn
+						.html('<span class="small-loader"></span>' +  i18n.viewer.headerFromCommon.checking)
+						.css("cursor", "default");
+				}
+				else if ( status == "error" ) {
+					checkBtn
+						.html(i18n.viewer.headerFromCommon.fix)
+						.css("cursor", "pointer")
+						.click(CommonHelper.switchToBuilder)
+						.show()
+						.removeClass('btn-warning')
+						.addClass('btn-danger');
+				}
+				else {
+					checkBtn
+						.html(i18n.viewer.headerFromCommon.noerrors)
+						.removeClass('btn-warning')
+						.addClass('btn-success');
 				}
 			}
 	

@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "구성",
-				lblHeader: "시리즈를 구성하려면 %LBL_LAYOUT%을(를) 끌어서 놓습니다.",
+				lblHeader: "%LBL_LAYOUT%을(를) 드래그 앤 드롭하여 스토리를 구성합니다.",
 				lblColTitle: "제목",
 				lblColStatus: "상태",
 				btnApplyWarning: "%NB% %LBL_LAYOUT% 삭제 확인",

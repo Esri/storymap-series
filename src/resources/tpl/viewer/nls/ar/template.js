@@ -5,29 +5,29 @@
 				close: "إغلاق"
 			},
 			loading: {
-				long: "جارِ تهيئة التطبيق",
+				long: "يتم تهيئة القصة",
 				long2: "شكرًا للانتظار",
-				failButton: "إعادة تحميل التطبيق"
+				failButton: "إعادة تحميل القصة"
 			},
 			signin: {
 				title: "مطلوب المصادقة",
-				explainViewer: "يرجى تسجيل الدخول بحساب على %PORTAL_LINK% للوصول إلى التطبيق.",
-				explainBuilder: "يرجى تسجيل الدخول بحساب على %PORTAL_LINK% لتكوين التطبيق."
+				explainViewer: "يرجى تسجيل الدخول بحساب في %PORTAL_LINK% للوصول إلى القصة.",
+				explainBuilder: "يرجى تسجيل الدخول بحساب في %PORTAL_LINK% لتكوين القصة."
 			},
 			errors: {
 				boxTitle: "حدث خطأ",
 				invalidConfig: "تكوين غير صحيح",
 				invalidConfigNoApp: "مُعرّف تطبيق تخطيط الويب غير محدد في index.html.",
 				unspecifiedConfigOwner: "لم يتم تكوين المالك المعتمد.",
-				invalidConfigOwner: "لم يتم اعتماد مالك التطبيق",
+				invalidConfigOwner: "مالك القصة غير مُعتمد.",
 				createMap: "يتعذر إنشاء الخريطة",
 				invalidApp: "%TPL_NAME% غير موجود أو لا يمكن الوصول إليه.",
 				appLoadingFail: "‏‏حدث خطأ ما، لم يتم تحميل %TPL_NAME% بشكل صحيح.",
-				notConfiguredDesktop: "لم يتم تكوين التطبيق حتى الآن.",
-				notConfiguredMobile: "مُنشئ %TPL_NAME% غير مدعوم عند تركيز الشاشة الحالي.",
-				notAuthorized: "أنت غير مُخوّل للوصول إلى هذا التطبيق",
+				notConfiguredDesktop: "لم يتم تكوين القصة بعد.",
+				notConfiguredMobile: "مُنشئ %TPL_NAME% غير مدعوم في هذا الحجم من العرض.",
+				notAuthorized: "يجب أن تكون مُعتمدًا للوصول إلى هذه القصة",
 				noBuilderIE: "المُنشئ غير مدعوم في Internet Explorer قبل الإصدار %VERSION%. %UPGRADE%",
-				noViewerIE: "التطبيق غير مدعوم في Internet Explorer قبل الإصدار %VERSION%. %UPGRADE%",
+				noViewerIE: "هذه القصة غير مدعومة في Internet Explorer قبل الإصدار %VERSION%. %UPGRADE%",
 				upgradeBrowser: "<a href='http://browsehappy.com/' target='_blank'>يرجى تحديث المستعرض</a>.",
 				mapLoadingFail: "‏‏حدث خطأ ما، لم يتم تحميل الخريطة بشكل صحيح.",
 				signOut: "تسجيل المغادرة"
@@ -35,8 +35,8 @@
 			mobileInfo: {
 				legend: "وسيلة إيضاح",
 				description: "الوصف",
-				lblLegendMobileError: "عذرًا، وسيلة الإيضاح غير متوفرة. يرجى إعادة تحميل التطبيق.",
-				lblLegendMobileErrorExplain: "لا تتوفر وسيلة الإيضاح عند استدارة الجهاز للوضع العمودي بعد تحميل التطبيق."
+				lblLegendMobileError: "عذرًا، وسيلة الإيضاح غير متاحة. يرجى إعادة تحميل القصة.",
+				lblLegendMobileErrorExplain: "وسيلة الإيضاح غير متاحة عند استدارة الجهاز في الوضع العمودي بعد تحميل القصة."
 			},
 			mobileFooter: {
 				swipeInvite: "سحب انتقال القصة",
@@ -51,7 +51,10 @@
 				bitlyTooltip: "الحصول على رابط قصير",
 				templateTitle: "تعيين عنوان للقالب",
 				templateSubtitle: "تعيين عنوان فرعي للقالب",
-				share: "مشاركة"
+				share: "مشاركة",
+				checking: "فحص محتوى القصة",
+				fix: "إصلاح المشكلات في القصة",
+				noerrors: "لم يتم الكشف عن المشكلات"
 			},
 			overviewFromCommon: {
 				title: "خريطة النظرة العامة"
@@ -64,8 +67,11 @@
 				copied: "تم النسخ",
 				open: "فتح",
 				embed: "تضمين في صفحة الويب",
-				embedExplain: "استخدم كود HTML التالي لتضمين التطبيق في صفحة ويب.",
+				embedExplain: "استخدم كود HTML التالي لتضمين القصة في صفحة الويب.",
 				size: "الحجم (العرض/الارتفاع)"
+			},
+			locatorFromCommon: {
+				error: "الموقع غير متاح"
 			}
         }
     })

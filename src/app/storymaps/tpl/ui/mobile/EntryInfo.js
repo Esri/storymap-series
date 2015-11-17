@@ -72,11 +72,11 @@ define(["lib-build/css!./EntryInfo",
 					
 					// If it's a map can toggle description and legend
 					if ( popupContainer.find('.content-toggles') ) {
-						var needToggles = _layoutEntryCfg.description && _layoutEntryCfg.legend;
+						var needToggles = _layoutEntryCfg.description && description && _layoutEntryCfg.legend;
 						
 						popupContainer.toggleClass('noToggle', ! needToggles);
 						popupContainer.find('.content-toggles').toggle(needToggles);
-						popupContainer.find('.content-toggles .btn').eq(_layoutEntryCfg.description ? 0 : 1).click();
+						popupContainer.find('.content-toggles .btn').eq(_layoutEntryCfg.description && description ? 0 : 1).click();
 					}
 				}
 				

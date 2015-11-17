@@ -63,6 +63,13 @@ define(["lib-build/tpl!./Landing",
 				if ( i18n.builder.landing.lblAdd.match('%LAYOUT_TITLE%') )
 					container.find('.landing-add-container .landing-lbl').html(i18n.builder.landing.lblAdd.replace('%LAYOUT_TITLE%', app.data.getCurrentLayoutStaticConfig().title));
 				
+				if ( ! getTitle() && app.isGalleryCreation ) {
+					container.find(".landing-add-container .add-title")
+						.val(app.data.getWebAppItem().title)
+						.select();
+					onTitleChange();
+				}
+				
 				container.toggle(state);
 				$("#builderQuotes").toggle(state);
 				focus();

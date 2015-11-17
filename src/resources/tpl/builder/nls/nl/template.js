@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "Rangschikken",
-				lblHeader: "Sleep %LBL_LAYOUT% om uw serie te organiseren.",
+				lblHeader: "Versleep %LBL_LAYOUT% om uw verhaal te organiseren.",
 				lblColTitle: "Titel",
 				lblColStatus: "Status",
 				btnApplyWarning: "Bevestig verwijdering van %NB% %LBL_LAYOUT%",

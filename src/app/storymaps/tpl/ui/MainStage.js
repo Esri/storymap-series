@@ -137,7 +137,12 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						embedInfo.hash = embedhash;
 					}
 					
-					var embedContainer = $('.embedContainer[data-src="' + btoa(embedUrl) + '"]');
+					// Encode the URL when possible
+					try {
+						embedUrl = btoa(embedUrl);
+					} catch ( e ) { }
+					
+					var embedContainer = $('.embedContainer[data-src="' + embedUrl + '"]');
 					if ( ! embedContainer.length ) {
 						embedContainer = $('.embedContainer[data-ts="' + embedInfo.ts + '"]');
 					}
@@ -151,7 +156,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						//
 						
 						$("#mainStagePanel .medias").append(mainMediaContainerEmbedTpl({ 
-							url: btoa(embedUrl),
+							url: embedUrl,
 							frameTag: embedInfo.frameTag,
 							// Introduced in V1.1
 							unload: !!(embedInfo.unload === undefined || embedInfo.unload)
@@ -175,7 +180,15 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				
 				// Remove unused containers
 				$('.embedContainer').each(function() {
-					var embedSRC = $(this).data('ts') || atob($(this).data('src'));
+					var embedSRC = $(this).data('ts');
+					
+					if ( ! embedSRC ) {
+						embedSRC = $(this).data('src');
+						if ( ! embedSRC.match('//') ) {
+							embedSRC = atob(embedSRC);
+						}
+					}
+					
 					var embedInUse = $.grep(embeds, function(embed){
 						var embedUrl = embed.url;
 						
@@ -926,6 +939,11 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					query.outSpatialReference = app.map.spatialReference;
 				}
 				
+				// TODO: Image Services
+				if ( ! layer.queryFeatures ) {
+					return;
+				}
+				
 				layer.queryFeatures(query).then(function(featureSet) {
 					applyPopupConfigurationStep3(map, popupCfg, featureSet.features, index);
 				});
@@ -1072,6 +1090,33 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			{
 				updateMainMediaMaps(webmapId, null, null, null);
 			};
+			
+			this.reloadCurrentWebmap = function()
+			{
+				var currentEntry = app.data.getCurrentEntry();
+				
+				if ( currentEntry && currentEntry.media && currentEntry.media.webmap ) {
+					var webmapId = currentEntry.media.webmap.id,
+						mapContainer = $('.mapContainer[data-webmapid="' + webmapId + '"]');
+				
+					mapContainer.parent().remove();
+					if ( app.maps[webmapId] ) {
+						app.maps[webmapId].response.map.destroy();
+						delete app.maps[webmapId];
+					}
+				
+					$("#mainStagePanel .medias").append(mainMediaContainerMapTpl({ 
+						webmapid: webmapId, 
+						isTemporary: false,
+						lblDescription: i18n.viewer.mobileInfo.description,
+						lblLegend: i18n.viewer.mobileInfo.legend,
+						lblLegendMobileError: i18n.viewer.mobileInfo.lblLegendMobileError,
+						lblLegendMobileErrorExplain: i18n.viewer.mobileInfo.lblLegendMobileErrorExplain
+					}));
+					
+					topic.publish("story-navigate-entry", app.data.getCurrentEntryIndex());
+				}
+			};
 
 			this.loadTmpWebmap = function(webmapId)
 			{
@@ -1132,7 +1177,10 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			
 			function updateMainMediaEmbed(rawUrl, cfg, animateTransition)
 			{
-				var url = btoa(rawUrl);
+				var url = rawUrl;
+				try {
+					url = btoa(rawUrl);
+				} catch ( e ) { }
 				
 				$('.mainMediaContainer').removeClass('active');
 				
@@ -1142,8 +1190,13 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				// Not found, must be an iframe tag
 				if ( ! embedContainer.length ) {
 					embedContainer = $('.embedContainer[data-ts="' + rawUrl + '"]');
+					
 					// The correct URL is in data-src
-					url = btoa(embedContainer.data('src'));
+					try {
+						url = btoa(embedContainer.data('src'));
+					} catch ( e ) {
+						url = embedContainer.data('src');
+					}
 				}
 				
 				if ( embedContainer.length ) {
@@ -1156,7 +1209,10 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 							right: 0
 						});
 					
-					url = atob(url);
+					// Check if the URL is encoded
+					if ( ! url.match('//') ) {
+						url = atob(url);
+					}
 					
 					if ( cfg.hash ) {
 						url = url + '#' + cfg.hash;
@@ -1167,7 +1223,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					//  as a workaround <iframe srcdoc="http://" src="about:blank></iframe>
 					if ( ! embedContainer.attr('src') ){
 						// Loading indicator
-						embedContainer.load(stopMainStageLoadingIndicator);
+						embedContainer.off('load').load(stopMainStageLoadingIndicator);
 						startMainStageLoadingIndicator();
 					
 						// TODO youtube recommand an origin param "&origin=" + encodeURIComponent(document.location.origin)

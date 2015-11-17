@@ -27,7 +27,9 @@ define(["lib-build/tpl!./ViewMapOptions",
 					tooltipSync: i18n.builder.settingsMapOptions.tooltipSync
 				}));
 				
-				_contentContainer.find('.help').tooltip();
+				_contentContainer.find('.help').tooltip({
+					trigger: 'hover'
+				});
 			};
 			
 			this.present = function(settings) 

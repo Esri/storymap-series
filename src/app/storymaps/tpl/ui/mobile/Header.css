@@ -68,6 +68,15 @@ body.hasTouch .headerMobile .glyphicon {
 }
 
 /*
+ * Conflict with other font share dialog
+ */
+ 
+.headerMobile .glyphicon::before {
+ 	font-family: inherit !important;
+    margin-right: inherit !important;
+}
+
+/*
  * Buttons styling for desktop
  */
 
@@ -109,9 +118,17 @@ body:not(.hasTouch) .headerMobile .glyphicon:hover {
 	text-align: center !important;
 }
 
+.headerMobile .menu-header .logoImg {
+	max-width: 100%;
+}
+
 .headerMobile .subtitle {
 	padding: 10px 0;
 	font-size: 1.5em;	
+}
+
+.headerMobile .menu-content {
+	margin-top: 10px;
 }
 
 .headerMobile .menu-entry {

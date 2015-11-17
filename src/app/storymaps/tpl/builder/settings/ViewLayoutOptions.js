@@ -258,7 +258,9 @@ define(["lib-build/tpl!./ViewLayoutOptions",
 				_contentContainer.find('.opt-checkbox-reverse').click(updateUIAndPublish);
 				
 				// Help tooltips
-				_contentContainer.find('.help').tooltip();
+				_contentContainer.find('.help').tooltip({
+					trigger: 'hover'
+				});
 				
 				_contentContainer.find('.debug').click(function(){
 					console.log(_this.save());

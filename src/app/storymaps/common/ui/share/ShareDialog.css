@@ -27,7 +27,7 @@ body.mobile-view .shareDialog {
 .shareDialog .embed-title {
 	font-size: 1.3em;
 	color: #4B8BC9; 
-	margin: 15px 0 5px 0;
+	margin: 0px 0 5px 0;
 }
 
 .shareDialog .social-container {
@@ -53,4 +53,8 @@ body.mobile-view .shareDialog .btn-bitlylink-open,
 body.mobile-view .shareDialog .embed-title,
 body.mobile-view .shareDialog .share-embed-container {
 	display: none;
+}
+
+.shareDialog  .share-embed-container .share-btn {
+	padding-top: 17px;
 }

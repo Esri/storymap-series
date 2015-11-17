@@ -28,6 +28,10 @@ define(["storymaps/common/utils/CommonHelper",
 		{
 			container.addClass("hideContent").slideUp();
 			unloadActiveIframe(container);
+			
+			$.each(container.find('.content-container'), function(i, container){
+				container.scrollTop = 0;
+			});
 		}
 		
 		function hideSiblings(container)
@@ -69,6 +73,11 @@ define(["storymaps/common/utils/CommonHelper",
 				if ( ! container )
 					return;
 				
+				var contentContainer = container.find('.content-container');
+				if ( ! contentContainer.length ) {
+					contentContainer = container.children();
+				}
+				
 				if ( ! container.is(":visible") ) {
 					hideSiblings(container);
 					container.slideDown(400, function(){
@@ -76,6 +85,14 @@ define(["storymaps/common/utils/CommonHelper",
 					});
 					// Show potential iframe not loaded yet
 					StoryText.loadContentIframe(container);
+					
+					// Reset scroll on description and legend
+					setTimeout(function(){
+						contentContainer[0].scrollTop = 0;
+					}, 410);
+				}
+				else {
+					contentContainer[0].scrollTop = 0;
 				}
 			},
 			slideToggle: slideToggle,

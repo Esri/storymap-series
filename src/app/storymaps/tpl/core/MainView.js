@@ -176,6 +176,7 @@ define(["lib-build/css!./MainView",
 				
 				topic.subscribe("ADDEDIT_LOAD_WEBMAP", app.ui.mainStage.loadTmpWebmap);
 				topic.subscribe("ADDEDIT_SHOW_WEBMAP", app.ui.mainStage.showWebmapById);
+				topic.subscribe("ADDEDIT_RELOAD_CURRENT_WEBMAP", app.ui.mainStage.reloadCurrentWebmap);
 				
 				// Update description panel layout when current map is loaded
 				topic.subscribe("story-loaded-map", function(e) {
@@ -710,12 +711,20 @@ define(["lib-build/css!./MainView",
 				
 				app.ui.mainStage.updateMainStageWithLayoutSettings();
 				
+				var isInIframe = (window.location != window.parent.location) ? true : false;
+				if ( ! has("ios") && ! isInIframe ) {
+					sizePopup(cfg);
+				}
+			};
+			
+			function sizePopup(cfg)
+			{
 				// Popup dimension
 				CommonHelper.addCSSRule(
 					".mobilePopup { max-height:" + Math.min(cfg.height - 120, 300) + "px; }",
 					"MobilePopup"
 				);
-			};
+			}
 			
 			this.setMapExtent = function(extent, map)
 			{
@@ -753,8 +762,14 @@ define(["lib-build/css!./MainView",
 				topic.publish("tpl-ready");
 				
 				app.ui.mainStage.preloadAllMaps();
+				
+				var isInIframe = (window.location != window.parent.location) ? true : false;
+				if ( has("ios") && isInIframe ) {
+					sizePopup({
+						height: $(window).height
+					});
+				}
 			};
-			
 			
 			
 			//
@@ -789,9 +804,8 @@ define(["lib-build/css!./MainView",
 				// Change current section
 				app.data.setCurrentSectionIndex(index);
 				
-				
 				var layoutEntryCfg = getCurrentEntryLayoutCfg(),
-					hasPanel = layout == "accordion" || layoutEntryCfg.description || layoutEntryCfg.legend;
+					hasPanel = layout == "accordion" || layoutEntryCfg.description || (layoutEntryCfg.legend && layoutOpt.legend == "panel");
 				
 				$("body")
 					.toggleClass("layout-" + layout + "-" + layoutOpt.panel.position, hasPanel)
@@ -829,11 +843,10 @@ define(["lib-build/css!./MainView",
 				
 				if ( ! entry || ! entry.media || ! entry.media[entry.media.type] ) 
 					return {};
-					
+				
 				return {
 					description: !! ((layout == "accordion" || layoutOpt.description) && (entry.description || app.isInBuilder)),
-					legend: !! ((layout == "accordion" || layoutOpt.legend == "panel")
-						&& entry.media.type == "webmap"
+					legend: !! (entry.media.type == "webmap"
 						&& entry.media.webmap.legend 
 						&& entry.media.webmap.legend.enable)
 				};

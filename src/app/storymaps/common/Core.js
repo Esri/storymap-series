@@ -9,7 +9,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 		"./utils/CommonHelper",
 		"esri/urlUtils",
 		// Builder
-		"./builder/BuilderHelper",
+		"./builder/MyStoriesWrapper",
 		// Utils
 		"dojo/has",
 		"esri/IdentityManager",
@@ -38,7 +38,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 		arcgisUtils,
 		CommonHelper,
 		urlUtils,
-		BuilderHelper,
+		MyStoriesWrapper,
 		has,
 		IdentityManager,
 		ArcGISOAuthInfo,
@@ -253,7 +253,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 							if ( ! builder )
 								portalLogin().then(initStep2);
 							else
-								initStep2();
+								portalLogin().then(initStep2);
 						}, 
 						function() {
 							// Not signed-in, redirecting to OAuth sign-in page 
@@ -280,6 +280,67 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 				return;
 			}
 			
+			//
+			// Support creating a MapSeries fromScratch with a webmap
+			//
+			
+			var webmapId2 = CommonHelper.getUrlParams().webmap; // as webmapId is empty on prod
+			if ( app.isDirectCreation && (webmapId || webmapId2) ) {
+				portalLogin().then(function(){
+					initializeUI();
+					
+					app.isInitializing = false;
+					
+					var section = {
+						title: "",
+						creaDate: Date.now(),
+						status: 'PUBLISHED',
+						media: {
+							type: 'webmap',
+							webmap: {
+								id: webmapId || webmapId2,
+								extent: null,
+								layers: null,
+								popup:  null,
+								legend: {
+									enable: false,
+									openByDefault: false
+								}
+							}
+						},
+						description: ""	
+					};
+					
+					app.data.setStoryStorage("WEBAPP");
+					app.data.addStorySection(section);
+					app.data.getWebAppData().setLayout({id: "tab"});
+					app.data.getWebAppData().setDefaultLayoutOptions();
+					
+					app.data.setCurrentSectionIndex(0);
+					topic.publish("story-update-entries");
+					topic.publish("BUILDER_INCREMENT_COUNTER", 1);
+					
+					var handle = topic.subscribe("story-loaded-map", function(result){
+						var mapItem = app.maps[result.id].response.itemInfo.item;
+						
+						handle.remove();
+						
+						app.data.getWebAppData().setTitle(mapItem.title);
+						section.title = mapItem.title;
+						section.description = mapItem.description;
+						app.data.editSection(0, section);
+						
+						appInitComplete();
+						
+						topic.publish("CORE_UPDATE_UI");
+						topic.publish("story-update-entries");
+
+						displayApp();
+					});
+				});
+				return;
+			}
+			
 			// Webmap and template doesn't support preview when hosted in AGOL 
 			if ( webmapId && ! supportWebmapPreviewAGOL ) {
 				if( CommonHelper.isArcGISHosted() )
@@ -291,7 +352,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			}
 			
 			// Direct creation and not signed-in
-			if ( app.isDirectCreation && isProd() && ! CommonHelper.getPortalUser() ) {
+			if ( app.isDirectCreation && isProd() && ! (CommonHelper.getPortalUser() || app.portal.getPortalUser()) ) {
 				redirectToSignIn();
 				return;
 			}
@@ -357,6 +418,9 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 						
 						if( owner ) 
 							ownerFound = $.inArray(owner, app.indexCfg.authorizedOwners) != -1;
+						
+						if ( ! ownerFound && app.indexCfg.authorizedOwners[0] == "*" )
+							ownerFound = true;
 						
 						if ( ! ownerFound ) {
 							initError("invalidConfigOwner");
@@ -511,6 +575,19 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			
 			_mainView.appInitComplete();
 			app.builder && app.builder.appInitComplete();
+			
+			// Load My Stories in builder or viewer if user is owning the story
+			if ( app.isInBuilder || app.data.userIsAppOwner() ) {
+				if ( has("ff") ) {
+					$(".builderShare #my-stories-frame").remove();
+				}
+				
+				if ( has("ff") || ! app.isInBuilder ) {
+					$("body").append('<div id="my-stories-hidden-container"><iframe id="my-stories-frame"></iframe></div>');
+				}
+				
+				MyStoriesWrapper.loadMyStories();
+			}
 		}
 		
 		function displayApp()
@@ -613,7 +690,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 					app.map.centerAt(geom);
 			}
 			else {
-				$(".mainMediaContainer.active .mapLocationMsg").html("Location not available"); // TODO i18n
+				$(".mainMediaContainer.active .mapLocationMsg").html(i18n.viewer.locatorFromCommon.error);
 				$(".mainMediaContainer.active .mapLocationError").fadeIn();
 				
 				setTimeout(function(){

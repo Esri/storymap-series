@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "Organizē",
-				lblHeader: "Lai kārtotu savu sēriju, velciet un nometiet %LBL_LAYOUT%.",
+				lblHeader: "Velciet un nometiet %LBL_LAYOUT%, lai sakārtotu savu stāstu.",
 				lblColTitle: "Nosaukums",
 				lblColStatus: "Statuss",
 				btnApplyWarning: "Apstipriniet %NB% %LBL_LAYOUT% izdzēšanu",

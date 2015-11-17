@@ -32,7 +32,7 @@
 .accordionPanel .accordion-header,
 .accordionPanel .accordion-content {
 	position: relative;
-	padding: 10px 25px 0 25px;
+	padding: 10px 25px 10px 25px;
 	overflow-y: auto;
 }
 
@@ -76,6 +76,10 @@
 	font-size: 72px;
 	font-family: 'Average-Regular';
 	line-height: 1.0;
+}
+
+.accordionPanel .accordion-header-number.twodigits {
+	min-width: 87px;	
 }
 
 .accordionPanel:not(.is-numbered) .accordion-header-number {

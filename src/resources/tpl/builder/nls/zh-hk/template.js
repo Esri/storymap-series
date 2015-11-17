@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "組織",
-				lblHeader: "拖放 %LBL_LAYOUT% 以組織您的系列。",
+				lblHeader: "拖放 %LBL_LAYOUT% 以組織您的故事。",
 				lblColTitle: "標題",
 				lblColStatus: "狀態",
 				btnApplyWarning: "確認刪除 %NB% 個 %LBL_LAYOUT%",

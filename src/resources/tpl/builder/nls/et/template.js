@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "Paiguta",
-				lblHeader: "Seeria korraldamiseks lohistage paigutust %LBL_LAYOUT%.",
+				lblHeader: "Loo korraldamiseks lohistage silti %LBL_LAYOUT%.",
 				lblColTitle: "Pealkiri",
 				lblColStatus: "Staatus",
 				btnApplyWarning: "Kinnita %NB% paigutuse %LBL_LAYOUT% kustutamine",

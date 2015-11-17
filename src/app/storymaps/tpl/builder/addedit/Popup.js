@@ -140,6 +140,11 @@ define(["lib-build/tpl!./Popup",
 				_popupDeferred.reject();
 			};
 			
+			this.getAddEditEntryTitle = function()
+			{
+				return container.find('.title').val();
+			};
+			
 			function initEvents()
 			{
 				container.find('.title').bind('input propertychange', updateSubmitButton);
@@ -150,7 +155,8 @@ define(["lib-build/tpl!./Popup",
 				});
 				
 				container.on('shown.bs.modal', function () {
-						postDisplay();
+					postDisplay();
+					_viewMainStage.postDisplay();
 				});
 				
 				container.on('hide.bs.modal', function () {
@@ -217,7 +223,8 @@ define(["lib-build/tpl!./Popup",
 				var postErrorCheck = function() {
 					if ( ! entryTitle && _cfg.layout != "bullet" )
 						container.find('.titleContainer').addClass('has-feedback has-error');
-					else {
+					else if ( ! errorInStep.length ){
+					//else {
 						// Save the extent without panel width
 						if ( viewMediaData.media && viewMediaData.media.type == "webmap"
 								&& viewMediaData.media.webmap.extent ) {
@@ -272,7 +279,7 @@ define(["lib-build/tpl!./Popup",
 				else 
 					_btnSubmit.html(i18n.commonCore.common.add);
 				
-				_btnSubmit.attr("disabled", disableButton);
+				_btnSubmit.toggleClass("disabled", !! disableButton);
 				if ( disableButton ) {
 					var tooltip = i18n.builder.addEditPopup.stepMainStageNextTooltip;
 					

@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "组织",
-				lblHeader: "拖放 %LBL_LAYOUT% 以对系列进行组织。",
+				lblHeader: "拖放 %LBL_LAYOUT% 以对故事进行组织。",
 				lblColTitle: "标题",
 				lblColStatus: "状态",
 				btnApplyWarning: "确认删除 %NB% 个 %LBL_LAYOUT%",

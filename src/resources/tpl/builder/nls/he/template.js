@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "ארגן",
-				lblHeader: "גרור ושחרר את %LBL_LAYOUT% כדי לארגן את הסדרה.",
+				lblHeader: "גרור ושחרר את %LBL_LAYOUT% כדי לארגן את הסיפור שלך.",
 				lblColTitle: "כותרת",
 				lblColStatus: "סטטוס",
 				btnApplyWarning: "אשר מחיקת %NB%‏ %LBL_LAYOUT%",

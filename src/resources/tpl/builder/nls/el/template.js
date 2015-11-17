@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "Οργάνωση",
-				lblHeader: "Μετακινήστε το %LBL_LAYOUT% με μεταφορά και απόθεση για να οργανώσετε τη σειρά σας.",
+				lblHeader: "Μετακινήστε το %LBL_LAYOUT% με μεταφορά και απόθεση για να οργανώσετε την αφήγησή σας.",
 				lblColTitle: "Τίτλος",
 				lblColStatus: "Κατάσταση",
 				btnApplyWarning: "Επιβεβαιώστε τη διαγραφή του %NB% %LBL_LAYOUT%",

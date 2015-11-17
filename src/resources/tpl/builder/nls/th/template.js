@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "องค์กร",
-				lblHeader: "ลากและวาง %LBL_LAYOUT% เพื่อจัดการชุดข้อมูลของคุณ",
+				lblHeader: "ลากและวาง  %LBL_LAYOUT% เพื่อจัดระเบียบเรื่องราว",
 				lblColTitle: "ชื่อ",
 				lblColStatus: "สถานะ",
 				btnApplyWarning: "ยืนยันการลบของ %NB% %LBL_LAYOUT%",

@@ -70,7 +70,7 @@ define({
 			},
 			organizePopup: {
 				title: "Organize",
-				lblHeader: "Drag and drop %LBL_LAYOUT% to organize your series.",
+				lblHeader: "Drag and drop %LBL_LAYOUT% to organize your story.",
 				lblColTitle: "Title",
 				lblColStatus: "Status",
 				btnApplyWarning: "Confirm deletion of %NB% %LBL_LAYOUT%",

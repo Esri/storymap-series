@@ -175,11 +175,13 @@ define(["lib-build/tpl!./NavBar",
 				// On touch device for some reason enabling the tooltip sometimes make touching one bullet go to the following
 				if ( layout == "bullet" && ! has("touch") ) {
 					container.find('.nav-tabs > .entry').tooltip({
-						placement: 'top'
+						placement: 'top',
+						trigger: 'hover'
 					});
 					container.find('.dropdown-menu > .entry').tooltip({
 						placement: 'left',
-						container: '.nav-bar'
+						container: '.nav-bar',
+						trigger: 'hover'
 					});
 				}
 				

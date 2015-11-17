@@ -70,7 +70,7 @@
 			},
 			organizePopup: {
 				title: "Tvarkyti",
-				lblHeader: "Nuvilkite %LBL_LAYOUT%, galėtumėte tvarkyti serijas.",
+				lblHeader: "Nuvilkite %LBL_LAYOUT% ir tvarkykite pasakojimą.",
 				lblColTitle: "Pavadinimas",
 				lblColStatus: "Būsena",
 				btnApplyWarning: "Patvirtinkite %NB% %LBL_LAYOUT% pašalinimą",

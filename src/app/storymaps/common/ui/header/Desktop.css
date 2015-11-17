@@ -163,6 +163,28 @@
 }
 
 /*
+ * My Stories
+ */
+
+#headerDesktop .error-status {
+	display: none;	
+}
+
+#headerDesktop .error-status.enabled {
+	display: inline-block;
+}
+
+#headerDesktop .error-status .check-story {
+    margin-top: -2px;
+    margin-right: 10px;
+}
+
+#headerDesktop .error-status .check-story.btn-success {
+	pointer-events: none;
+}
+
+
+/*
  * Builder
  */
 
