@@ -182,9 +182,7 @@ The Series data are stored in a Web Application Item in ArcGIS Online or Portal 
 The image and videos that you include in your Series using the builder are not copied in ArcGIS Online. You have to make sure that those medias as well as the webmaps you are using are and will remain accessible to your audience.
 
 #### Can I deploy Map Series on Portal for ArcGIS?
-Yes, Map Series is not included in Portal for ArcGIS 10.3 but you can deploy it yourself. Map Series will be included in further version of Portal for ArcGIS.
-
-Map Series is not compatible with Portal for ArcGIS prior version 10.3.
+Yes, Map Series is included Portal for ArcGIS starting at version 10.3.1. Map Series is earlier version of Portal for ArcGIS  but can be deployed on Portal for ArcGIS 10.3. Map Series is not compatible with Portal for ArcGIS prior version 10.3.
 
 Steps:
 - [Download the latest version](http://links.esri.com/storymaps/map_series_template_zip)
