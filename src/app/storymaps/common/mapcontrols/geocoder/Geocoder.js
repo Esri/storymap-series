@@ -1,9 +1,7 @@
 define(["lib-build/tpl!./Geocoder",
         "lib-build/css!./Geocoder",
-        "esri/dijit/Geocoder",
-        "../../utils/CommonHelper",
-        "dojo/_base/lang"],
-	function (viewTpl, viewCss, GeocoderDijit, CommonHelper, lang) {
+        "../../utils/CommonHelper"],
+	function (viewTpl, viewCss, CommonHelper) {
 		return function Geocoder(map, isInBuilder, isEnabled) 
 		{
 			var _this = this,
@@ -14,17 +12,14 @@ define(["lib-build/tpl!./Geocoder",
 				var container = $(map.container).find(".geocoderBtn");
 				
 				if ( ! _geocoder ) { 
-					_geocoder = new GeocoderDijit(
-						lang.mixin(
-							{
-								map: map
-							}, 
-							CommonHelper.createGeocoderOptions()
-						),
-						container.find('.geocoderContainer')[0]
-					);
-					
-					container.find('.esriGeocoderContainer input, .esriGeocoderSearch').attr("tabindex", "-1");
+					CommonHelper.createGeocoder({
+						map: map, 
+						domNode: container.find(".geocoderContainer")[0],
+						enableButtonMode: true
+					}).then(function(geocoder) {
+						_geocoder = geocoder;
+						container.find('.esriGeocoderContainer input, .esriGeocoderSearch').attr("tabindex", "-1");
+					});
 				}
 				
 				$(map.container).toggleClass("has-geocoder", isEnabled);

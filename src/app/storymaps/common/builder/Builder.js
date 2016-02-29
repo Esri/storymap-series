@@ -94,8 +94,25 @@ define(["lib-build/css!./Builder",
 		
 		function appInitComplete()
 		{
+			var storyTitle = "",
+				itemTitle = "";
+	
+			if ( app.data.getWebAppData().getTitle() ) {
+				storyTitle = app.data.getWebAppData().getTitle().trim();
+			}
+			
+			if (app.data.getWebAppItem() && app.data.getWebAppItem().title ) {
+				itemTitle = app.data.getWebAppItem().title.trim();
+			}
+			
+			app.builder.titleMatchOnLoad = itemTitle == storyTitle;
+			
+			if (app.data.getWebAppData().isBlank()) {
+				app.builder.titleMatchOnLoad = true;
+			}
+			
 			_builderPanel.updateSharingStatus();
-			_builderView.appInitComplete(saveApp);
+			_builderView.appInitComplete();
 		}
 		
 		function resize(cfg)
@@ -145,7 +162,7 @@ define(["lib-build/css!./Builder",
 		// Save
 		//
 		
-		function saveAppThenWebmap()
+		function saveAppThenWebmap(doNotOverwriteTitle)
 		{			
 			if ( ! app.portal ) {
 				console.error("Fatal error - not signed in");
@@ -155,7 +172,7 @@ define(["lib-build/css!./Builder",
 			
 			app.portal.signIn().then(
 				function(){					
-					saveApp(function(response){
+					saveApp(doNotOverwriteTitle, function(response){
 						if (!response || !response.success) {
 							appSaveFailed("APP");
 							return;
@@ -241,11 +258,15 @@ define(["lib-build/css!./Builder",
 						);
 					*/	
 						// Save the app
-						saveApp(function(response2){
+						saveApp(false, function(response2){
 							if (!response2 || !response2.success) {
 								appSaveFailed("APP");
 								return;
 							}
+							
+							var baseUrl = document.location.protocol + '//' + document.location.host + document.location.pathname;
+							if ( ! baseUrl.match(/index\.html$/) )
+								baseUrl += "index.html";
 							
 							// Update the app item
 							app.data.setWebAppItem(
@@ -254,26 +275,65 @@ define(["lib-build/css!./Builder",
 									{
 										id: response2.id,
 										item: response2.item,
-										url: document.location.protocol + '//' + document.location.host + document.location.pathname + '?appid=' + response2.id
+										url: baseUrl + '?appid=' + response2.id
 									}
 								)
 							);
-														
-							// Save the app a second time
-							saveApp(function(response3){
-								if (!response3 || !response3.success) {
-									appSaveFailed("APP");
-									return;
-								} 
+							
+							// Add some metadata
+							if ( app.isDirectCreationOpenData ) {
+								app.data.getWebAppItem().tags.push('open-data-favorite');
+								app.data.getWebAppItem().properties = {
+									content: "story map",
+									datasetType: "story map",
+									url: baseUrl + '?appid=' + response2.id
+								};
+							}
+							
+							var updateItemUrl = function ()
+							{
+								// Save the app a second time
+								saveApp(false, function(response3){
+									if (!response3 || !response3.success) {
+										appSaveFailed("APP");
+										return;
+									} 
+									
+									console.log('common.builder.Builder - firstSaveForDirectCreation - appid:', response3.id, ' webmap:', /*typeof response != "undefined" ? response.id :*/ null);
 								
-								console.log('common.builder.Builder - firstSaveForDirectCreation - appid:', response3.id, ' webmap:', /*typeof response != "undefined" ? response.id :*/ null);
+									appSaveSucceeded({ success: true });
+									app.isDirectCreationFirstSave = false;
+									_builderPanel.updateSharingStatus();
+								
+									History.replaceState({}, "", "index.html?appid=" + response3.id + "&edit");
+								});
+							};
 							
-								appSaveSucceeded({ success: true });
-								app.isDirectCreationFirstSave = false;
-								_builderPanel.updateSharingStatus();
-							
-								History.replaceState({}, "", "?appid=" + response3.id + "&edit");
-							});
+							// If need to add to favorites
+							// (not stable when done after the second save operation - the second save would not persist all the properties)
+							if ( app.isDirectCreationOpenData ) {
+								var groupId = app.portal.getPortalUser().favGroupId,
+									url = getPortalURL() + "/sharing/rest/content/items/" + response2.id + "/share";
+								
+								esriRequest(
+									{
+										url: url,
+										handleAs: 'json',
+										content: {
+											everyone: false,
+											org: false,
+											groups: groupId,
+											items: response2.id
+										}
+									},
+									{
+										usePost: true
+									}
+								).then(updateItemUrl, updateItemUrl);
+							}
+							else {
+								updateItemUrl();
+							}
 						});
 					//});
 				},
@@ -333,7 +393,7 @@ define(["lib-build/css!./Builder",
 						);
 						
 						// Save the app
-						saveApp(function(response2){
+						saveApp(false, function(response2){
 							if (!response2 || !response2.success) {
 								appSaveFailed("APP");
 								return;
@@ -346,7 +406,7 @@ define(["lib-build/css!./Builder",
 								app.isGalleryCreation = false;
 								_builderPanel.updateSharingStatus();
 						
-								History.replaceState({}, "", "?appid=" + response2.id + "&edit");
+								History.replaceState({}, "", "index.html?appid=" + response2.id + "&edit");
 							};
 							
 							// Share the webmap and eventual FS if the app isn't private
@@ -389,7 +449,7 @@ define(["lib-build/css!./Builder",
 		// Web mapping application save
 		//
 
-		function saveApp(nextFunction)
+		function saveApp(doNotOverwriteTitle, nextFunction)
 		{
 			var portalUrl = getPortalURL(),
 				appItem = lang.clone(app.data.getWebAppItem()),
@@ -437,6 +497,20 @@ define(["lib-build/css!./Builder",
 			
 			// App proxies
 			appItem.serviceProxyParams = JSON.stringify(appItem.serviceProxyParams);
+			
+			// Title
+			if ( ! doNotOverwriteTitle ) {
+				appItem.title = app.data.getWebAppData().getTitle();
+			}
+			
+			if ( appItem.properties ) { 
+				appItem.properties = JSON.stringify(appItem.properties);
+			}
+			
+			// Edit URL of hosted apps to always include index.html
+			if ( appItem.url && appItem.url.match(/apps\/[a-zA-Z]+\/\?appid=/) ) {
+				appItem.url = appItem.url.replace('/?appid=', '/index.html?appid=');
+			}
 			
 			appItem = lang.mixin(appItem, {
 				f: "json",
@@ -573,6 +647,11 @@ define(["lib-build/css!./Builder",
 		function appSaveSucceeded(response)
 		{
 			if (response && response.success) {
+				app.mystories = app.mystories || { };
+				app.mystories.isChecking = true;
+				
+				app.isWebMapCreation = false;
+				
 				_builderPanel.saveSucceeded();
 				app.data.updateAfterSave();
 				
@@ -588,7 +667,6 @@ define(["lib-build/css!./Builder",
 				}
 				
 				_builderPanel.updateSharingStatus();
-				
 			}
 			else
 				appSaveFailed();

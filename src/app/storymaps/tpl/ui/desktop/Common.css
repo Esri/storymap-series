@@ -184,6 +184,7 @@ body[data-theme-major=black] .builder-content-panel .builder-content-panel-group
 	display: none;
 	margin-top: -2px;
 	margin-right: 10px;
+	height: 24px;
 }
 
 .switchBuilder .glyphicon {
@@ -255,4 +256,15 @@ body.layout-float-right .floatingPanel .scroll {
     0% { opacity: 1.0; }
     50% { opacity: 0.6; }
     100% { opacity: 1.0; }
+}
+
+/*
+ * Autoplay
+ */
+ 
+#autoplay {
+	display: none;
+    position: absolute;
+    bottom: 10px;
+    z-index: 31;
 }

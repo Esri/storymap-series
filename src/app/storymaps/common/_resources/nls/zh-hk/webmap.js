@@ -9,6 +9,8 @@
 				lblControls: "額外部分",
 				lblOverview: "總覽圖",
 				lblLegend: "圖例",
+				lblGeocoder: "地址或地點查詢器",
+				tooltipGeocoder: "允許使用者在地圖上查詢地址和地點。",
 				loadingTitle: "載入標題",
 				entry: "條目",
 				entries: "條目",
@@ -47,7 +49,7 @@
 				extentSave: "儲存地圖位置",
 				popupTitle: "地圖快顯",
 				popupExplain: "按一下圖徵以打開您要顯示的快顯。",
-				popupSave: "儲存快顯設定",
+				popupSave: "儲存快顯配置",
 				hintNavigation: "地圖導航已停用。"
 			},
 			editor: {

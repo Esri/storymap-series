@@ -103,6 +103,18 @@ define([
 						container: 'body'
 					} : 'destroy');
 			},
+			disableSocialBtnAppSharingAutoplay: function(container, placement)
+			{
+				container.find(".shareIcon").attr("title", "");
+				
+				container.find(".shareIcon")
+					.toggleClass("disabled", true)
+					.tooltip({
+						title: i18n.viewer.headerFromCommon.tooltipAutoplayDisabled,
+						container: 'body',
+						placement: placement ? placement : 'bottom'
+					});
+			},
 			initEvents: function(container/*, bitlyPlacement*/)
 			{
 				container.find(".share_facebook").off('click').click(function(){

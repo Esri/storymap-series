@@ -83,7 +83,7 @@ define(["dojo/Deferred", "esri/urlUtils"],
 						"https://api-ssl.bitly.com/v3/shorten?callback=?"
 					],
 					bitlyUrl = location.protocol == 'http:' ? bitlyUrls[0] : bitlyUrls[1],
-					targetUrl = this.cleanURL(url || document.location.href, true),
+					targetUrl = url || document.location.href,
 					resultDeferred = new Deferred();
 				
 				$.getJSON(
@@ -115,6 +115,7 @@ define(["dojo/Deferred", "esri/urlUtils"],
 					delete urlParams.query.locale;
 					delete urlParams.query.folderId;
 					delete urlParams.query.webmap;
+					delete urlParams.query.autoplay;
 					
 					$.each(Object.keys(urlParams.query), function(i, k){ 
 						if ( i === 0 ){
@@ -124,7 +125,12 @@ define(["dojo/Deferred", "esri/urlUtils"],
 							newUrl += '&';
 						}
 						
-						newUrl += k + '=' + urlParams.query[k];
+						if ( urlParams.query[k] !== undefined && urlParams.query[k] !== "" ) {
+							newUrl += k + '=' + urlParams.query[k];
+						}
+						else {
+							newUrl += k;
+						}
 					});
 				}
 				

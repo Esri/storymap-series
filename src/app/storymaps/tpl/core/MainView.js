@@ -18,6 +18,9 @@ define(["lib-build/css!./MainView",
 		"storymaps/common/mapcontrols/legend/Legend",
 		"storymaps/common/mapcontrols/overview/Overview",
 		"storymaps/common/mapcontrols/geocoder/Geocoder",
+		// Autoplay
+		"storymaps/common/ui/autoplay/Autoplay",
+		
 		"lib-build/css!storymaps/common/_resources/font/sharing/css/fontello.css",
 		"lib-build/css!storymaps/common/utils/SocialSharing.css",
 		"lib-build/css!storymaps/common/ui/loadingIndicator/LoadingIndicator.css",
@@ -51,6 +54,7 @@ define(["lib-build/css!./MainView",
 		Legend,
 		Overview,
 		Geocoder,
+		Autoplay,
 		socialSharingIconCss,
 		socialSharingCss,
 		loadingIndicatorCss,
@@ -169,6 +173,42 @@ define(["lib-build/css!./MainView",
 					navigateStoryToIndex
 				);
 				
+				/*
+				 * Autoplay in viewer mode
+				 */ 
+				if ( ! app.isInBuilder && CommonHelper.getUrlParams().autoplay !== undefined && CommonHelper.getUrlParams().autoplay !== "false" ) {
+					app.ui.autoplay = new Autoplay(
+						$("#autoplay"),
+						// Callback that navigate to the next section
+						function() {
+							var nextIndex = 0;
+							
+							if( app.data.getCurrentEntryIndex() != app.data.getStoryLength() -1 ) {
+								nextIndex = app.data.getCurrentEntryIndex() + 1;
+							}
+							
+							// Delay the event so Autoplay has received the updated index before the event is fired
+							setTimeout(function(){
+								topic.publish("story-navigate-entry", nextIndex);
+							}, 50);
+							
+							return nextIndex;
+						}
+					);
+					
+					// Start when app is ready
+					topic.subscribe("tpl-ready", function(){
+						if ( ! $("body").hasClass("mobile-view") ) {
+							app.ui.autoplay.start();
+						}
+					});
+					
+					// Inform autoplay of story navigation events
+					topic.subscribe("story-load-entry", function(index) {
+						app.ui.autoplay.onNavigationEvent(index);
+					});
+				}
+				
 				topic.subscribe("story-navigate-entry", navigateStoryToIndex);
 				topic.subscribe("story-update-entries", updateUIStory);
 				topic.subscribe("story-update-entry", updateStoryEntry);
@@ -198,20 +238,23 @@ define(["lib-build/css!./MainView",
 								$(this).off("blur").css("outline", "");
 							});
 						}
+						
 						// Prevent outline over image caption container in description panel - Unsure why needed
-						else if ( $(this).parents("figure.caption").length ) {
+						if ( $(this).parents("figure.caption").length ) {
 							$(this).parents("figure.caption").css("outline", "none").on("blur", function() {
 								$(this).off("blur").css("outline", "");
 							});
 						}
+						
 						// Prevent outline over paragraph in description panel - Unsure why needed
-						else if ( $(this).parents("p").length ) {
+						if ( $(this).parents("p").length ) {
 							$(this).parents("p").css("outline", "none").on("blur", function() {
 								$(this).off("blur").css("outline", "");
 							});
 						}
+						
 						// Prevent outline over title in description panel - Unsure why needed
-						else if ( $(this).parents(".accordion-header-content").length ) {
+						if ( $(this).parents(".accordion-header-content").length ) {
 							$(this).parents(".accordion-header-content").css("outline", "none").on("blur", function() {
 								$(this).off("blur").css("outline", "");
 							});
@@ -237,6 +280,7 @@ define(["lib-build/css!./MainView",
 				// From the webmap has the webmap id
 				app.isGalleryCreation = ! app.data.getWebAppData().getOriginalData()
 					|| ! Object.keys(app.data.getWebAppData().getOriginalData().values).length;
+				app.isWebMapCreation = app.data.getWebAppData().isBlank();
 			};
 			
 			this.loadFirstWebmap = function(/*webmapIdOrJSON*/)
@@ -265,7 +309,7 @@ define(["lib-build/css!./MainView",
 					},
 					usePopupManager: true,
 					ignorePopups: false,
-					bingMapsKey: commonConfig.bingMapsKey,
+					bingMapsKey: app.cfg.BING_MAPS_KEY,
 					editable: false,
 					layerMixins: app.data.getAppProxies()
 				}); 
@@ -399,7 +443,7 @@ define(["lib-build/css!./MainView",
 				}
 				// No data in view mode
 				else if( CommonHelper.getAppID(_core.isProd()) ) {
-					if( app.data.userIsAppOwner() ){
+					if( app.userCanEdit ){
 						//app.ui.loadingIndicator.setMessage(i18n.viewer.loading.loadBuilder);
 						//setTimeout(function(){
 							CommonHelper.switchToBuilder();
@@ -497,6 +541,14 @@ define(["lib-build/css!./MainView",
 						appLayout: appLayout,
 						layoutOpt: layoutOpt,
 						appColors: appColors
+					});
+				}
+				
+				if ( app.ui.autoplay ) {
+					app.ui.autoplay.init({
+						color: appColors.panel,
+						themeMajor: appColors.themeMajor,
+						useBackdrop: false
 					});
 				}
 			}
@@ -715,6 +767,11 @@ define(["lib-build/css!./MainView",
 				if ( ! has("ios") && ! isInIframe ) {
 					sizePopup(cfg);
 				}
+				
+				// Stop autoplay in mobile view
+				if ( cfg.isMobileView && app.ui.autoplay ) {
+					app.ui.autoplay.stop();
+				}
 			};
 			
 			function sizePopup(cfg)
@@ -752,9 +809,21 @@ define(["lib-build/css!./MainView",
 				
 				$(window).resize();
 				
-				var disableSharingLinks =  app.data.getWebAppData().isBlank() || app.data.getWebAppItem().access == "private";
+				var disableSharingLinks =  app.data.getWebAppData().isBlank() 
+					|| app.data.getWebAppItem().access == "private"
+					|| app.data.getWebAppItem().access == "shared";
+				
 				if ( app.ui.headerDesktop )
 					app.ui.headerDesktop.toggleSocialBtnAppSharing(disableSharingLinks);
+				
+				if ( app.ui.autoplay ) {
+					if ( app.ui.headerDesktop ) {
+						app.ui.headerDesktop.enableAutoplay();
+					}
+					if ( app.ui.mobileHeader ) {
+						app.ui.mobileHeader.enableAutoplay();
+					}
+				}
 				
 				if ( ! app.isDirectCreation )
 					_core.displayApp();
@@ -884,7 +953,14 @@ define(["lib-build/css!./MainView",
 						if ( currEntryIdx < app.data.getStoryLength() - 1 )
 							nextEntryIdx = currEntryIdx + 1;
 						else {
-							app.ui.headerDesktop.focus({ area: 'social' });
+							// If story is embedded get out to main page
+							// TODO: the focus should still be given to the header but header is not ready yet
+							if (window != window.top) {
+								parent.document.focus();
+							}
+							else {
+								app.ui.headerDesktop.focus({ area: 'social' });
+							}
 							return false;
 						}
 					}

@@ -190,14 +190,6 @@
 						dest: 'deploy/'
 					}]
 				},
-				commonConfig: {
-					files: [{
-						expand: true,
-						cwd: 'src/app',
-						src:['commonConfig.js'],
-						dest: 'deploy/app'
-					}]
-				},
 				readme: {
 					files: [{
 						expand: true,
@@ -432,7 +424,6 @@
 			
 			// Copy resources
 			'copy:config',
-			'copy:commonConfig',
 			'copy:resources',
 			'copy:commonResources',
 			

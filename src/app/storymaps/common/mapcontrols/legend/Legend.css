@@ -10,6 +10,11 @@
 	box-shadow: rgba(0, 0, 0, 0.498039) 0px 4px 7px !important;
 }
 
+.legendContainer table {
+	border-collapse: initial !important;
+	border-spacing: 2px !important;
+}
+
 .legendContainer:not(.isInlined) {
 	position: absolute;
 	top: 0;
@@ -45,6 +50,7 @@
 	max-height: 400px;
 	overflow-x: hidden;
 	margin-right: -10px;
+	margin-left: 8px !important;
 }
 
 .legendContainer.isInlined .content {

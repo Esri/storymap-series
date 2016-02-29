@@ -175,3 +175,8 @@
 #builderPanel .datawarning-popover .popover-title {
 	display: none;
 }
+
+/* footer is overriding max-width to 350px */
+#builderPanel .tooltip-inner {
+	max-width: 200px !important;
+}

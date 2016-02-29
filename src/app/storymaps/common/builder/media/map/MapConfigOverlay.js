@@ -7,10 +7,8 @@ define(["lib-build/tpl!./MapConfigOverlay",
 		"esri/geometry/Extent",
 		"dojo/Deferred",
 		"dojo/on",
-		"dojo/topic",
-		"esri/dijit/Geocoder",
-		"storymaps/common/utils/CommonHelper",
-		"dojo/_base/lang"],
+		"dojo/topic"/*,
+		"storymaps/common/utils/CommonHelper"*/],
 	function (
 		viewTpl,
 		viewCss,
@@ -21,10 +19,8 @@ define(["lib-build/tpl!./MapConfigOverlay",
 		Extent,
 		Deferred,
 		on,
-		topic,
-		Geocoder,
-		CommonHelper,
-		lang
+		topic/*,
+		CommonHelper*/
 	){
 		var container = $('#mainStagePanel'),
 			_viewDeferred = null,
@@ -216,27 +212,30 @@ define(["lib-build/tpl!./MapConfigOverlay",
 			if ( _geocoder )
 				_geocoder.destroy();
 			
+			// If map already has a geocoder through viewer config
+			if ( $(".mainMediaContainer.active .mapContainer").hasClass("has-geocoder") ) {
+				return;
+			}
+			
+			// Map Series is not ready for the following because there isn't proper rules for the placement of the button
+			/*
 			$(".mainMediaContainer.active .geocoder")
 				.html('<div class="simpleGeocoder"></div>')
 				.show();
 			
 			try {
-				var geocoder = new Geocoder(
-					lang.mixin(
-						{
-							map: app.map
-						},
-						CommonHelper.createGeocoderOptions()
-					),
-					$(".mainMediaContainer.active .simpleGeocoder")[0]
-				);
-					
-				$(".mainMediaContainer.active .geocoder input").attr("placeholder", i18n2.commonMedia.editorActionGeocode.lblTitle + "...");
-				
-				geocoder.startup();
+				CommonHelper.createGeocoder({
+					map: app.map, 
+					domNode: $(".mainMediaContainer.active .simpleGeocoder")[0],
+					enableButtonMode: false,
+					placeHolder: i18n2.commonMedia.editorActionGeocode.lblTitle
+				}).then(function(geocoder) {
+					_geocoder = geocoder;
+				});
 			} catch(e){
 				console.error(e);
 			}
+			*/
 		}
 		
 		/*
@@ -396,12 +395,16 @@ define(["lib-build/tpl!./MapConfigOverlay",
 			
 			// TODO should have an error message if not found
 			
-			// If the graphics come from a client side layer OR from a Feature Service
-			var layer = feature.getLayer() || feature.MJlayerRef,
-				fields = layer.fields,
-				objectIdFields = $.grep(fields, function(field){
-					return field.type == "esriFieldTypeOID";
-				});
+			var layer = feature.getLayer(),
+				fields = layer.fields;
+			
+			if ( ! fields ) {
+				return null;
+			}
+			
+			var objectIdFields = $.grep(fields, function(field){
+				return field.type == "esriFieldTypeOID";
+			});
 			
 			if ( layer && fields && ! objectIdFields.length ) {
 				objectIdFields = $.grep(fields, function(field){

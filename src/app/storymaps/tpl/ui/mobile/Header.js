@@ -67,6 +67,22 @@ define(["lib-build/css!./Header",
 				}, 500);
 			};
 			
+			this.toggleSocialBtnAppSharing = function(disable)
+			{
+				HeaderHelper.toggleSocialBtnAppSharing(container, disable);
+			};
+			
+			this.enableAutoplay = function()
+			{
+				container.find('.share-all')
+					.addClass("disabled")
+					.tooltip({
+						title: i18n.viewer.headerFromCommon.tooltipAutoplayDisabled,
+						container: 'body',
+						placement: 'left'
+					});
+			};
+			
 			/*
 			 * Share
 			 */

@@ -111,6 +111,19 @@ define(["dojo/_base/lang"],
 			},
 			
 			/*
+			 * Warning when item and story title differ
+			 */
+			getDoNotWarnTitle: function()
+			{
+				return _data.values.doNotWarnTitle || false;
+			},
+			
+			setDoNotWarnTitle: function(value)
+			{
+				_data.values.doNotWarnTitle = value;
+			},
+			
+			/*
 			 * Webmap id
 			 */
 			getWebmap: function()
@@ -132,7 +145,7 @@ define(["dojo/_base/lang"],
 				//if ( app.isDirectCreationFirstSave && this.getStoryEntries().length > 0 )
 					//this.setTitle($("<div>" + this.getStoryEntries()[0].title + "</div>").text());
 				
-				return _data.values.title;
+				return _data.values.title || "";
 			},
 			setTitle: function(title)
 			{

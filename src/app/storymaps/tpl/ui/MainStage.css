@@ -199,6 +199,25 @@ body.hasTouch .legendMobileErrorExplain {
 	display: none !important;
 }
 
+/* override bootstrap rules so it looks like standard popup */
+
+.esriPopup p {
+	margin: 12px 0;
+}
+
+.esriPopup hr {
+	margin: 6px 0;
+	border: 1px inset;
+}
+
+.esriPopup a {
+	font-weight: normal;
+}
+
+.esriPopup.light .contentPane {
+	color: #333333;
+}
+
 /*
  * Loading
  */

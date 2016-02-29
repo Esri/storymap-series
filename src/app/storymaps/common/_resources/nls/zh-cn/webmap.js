@@ -9,6 +9,8 @@
 				lblControls: "额外部分",
 				lblOverview: "总览图",
 				lblLegend: "图例",
+				lblGeocoder: "地址或地点查找器",
+				tooltipGeocoder: "允许用户在地图上查找地址和地点。",
 				loadingTitle: "加载标题",
 				entry: "条目",
 				entries: "条目",

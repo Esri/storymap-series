@@ -375,6 +375,25 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					$(".mainMediaContainer .embedContainer.custom")
 						.css({ left: 0, right: 0 })
 						.css(posDir, val);
+					
+					// Autoplay
+					if ( ! panelWidth ) {
+						$("#autoplay").css({ left: '50%', right: 'inherit' });
+					}
+					else {
+						var mapArea = panelIsLeft ? bodyWidth - (panelPos.left + panelWidth) : panelPos.left;
+						var panelHeight = $("#descLegendPanel:visible").height();
+						var mapHeight = $("#contentPanel").height();
+						
+						if ( panelHeight <= mapHeight /2 ) {
+							$("#autoplay").css({ left: '50%', right: 'inherit' });
+						}
+						else {
+							$("#autoplay")
+								.css({ left: 'inherit', right: 'inherit' })
+								.css(posDir, val + mapArea / 2);
+						}
+					}
 				}
 				// Accordion Side Panel
 				else {
@@ -393,6 +412,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					$(".mainMediaContainer .imgContainer.center").css({ left: 0, right: 0 });
 					$(".mainMediaContainer .embedContainer.center").css({ left: 0, right: 0 });
 					$(".mainMediaContainer .embedContainer.custom").css({ left: 0, right: 0 });
+					$("#autoplay").css({ left: '50%', right: 'inherit' });
 				}
 			};
 			
@@ -400,7 +420,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			// Management of Main Stage: map
 			//
 			
-			this.preloadAllMaps = function()
+			this.preloadAllMaps = function(noMapLimit)
 			{
 				var entries = app.data.getStoryEntries(),
 					firstEntry = entries[0],
@@ -415,7 +435,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				if (firstEntry.media && firstEntry.media.type == "webmap" ) {
 					// Preload all other map
 					$.each(entriesButFirst, function(i, entry){
-						if ( entry.media && entry.media.type == "webmap" && nbMapsPreloaded < 4 ) {
+						if ( entry.media && entry.media.type == "webmap" && (noMapLimit || nbMapsPreloaded < 4) ) {
 							updateMainMediaMaps(
 								entry.media.webmap.id,
 								entry,
@@ -454,7 +474,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 								handle.remove();
 								
 								$.each(entriesButFirst.slice(firstMapIndex), function(i, entry) {
-									if ( entry.media && entry.media.type == "webmap" && nbMapsPreloaded < 4 ) {
+									if ( entry.media && entry.media.type == "webmap" && (noMapLimit || nbMapsPreloaded < 4) ) {
 										updateMainMediaMaps(
 											entry.media.webmap.id,
 											entry,

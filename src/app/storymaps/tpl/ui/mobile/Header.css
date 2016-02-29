@@ -67,6 +67,11 @@ body.hasTouch .headerMobile .glyphicon {
 	display: none;
 }
 
+.headerMobile .share-all.disabled {
+	cursor: default;
+	opacity: 0.5 !important;
+}
+
 /*
  * Conflict with other font share dialog
  */
