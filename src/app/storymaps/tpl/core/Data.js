@@ -61,6 +61,7 @@ define(["./WebApplicationData",
 						|| (CommonHelper.getPortalUser() != null && CommonHelper.getPortalUser() == this.getWebAppItem().owner)
 						// Admin privilege
 						|| (portalUser && portalUser.privileges && $.inArray("portal:admin:updateItems", portalUser.privileges) > -1 )
+						|| this.getWebAppItem().itemControl == "admin"
 						// Group with shared ownership
 						|| this.getWebAppItem().itemControl == "update";
 			};

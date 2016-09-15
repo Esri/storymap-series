@@ -1,24 +1,24 @@
 CKEDITOR.plugins.add('storymapsAction', {
 	icons: 'geocode,media,removeAction,previewAction',
 	init: function(editor) {
-		
+
 		var getSelectedActionId = function(path)
 		{
 			var elem = path.lastElement && path.lastElement.getAscendant( 'a', true ),
 				elemIsAction = elem && elem.getName() == 'a' && elem.getAttribute('data-storymaps') && elem.getChildCount();
-				
+
 			return elemIsAction ? {
 				elem: elem,
 				id: elem.getAttribute('data-storymaps')
 			} : null;
 		};
-		
+
 		var getLink = function(path)
 		{
 			var elem = path.lastElement && path.lastElement.getAscendant('a', true );
 			return  elem && elem.getName() == 'a' && elem.getAttribute('href') && elem.getChildCount() ? elem.getAttribute('href') : null;
 		};
-		
+
 		/*
 		 * Geocode
 		 */
@@ -46,7 +46,7 @@ CKEDITOR.plugins.add('storymapsAction', {
 				var elem = path.lastElement && path.lastElement.getAscendant( 'a', true ),
 					elemIsLink = elem && elem.getName() == 'a',
 					elemIsZoom = elem && elem.getAttribute('data-storymaps-type') == "zoom";
-				
+
 				if (elemIsLink && ! elemIsZoom || this.forceDisabled)
 					this.setState(CKEDITOR.TRISTATE_DISABLED);
 				else
@@ -56,14 +56,14 @@ CKEDITOR.plugins.add('storymapsAction', {
 			contextSensitive: 1,
 			startDisabled: 1
 		};
-		
+
 		editor.addCommand('geocodeCommand', new CKEDITOR.geocodeCommand());
 		editor.ui.addButton( 'Geocode', {
 			label: i18n.commonMedia.editorActionGeocode.lblTitle,
 			command: 'geocodeCommand',
 			toolbar: 'storymaps'
 		});
-		
+
 		/*
 		 * Change Main Stage media
 		 */
@@ -91,7 +91,7 @@ CKEDITOR.plugins.add('storymapsAction', {
 				var elem = path.lastElement && path.lastElement.getAscendant( 'a', true ),
 					elemIsLink = elem && elem.getName() == 'a',
 					elemIsMedia = elem && elem.getAttribute('data-storymaps-type') == "media";
-				
+
 				if (elemIsLink && ! elemIsMedia)
 					this.setState(CKEDITOR.TRISTATE_DISABLED);
 				else
@@ -101,18 +101,18 @@ CKEDITOR.plugins.add('storymapsAction', {
 			contextSensitive: 1,
 			startDisabled: 1
 		};
-		
+
 		editor.addCommand('mediaCommand', new CKEDITOR.mediaCommand());
 		editor.ui.addButton('Media', {
 			label: i18n.commonMedia.editorActionMedia.lblTitle,
 			command: 'mediaCommand',
 			toolbar: 'storymaps'
 		});
-		
+
 		/*
 		 * Remove map action or unlink
 		 */
-		
+
 		CKEDITOR.removeCommand = function(){ };
 		CKEDITOR.removeCommand.prototype = {
 			exec: function(editor) {
@@ -129,28 +129,28 @@ CKEDITOR.plugins.add('storymapsAction', {
 			startDisabled: 1,
 			requiredContent: 'a[href]'
 		};
-		
+
 		editor.addCommand('removeCommand', new CKEDITOR.removeCommand());
 		editor.ui.addButton('RemoveAction', {
 			label: 'Remove action',
 			command: 'removeCommand',
 			toolbar: 'storymaps'
 		});
-		
+
 		/*
 		 * Preview
 		 */
-		
+
 		CKEDITOR.previewCommand = function(){ };
 		CKEDITOR.previewCommand.prototype = {
 			exec: function(editor) {
 				var path = editor.elementPath();
-				
+
 				if ( getSelectedActionId(path) ) {
 					require(["dojo/topic"], function(topic){
 						topic.publish("EDITOR-PREVIEW", {
 							actionId: getSelectedActionId(path).id
-						});	
+						});
 					});
 				}
 				else if ( getLink(path) )
@@ -166,7 +166,7 @@ CKEDITOR.plugins.add('storymapsAction', {
 			startDisabled: 1,
 			requiredContent: 'a[href]'
 		};
-		
+
 		editor.addCommand('previewCommand', new CKEDITOR.previewCommand());
 			editor.ui.addButton('PreviewAction', {
 			label: 'Preview action',

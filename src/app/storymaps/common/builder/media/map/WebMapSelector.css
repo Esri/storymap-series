@@ -59,7 +59,7 @@
 	font-size: 0.8em;
 	color: grey;
 }
-	
+
 .webmapSelector .sharing-status {
 	position: absolute;
 	right: -72px;
@@ -108,7 +108,7 @@
 	pointer-events: none;
 }
 
-.webmapSelector .map-cfg-title, 
+.webmapSelector .map-cfg-title,
 .webmapSelector .map-cfg-btns {
 	padding: 5px 5px 20px 5px;
 }
@@ -136,7 +136,7 @@
 }
 
 .webmapSelector .helpImg {
-	width: 18px; 
+	width: 18px;
 	vertical-align: -4px;
 }
 
@@ -144,8 +144,8 @@
 	position: absolute;
 	top: 125px;
 	right: 10px;
-	font-size: 1.3em; 
-	font-weight: bold; 
+	font-size: 1.3em;
+	font-weight: bold;
 }
 
 .webmapSelector .webmap-loading .error {

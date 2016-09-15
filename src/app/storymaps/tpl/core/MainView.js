@@ -856,10 +856,11 @@ define(["lib-build/css!./MainView",
 				if ( index < 0 || index > app.data.getStoryLength() - 1 )
 					return;
 				
+				var newEntry = app.data.getStoryByIndex(index);
+				
 				if ( app.data.getCurrentSection() ) {
 					var currentEntry = app.data.getCurrentSection(),
 						currentType = currentEntry && currentEntry.media ? currentEntry.media.type : null,
-						newEntry = app.data.getStoryByIndex(index),
 						newType = newEntry && newEntry.media ? newEntry.media.type : null;
 					
 					if ( currentType != newType )
@@ -867,7 +868,9 @@ define(["lib-build/css!./MainView",
 				}
 				
 				if ( hasMobileView() ) {
-					MobilePopupUtils.close($(".mainMediaContainer.active .mapContainer").siblings('.mobileInfoWindow'));
+					if (! newEntry || newEntry.media.type != 'webmap' || ! newEntry.media.webmap.popup) {
+						MobilePopupUtils.close($(".mainMediaContainer.active .mapContainer").siblings('.mobileInfoWindow'));
+					}
 				}
 				
 				// Change current section

@@ -2,53 +2,49 @@ define(["lib-build/tpl!./Selector",
 		"lib-build/css!./Selector",
 		"./ViewHome",
 		"./ViewFlickr",
-		"./ViewFacebook",
 		"./ViewPicasa",
 		"../ViewPicker",
-		"../ViewConfigure"], 
+		"../ViewConfigure"],
 	function (
 		viewTpl,
 		viewCss,
 		ViewHome,
 		ImageSelectorFlickr,
-		ImageSelectorFacebook,
 		ImageSelectorPicasa,
 		ViewPicker,
 		ViewConfigure
 	){
-		return function Selector(container, params, onDataChangeCallback, backButton) 
+		return function Selector(container, params, onDataChangeCallback, backButton)
 		{
 			container.append(viewTpl({
 				lblStep1: i18n.commonMedia.imageSelector.lblStep1,
 				lblStep2: i18n.commonMedia.imageSelector.lblStep2,
 				lblStep3: i18n.commonMedia.imageSelector.lblStep3
 			}));
-			
+
 			var _selectedView = null,
 				_selectedViewParams = null,
 				_previousViews = null,
 				_mediaView = null,
 				_hasPreviouslyImported = false,
+				_mode = null,
 				_views = {
 					home: new ViewHome(
-						container.find('.viewHomeContainer'), 
+						container.find('.viewHomeContainer'),
 						showView
 					),
 					flickr: new ImageSelectorFlickr(
-						container.find('.viewFlickrContainer'), 
-						showView
-					),
-					facebook: new ImageSelectorFacebook(
-						container.find('.viewFacebookContainer'), 
+						container.find('.viewFlickrContainer'),
 						showView
 					),
 					picasa: new ImageSelectorPicasa(
-						container.find('.viewPicasaContainer'), 
+						container.find('.viewPicasaContainer'),
 						showView
 					),
 					picker: new ViewPicker(
 						container.find('.mediaSelectorPickerContainer'),
-						showView
+						showView,
+						onDataChangeCallback
 					),
 					configure: new ViewConfigure(
 						container.find('.mediaSelectorConfigureContainer'),
@@ -56,15 +52,16 @@ define(["lib-build/tpl!./Selector",
 						showView
 					)
 				};
-				
+
 			init();
-			
+
 			this.present = function(cfg)
 			{
 				_previousViews = [];
 				_selectedView = null;
 				_selectedViewParams = null;
-				
+				_mode = cfg.mode;
+
 				if ( cfg.mode == "edit" && cfg.media && cfg.media.type == "image" ) {
 					showView('configure', {
 						mode: cfg.mode,
@@ -77,30 +74,50 @@ define(["lib-build/tpl!./Selector",
 				else
 					showView('home');
 			};
-			
+
 			this.checkError = function(saveBtn)
 			{
 				var hasError = false;
-				
-				if ( _selectedView == 'configure' )
+
+				if ( _selectedView == 'configure' ) {
+					if(_selectedViewParams.fromService && app.appCfg.mediaPickerSkipConfigure) {
+						hasError = false;
+					}
+					else {
+						hasError = _views[_selectedView].checkError(saveBtn);
+					}
+				}
+				else if ( _mode == "import" ) {
 					hasError = _views[_selectedView].checkError(saveBtn);
+				}
 				else
 					hasError = true;
-				
+
 				container.toggleClass('error', hasError);
-				
+
 				_hasPreviouslyImported = ! hasError;
-				
+
 				return hasError;
 			};
-			
+
 			this.getData = function()
 			{
-				if ( _selectedView == 'configure' )
+				if ( _selectedView == 'configure' ) {
+					if(_selectedViewParams.fromService && app.appCfg.mediaPickerSkipConfigure) {
+						_selectedViewParams.media.url = _selectedViewParams.media.pic_url;
+						return _selectedViewParams.media;
+					}
+					else {
+						return _views[_selectedView].getData();
+					}
+				}
+				else if ( _selectedView == 'picker' && _mode == "import" ) {
 					return _views[_selectedView].getData();
+				}
+
 				return null;
 			};
-			
+
 			this.activate = function()
 			{
 				backButton.toggle(_selectedView != 'home');
@@ -111,46 +128,63 @@ define(["lib-build/tpl!./Selector",
 					});
 				}
 			};
-			
+
 			this.deactivate = function()
 			{
 				backButton.hide().off('click');
 			};
-			
+
 			function showView(view, params, isReturning)
 			{
 				if ( ! _views[view] )
 					return;
-				
+
+				params = params || {};
+				params.mode = _mode;
+
 				if ( view == 'home' )
 					_hasPreviouslyImported = false;
 				else if ( view != 'configure' )
 					_mediaView = view;
-				
+
 				if ( ! isReturning )
 					_previousViews.push({
 						name: _selectedView,
 						params: _selectedViewParams
 					});
-				
+
 				_selectedView = view;
 				_selectedViewParams = params;
-				
+
 				backButton.toggle(_selectedView != 'home');
-				
+
 				if ( view != 'home' ) {
 					backButton.off('click').click(function(){
 						var previousView = _previousViews.pop() || { name: 'home' };
 						showView(previousView.name || 'home', previousView.params, true);
 					});
 				}
-				
+
 				container.find('.selectorView').hide();
-				_views[view].present(params);
-				
+				if(! _selectedViewParams || ! _selectedViewParams.fromService || ! app.appCfg.mediaPickerSkipConfigure) {
+					_views[view].present(params);
+				}
+
+				// Enable add button for Shortlist when adding by URL
+				if (app.appCfg.mediaPickerConfigureForceMode == "shortlist") {
+					if(view == 'picker' && _mode == "import") {
+						$('.opt-select-all-container').show();
+					}
+					else {
+						$('.opt-select-all-container').hide();
+					}
+					container.parents('.modal-content').find('.modal-footer .btnSubmit')
+						.toggle(view == 'configure' || _mode == "import");
+				}
+
 				onDataChangeCallback && onDataChangeCallback();
 			}
-			
+
 			function init()
 			{
 				//

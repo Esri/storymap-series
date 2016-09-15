@@ -10,23 +10,23 @@ define([],
 			apply: function(){
 				if(typeof String.prototype.trim !== 'function') {
 					String.prototype.trim = function() {
-						return this.replace(/^\s+|\s+$/g, ''); 
+						return this.replace(/^\s+|\s+$/g, '');
 					};
 				}
-				
+
 				if (!Date.now) {
 					Date.now = function() {
 						return new Date().valueOf();
 					};
 				}
-				
+
 				/*
 				 * AddEventListener IE8
 				 */
 				/*
 				(function(win, doc){
 					if(win.addEventListener)return;		//No need to polyfill
-				 
+
 					function docHijack(p){var old = doc[p];doc[p] = function(v){return addListen(old(v))}}
 					function addEvent(on, fn, self){
 						return (self = this).attachEvent('on' + on, function(e){
@@ -41,7 +41,7 @@ define([],
 						else obj.addEventListener = addEvent;
 						return obj;
 					}
-				 
+
 					addListen([doc, win]);
 					if('Element' in win)win.Element.prototype.addEventListener = addEvent;			//IE8
 					else{		//IE < 8
@@ -49,13 +49,13 @@ define([],
 						docHijack('getElementsByTagName');
 						docHijack('getElementById');
 						docHijack('createElement');
-						addListen(doc.all);	
+						addListen(doc.all);
 					}
 				})(window, document);
 				*/
-				
-				Object.keys = Object.keys || 
-					function ( 
+
+				Object.keys = Object.keys ||
+					function (
 						o, // object
 						k, // key
 						r  // result array
@@ -63,24 +63,24 @@ define([],
 						// initialize object and result
 						r=[];
 						// iterate over object keys
-						for (k in o) 
+						for (k in o)
 							// fill result array with non-prototypical keys
 							r.hasOwnProperty.call(o, k) && r.push(k);
 						// return result
 						return r
 					};
-					
+
 				// btoa and atob
 				;(function () {
 					var object = typeof exports != 'undefined' ? exports : this; // #8: web workers
 					var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-					
+
 					function InvalidCharacterError(message) {
 						this.message = message;
 					}
 					InvalidCharacterError.prototype = new Error;
 					InvalidCharacterError.prototype.name = 'InvalidCharacterError';
-					
+
 					// encoder
 					// [https://gist.github.com/999166] by [https://github.com/nignag]
 					object.btoa || (

@@ -3,8 +3,8 @@ define({
     "layouts": {
       "tabTitle": "Przy użyciu kart",
       "tabDescr": "Prezentacja map i innych treści za pomocą kart z opcjonalnym panelem dla opisu.",
-      "tabItem": "Karta:",
-      "tabItems": "karta",
+      "tabItem": "Karta",
+      "tabItems": "Karty",
       "sideTitle": "Zakładki boczne (Akordeon)",
       "sideDescr": "Prezentacja map i innych treści za pomocą rozwijanego sterowania zawierającego opis.",
       "sideItem": "Wpis",

@@ -128,6 +128,7 @@ body.hasTouch .legendMobileErrorExplain {
     height:100%;
     width:100% !important;
     overflow:hidden;
+    background-color: #FFF;
 }
 
 .mapContainer.legend {

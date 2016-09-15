@@ -1,9 +1,9 @@
 define(["lib-build/tpl!./Landing",
-		"lib-build/css!./Landing"], 
+		"lib-build/css!./Landing"],
 	function (
 		viewTpl
 	){
-		return function Landing(container, addFirstSectionCallback, helpCallback) 
+		return function Landing(container, addFirstSectionCallback, helpCallback)
 		{
 			var QUOTES = [
 				[
@@ -47,73 +47,73 @@ define(["lib-build/tpl!./Landing",
 					"--Robert McKee"
 				]
 			];
-			
-			
+
+
 			container.append(viewTpl({
 				lblAdd: i18n.builder.landing.lblAdd,
 				phAdd: i18n.builder.landing.phAdd,
 				lblOR: i18n.builder.landing.lblOR,
 				lblHelp: i18n.builder.landing.lblHelp
 			}));
-			
+
 			initEvents();
-			
-			this.toggle = function(state) 
+
+			this.toggle = function(state)
 			{
 				if ( i18n.builder.landing.lblAdd.match('%LAYOUT_TITLE%') )
 					container.find('.landing-add-container .landing-lbl').html(i18n.builder.landing.lblAdd.replace('%LAYOUT_TITLE%', app.data.getCurrentLayoutStaticConfig().title));
-				
-				if ( ! getTitle() && app.isGalleryCreation ) {
+
+				if ( ! getTitle() && (app.isGalleryCreation || app.isWebMapCreation) ) {
 					container.find(".landing-add-container .add-title")
 						.val(app.data.getWebAppItem().title)
 						.select();
 					onTitleChange();
 				}
-				
+
 				container.toggle(state);
 				$("#builderQuotes").toggle(state);
 				focus();
 			};
-			
+
 			this.focus = function()
 			{
 				container.find(".landing-add-container .add-title").focus();
 			};
-			
+
 			function getTitle()
 			{
 				return container.find(".landing-add-container .add-title").val();
 			}
-			
+
 			function onTitleChange()
 			{
 				container.find(".landing-add-container .landing-btn").toggleClass("disabled", ! getTitle());
 			}
-			
+
 			function onClickAdd()
 			{
 				if ( ! $(this).hasClass("disabled") )
 					addFirstSectionCallback(getTitle());
 			}
-			
+
 			function onKeyUp(e)
 			{
 				if ( e.keyCode == 13 && $(this).val() )
-					onClickAdd(); 
+					onClickAdd();
 			}
-			
+
 			function initEvents()
 			{
 				container.find(".landing-add-container .add-title")
 					.bind('input propertychange', onTitleChange)
 					.keyup(onKeyUp);
-				
+
 				container.find(".landing-add-container .landing-btn").click(onClickAdd);
 				container.find(".landing-tour-container").click(helpCallback);
-				
+
 				$("#builderQuotes").html(
-					'<div style="padding: 0 18%">' 
-					+ QUOTES[Math.floor(Math.random() * QUOTES.length)].join("<br />") 
+					'<div style="padding: 0 18%">'
+					+ QUOTES[Math.floor(Math.random() * QUOTES.length)].join("<br />")
 					+ "</div>"
 				);
 			}

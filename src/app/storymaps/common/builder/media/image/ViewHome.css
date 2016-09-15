@@ -8,12 +8,16 @@
 	margin-left: 10px;
 }
 
+.imageSelectorHome.two-choices .imageSelectorTable {
+	width: 100%;
+}
+
 .imageSelectorHome .imageSelectorTable .btn-container {
-	padding: 15px 16px;
+	padding: 15px 36px;
 }
 
 .mediaSelector.smallSize .imageSelectorHome .imageSelectorTable .btn-container {
-	padding: 15px 12px;
+	padding: 15px 30px;
 }
 
 .imageSelectorHome .imageSelectorTable .btn-img {
@@ -25,12 +29,6 @@
 
 .imageSelectorHome .btn-select-flickr .btn-img {
 	background: url(../../../_resources/icons/media/builder-media-flickr.png);
-	background-size: 100px auto;
-	background-repeat: no-repeat;
-}
-
-.imageSelectorHome .btn-select-fb .btn-img {
-	background: url(../../../_resources/icons/media/builder-media-facebook.png);
 	background-size: 100px auto;
 	background-repeat: no-repeat;
 }
@@ -66,4 +64,9 @@
 	background-color: #BDD1E2;
 	cursor: pointer;
 	border-radius: 10px;
+}
+
+.facebook-warning {
+	text-align: center;
+	font-size: 80%;
 }

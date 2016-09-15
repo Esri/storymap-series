@@ -1,4 +1,4 @@
-Story Map Series
+﻿Story Map Series
 ================
 
 The Story Map Series app lets you present a series of maps via tabs, numbered bullets, or a side accordion. In addition to maps, you can also include images, video and web content in your series to tell your story and engage your audience. For example the first tab in a tabbed series can be a compelling photo that sets the scene.
@@ -13,7 +13,7 @@ The Story Map Series app lets you present a series of maps via tabs, numbered bu
 [Download](http://links.esri.com/storymaps/map_series_template_zip) |
 [Map Series page on Esri Story Maps website](http://links.esri.com/storymaps/map_series_app)
 
-**Latest release is version 1.5.1**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
+**Latest release is version 1.5.2**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
 
 For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
 

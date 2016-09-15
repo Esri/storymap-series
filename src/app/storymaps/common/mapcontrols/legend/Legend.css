@@ -57,13 +57,13 @@
 	/* This makes IE10 to crash when opening a Map Series that contains an inlined legend for first entry */
 	/*max-height: inherit;*/
 	max-height: initial;
-} 
+}
 
 .legendContainer .content.settingsOpen {
 	min-height: 55px
 }
 
-.legendContainer, 
+.legendContainer,
 .legendContainer .settingsOverlay {
 	-webkit-border-bottom-right-radius: 8px;
 	-webkit-border-bottom-left-radius: 8px;

@@ -22,9 +22,11 @@ else {
 			i18n = i18nViewer;
 			
 		 	require([
+		 	        "lib-app/jquery",
 					"storymaps/common/Core", 
 					"storymaps/tpl/core/MainView"
 				], function(
+					jQuery,
 					Core, 
 					MainView
 				){

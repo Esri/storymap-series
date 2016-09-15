@@ -22,3 +22,20 @@
 	max-width: 250px;
 	max-height: 100px;
 }
+
+/*
+ * Import
+ */
+
+.mediaSelectorPickerContainer .mediaItem.selected {
+	background-color: #c4c9ce;
+	border-color: red;
+}
+
+.mediaSelectorPickerContainer .mediaItem.import {
+	border-width: 3px;
+	border: solid;
+	border-color: transparent;
+	margin-top: 3px;
+	margin-right: 3px;
+}

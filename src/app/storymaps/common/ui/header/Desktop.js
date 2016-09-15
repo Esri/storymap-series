@@ -2,48 +2,48 @@ define(["lib-build/css!./Desktop",
 		"../../utils/HeaderHelper",
 		"../../builder/InlineFieldEdit",
 		"../../utils/CommonHelper",
-		"dojo/has", 
-		"dojo/topic"], 
+		"dojo/has",
+		"dojo/topic"],
 	function(
 		viewCss,
 		HeaderHelper,
 		InlineFieldEdit,
-		CommonHelper, 
-		has, 
+		CommonHelper,
+		has,
 		topic
 	){
 		return function Desktop(container, isInBuilder)
 		{
 			var _this = this;
-			
+
 			this.init = function(hide, title, subtitle, headerCfg, colors, displaySwitchBuilderButton, defaultToCompact)
 			{
 				setColor(colors);
-				
+
 				if (hide) {
 					container.addClass('hideDesktop');
 					return;
 				}
-	
+
 				// Desktop builder
 				if( isInBuilder ) {
 					container.addClass('isBuilder');
 					title =  "<div class='text_edit_label'>" + (title || i18n.commonCore.inlineFieldEdit.editMe) + "</div>";
 					title += "<div class='text_edit_icon' title='" + i18n.commonCore.header.title.replace("%TPL_NAME%", app.cfg.TPL_NAME) + "'></div>";
 					title += "<textarea rows='1' class='text_edit_input form-control' type='text' spellcheck='true'></textarea>";
-	
+
 					subtitle =  "<span class='text_edit_label'>" + (subtitle || i18n.commonCore.inlineFieldEdit.editMe) + "</span>";
 					subtitle += "<div class='text_edit_icon' title='" + i18n.commonCore.header.subtitle.replace("%TPL_NAME%", app.cfg.TPL_NAME) + "'></div>";
 					subtitle += "<textarea rows='3' class='text_edit_input form-control' type='text' spellcheck='true'></textarea>";
 				}
-	
+
 				container.find('.title').html(title);
 				container.find('.subtitle').html(subtitle);
-	
+
 				// Desktop builder
 				if( isInBuilder )
 					new InlineFieldEdit(container, editFieldsEnterEvent, editFieldsExitEvent);
-				
+
 				if( ! isInBuilder && ! subtitle ) {
 					var isCompact = headerCfg.compactSize === undefined ? defaultToCompact : headerCfg.compactSize;
 					if ( ! isCompact ) {
@@ -54,7 +54,7 @@ define(["lib-build/css!./Desktop",
 						container.find('.subtitle').css("height", 32).attr("tabindex", "-1");
 					}
 				}
-	
+
 				if ( displaySwitchBuilderButton ) {
 					container.find(".switchBuilder")
 						.html('<span class="glyphicon glyphicon-cog"></span>' + i18n.viewer.headerFromCommon.builderButton + '<span aria-hidden="true" class="switch-builder-close">×</span>')
@@ -72,31 +72,31 @@ define(["lib-build/css!./Desktop",
 						});
 					}
 				}
-				
+
 				if ( ! app.isInBuilder && app.userCanEdit && has("ie") != 9 && ! CommonHelper.getUrlParams().preview ) {
 					container.find('.error-status').addClass('enabled');
 					topic.subscribe("MYSTORIES_SCAN", updateErrorStatus);
 					updateErrorStatus("start");
 				}
-				
+
 				setHeader(headerCfg, defaultToCompact);
 			};
-			
+
 			this.resize = function(widthViewport)
 			{
 				if ( ! widthViewport )
 					widthViewport = $(document).width();
-				
+
 				var rightAreaWidth = Math.max(container.find(".logoImg").outerWidth() + 50, container.find(".rightArea").outerWidth() + 20);
 				container.find(".textArea").width(widthViewport - rightAreaWidth - 15);
 			};
-			
+
 			this.update = function(headerCfg, colors, defaultToCompact)
 			{
 				setColor(colors);
 				setHeader(headerCfg, defaultToCompact);
 			};
-			
+
 			this.getTitle = function()
 			{
 				if ( isInBuilder )
@@ -104,7 +104,7 @@ define(["lib-build/css!./Desktop",
 				else
 					return container.find('.title').html();
 			};
-			
+
 			this.getSubtitle = function()
 			{
 				if ( isInBuilder )
@@ -112,48 +112,48 @@ define(["lib-build/css!./Desktop",
 				else
 					return container.find('.subtitle').html();
 			};
-			
+
 			this.setTitleAndSubtitle = function(title, subtitle)
 			{
 				var defaultText = isInBuilder ? i18n.commonCore.inlineFieldEdit.editMe : '';
-				
+
 				container.find('.title' + (isInBuilder ? ' .text_edit_label' : '')).html(title || defaultText);
 				container.find('.subtitle' + (isInBuilder ? ' .text_edit_label' : '')).html(subtitle || defaultText);
 			};
-			
+
 			this.toggleSocialBtnAppSharing = function(disable)
 			{
 				HeaderHelper.toggleSocialBtnAppSharing(container, disable);
 			};
-			
+
 			/*
 			 * 508 tab navigation
 			 */
-			
+
 			this.focus = function(p)
 			{
 				if ( ! p || p.area == "social" ) {
 					$("#headerDesktop .shareIcon").attr("tabindex", "0");
-					
+
 					if ( $("#headerDesktop .linkContainer a").length )
 						$("#headerDesktop .linkContainer a").attr("tabindex", "0")[0].focus();
 					else if ( $("#headerDesktop .linkContainer").length )
 						$("#headerDesktop .linkContainer").attr("tabindex", "0")[0].focus();
 					else if ( $("#headerDesktop .shareIcon:visible").length )
 						$("#headerDesktop .shareIcon")[0].focus();
-					else 
+					else
 						focusTitleOrSubtitle();
 				}
 				else {
 					focusTitleOrSubtitle();
 				}
 			};
-			
+
 			this.enableAutoplay = function()
 			{
 				HeaderHelper.disableSocialBtnAppSharingAutoplay(container);
 			};
-			
+
 			function focusTitleOrSubtitle()
 			{
 				if ( $("#headerDesktop .subtitle:visible").length )
@@ -161,29 +161,29 @@ define(["lib-build/css!./Desktop",
 				else
 					$("#headerDesktop .title")[0].focus();
 			}
-			
+
 			/*
 			 * Styling
 			 */
-			
+
 			function setColor(colors)
 			{
 				container.css("background-color", colors.header);
 				container.find(".textArea").css("color", colors.headerTitle);
 				container.find(".rightArea").css("color", colors.headerText);
 			}
-			
+
 			function setHeader(headerCfg, defaultToCompact)
 			{
 				var isCompact = headerCfg.compactSize === undefined ? defaultToCompact : headerCfg.compactSize;
-				
+
 				HeaderHelper.setLogo(container, headerCfg, _this.resize);
 				HeaderHelper.setLink(container, headerCfg);
 				HeaderHelper.setSocial(container, headerCfg);
 				HeaderHelper.initEvents(container, "bottom");
-				
+
 				container.toggleClass('compact', isCompact);
-				
+
 				// Prevent logo and social links to be properly aligned
 				if ( isCompact ) {
 					container.find(".rightArea").hide();
@@ -192,11 +192,11 @@ define(["lib-build/css!./Desktop",
 					}, 0);
 				}
 			}
-			
+
 			/*
 			 * My Stories
 			 */
-			
+
 			function removeErrorStatus()
 			{
 				container.find('.check-story').hide();
@@ -206,7 +206,7 @@ define(["lib-build/css!./Desktop",
 				_this.resize();
 				return false;
 			}
-			
+
 			function removeErrorStatus2()
 			{
 				container.find('.share-story').hide();
@@ -216,18 +216,18 @@ define(["lib-build/css!./Desktop",
 				_this.resize();
 				return false;
 			}
-			
+
 			function updateErrorStatus(status)
 			{
 				var checkBtn = container.find('.check-story'),
 					closeBtn = $('<span aria-hidden="true" class="check-story-close">×</span>'),
 					closeBtn2 = $('<span aria-hidden="true" class="check-story-close">×</span>');
-				
+
 				checkBtn.off('click').removeClass("forceEvent").show();
 
 				closeBtn.click(removeErrorStatus);
 				closeBtn2.click(removeErrorStatus2);
-				
+
 				if ( status == "start" ) {
 					checkBtn
 						.html('<span class="small-loader"></span>' +  i18n.viewer.headerFromCommon.checking)
@@ -257,48 +257,48 @@ define(["lib-build/css!./Desktop",
 						.click(removeErrorStatus)
 						.addClass("forceEvent");
 				}
-				
+
 				//
 				// Sharing
 				//
-				
+
 				container.find(".share-story")
 					.html(i18n.viewer.headerFromCommon.notshared)
 					.append(closeBtn2)
 					.toggle(app.data.getWebAppItem().access == "private" || app.data.getWebAppItem().access == "shared");
 			}
-	
+
 			/*
 			 * Builder
 			 */
-	
+
 			function editFieldsEnterEvent()
 			{
 				//
 			}
-			
+
 			function editFieldsExitEvent(src, value)
 			{
-				setTimeout(function(){ 
+				setTimeout(function(){
 					topic.publish("HEADER_EDITED", {
-						src: $(src).attr("class").split(' ')[0], 
+						src: $(src).attr("class").split(' ')[0],
 						value: value
 					});
 					// TODO only if the value has changed
 					$(src).removeClass("error");
 				}, has("ios") || has("ie") >= 10 ? 700 : 0);
-				
+
 				app.builder.hideSaveConfirmation();
 			}
-			
+
 			this.setTitleError = function()
 			{
 				container.find(".title").addClass("error");
 			};
-	
+
 			this.initLocalization = function()
 			{
-				
+
 			};
 		};
 	}

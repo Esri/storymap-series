@@ -3,7 +3,7 @@
 	/* TODO */
 	background: #444;
 	color: #fff;
-	
+
 	margin: 0;
 	overflow: hidden;
 }
@@ -145,7 +145,7 @@
 }
 
 #headerDesktop .logoWrapper {
-	height: 50px; 
+	height: 50px;
 	vertical-align: middle;
 }
 
@@ -163,8 +163,8 @@
 }
 
 #headerDesktop .switchBuilder .switch-builder-close {
-	margin-left: 5px; 
-	cursor: pointer; 
+	margin-left: 5px;
+	cursor: pointer;
 	pointer-events: all;
 }
 
@@ -173,7 +173,7 @@
  */
 
 #headerDesktop .error-status {
-	display: none;	
+	display: none;
 }
 
 #headerDesktop .error-status.enabled {
@@ -191,8 +191,8 @@
 }
 
 #headerDesktop .error-status .check-story-close {
-	margin: 0px 3px 0px 5px; 
-	cursor: pointer; 
+	margin: 0px 3px 0px 5px;
+	cursor: pointer;
 	pointer-events: all;
 }
 
@@ -218,7 +218,7 @@
 }
 
 /* Reduce the width of the field to be sure that icon will stay visible */
-#headerDesktop .text_edit_label { 
+#headerDesktop .text_edit_label {
 	max-width: 94%;
 	overflow: hidden;
 }

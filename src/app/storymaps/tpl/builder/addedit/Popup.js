@@ -102,16 +102,15 @@ define(["lib-build/tpl!./Popup",
 					showLocationControl = true;
 				// There is webmap, get the index of the first entry that use a Map
 				else {
-					//console.log(cfg.webmaps)
+					// Find first entry the map is used
 					var firstMapEntryIndex = Number.MAX_VALUE;
 					$.each(cfg.webmaps, function(i, webmap){
 						var idx = Math.min.apply(null, webmap.entries);
-						//console.log(firstMapEntryIndex, idx, webmap.entries, cfg.webmaps)
 						firstMapEntryIndex = Math.min(firstMapEntryIndex, idx);
 					});
 					
 					// cfg.webmap[x].entries start at index 1 unlike cfg.entryIndex
-					if ( cfg.entryIndex < firstMapEntryIndex )
+					if ( firstMapEntryIndex === Number.MAX_VALUE || cfg.entryIndex < firstMapEntryIndex )
 						showLocationControl = true;
 				}
 				
