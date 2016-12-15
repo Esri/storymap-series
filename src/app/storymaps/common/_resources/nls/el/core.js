@@ -21,7 +21,9 @@ define({
       "mystories": "Οι αφηγήσεις μου"
     },
     "inlineFieldEdit": {
-      "editMe": "Επεξεργαστείτε!"
+      "editMe": "Επεξεργαστείτε!",
+      "enterTitle": "Εισαγωγή τίτλου...",
+      "enterSubtitle": "Εισαγωγή προαιρετικού υπότιτλου..."
     },
     "builderPanel": {
       "panelHeader": "Εργαλείο δημιουργίας %TPL_NAME%",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Κεφαλίδα",
-      "logoEsri": "Λογότυπο Esri",
-      "logoNone": "Χωρίς λογότυπο",
-      "logoCustom": "Προσαρμοσμένο λογότυπο",
-      "logoCustomPlaceholder": "URL (μέγιστο μέγεθος 250x50 pixel)",
-      "logoCustomTargetPlaceholder": "Ενσωματωμένος σύνδεσμος",
-      "logoSocialExplain": "Προσαρμόστε το σύνδεσμο της κεφαλίδας.",
-      "logoSocialText": "Κείμενο",
-      "logoSocialLink": "Σύνδεσμος",
+      "logoEsriRadio": "Λογότυπο Esri",
+      "logoNoneRadio": "Χωρίς λογότυπο",
+      "logoCustomRadio": "Το λογότυπό μου",
+      "logoCustomLabel": "Εικόνα:",
+      "logoCustomUploadHelp": "Τα λογότυπα φαίνονται καλύτερα, αν έχουν αναλογία πλάτους:ύψους μεταξύ 1:1 και 5:1. Αν κάποιο συνδεδεμένο λογότυπο εμφανίζεται αργά, αποθηκεύστε ένα αντίγραφο και μεταφορτώστε το εδώ.",
+      "logoCustomUploadTooltip": "Χρήση μεταφορτωμένου λογότυπου",
+      "logoCustomUploadButton": "Μεταφόρτωση λογότυπου",
+      "logoUploadSizeError": "Οι διαστάσεις GIF είναι υπερβολικά μεγάλες. Αλλάξτε το μέγεθος του πλάτους σε ${PIXEL-WIDTH} pixel.",
+      "logoCustomLinkTooltip": "Σύνδεσμος για λογότυπο",
+      "logoCustomLinkPlaceholder": "URL εικόνας",
+      "logoUploadGenericError": "Το λογότυπο μπορεί να είναι αρχείο .bmp, .gif, .jpg, .jpeg ή .png. Το πλάτος των αρχείων gif πρέπει να είναι μικρότερο από 250 pixel και το μέγεθός τους μικρότερο από 10 Mb.",
+      "logoCustomTargetPlaceholder": "Η ιστοσελίδα θα ανοίγει, όταν γίνεται κλικ στο λογότυπο",
+      "logoSocialText": "Διαφημιστικό σύνθημα:",
+      "logoLink": "Σύνδεσμος:",
       "lblSmallHeader": "Χρήση μικρής κεφαλίδας (χωρίς υπότιτλο)"
     },
     "header": {

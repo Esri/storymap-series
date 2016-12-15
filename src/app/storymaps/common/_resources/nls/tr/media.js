@@ -7,8 +7,9 @@ define({
       "lblImage": "Görüntü",
       "lblVideo": "Video",
       "lblExternal": "Web sayfası",
+      "lblUpload": "Yükle",
+      "lblLink": "Bağlantı",
       "disabled": "Bu özellik Yönetici tarafından devre dışı bırakıldı",
-      "url": "Bir resmin web adresine manuel olarak girmek için",
       "userLookup": "Albüm yükle",
       "notImplemented": "Henüz uygulanmadı.",
       "noData": "Hiçbir genel albüm bulunamadı"
@@ -20,6 +21,15 @@ define({
     },
     "imageSelectorHome": {
       "explain": "Sosyal medyadan ya da doğrudan <br /> bir URL'den resim yükle"
+    },
+    "imageSelectorUpload": {
+      "lblUploadButton": "bir görüntü ara",
+      "lblDrop": "Buraya bir görüntü bırakın veya",
+      "infoUpload": "Görüntüler ArcGIS hesabınızda saklanır ve yalnızca hikayenizin içinden erişilebilir.",
+      "warningFileTypes": "Görüntü .jpg, .png, .gif veya .bmp olabilir",
+      "warningOneFile": "Tek seferde bir dosya onaylanır.",
+      "warningFileSize": "Dosya izin verilen yükleme boyutu üst sınırını aştı. Başka bir dosya seçin.",
+      "tooltipRemove": "Kullanılmayan bu görüntüyü ArcGIS hesabınızdan silin. <br> (Daha sonra kullanmak isterseniz, dosyayı yeniden yüklemeniz gerekir.)"
     },
     "imageSelectorFlickr": {
       "userInputLbl": "Kullanıcı adı",
@@ -36,7 +46,7 @@ define({
       "learn": "daha fazla bilgi"
     },
     "imageSelectorPicasa": {
-      "userInputLbl": "E-posta veya Picasa kimliği",
+      "userInputLbl": "E-posta veya Google ID",
       "signInMsg2": "Hesap bulunamadı",
       "howToFind": "Picasa kimliğini bulma",
       "howToFind2": "Herhangi bir Picasa sayfasının ilk ve ikinci '/' karakteri arasındaki rakamları kopyalayın"
@@ -51,7 +61,7 @@ define({
       "other": "Diğer"
     },
     "videoSelectorYoutube": {
-      "url": "Bir Youtube videosu URL'si",
+      "url": "YouTube video bağlantısı",
       "pageInputLbl": "Kullanıcı adı",
       "lookupMsgError": "Kullanıcı bulunamadı",
       "howToFind": "YouTube kullanıcı adı bulma",
@@ -62,16 +72,16 @@ define({
       "checkFailedAPI": "YouTube denetimi başarısız oldu, YouTube API anahtarınızı kontrol edin."
     },
     "videoSelectorVimeo": {
-      "url": "Bir Vimeo videosu URL'si"
+      "url": "Vimeo video bağlantısı"
     },
     "videoSelectorOther": {
-      "explain1": "Hikaye işlenmemiş videoları (avi, mpeg gibi) oynatamaz, ancak dahili oynatıcıları olan (YouTube ya da Vimeo gibi) barındırılan video dosyalarını oynatabilir.",
-      "explain2": "Çoğu çevrimiçi video barındırma hizmeti bu özelliği sunar, videoyu gömmek için geçerli seçeneği bulmalı, verilen kodu kopyalamalı ve %WEBPAGE% kullanmalısınız.",
-      "explain3": "Alternatif olarak videoyu kendiniz barındırmak istiyorsanız, %EXAMPLE% gibi bir video oynatıcı kullanan bir HTML sayfası oluşturabilir, sayfayı barındırabilir ve ayrıca %WEBPAGE% kullanabilirsiniz.",
-      "webpage": "Web sayfası özelliği"
+      "explain1": "Bu hikaye haritası işlenmemiş video dosyalarını (avi, mpeg gibi) oynatamaz, ancak dahili oynatıcıları olan (YouTube ya da Vimeo gibi) barındırılan videoları oynatabilir.",
+      "explain2": "Çoğu çevrimiçi video barındırma hizmeti bu detayı sunar. Videoyu yerleştirme seçeneğini bulun, verilen kodu kopyalayın ve %WEBPAGE% içerik seçeneğini kullanarak videoyu hikayenize ekleyin.",
+      "explain3": "Alternatif olarak videoyu kendiniz barındırmak için %EXAMPLE% gibi bir video oynatıcı kullanan bir HTML sayfası oluşturabilirsiniz. Daha sonra söz konusu HTML sayfasının URL'sini hikayenize bir %WEBPAGE% olarak ekleyebilirsiniz.",
+      "webpage": "Web sayfası"
     },
     "webpageSelectorHome": {
-      "lblUrl": "Web sayfası URL'si",
+      "lblUrl": "Web sayfası bağlantısı",
       "lblEmbed": "Kod ekle",
       "lblOR": "YA DA",
       "lblError1": "Hata, iki giriş alanından birini silin.",
@@ -79,11 +89,11 @@ define({
       "configure": "Yapılandır"
     },
     "mediaConfigure": {
-      "lblURL": "URL",
-      "lblURLPH": "Bir görüntü URL'si http:// ile başlamalı ve .jpg ya da .png ile bitmelidir",
+      "lblURL": "Görüntü bağlantısı",
+      "lblURLPH": "Bağlantı .jpg, .png, .gif veya .bmp ile bitmelidir",
       "lblURLError": "Bu görüntü geçerli gibi görünmüyor. Bir görüntü dosyasına bir doğrudan bağlantı belirtin (URL'niz genelde .jpg ya da .png ile biter). Web sayfasının bağlantıları çalışmayan bir görüntü içeriyor.",
       "lblURLCheck": "Görüntü denetleniyor...",
-      "lblLabel": "Görüntü Alt Yazısı",
+      "lblLabel": "Image caption",
       "lblLabel1": "Altyazı",
       "lblLabel2": "Metnin üzerinde gezin",
       "lblLabel3": "Hiçbiri",
@@ -96,6 +106,7 @@ define({
       "lblPosition3": "Sığdır",
       "lblPosition4": "Esnet",
       "lblPosition5": "Özel",
+      "lblURLHelp": "For best results, images should be less than 400 KB. Use compressed JPG images at 80% quality and these recommended image widths: 2000 pixels for main stage or narrative panel with maximize button, 1000 pixels for narrative panel without maximize button.<br><br>If a linked image draws slowly, upload it to your story for better results.",
       "tooltipDimension": "Değer 'px' ya da '%' cinsinden belirtilebilir",
       "tooltipDimension2": "Değer //'px//' cinsinden belirtilmelidir",
       "lblPosition2Explain": "(kırpılabilir)",
@@ -103,14 +114,18 @@ define({
       "lblPosition3Explain2": "(genişlik her zaman panele sığacaktır)",
       "lblPosition4Explain": "(şekil değiştirebilir)",
       "unloadLbl": "Okuyucu başka yere gittiğinde yüklemeyi kaldır",
-      "unloadHelp": "Web Sayfasında ses ya da video ortamı varsa, okuyucu başka bir yere gittiğinde içeriğin oynatımını durdurmak için bu seçeneği işaretli bırakın. Okuyucu metin boyunca ilerlerken örneğin bir arka plan müziğini oynatmaya devam etmek için işareti kaldırın.<br />Web Sayfası bir uygulamaysa, bu seçeneğin işaretini kaldırarak, okuyucu geri döndüğünde hikayenin yeniden yüklenmesini önleyebilirsiniz.",
+      "unloadHelp": "Web sayfasında ses veya video ortamı varsa, okuyucu başka bir yere gittiğinde içeriğin oynatımını durdurmak için bu seçeneği işaretli bırakın. Okuyucu metin boyunca ilerlerken örneğin bir arka plan müziğini oynatmaya devam etmek için işareti kaldırın.<br />Web sayfası bir uygulamaysa, bu seçeneğin işaretini kaldırarak, okuyucu geri döndüğünde hikayenin yeniden yüklenmesini önleyebilirsiniz.",
       "embedProtocolLabel": "Sayfayı bir güvenli bağlantı üzerinden yükle (HTTPS)",
-      "embedProtocolWarning1": "Hikayeniz güvenli bir bağlantı (https) üzerinden yüklenecek şekilde yapılandırılmış, bu nedenle hikayedeki web sayfası gösteriminin de güvenli bağlantı kullanması gerekir. Sayfa yüklenmiyorsa, bunun nedeni güvenli bir bağlantı sağlanamaması veya sayfanın hikayenize eklenememesi (bazı web siteleri bunu kısıtlamaktadır) olabilir. Sayfayı yeni bir tarayıcı sekmesinde açmak için bir köprü metni oluşturmanız gerekir.",
-      "embedProtocolWarning2": "Hikayeniz güvenli olmayan bir bağlantı (http) üzerinden yüklenecek şekilde yapılandırılmış, bu nedenle bu sayfayı güvenli (önerilen) veya güvenli olmayan bağlantı üzerinden yüklemeyi seçebilirsiniz. Sayfa yüklenmiyorsa, bunun nedeni sayfanın seçtiğiniz bağlantı türünü desteklememesi veya hikayenize eklenememesi (bazı web siteleri bunu kısıtlamaktadır) olabilir. Sayfayı yeni bir tarayıcı sekmesinde açmak için bir köprü metni oluşturmanız gerekir."
+      "embedProtocolWarning1": "Bu sayfa hikayenizde yüklenmiyorsa, web güvenliği nedeniyle katıştırılamaz. Alternatif olarak, açıklamanıza bir bağlantı ekleyerek sayfayı yeni bir tarayıcı sekmesinde açabilirsiniz. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Daha fazla bilgi</a>",
+      "embedProtocolWarning2": "Bu sayfa hikayenizde yüklenmiyorsa, bu seçeneğin işaretini kaldırın ve yeniden deneyin. Sayfa yine de yüklenmiyorsa, web güvenliği nedeniyle katıştırılamaz. Alternatif olarak, açıklamanıza bir bağlantı ekleyerek sayfayı yeni bir tarayıcı sekmesinde açabilirsiniz. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Daha fazla bilgi</a>"
     },
     "editorActionGeocode": {
       "lblTitle": "Adres veya yer bul",
       "mapMarkerExplain": "Kullanıcı bağlantıya tıklarken bir harita işaretçisi görür"
+    },
+    "editorActions": {
+      "remove": "Eylemi kaldır",
+      "preview": "Eylemi önizle"
     },
     "editorActionMedia": {
       "lblTitle": "Ana Aşama içeriğini değiştir"

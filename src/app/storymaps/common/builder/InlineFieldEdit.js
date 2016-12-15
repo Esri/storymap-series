@@ -1,4 +1,4 @@
-define(["lib-build/css!./InlineFieldEdit", 
+define(["lib-build/css!./InlineFieldEdit",
 		"dojo/has"],
 	function(viewCss, has)
 	{
@@ -82,8 +82,14 @@ define(["lib-build/css!./InlineFieldEdit",
 				var icon = input.parent().find('.text_edit_icon');
 				var labelNonEditable = label.parent().first();
 
-				if( value === "" )
-					value = i18n.commonCore.inlineFieldEdit.editMe;
+				if( value === "" ){
+					if($(input).parents('h1.title'))
+						value = i18n.commonCore.inlineFieldEdit.enterTitle;
+					else{
+						value = i18n.commonCore.inlineFieldEdit.enterSubtitle;
+					}
+				}
+
 
 				// Basic XSS check
 				value = value.replace(/<\/?script>/g,'');

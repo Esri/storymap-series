@@ -45,9 +45,9 @@ define({
       "lblOverview": "Mapa de Visão Geral",
       "tooltipOverview": "Exibe um pequeno mapa de visão geral junto com o principal mapa.",
       "lblLocate": "Botão Localizar",
-      "tooltipLocate": "Esta funcionalidade é suportada na maioria dos navegadores desktop (Internet Explorer 9) e dispositivos móveis.",
+      "tooltipLocate": "Exibe um botão que mostra a localização do visualizador no mapa. Esta feição é suportada na maioria dos dispositivos e navegadores, mas o botão aparece somente se você compartilhar sua história como um link de HTTPS e a história não estiver embutida.",
       "lblGeocoder": "Localizador de Endereços e Lugares",
-      "tooltipGeocoder": "Permite aos seus usuários localizar endereços e lugares em seus mapas.",
+      "tooltipGeocoder": "Permite aos seus visualizadores localizarem endereços e lugares em seus mapas.",
       "lblSync": "Sincronizar locais do mapa",
       "tooltipSync": "Quando habilitado, o local inicial do primeiro mapa na sua série será aplicado para todos os mapas, e a navegação por usuários em qualquer mapa será refletida em todos os mapas. Desabilite para cada local do mapa para permanecer independente."
     },

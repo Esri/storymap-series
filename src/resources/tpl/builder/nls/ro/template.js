@@ -45,9 +45,9 @@ define({
       "lblOverview": "Hartă de prezentare generală",
       "tooltipOverview": "Afişaţi o mică hartă de prezentare generală împreună cu harta principală.",
       "lblLocate": "Buton localizare",
-      "tooltipLocate": "Această funcţionalitate este acceptată pe majoritatea dispozitivelor mobile şi browserelor desktop (Internet Explorer 9).",
+      "tooltipLocate": "Afişaţi un buton care indică locaţia utilizatorului pe hartă. Această caracteristică este acceptată de majoritatea dispozitivelor şi browserelor, însă butonul apare doar dacă partajaţi relatarea sub formă de link HTTPS şi relatarea nu este încorporată.",
       "lblGeocoder": "Adresă sau instrument găsire loc",
-      "tooltipGeocoder": "Permite utilizatorilor să găsească adrese şi locuri pe hărţile dvs.",
+      "tooltipGeocoder": "Permiteţi utilizatorilor să găsească adrese şi locuri pe hărţile dvs.",
       "lblSync": "Sincronizare locaţii hartă",
       "tooltipSync": "Dacă este activată, locaţia iniţială a primei hărţi din seria dvs. va fi aplicată pentru toate hărţile, iar navigarea utilizatorilor pe orice hartă va fi reflectată pe toate hărţile. Dezactivaţi sincronizarea pentru ca locaţia fiecărei hărţi să rămână independentă."
     },

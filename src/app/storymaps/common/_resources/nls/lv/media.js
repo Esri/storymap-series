@@ -7,8 +7,9 @@ define({
       "lblImage": "Attēls",
       "lblVideo": "Video",
       "lblExternal": "Web lapa",
+      "lblUpload": "Augšupielāde",
+      "lblLink": "Saite",
       "disabled": "Šo elementu ir atspējojis administrators",
-      "url": "Lai manuālie ievadītu attēla web adresi",
       "userLookup": "Ielādēt albumus",
       "notImplemented": "Vēl nav ieviests.",
       "noData": "Nav atrasts publisks albums"
@@ -20,6 +21,15 @@ define({
     },
     "imageSelectorHome": {
       "explain": "Ielādējiet attēlus no sociālajiem medijiem<br /> vai tieši no URL"
+    },
+    "imageSelectorUpload": {
+      "lblUploadButton": "Pārlūkot attēlu",
+      "lblDrop": "Nometiet attēlu šeit vai",
+      "infoUpload": "attēli tiks glabāti jūsu ArcGIS kontā un būs pieejami tikai jūsu stāstā.",
+      "warningFileTypes": "Attēla formāts var būt .jpg, .png, .gif vai .bmp",
+      "warningOneFile": "Vienā reizē tiek pieņemts viens fails.",
+      "warningFileSize": "Fails pārsniedz maksimālo pieļaujamo augšupielādes izmēru. Izvēlieties citu failu.",
+      "tooltipRemove": "Izdzēsiet šo neizmantoto attēlu no ArcGIS konta. <br> (Ja izlemsiet to izmantot vēlāk, to būs nepieciešams augšupielādēt vēlreiz.)"
     },
     "imageSelectorFlickr": {
       "userInputLbl": "Lietotāja vārds",
@@ -36,7 +46,7 @@ define({
       "learn": "uzzināt vairāk"
     },
     "imageSelectorPicasa": {
-      "userInputLbl": "E-pasts vai Picasa ID",
+      "userInputLbl": "E-pasts vai Google ID",
       "signInMsg2": "Konts nav atrasts",
       "howToFind": "Picasa ID atrašana",
       "howToFind2": "Iekopējiet ciparus starp jebkuras Picasa lapas pirmo un otro '/'."
@@ -51,7 +61,7 @@ define({
       "other": "Citi"
     },
     "videoSelectorYoutube": {
-      "url": "Youtube video URL",
+      "url": "YouTube video saite",
       "pageInputLbl": "Lietotāja vārds",
       "lookupMsgError": "Lietotājs nav atrasts",
       "howToFind": "Kā atrast YouTube lietotāja vārdu",
@@ -62,16 +72,16 @@ define({
       "checkFailedAPI": "Pārbaude YouTube neizdevās. Pārbaudiet YouTube API atslēgu."
     },
     "videoSelectorVimeo": {
-      "url": "Vimeo video URL"
+      "url": "Vimeo video saite"
     },
     "videoSelectorOther": {
-      "explain1": "Stāstos nevar tikt atskaņoti neapstrādāti video (piem., .avi un .mpeg), bet var tikt atskaņoti viesoti video faili ar iebūvētiem atskaņotājiem (piem., YouTube vai Vimeo).",
-      "explain2": "Lielākā daļa video mitināšanas pakalpojumu piedāvā šo funkciju, jums ir jāatrod iespēja iedarināt video, nokopēt saņemto kodu un izmantot %WEBPAGE%.",
-      "explain3": "Ja video vēlaties mitināt pats, varat arī izveidot HTML lapu, kurā tiek izmantots video atskaņotājs (piemēram, %EXAMPLE%), mitināt šo lapu un arī izmantot %WEBPAGE%.",
-      "webpage": "Web lapas funkcija"
+      "explain1": "Šajā karšu stāstā nevar atskaņot neapstrādātus video failus (piem., .avi un .mpeg), bet var atskaņot viesotus video ar iebūvētiem atskaņotājiem (piem., YouTube vai Vimeo).",
+      "explain2": "Vairums viesošanas pakalpojumu piedāvā šo līdzekli. Atrodiet opciju video iegulšanai, nokopējiet norādīto kodu un pievienojiet to savam stāstam, izmantojot tīmekļa vietnes %WEBPAGE% satura opciju.",
+      "explain3": "Varat arī pats viesot video kopā ar HTML lapu, kurā tiek izmantots video atskaņotājs, piemēram, %EXAMPLE%. Pēc tam jūs savam stāstam pievienosiet šīs HTML lapas URL kā %WEBPAGE%.",
+      "webpage": "Web lapa"
     },
     "webpageSelectorHome": {
-      "lblUrl": "Web lapas URL",
+      "lblUrl": "Web lapas saite",
       "lblEmbed": "Iedarināt kodu",
       "lblOR": "VAI",
       "lblError1": "Kļūda, notīriet vienu no diviem ievades laukiem.",
@@ -79,11 +89,11 @@ define({
       "configure": "Konfigurēt"
     },
     "mediaConfigure": {
-      "lblURL": "URL",
-      "lblURLPH": "Attēla URL ir jāsākas ar http:// un jābeidzas ar .jpg vai .png",
+      "lblURL": "Attēla saite",
+      "lblURLPH": "Saites beigās ir jābūt .jpg, .png, .gif vai .bmp",
       "lblURLError": "Šķiet, ka šis attēls nav derīgs. Lūdzu, norādiet tiešu saiti uz attēla failu (parasti URL beidzas ar .jpg vai .png). Saites uz web lapu, kurā atrodas attēls, nedarbosies.",
       "lblURLCheck": "Notiek attēla pārbaude...",
-      "lblLabel": "Attēla teksts",
+      "lblLabel": "Image caption",
       "lblLabel1": "Uzraksts",
       "lblLabel2": "Novietot virs teksta",
       "lblLabel3": "Neviens",
@@ -96,6 +106,7 @@ define({
       "lblPosition3": "Ietilpināt",
       "lblPosition4": "Izstiept",
       "lblPosition5": "Pielāgots",
+      "lblURLHelp": "For best results, images should be less than 400 KB. Use compressed JPG images at 80% quality and these recommended image widths: 2000 pixels for main stage or narrative panel with maximize button, 1000 pixels for narrative panel without maximize button.<br><br>If a linked image draws slowly, upload it to your story for better results.",
       "tooltipDimension": "Vērtība var būt norādīta kā px vai %",
       "tooltipDimension2": "Vērtība ir jānorāda pikseļos",
       "lblPosition2Explain": "(var apgriezt)",
@@ -103,14 +114,18 @@ define({
       "lblPosition3Explain2": "(platums vienmēr atbildīs panelim)",
       "lblPosition4Explain": "(var tikt izkropļots)",
       "unloadLbl": "Izlādēt, ja lasītājs pārvietojas uz citurieni",
-      "unloadHelp": "Ja tīmekļa lapā ir audio vai video multivide, atzīmējiet šo iespēju, lai šis saturs netiktu atskaņots brīdī, kad lasītājs naviģē tālāk. Noņemiet atzīmi, ja vēlaties, lai, piemēram, tiktu turpināta skaņu celiņa atskaņošana, kamēr lasītājs virzās uz priekšu stāstā.<br />Ja tīmekļa lapa ir lietotne, noņemiet atzīmi pie šīs iespējas, lai stāsts netiktu ielādēts atkārtoti, lasītājam atgriežoties šajā sadaļā.",
+      "unloadHelp": "Ja web lapā ir audio vai video multivide, atzīmējiet šo iespēju, lai tā netiktu atskaņota brīdī, kad lasītājs naviģē tālāk. Noņemiet atzīmi, ja vēlaties, lai, piemēram, tiktu turpināta skaņu celiņa atskaņošana, kamēr lasītājs virzās uz priekšu stāstā.<br />Ja web lapa ir lietotne, noņemiet atzīmi pie šīs iespējas, lai stāsts netiktu ielādēts atkārtoti, kad lasītājs atgriežas šajā sadaļā.",
       "embedProtocolLabel": "Ielādēt lapu, izmantojot drošu savienojumu (HTTPS)",
-      "embedProtocolWarning1": "Jūsu stāsts ir konfigurēts, lai tiktu ielādēts, izmantojot drošu savienojumu (https), tāpēc arī stāstā iekļautai tīmekļa lapai ir jāizmanto drošs savienojums. Ja lapa netiek ielādēta, tas var būt tāpēc, ka tā nav pieejama drošā savienojumā, vai tā nevar tikt iekļauta jūsu stāstā (dažas tīmekļa vietnes ierobežo šo iespēju). Iespējams, būs nepieciešams izveidot hipersaiti, lai atvērtu lapu jaunā pārlūkprogrammas cilnē.",
-      "embedProtocolWarning2": "Jūsu stāsts ir konfigurēts, lai tiktu ielādēts, izmantojot nedrošu savienojumu (http), tāpēc jūs varat izvēlēties ielādēt šo lapu, izmantojot drošu (ieteicams) vai nedrošu savienojumu. Ja lapa netiek ielādēta, tas var būt tāpēc, ka tā neatbalsta jūsu atlasīto savienojuma veidu, vai tā nevar tikt iekļauta jūsu stāstā (dažas tīmekļa vietnes ierobežo šo iespēju). Iespējams, būs nepieciešams izveidot hipersaiti, lai atvērtu lapu jaunā pārlūkprogrammas cilnē."
+      "embedProtocolWarning1": "Ja šī lapa jūsu stāstā neielādējas, to nevar iegult web drošības iemeslu dēļ. Alternatīva iespēja — stāstījumā ievietojiet saiti, lai lapu atvērtu jaunā pārlūka cilnē. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Uzzināt vairāk</a>",
+      "embedProtocolWarning2": "Ja šī lapa jūsu stāstā neielādējas, noņemiet atzīmi no šīs iespējas un mēģiniet vēlreiz. Ja lapa joprojām neielādējas, to nevar iegult web drošības iemeslu dēļ. Alternatīva iespēja — stāstījumā ievietojiet saiti, lai lapu atvērtu jaunā pārlūka cilnē. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Uzzināt vairāk</a>"
     },
     "editorActionGeocode": {
       "lblTitle": "Adreses vai vietas noteikšana",
       "mapMarkerExplain": "Noklikšķinot uz saites, lietotājam tiks rādīts kartes punkts"
+    },
+    "editorActions": {
+      "remove": "Noņemt darbību",
+      "preview": "Darbības priekšskatījums"
     },
     "editorActionMedia": {
       "lblTitle": "Galvenā posma satura maiņa"

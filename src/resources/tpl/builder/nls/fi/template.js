@@ -45,7 +45,7 @@ define({
       "lblOverview": "Yleiskatsauskartta",
       "tooltipOverview": "Näytä pieni yleiskatsauskartta pääkartan ohessa.",
       "lblLocate": "Paikanna-painike",
-      "tooltipLocate": "Tämä toiminto on tuettu useimmissa mobiililaitteissa ja tietokoneiden selaimissa (Internet Explorer 9).",
+      "tooltipLocate": "Näytä painike, joka näyttää katselijan sijainnin kartalla. Useimmat laitteet ja selaimet tukevat tätä ominaisuutta, mutta painike näkyy vain, jos jaat tarinasi HTTPS-linkkiä eikä tarinaa ole upotettu.",
       "lblGeocoder": "Osoitteen tai paikan paikannus",
       "tooltipGeocoder": "Salli käyttäjien etsiä osoitteita ja paikkoja kartoistasi.",
       "lblSync": "Synkronoi karttasijainnit",

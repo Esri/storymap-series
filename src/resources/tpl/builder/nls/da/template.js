@@ -45,9 +45,9 @@ define({
       "lblOverview": "Oversigtskort",
       "tooltipOverview": "Få vist et lille oversigtskort sammen med hovedkortet.",
       "lblLocate": "Find-knap",
-      "tooltipLocate": "Denne funktionalitet understøttes på de fleste browsere på mobile enheder samt pc-browsere (Internet Explorer 9).",
+      "tooltipLocate": "Vis en knap, der angiver tilskuerens position på kortet. Denne funktion understøttes af de fleste enheder og browsere, men knappen vises kun, hvis du deler din historie som et HTTPS-link, og historien ikke er indlejret.",
       "lblGeocoder": "Adresse eller stedsøgning",
-      "tooltipGeocoder": "Tillad dine brugere at finde adresser og steder på dine kort.",
+      "tooltipGeocoder": "Tillad dine tilskuere at finde adresser og steder på dine kort.",
       "lblSync": "Synkronisér kortpositioner",
       "tooltipSync": "Når indstillingen er aktiveret, anvendes den første position på det første kort i serien til alle kortene, og navigation udført af brugere i ethvert kort vil blive reflekteret i alle kort. Deaktivér indstillingen, for at få ethvert korts position til at forblive uafhængig."
     },

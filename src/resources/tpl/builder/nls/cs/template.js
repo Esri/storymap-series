@@ -45,9 +45,9 @@ define({
       "lblOverview": "Mapa přehledu",
       "tooltipOverview": "Zobrazí spolu s hlavní mapou malou přehledovou mapu.",
       "lblLocate": "Tlačítko Lokalizovat",
-      "tooltipLocate": "Tato funkce je podporována většinou mobilních zařízení a desktopových prohlížečů (Internet Explorer 9).",
+      "tooltipLocate": "Zobrazí tlačítko, které znázorňuje polohu pozorovatele na mapě. Tuto funkci podporuje většina zařízení. Toto tlačítko se však zobrazí pouze, pokud příběh sdílíte v podobě odkazu HTTPS a pokud příběh není vložený.",
       "lblGeocoder": "Vyhledávání adresy nebo místa",
-      "tooltipGeocoder": "Umožňuje uživatelům vyhledávat adresy a místa ve vašich mapách.",
+      "tooltipGeocoder": "Umožňuje pozorovatelům vyhledávat adresy a místa ve vašich mapách.",
       "lblSync": "Synchronizovat umístění mapy",
       "tooltipSync": "Po aktivaci této možnosti se počáteční umístění první mapy v sérii použije i u všech ostatních map. Veškerá navigace ve kterékoliv z těchto map se projeví v ostatních mapách. Chcete-li, aby bylo umístění všech map nezávislé, tuto možnost deaktivujte."
     },

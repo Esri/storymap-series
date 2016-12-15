@@ -38,7 +38,7 @@ define(["lib-build/css!./ViewPicker",
 
 					$('.opt-checkbox-select-all').off('change').change(function() {
 						container.find('.mediaItem').toggleClass('selected', $(this).is(":checked"));
-						onDataChangeCallback && onDataChangeCallback();
+						onDataChangeCallback && onDataChangeCallback("import");
 					});
 
 					container.find('.mediaItem').on('click', function() {

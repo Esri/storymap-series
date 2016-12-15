@@ -21,7 +21,9 @@ define({
       "mystories": "Mani stāsti"
     },
     "inlineFieldEdit": {
-      "editMe": "Rediģē mani!"
+      "editMe": "Rediģē mani!",
+      "enterTitle": "Ievadiet virsrakstu...",
+      "enterSubtitle": "Ievadiet neobligātu apakšvirsrakstu..."
     },
     "builderPanel": {
       "panelHeader": "%TPL_NAME% veidotājs",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Galvene",
-      "logoEsri": "Esri logotips",
-      "logoNone": "Nav logotipa",
-      "logoCustom": "Pielāgots logotips",
-      "logoCustomPlaceholder": "URL (maks. 250x50 pikseļi)",
-      "logoCustomTargetPlaceholder": "Klikšķis caur saiti",
-      "logoSocialExplain": "Pielāgojiet galvenes saiti.",
-      "logoSocialText": "Teksts",
-      "logoSocialLink": "Saite",
+      "logoEsriRadio": "Esri logotips",
+      "logoNoneRadio": "Nav logotipa",
+      "logoCustomRadio": "Mans logotips",
+      "logoCustomLabel": "Attēls:",
+      "logoCustomUploadHelp": "Logotipi vislabāk izskatās ar platuma:augstuma attiecību no 1:1 līdz 5:1. Ja saistītais logotips tiek zīmēts lēni, saglabājiet kopiju un augšupielādējiet to šeit.",
+      "logoCustomUploadTooltip": "Izmantot augšupielādētu logotipu",
+      "logoCustomUploadButton": "Augšupielādēt logotipu",
+      "logoUploadSizeError": "GIF izmēri ir pārāk lieli. Mainiet platuma izmērus uz ${PIXEL-WIDTH} pikseļiem.",
+      "logoCustomLinkTooltip": "Saite uz logotipu",
+      "logoCustomLinkPlaceholder": "Attēla URL",
+      "logoUploadGenericError": "Logotips var būt .bmp, .gif, .jpg, .jpeg vai .png fails. Gif nedrīkst būt platāks par 250px un lielāks par 10Mb.",
+      "logoCustomTargetPlaceholder": "Tīmekļa lapa, ko atvērt, ja tiek noklikšķināts uz logotipa",
+      "logoSocialText": "Devīze:",
+      "logoLink": "Saite",
       "lblSmallHeader": "Lietot kompaktu galveni (bez apakšvirsraksta)"
     },
     "header": {

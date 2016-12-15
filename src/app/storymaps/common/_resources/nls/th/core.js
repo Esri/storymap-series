@@ -21,7 +21,9 @@ define({
       "mystories": "เรื่องราวของฉัน"
     },
     "inlineFieldEdit": {
-      "editMe": "แก้ไขฉัน!"
+      "editMe": "แก้ไขฉัน!",
+      "enterTitle": "กรอกชื่อเรื่อง…",
+      "enterSubtitle": "กรอกคำบรรยายเป็นตัวเลือก ..."
     },
     "builderPanel": {
       "panelHeader": "%TPL_NAME% สร้าง",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "ส่วนหัว",
-      "logoEsri": "โลโก้อีเอสอาร์ไอ",
-      "logoNone": "ไม่มีโลโก้",
-      "logoCustom": "เปลี่ยนโลโก้",
-      "logoCustomPlaceholder": "URL (มากสุด 250x50 พิกเซล)",
-      "logoCustomTargetPlaceholder": "คลิก-ผ่านลิงค์",
-      "logoSocialExplain": "แก้ไขหัวของลิ้ง",
-      "logoSocialText": "ตัวหนังสือ",
-      "logoSocialLink": "ลิงก์",
+      "logoEsriRadio": "โลโก้ Esri",
+      "logoNoneRadio": "ไม่มีโลโก้",
+      "logoCustomRadio": "โลโก้ของฉัน",
+      "logoCustomLabel": "รูป:",
+      "logoCustomUploadHelp": "โลโก้ที่ดูดีที่สุดถ้าพวกเขามีความกว้าง: อัตราส่วนความสูงระหว่าง 1: 1 และ 5: 1 หากโลโก้เชื่อมโยงดึงช้าบันทึกสำเนาและอัปโหลดได้ที่นี่",
+      "logoCustomUploadTooltip": "ใช้โลโก้ที่อัพโหลด",
+      "logoCustomUploadButton": "อัพโหลดโลโก้",
+      "logoUploadSizeError": "ขนาด GIF มีขนาดใหญ่เกินไป โปรดปรับขนาดไปยัง $ {PIXEL-WIDTH} พิกเซลกว้าง",
+      "logoCustomLinkTooltip": "ลิงค์ไปยังโลโก้",
+      "logoCustomLinkPlaceholder": "URL รูปภาพ",
+      "logoUploadGenericError": "โลโก้สามารถเป็นไฟล์ .bmp, .gif, .jpg, .jpeg, หรือ . png สำหรับ Gifsควรมีจุดภาพน้อยกว่า 250 พิเซลและขนาดเล็กกว่า 10 เมกกะไบต์",
+      "logoCustomTargetPlaceholder": "หน้าเว็บจะเปิดเมื่อมีการคลิกโลโก้",
+      "logoSocialText": "แท็กไลน์:",
+      "logoLink": "ลิงค์:",
       "lblSmallHeader": "ใช้ส่วนบนที่มีขนาดกระทัดรัด (ไม่มีชื่อเรื่อง)"
     },
     "header": {

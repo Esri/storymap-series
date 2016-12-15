@@ -21,7 +21,9 @@ define({
       "mystories": "Hikayelerim"
     },
     "inlineFieldEdit": {
-      "editMe": "Beni düzenle!"
+      "editMe": "Beni düzenle!",
+      "enterTitle": "Başlık girin...",
+      "enterSubtitle": "İsteğe bağlı alt başlık girin..."
     },
     "builderPanel": {
       "panelHeader": "%TPL_NAME% Builder",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Başlık",
-      "logoEsri": "Esri logosu",
-      "logoNone": "Logo yok",
-      "logoCustom": "Özel logo",
-      "logoCustomPlaceholder": "URL (maks 250x50 piksel)",
-      "logoCustomTargetPlaceholder": "Tıklanabilir bağlantı",
-      "logoSocialExplain": "Başlık bağlantısını özelleştirin.",
-      "logoSocialText": "Metin",
-      "logoSocialLink": "Bağlantı",
+      "logoEsriRadio": "Esri logosu",
+      "logoNoneRadio": "Logo yok",
+      "logoCustomRadio": "Logom",
+      "logoCustomLabel": "Görüntü:",
+      "logoCustomUploadHelp": "Logolar genişlik:yükseklik oranları 1:1 ve 5:1 arasında olduğunda en iyi biçimde görüntülenir. Bağlantılı bir logo yavaş çiziliyorsa, bir kopyasını kaydederek buraya yükleyin.",
+      "logoCustomUploadTooltip": "Yüklenmiş bir logo kullan",
+      "logoCustomUploadButton": "Logo yükle",
+      "logoUploadSizeError": "GIF boyutları çok büyük. ${PIXEL-WIDTH} piksel genişliğe yeniden boyutlandırın.",
+      "logoCustomLinkTooltip": "Logo bağlantısı",
+      "logoCustomLinkPlaceholder": "Görüntü URL'si",
+      "logoUploadGenericError": "Logo bir .bmp, .gif, .jpg, .jpeg veya .png dosyası olabilir. Gif'ler en fazla 250px genişliğinde olmalı ve 10 MB boyutunu aşmamalıdır.",
+      "logoCustomTargetPlaceholder": "Logoya tıklandığında açılacak web sayfası",
+      "logoSocialText": "Etiket Satırı:",
+      "logoLink": "Bağlantı:",
       "lblSmallHeader": "Kısa başlık kullanın (alt başlıksız)"
     },
     "header": {

@@ -45,9 +45,9 @@ define({
       "lblOverview": "Pregledna mapa",
       "tooltipOverview": "Prikažite malu preglednu mapu uz glavnu mapu.",
       "lblLocate": "Dugme „Lociraj“",
-      "tooltipLocate": "Ova funkcionalnost je podržana na većini pregledača mobilnih uređaja i desktop računara (Internet Explorer 9).",
+      "tooltipLocate": "Prikažite dugme koje pokazuje lokaciju gledaoca na mapi. Ova funkcija je podržana na većini uređaja i pregledača, ali se dugme prikazuje samo ako podelite priču kao HTTPS link i ako priča nije ugrađena.",
       "lblGeocoder": "Pretraživač adrese ili mesta",
-      "tooltipGeocoder": "Omogućite korisnicima da pronađu adrese i mesta na vašim mapama.",
+      "tooltipGeocoder": "Omogućite gledaocima da pronađu adrese i mesta na vašim mapama.",
       "lblSync": "Sinhronizujte lokacije mape",
       "tooltipSync": "Kada je omogućeno, početna lokacija prve mape u vašem nizu će da bude primenjena na sve mape, a kretanje korisnika po bilo kojoj mapi će da se odrazi na sve mape. Onemogućite za svaku lokaciju mape da bi ostale nezavisne."
     },

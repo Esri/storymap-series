@@ -1,4 +1,5 @@
 define(["lib-build/css!./Builder",
+		"lib-build/css!lib-app/font-awesome/css/font-awesome.min",
 		"esri/arcgis/Portal",
 		"./BuilderPanel",
 		"./settings/SettingsPopup",
@@ -6,6 +7,7 @@ define(["lib-build/css!./Builder",
 		"./MyStoriesWrapper",
 		"../utils/CommonHelper",
 		"../utils/WebMapHelper",
+		'./media/image/FileUploadHelper',
 		"dojo/_base/lang",
 		"dojo/_base/array",
 		"dojo/has",
@@ -16,6 +18,7 @@ define(["lib-build/css!./Builder",
 		"lib-app/history.min"],
 	function(
 		viewCss,
+		fontAwesomeCss,
 		esriPortal,
 		BuilderPanel,
 		SettingsPopup,
@@ -23,6 +26,7 @@ define(["lib-build/css!./Builder",
 		MyStoriesWrapper,
 		CommonHelper,
 		WebMapHelper,
+		fileUploadHelper,
 		lang,
 		array,
 		has,
@@ -130,13 +134,12 @@ define(["lib-build/css!./Builder",
 			if ( ! param.src )
 				return;
 
-			if ( param.value == i18n.commonCore.inlineFieldEdit.editMe )
-				param.value = "";
-
-			// Title and subtile initially comes from the web map
+			// Title and subtitle initially comes from the web map
 			// They are saved in web app data only if they are edited
 			// So if they are never edited in the app, web map edition are reflected in the app
 			if( param.src == "title" ) {
+				if( param.value == i18n.commonCore.inlineFieldEdit.enterTitle)
+					param.value = "";
 				if( ! app.data.getWebMap() || param.value != app.data.getWebMap().item.title ) {
 					if( param.value != app.data.getWebAppData().getTitle() ) {
 						app.data.getWebAppData().setTitle(param.value);
@@ -147,6 +150,8 @@ define(["lib-build/css!./Builder",
 					app.data.getWebAppData().setTitle("");
 			}
 			else if ( param.src == "subtitle" ) {
+				if( param.value == i18n.commonCore.inlineFieldEdit.enterSubtitle)
+					param.value = "";
 				if( ! app.data.getWebMap() || param.value != app.data.getWebMap().item.snippet ) {
 					if( param.value != app.data.getWebAppData().getSubtitle() ) {
 						app.data.getWebAppData().setSubtitle(param.value);
@@ -334,6 +339,8 @@ define(["lib-build/css!./Builder",
 								}
 							);
 
+							protectItems();
+
 							saveApp(false, saveAppCallback);
 						});
 					}
@@ -395,6 +402,8 @@ define(["lib-build/css!./Builder",
 								item: response.item
 							}
 						);
+
+						protectItems();
 
 						// Save the app
 						saveApp(false, function(response2){
@@ -520,7 +529,7 @@ define(["lib-build/css!./Builder",
 				f: "json",
 				token: token,
 				overwrite: true,
-				text: JSON.stringify(app.data.getWebAppData().get())
+				text: processForSave()
 			});
 
 			var url = portalUrl + "/sharing/content/users/" + uid + (appItem.ownerFolder ? ("/" + appItem.ownerFolder) : "");
@@ -546,6 +555,51 @@ define(["lib-build/css!./Builder",
 			saveRq.then(nextFunction, appSaveFailed);
 		}
 
+		function processForSave() {
+			var data = app.data.getWebAppData().get();
+			// strip token from logo in header
+			var logoURL = data && data.values && data.values.settings && data.values.settings.header && data.values.settings.header.logoURL;
+			if (logoURL) {
+				logoURL = stripTokensFromUrls(logoURL, logoURL);
+				data.values.settings.header.logoURL = logoURL;
+			}
+			var currentUploadedLogo = $('#uploadLogoInput').val();
+			if (currentUploadedLogo) {
+				currentUploadedLogo = CommonHelper.possiblyRemoveToken(currentUploadedLogo);
+			}
+			fileUploadHelper.cleanupLogos(currentUploadedLogo);
+			// this is a little hacky
+			var simulatorPreview = $('.settings-simulator .imgLogo');
+			var currentSrc = simulatorPreview.attr('src');
+			if (currentSrc && currentSrc.indexOf(logoURL) < 0) {
+				simulatorPreview.attr('src', logoURL);
+			}
+			// strip tokens from inline images in sections
+			var entries = data && data.values && data.values.story && data.values.story.entries;
+			if (entries) {
+				_.each(entries, function(entry) {
+					var jqEntry = $(entry.description);
+					_.each(jqEntry.find('img'), function(img) {
+						entry.description = stripTokensFromUrls(entry.description, img.src);
+					});
+				});
+			}
+			return JSON.stringify(data);
+		}
+
+		function stripTokensFromUrls(contentStr, originalUrl) {
+			var untokenizedUrl = CommonHelper.possiblyRemoveToken(originalUrl);
+			if (originalUrl !== untokenizedUrl) {
+				var unprotocoledUntokenizedUrl = untokenizedUrl.replace(/^https?\:\/\//, '//');
+				var splitOriginal = originalUrl.replace(/^https?\:\/\//, '//').split('?');
+				if (contentStr.match(splitOriginal[0] + '\\?' + splitOriginal[1])) {
+					return contentStr.replace(splitOriginal[0] + '?' + splitOriginal[1], unprotocoledUntokenizedUrl);
+				}
+				return contentStr.replace(decodeURI(splitOriginal[0]) + '?' + splitOriginal[1], unprotocoledUntokenizedUrl);
+			}
+			return contentStr;
+		}
+
 		//
 		// Web Map save
 		//
@@ -560,6 +614,49 @@ define(["lib-build/css!./Builder",
 
 				WebMapHelper.saveWebmap(app.data.getWebMap(), app.portal).then(
 					function(response){
+						if( app.maps[app.data.getWebAppData().getWebmap()] && app.data.getWebAppItem() && app.maps[app.data.getWebAppData().getWebmap()].response.itemInfo.item.owner != app.data.getWebAppItem().owner ){
+
+							// Update the webmap item
+							var webMapItem = app.data.getWebMap();
+							lang.mixin(
+								webMapItem.item,
+								{
+									id: response.id,
+									item: response.item
+								}
+							);
+							app.data.getWebAppData().setWebmap(response.id);
+							var portalUrl = getPortalURL(),
+								appItem = lang.clone(app.data.getWebAppItem()),
+								uid = appItem.owner || IdentityManager.findCredential(portalUrl).userId,
+								token  = IdentityManager.findCredential(portalUrl).token;
+							appItem = lang.mixin(appItem, {
+								f: "json",
+								token: token,
+								overwrite: true,
+								text: JSON.stringify(app.data.getWebAppData().get())
+							});
+
+							var url = portalUrl + "/sharing/content/users/" + uid + (appItem.ownerFolder ? ("/" + appItem.ownerFolder) : "");
+
+							// Updating
+							url += "/items/" + appItem.id + "/update";
+
+
+							var saveRq = esriRequest(
+								{
+									url: url,
+									handleAs: 'json',
+									content: appItem
+								},
+								{
+									usePost: true
+								}
+							);
+
+							saveRq.then(nextFunction, appSaveFailed);
+
+						}
 						nextFunction(response);
 					},
 					appSaveFailed
@@ -649,6 +746,34 @@ define(["lib-build/css!./Builder",
 			);
 		}
 
+		//TODO handle response (success/fail)
+		function protectItems()
+		{
+			var portalUrl = getPortalURL(),
+				uid = IdentityManager.findCredential(portalUrl).userId,
+				token  = IdentityManager.findCredential(portalUrl).token,
+				itemId = app.data.getWebMap().item.id;
+
+			var params = {
+				f: "json",
+				token: token,
+				groups: '',
+				everyone: '',
+				account: ''
+			};
+
+			return esriRequest(
+				{
+					url: portalUrl + "/sharing/content/users/" + uid + "/items/" + itemId + "/protect",
+					handleAs: 'json',
+					content: params
+				},
+				{
+					usePost: true
+				}
+			);
+		}
+
 		//
 		// Save callbacks
 		//
@@ -665,16 +790,16 @@ define(["lib-build/css!./Builder",
 				app.data.updateAfterSave();
 
 				// Initialize My Stories
-				if ( app.isGalleryCreation || app.isDirectCreationFirstSave ){
+				if ( app.isGalleryCreation || app.isDirectCreationFirstSave || app.isWebMapFirstSave){
 					app.isDirectCreationFirstSave = false;
 					app.isGalleryCreation = false;
+					app.isWebMapFirstSave = false;
 					// Delay a little to be sure the share dialog will be open when the scan will be done
 					setTimeout(window.myStoriesInit, 200);
 				}
 				else {
 					MyStoriesWrapper.scanStory();
 				}
-
 				_builderPanel.updateSharingStatus();
 			}
 			else

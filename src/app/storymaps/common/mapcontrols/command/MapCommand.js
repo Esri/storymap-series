@@ -168,7 +168,7 @@ define(["lib-build/css!./MapCommand",
 			}
 
 			// Geolocate button
-			if( navigator && navigator.geolocation ) {
+			if( navigator && navigator.geolocation && (window.top !== window.self ? false : window.location.protocol.search('https') >= 0) ) {
 				// TODO: to be done in CSS
 				$(".esriSimpleSlider", map.container).after('<div class="esriSimpleSlider esriSimpleSliderVertical mapCommandLocation"></div>');
 				$(".mapCommandLocation", map.container).click(getDeviceLocation);

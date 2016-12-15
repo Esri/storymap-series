@@ -21,7 +21,9 @@ define({
       "mystories": "Omat tarinat"
     },
     "inlineFieldEdit": {
-      "editMe": "Muokkaa minua!"
+      "editMe": "Muokkaa minua!",
+      "enterTitle": "Anna otsikko...",
+      "enterSubtitle": "Anna valinnainen alaotsikko..."
     },
     "builderPanel": {
       "panelHeader": "Tarinan %TPL_NAME% luontitoiminto",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Ylätunniste",
-      "logoEsri": "Esri-logo",
-      "logoNone": "Ei logoa",
-      "logoCustom": "Mukautettu logo",
-      "logoCustomPlaceholder": "URL-osoite (enint. 250x50 pikseliä)",
-      "logoCustomTargetPlaceholder": "Click-through-linkki",
-      "logoSocialExplain": "Mukauta ylätunnisteen linkkiä.",
-      "logoSocialText": "Teksti",
-      "logoSocialLink": "Linkki",
+      "logoEsriRadio": "Esri-logo",
+      "logoNoneRadio": "Ei logoa",
+      "logoCustomRadio": "Oma logo",
+      "logoCustomLabel": "Kuva:",
+      "logoCustomUploadHelp": "Logot näyttävät parhaimmilta, kun niiden leveys:korkeus-suhde on 1:1–5:1. Jos linkitetty logo tulee näkyviin hitaasti, tallenna sen kopio ja lataa se tähän.",
+      "logoCustomUploadTooltip": "Käytä tilille ladattua logoa",
+      "logoCustomUploadButton": "Lataa logo tilille",
+      "logoUploadSizeError": "GIF-kuvan mitat ovat liian suuret. Muuta leveydeksi ${PIXEL-WIDTH}.",
+      "logoCustomLinkTooltip": "Linkitä logo",
+      "logoCustomLinkPlaceholder": "Kuvan URL",
+      "logoUploadGenericError": "Logo voi olla .bmp-, .gif-, .jpg-, .jpeg- tai .png-tiedosto. Gif-tiedostojen on oltava alle 250 kuvapisteen levyisiä ja alle 10 Mt:n kokoisia.",
+      "logoCustomTargetPlaceholder": "Logoa napsautettaessa avattava verkkosivu",
+      "logoSocialText": "Iskulause:",
+      "logoLink": "Linkki:",
       "lblSmallHeader": "Käytä tiivistä otsikko (ei alaotsikkoa)"
     },
     "header": {

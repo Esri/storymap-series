@@ -21,7 +21,9 @@ define({
       "mystories": "Mine historier"
     },
     "inlineFieldEdit": {
-      "editMe": "Rediger meg!"
+      "editMe": "Rediger meg!",
+      "enterTitle": "Angi tittel...",
+      "enterSubtitle": "Angi valgfri undertittel..."
     },
     "builderPanel": {
       "panelHeader": "%TPL_NAME%-bygger",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Overskrift",
-      "logoEsri": "Esri-logo",
-      "logoNone": "Ingen logo",
-      "logoCustom": "Tilpasset logo",
-      "logoCustomPlaceholder": "URL-adresse (maks. 250 x 50 piksler)",
-      "logoCustomTargetPlaceholder": "Gjennomklikkingskobling",
-      "logoSocialExplain": "Tilpass overskriftskoblingen.",
-      "logoSocialText": "Tekst",
-      "logoSocialLink": "Kobling",
+      "logoEsriRadio": "Esri-logo",
+      "logoNoneRadio": "Ingen logo",
+      "logoCustomRadio": "Min logo",
+      "logoCustomLabel": "Bilde:",
+      "logoCustomUploadHelp": "Logoene ser penest ut dersom de har et bredde/høyde-forhold på mellom 1:1 og 5:1. Hvis det tar lang tid laste en koblet logo, lagrer du en kopi og laster den opp her.",
+      "logoCustomUploadTooltip": "Bruk en opplastet logo",
+      "logoCustomUploadButton": "Last opp logo",
+      "logoUploadSizeError": "GIF-målene er for store. Endre størrelsen til ${PIXEL-WIDTH}-pikslers bredde.",
+      "logoCustomLinkTooltip": "Opprett kobling til logo",
+      "logoCustomLinkPlaceholder": "Bilde-URL",
+      "logoUploadGenericError": "Logoen kan være en BMP-, GIF-, JPG-, JPEG- eller PNG-fil. GIF-filer må være mindre enn 250 piksler brede og under 10 MB.",
+      "logoCustomTargetPlaceholder": "Nettside som skal åpnes når logoen klikkes",
+      "logoSocialText": "Slagord:",
+      "logoLink": "Kobling:",
       "lblSmallHeader": "Bruk kompakt overskrift (ingen undertittel)"
     },
     "header": {

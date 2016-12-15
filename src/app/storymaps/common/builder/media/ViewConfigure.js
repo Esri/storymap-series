@@ -45,11 +45,13 @@ define(["lib-build/css!./ViewConfigure",
 				lblPosition3Explain: i18n.commonMedia.mediaConfigure.lblPosition3Explain,
 				lblPosition3Explain2: i18n.commonMedia.mediaConfigure.lblPosition3Explain2,
 				lblPosition4Explain: i18n.commonMedia.mediaConfigure.lblPosition4Explain,
+				lblURLHelp: app.appCfg.mediaPickerConfigureForceMode != "shortlist" ? i18n.commonMedia.mediaConfigure.lblURLHelp : 'For best results, images should be less than 400 KB. The recommended size & shape is 1000 x 750 pixels (4:3 width:height ratio) or smaller. Larger images can slow performance. For best performance use compressed JPG images at 80% image quality.',
+				lblThumbURLHelp: 'The recommended thumbnail size & shape is 280 x 210 pixels (4:3 width:height ratio). Larger thumbnails can slow performance. 4:3 aspect ratio thumbnails fit into their tiles without being cropped.',
 				unloadLbl: i18n.commonMedia.mediaConfigure.unloadLbl,
 				unloadHelp: i18n.commonMedia.mediaConfigure.unloadHelp,
 				embedProtocolLabel: i18n.commonMedia.mediaConfigure.embedProtocolLabel,
 				embedProtocolInfo: location.protocol == 'https:' ? i18n.commonMedia.mediaConfigure.embedProtocolWarning1 : i18n.commonMedia.mediaConfigure.embedProtocolWarning2,
-				lblThumbURL: "Thumbnail URL"
+				lblThumbURL: "Thumbnail link"
 			}));
 
 			initEvents();
@@ -58,6 +60,18 @@ define(["lib-build/css!./ViewConfigure",
 			{
 				var media = params.media,
 					imgCfg = null;
+				this.imageSizes = null;
+
+				if(params.media){
+					if(params.media.image){
+						if(params.media.pic_url && (params.media.pic_url.indexOf('flickr') || params.media.pic_url.indexOf('googleusercontent')))
+							params.fromService = true;
+						if(params.media.image && params.media.image.url && (params.media.image.url.indexOf('flickr') || params.media.image.url.indexOf('googleusercontent')))
+							params.fromService = true;
+						if(params.media.thumb_url && (params.media.thumb_url.indexOf('flickr') || params.media.thumb_url.indexOf('googleusercontent')))
+							params.fromService = true;
+					}
+				}
 
 				// Convert the generic structure of service connector
 				if ( params.fromService ) {
@@ -70,15 +84,19 @@ define(["lib-build/css!./ViewConfigure",
 								url: params.media.pic_url
 							}
 						};
-					else
+					else {
+						this.imageSizes = params.media.sizes;
 						media = {
 							type: 'image',
 							image: {
 								title: params.media.description || params.media.name,
 								titleDisplay: 'caption',
-								url: params.media.pic_url
+								url: params.media.pic_url || (this.imageSizes ? this.imageSizes[0].url : params.media.pic_url) || params.media.image.url,
+								sizes: params.media.sizes,
+								thumb_url: params.media.thumb_url ? params.media.thumb_url : ''
 							}
 						};
+					}
 				}
 
 				// Get image cfg in edit mode
@@ -94,13 +112,26 @@ define(["lib-build/css!./ViewConfigure",
 				_params = params;
 
 				// URL
+				var url = media ? media[media.type].url : '';
+				if(url && app.appCfg.mediaPickerConfigureForceMode != "shortlist" && params.mode == "showURL" && !params.media.resourcesUrl && !params.media.pic_url){
+					url = '';
+					_params.fromService = false;
+				}
 				container.find('.mediaURL')
-					.val(media ? media[media.type].url : '')
+					.val(url)
 					.keyup(function(){
+						if(_params.fromService && media && media.type && (media[media.type].url != container.find('.mediaURL').val()))
+							_params.fromService = false;
+
+						if (app.appCfg.mediaPickerConfigureForceMode == "shortlist"){
+							if(container.find('.mediaThumbURL').val().length){
+								container.parent().parent().parent().parent().parent().parent().parent().find('.modal-footer').find('.btnSubmit').attr("disabled",false);
+							}
+						}
 						container.find('.mediaURLError').fadeOut();
 					})
 					.parent().toggle(
-							params.fromService === false && _mediaType == "image"
+							(params.fromService === false || (app.appCfg.mediaPickerConfigureForceMode == "shortlist" && params.mode == "showURL")) && _mediaType == "image" && _mediaType == "image"
 					);
 				container.find('.mediaURLError').hide();
 
@@ -108,6 +139,13 @@ define(["lib-build/css!./ViewConfigure",
 				container.find('.mediaThumbURL')
 					.val(media ? media[media.type].thumb_url : '')
 					.keyup(function(){
+						if(_params.fromService && media && media.type && (media[media.type].thumb_url != container.find('.mediaThumbURL').val()))
+							_params.fromService = false;
+						if (app.appCfg.mediaPickerConfigureForceMode == "shortlist"){
+							if(container.find('.mediaURL').val().length){
+								container.parent().parent().parent().parent().parent().parent().parent().find('.modal-footer').find('.btnSubmit').attr("disabled",false);
+							}
+						}
 						container.find('.mediaThumbURLError').fadeOut();
 					});
 
@@ -242,9 +280,7 @@ define(["lib-build/css!./ViewConfigure",
 						};
 
 						img.onerror = function(){
-							if (imgUrl) {
-								container.find('.mediaURLError').fadeIn();
-							}
+							container.find('.mediaURLError').fadeIn();
 
 							var img2 = new Image();
 							img2.src =  thumbUrl;
@@ -255,9 +291,7 @@ define(["lib-build/css!./ViewConfigure",
 							};
 
 							img2.onerror = function(){
-								if (thumbUrl) {
-									container.find('.mediaThumbURLError').fadeIn();
-								}
+								container.find('.mediaThumbURLError').fadeIn();
 
 								saveBtn.html(saveBtnLbl);
 								resultDeferred.resolve(true);
@@ -294,6 +328,10 @@ define(["lib-build/css!./ViewConfigure",
 						type: _mediaType
 					};
 
+					if (this.imageSizes) {
+						lang.mixin(data, {sizes: this.imageSizes});
+					}
+
 				if ( cfg.mode == "inlineText" ) {
 					if ( _mediaType == "image" ) {
 						lang.mixin(data, {
@@ -318,7 +356,7 @@ define(["lib-build/css!./ViewConfigure",
 						}
 					}
 				}
-				else if ( cfg.mode == "shortlist" ) {
+				else if ( app.appCfg.mediaPickerConfigureForceMode == "shortlist" ) {
 					lang.mixin(data, {
 						thumb_url: container.find('.mediaThumbURL').val()
 					});
@@ -474,9 +512,10 @@ define(["lib-build/css!./ViewConfigure",
 					trigger: 'hover'
 				});
 
-				container.find('.maximizeHelp, .unloadHelp').tooltip({
+				container.find('.maximizeHelp, .unloadHelp, .configureHelp').tooltip({
 					html: true,
-					trigger: 'hover'
+					trigger: 'hover',
+					placement: app.appCfg.mediaPickerConfigureForceMode == "shortlist" ? 'bottom' : 'top'
 				});
 			}
 

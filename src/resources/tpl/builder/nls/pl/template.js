@@ -45,9 +45,9 @@ define({
       "lblOverview": "Mapa przeglądowa",
       "tooltipOverview": "Wyświetl małą mapę przeglądową wraz z mapą główną.",
       "lblLocate": "Przycisk Zlokalizuj",
-      "tooltipLocate": "Ta funkcjonalność jest obsługiwana przez większość przeglądarek na urządzeniach mobilnych i stacjonarnych (Internet Explorer 9).",
+      "tooltipLocate": "Wyświetl przycisk pokazujący lokalizację przeglądającego na mapie. Ta funkcja jest obsługiwana w większości urządzeń i przeglądarek, ale przycisk jest wyświetlany tylko wtedy, gdy udostępnisz narrację jako łącze HTTPS i narracja nie jest osadzona.",
       "lblGeocoder": "Wyszukiwarka adresu lub miejsca",
-      "tooltipGeocoder": "Pozwala użytkownikom znaleźć adresy i miejsca na Twoich mapach.",
+      "tooltipGeocoder": "Umożliwia przeglądającym znajdowanie adresów i miejsc na Twoich mapach.",
       "lblSync": "Synchronizuj lokalizacje map",
       "tooltipSync": "Gdy opcja jest włączona, początkowa lokalizacja pierwszej mapy z serii zostanie zastosowana dla wszystkich map, a nawigacja użytkownika na dowolnej mapie zostanie pokazana na wszystkich mapach. Wyłącz tę opcję, jeśli chcesz, żeby lokalizacja każdej mapy pozostała niezależna od reszty."
     },

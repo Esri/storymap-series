@@ -21,7 +21,9 @@ define({
       "mystories": "As Minhas Histórias"
     },
     "inlineFieldEdit": {
-      "editMe": "Edite-me!"
+      "editMe": "Edite-me!",
+      "enterTitle": "Introduzir título...",
+      "enterSubtitle": "Introduzir subtítulo opcional..."
     },
     "builderPanel": {
       "panelHeader": "Builder de %TPL_NAME%",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Cabeçalho",
-      "logoEsri": "Logótipo Esri",
-      "logoNone": "Sem logótipo",
-      "logoCustom": "Logótipo personalizado",
-      "logoCustomPlaceholder": "URL (máx 250x50 pixeis)",
-      "logoCustomTargetPlaceholder": "Ligação para clicar",
-      "logoSocialExplain": "Personalize a ligação do cabeçalho.",
-      "logoSocialText": "Texto",
-      "logoSocialLink": "Ligação",
+      "logoEsriRadio": "Logótipo Esri",
+      "logoNoneRadio": "Sem logótipo",
+      "logoCustomRadio": "O meu logótipo",
+      "logoCustomLabel": "Imagem:",
+      "logoCustomUploadHelp": "Os logótipos têm melhor aspeto se tiverem um rácio largura:altura entre 1:1 e 5:1. Caso um logótipo com ligação demore a ser representado, guarde uma cópia e carregue-o aqui.",
+      "logoCustomUploadTooltip": "Utilizar um logótipo carregado",
+      "logoCustomUploadButton": "Carregar um logótipo",
+      "logoUploadSizeError": "Dimensões de GIF demasiado grandes. Por favor, redimensione para ${PIXEL-WIDTH} pixeis de largura.",
+      "logoCustomLinkTooltip": "Ligar a um logótipo",
+      "logoCustomLinkPlaceholder": "URL de Imagem",
+      "logoUploadGenericError": "O logótipo pode ser um ficheiro .bmp, .gif, .jpg, .jpeg ou .png. Os gifs têm de ter menos do que 250px de largura e de 10MB de tamanho.",
+      "logoCustomTargetPlaceholder": "Página web a abrir quando o logótipo é clicado",
+      "logoSocialText": "Slogan:",
+      "logoLink": "Ligação:",
       "lblSmallHeader": "Utilizar cabeçalho compacto (sem legenda)"
     },
     "header": {

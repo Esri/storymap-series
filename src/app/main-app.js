@@ -8,31 +8,33 @@ if (document.location.protocol == "file:") {
 else {
 	var i18n = null;
 	define.amd.jQuery = true;
-	
+
 	require([
-			"dojo/i18n!./resources/tpl/viewer/nls/template.js?v=" + app.version, 
-			"esri/urlUtils", 
+			"dojo/i18n!./resources/tpl/viewer/nls/template.js?v=" + app.version,
+			"esri/urlUtils",
 			"dojo/dom",
+      "app/custom-scripts",
 			"dojo/ready"
 		], function(
-			i18nViewer, 
+			i18nViewer,
 			urlUtils,
 			dom
 		){
 			i18n = i18nViewer;
-			
+
 		 	require([
-		 	        "lib-app/jquery",
-					"storymaps/common/Core", 
+		 	    "lib-app/jquery",
+					"storymaps/common/Core",
 					"storymaps/tpl/core/MainView"
 				], function(
 					jQuery,
-					Core, 
+					Core,
 					MainView
 				){
+
 		 			if (app.isInBuilder) {
 						require([
-								"storymaps/common/builder/Builder", 
+								"storymaps/common/builder/Builder",
 								"storymaps/tpl/builder/BuilderView" ,
 								"dojo/i18n!./resources/tpl/builder/nls/template.js?v=" + app.version,
 								"dojo/i18n!commonResources/nls/core.js?v=" + app.version,
@@ -41,7 +43,7 @@ else {
 								"dojo/i18n!commonResources/nls/mapcontrols.js?v=" + app.version,
 								"dojo/_base/lang"
 							], function(
-								Builder, 
+								Builder,
 								BuilderView,
 								i18nBuilder,
 								i18nCommonBuilder,
@@ -55,10 +57,10 @@ else {
 								lang.mixin(i18n, i18nCommonMedia);
 								lang.mixin(i18n, i18nCommonWebmap);
 								lang.mixin(i18n, i18nCommonMapControls);
-								
+
 								var builderView = new BuilderView(Core),
 								mainView = new MainView(builderView);
-								
+
 								Core.init(mainView, Builder);
 								Builder.init(Core, builderView);
 							}

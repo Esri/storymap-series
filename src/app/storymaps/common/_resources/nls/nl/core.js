@@ -21,7 +21,9 @@ define({
       "mystories": "My Stories"
     },
     "inlineFieldEdit": {
-      "editMe": "Bewerk me!"
+      "editMe": "Bewerk me!",
+      "enterTitle": "Voer een titel in...",
+      "enterSubtitle": "Voer optionele ondertitel in..."
     },
     "builderPanel": {
       "panelHeader": "%TPL_NAME%-builder",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Koptekst",
-      "logoEsri": "Esri-logo",
-      "logoNone": "Geen logo",
-      "logoCustom": "Aangepast logo",
-      "logoCustomPlaceholder": "URL (max. 250x50 pixels)",
-      "logoCustomTargetPlaceholder": "Doorklikkoppeling",
-      "logoSocialExplain": "Pas de koppeling voor de koptekst aan.",
-      "logoSocialText": "Tekst",
-      "logoSocialLink": "Koppeling",
+      "logoEsriRadio": "Esri-logo",
+      "logoNoneRadio": "Geen logo",
+      "logoCustomRadio": "Mijn logo",
+      "logoCustomLabel": "Afbeelding:",
+      "logoCustomUploadHelp": "Logo's zien er het beste uit als ze een breedte-hoogteverhouding hebben tussen 1:1 en 5:1. Als een gekoppeld logo langzaam wordt getekend, sla dan een kopie op en upload het hier.",
+      "logoCustomUploadTooltip": "Een geüpload logo gebruiken",
+      "logoCustomUploadButton": "Een logo uploaden",
+      "logoUploadSizeError": "GIF-afmetingen te groot. Graag aanpassen naar ${PIXEL-WIDTH} pixels breed.",
+      "logoCustomLinkTooltip": "Koppelen aan een logo",
+      "logoCustomLinkPlaceholder": "Afbeeldings-URL",
+      "logoUploadGenericError": "Logo kan een .bmp, .gif, .jpg, .jpeg of .png-bestand zijn. Gif moet kleiner zijn dan 250 pixels breed en 10 Mb groot.",
+      "logoCustomTargetPlaceholder": "Webpagina wordt geopend als het logo wordt aangeklikt",
+      "logoSocialText": "Tagline:",
+      "logoLink": "Link:",
       "lblSmallHeader": "Compacte header gebruiken (geen subtitel)"
     },
     "header": {

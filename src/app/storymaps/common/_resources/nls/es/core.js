@@ -21,7 +21,9 @@ define({
       "mystories": "Mis historias"
     },
     "inlineFieldEdit": {
-      "editMe": "¡Modifícame!"
+      "editMe": "¡Modifícame!",
+      "enterTitle": "Introducir título...",
+      "enterSubtitle": "Introducir subtítulo opcional..."
     },
     "builderPanel": {
       "panelHeader": "Builder de %TPL_NAME%",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Encabezado",
-      "logoEsri": "Logotipo de Esri",
-      "logoNone": "Sin logotipo",
-      "logoCustom": "Logotipo personalizado",
-      "logoCustomPlaceholder": "URL (máx. 250 x 50 píxeles)",
-      "logoCustomTargetPlaceholder": "Enlace click-through",
-      "logoSocialExplain": "Personaliza el vínculo del encabezado.",
-      "logoSocialText": "Texto",
-      "logoSocialLink": "Vínculo",
+      "logoEsriRadio": "Logotipo de Esri",
+      "logoNoneRadio": "Sin logotipo",
+      "logoCustomRadio": "Mi logotipo",
+      "logoCustomLabel": "Imagen:",
+      "logoCustomUploadHelp": "Los logotipos se ven mejor si tienen una razón de anchura-altura entre 1:1 y 5:1. Si un logotipo vinculado se dibuja lentamente, guarde una copia y cárguela aquí.",
+      "logoCustomUploadTooltip": "Usar un logotipo cargado",
+      "logoCustomUploadButton": "Cargar un logotipo",
+      "logoUploadSizeError": "Dimensiones de GIF demasiado grandes. Cambie su tamaño a ${PIXEL-WIDTH} píxeles de ancho.",
+      "logoCustomLinkTooltip": "Vínculo a un logotipo",
+      "logoCustomLinkPlaceholder": "Dirección URL de la imagen",
+      "logoUploadGenericError": "El logotipo puede ser un archivo .bmp, .gif, .jpg, .jpeg. o .png. Los archivos GIF deben tener un tamaño de 10 MB y menos de 250 px de ancho.",
+      "logoCustomTargetPlaceholder": "Página web que se abrirá al hacer clic en el logotipo",
+      "logoSocialText": "Línea de etiqueta:",
+      "logoLink": "Vínculo:",
       "lblSmallHeader": "Usar encabezado compacto (sin subtítulo)"
     },
     "header": {

@@ -7,6 +7,7 @@ define(["lib-build/tpl!./ViewHome",
 		return function ViewHome(container, showView)
 		{
 			container.append(viewTpl({
+				lblLink: i18n.commonMedia.mediaSelector.lblLink,
 				lblOther: i18n.commonMedia.videoSelectorHome.other
 			}));
 

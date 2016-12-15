@@ -21,7 +21,9 @@ define({
       "mystories": "Eigene Storys"
     },
     "inlineFieldEdit": {
-      "editMe": "Bearbeiten!"
+      "editMe": "Bearbeiten!",
+      "enterTitle": "Titel eingeben...",
+      "enterSubtitle": "Optionalen Untertitel eingeben..."
     },
     "builderPanel": {
       "panelHeader": "Builder für %TPL_NAME%",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Kopfzeile",
-      "logoEsri": "Esri Logo",
-      "logoNone": "Kein Logo",
-      "logoCustom": "Benutzerdefiniertes Logo",
-      "logoCustomPlaceholder": "URL (max. 250x50 Pixel)",
-      "logoCustomTargetPlaceholder": "Click-Through-Link",
-      "logoSocialExplain": "Passen Sie den Kopfzeilen-Link an.",
-      "logoSocialText": "Text",
-      "logoSocialLink": "Link",
+      "logoEsriRadio": "Esri Logo",
+      "logoNoneRadio": "Kein Logo",
+      "logoCustomRadio": "Eigenes Logo",
+      "logoCustomLabel": "Bild:",
+      "logoCustomUploadHelp": "Logos wirken am besten, wenn das Verhältnis von Breite zu Höhe zwischen 1:1 und 5:1 liegt. Wenn ein verknüpftes Logo langsam aufgebaut wird, speichern Sie eine Kopie, und laden Sie es hier hoch.",
+      "logoCustomUploadTooltip": "Ein hochgeladenes Logo verwenden",
+      "logoCustomUploadButton": "Ein Logo hochladen",
+      "logoUploadSizeError": "Die GIF-Datei ist zu groß. Ändern Sie die Größe zu einer Breite von ${PIXEL-WIDTH} Pixeln.",
+      "logoCustomLinkTooltip": "Link zu einem Logo",
+      "logoCustomLinkPlaceholder": "Bild-URL",
+      "logoUploadGenericError": "Das Logo kann eine BMP-, GIF-, JPG-, JPEG- oder PNG-Datei sein. GIF-Dateien müssen schmaler als 250 Pixel und kleiner als 10 MB sein.",
+      "logoCustomTargetPlaceholder": "Website, die beim Klicken auf das Logo geöffnet wird",
+      "logoSocialText": "Tag-Zeile:",
+      "logoLink": "Link:",
       "lblSmallHeader": "Kompakte Kopfzeile verwenden (kein Untertitel)"
     },
     "header": {

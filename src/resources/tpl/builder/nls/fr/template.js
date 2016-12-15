@@ -45,9 +45,9 @@ define({
       "lblOverview": "Vue générale",
       "tooltipOverview": "Accompagnez la carte principale d'une petite vue générale.",
       "lblLocate": "Bouton Localiser",
-      "tooltipLocate": "Cette fonctionnalité est prise en charge sur la plupart des navigateurs pour appareils mobiles et ordinateurs de bureau (Internet Explorer 9).",
+      "tooltipLocate": "Affichez un bouton indiquant l'emplacement de l'utilisateur sur la carte. La plupart des appareils et navigateurs prennent en charge cette entité, mais le bouton ne s'affiche que si vous partagez votre narration comme un lien HTTPS et si la narration n'est pas incorporée.",
       "lblGeocoder": "Répertoire géographique",
-      "tooltipGeocoder": "Autorisez vos utilisateurs à rechercher des adresses et des lieux sur vos cartes.",
+      "tooltipGeocoder": "Permettez à vos utilisateurs de trouver des adresses et des lieux sur vos cartes.",
       "lblSync": "Synchroniser les emplacements de la carte",
       "tooltipSync": "Lorsque cette fonction est activée, l'emplacement initial de la première carte de votre série est appliqué à toutes les cartes et la navigation des utilisateurs sur n'importe quelle carte est reflétée dans toutes les cartes. Désactivez cette fonction pour que l'emplacement de chaque carte demeure indépendant."
     },

@@ -1,10 +1,10 @@
 define([
-        "lib-build/tpl!./ShareDialog",
-        "lib-build/css!./ShareDialog",
-        "./ShareURLPanel",
-        "./ShareEmbedPanel",
-        "../../utils/SocialSharing"
-    ],
+		"lib-build/tpl!./ShareDialog",
+		"lib-build/css!./ShareDialog",
+		"./ShareURLPanel",
+		"./ShareEmbedPanel",
+		"../../utils/SocialSharing"
+	],
 	function (
 		viewTpl,
 		viewCss,
@@ -64,8 +64,8 @@ define([
 
 				container.modal({ keyboard:true });
 
-        if(app.appCfg.disableAutoPlay)
-          container.find('.autoplay-container').hide();
+				if(app.appCfg.disableAutoPlay)
+					container.find('.autoplay-container').hide();
 			};
 
 			function createSocialbuttons(socialOptions)

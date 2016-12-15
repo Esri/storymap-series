@@ -107,6 +107,9 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 				};
 			}
 
+			if(_urlParams.sharinghost)
+				app.indexCfg.sharingurl = _urlParams.sharinghost;
+
 			// Check the config file
 			if( ! _mainView.checkConfigFileIsOK() ) {
 				initError("invalidConfig");
@@ -124,15 +127,17 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			if( has("touch") )
 				$("body").addClass("hasTouch");
 
-			FastClick.prototype._needsClick = FastClick.prototype.needsClick;
-			FastClick.prototype.needsClick = function(target) {
-				if ($(target).parents('.esriPopup').length) {
-					return true;
-				}
-				return FastClick.prototype._needsClick.call(this, target);
-			};
+			if(!app.appCfg.noFastClick){
+				FastClick.prototype._needsClick = FastClick.prototype.needsClick;
+				FastClick.prototype.needsClick = function(target) {
+					if ($(target).parents('.esriPopup').length) {
+						return true;
+					}
+					return FastClick.prototype._needsClick.call(this, target);
+				};
 
-			FastClick.attach(document.body);
+				FastClick.attach(document.body);
+			}
 
 			// App is embedded
 			if ( window != window.top /*|| _urlParams.forceEmbed !== undefined || app.indexCfg.forceEmbed*/ )
@@ -190,6 +195,9 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 				else
 					app.indexCfg.sharingurl = app.cfg.DEFAULT_SHARING_URL;
 			}
+
+			if(_urlParams.sharinghost)
+				app.indexCfg.sharingurl = _urlParams.sharinghost;
 
 			if ( app.indexCfg.sharingurl.match(/^http/) )
 				arcgisUtils.arcgisUrl = app.indexCfg.sharingurl;
@@ -273,8 +281,12 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 								portalLogin().then(initStep2);
 						},
 						function() {
-							// Not signed-in, redirecting to OAuth sign-in page
-							IdentityManager.getCredential(info.portalUrl);
+							// Not signed-in, redirecting to OAuth sign-in page if builder
+							if (!builder){
+								initStep2();
+							} else {
+								portalLogin().then(initStep2);
+							}
 						}
 					);
 				}
@@ -502,7 +514,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			}
 
 			// Direct creation and not signed-in
-			if ( app.isDirectCreation && isProd() && ! (CommonHelper.getPortalUser() || app.portal.getPortalUser()) ) {
+			if ( app.isDirectCreation && isProd() && CommonHelper.isArcGISHosted() && ! (CommonHelper.getPortalUser() || app.portal.getPortalUser()) ) {
 				redirectToSignIn();
 				return;
 			}

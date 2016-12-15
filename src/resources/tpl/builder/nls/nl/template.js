@@ -45,9 +45,9 @@ define({
       "lblOverview": "Overzichtskaart",
       "tooltipOverview": "Geef een kleine overzichtskaart weer samen met de hoofdkaart.",
       "lblLocate": "Zoekknop",
-      "tooltipLocate": "Deze functionaliteit wordt ondersteund op de meeste mobiele apparaten en desktopbrowsers (Internet Explorer 9).",
+      "tooltipLocate": "Toon een knop die de locatie van de raadpleger op de kaart toont. Deze functie wordt ondersteund op de meeste apparaten en browsers, maar de knop verschijnt alleen als u uw verhaal deelt als een HTTPS-verbinding en het verhaal niet is ingebed.",
       "lblGeocoder": "Adres of plaatsvinder",
-      "tooltipGeocoder": "Laat uw gebruikers adressen en plaatsen vinden op uw kaarten.",
+      "tooltipGeocoder": "Laat uw raadplegers adressen en plaatsen vinden op uw kaarten.",
       "lblSync": "Kaartlocaties synchroniseren",
       "tooltipSync": "Indien ingeschakeld, wordt de beginlocatie van de eerste kaart in uw serie op alle kaarten toegepast en navigatie door gebruikers in een kaart worden weergegeven in alle kaarten. Uitschakelen voor de locatie van elke kaart om onafhankelijk te blijven."
     },

@@ -45,9 +45,9 @@ define({
       "lblOverview": "Ülevaatekaart",
       "tooltipOverview": "Kuvage koos peamise kaardiga väike ülevaatekaart.",
       "lblLocate": "Nupp Määra asukoht",
-      "tooltipLocate": "Seda funktsiooni toetatakse enamikus mobiilsideseadmetes ja veebibrauserites (Internet Explorer 9).",
+      "tooltipLocate": "Kuvab nuppu, mis tähistab vaataja asukohta kaardil. Seda funktsiooni toetab enamus seadmeid ja brausereid, aga nuppu kuvatakse ainult siis, kui jagate oma loo HTTPS-lingina ja lugu pole manustatud.",
       "lblGeocoder": "Aadressi- või kohaleidja",
-      "tooltipGeocoder": "Võimaldab kasutajatel teie kaartidel aadresse ja kohti otsida.",
+      "tooltipGeocoder": "Võimaldab vaatajatel teie kaartidel aadresse ja kohti otsida.",
       "lblSync": "Sünkroniseeri kaardi asukohad",
       "tooltipSync": "Kui see funktsioon on lubatud, rakendatakse seeria esimese kaardi algne asukoht kõigile kaartidele ja kasutajate navigeerimist mis tahes kaardil kajastatakse kõigil kaartidel. Kui soovite iga kaardi asukoha jätta sõltumatuks, keelake see funktsioon."
     },

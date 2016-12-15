@@ -343,7 +343,7 @@ define(["lib-build/tpl!./BuilderPanel",
 				 * Share & preview button state
 				 */
 
-				var disableShare = app.isDirectCreationFirstSave || app.isGalleryCreation || app.isWebMapCreation,
+				var disableShare = app.isDirectCreationFirstSave || app.isGalleryCreation || app.isWebMapCreation || app.isWebMapFirstSave,
 					disablePreview =  app.data.getWebAppItem().access == "private"
 						|| app.data.getWebAppItem().access == "shared";
 
@@ -359,7 +359,7 @@ define(["lib-build/tpl!./BuilderPanel",
 				else
 					container.find('.builder-share').tooltip('destroy');
 
-				if ( disableShare ) {
+				if ( disableShare  || app.isWebMapFirstSave) {
 					container.find('.builder-preview')
 						.addClass("disabled")
 						.tooltip({

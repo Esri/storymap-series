@@ -45,9 +45,9 @@ define({
       "lblOverview": "Mappa d'insieme",
       "tooltipOverview": "Consente di visualizzare una piccola mappa d'insieme assieme alla mappa principale.",
       "lblLocate": "Pulsante Trova",
-      "tooltipLocate": "Questa funzionalità è supportata nella maggior parte dei disponibili mobili e browser desktop (Internet Explorer 9).",
+      "tooltipLocate": "Visualizza un pulsante che indica la posizione dell'osservatore sulla mappa. Questa feature è supportata nella maggior parte dei dispositivi e browser, ma il pulsante viene visualizzato solo se si condivide la storia come un collegamento HTTPS e la storia non è incorporata.",
       "lblGeocoder": "Ricerca indirizzo o località",
-      "tooltipGeocoder": "Consente agli utenti di cercare indirizzi e località sulle mappe.",
+      "tooltipGeocoder": "Consente agli osservatori di cercare indirizzi e località sulle mappe.",
       "lblSync": "Sincronizza località mappa",
       "tooltipSync": "Se questa opzione è abilitata, la località iniziale della prima mappa nella serie verrà applicata a tutte le altre mappe e il tipo di navigazione utilizzato dagli utenti in una mappa qualsiasi si rifletterà su tutte le mappe. Per conservare l'indipendenza delle località di ogni mappa, disabilitare questa opzione."
     },

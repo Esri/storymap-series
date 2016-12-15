@@ -21,7 +21,9 @@ define({
       "mystories": "Мои истории"
     },
     "inlineFieldEdit": {
-      "editMe": "Отредактируйте меня!"
+      "editMe": "Отредактируйте меня!",
+      "enterTitle": "Введите заголовок...",
+      "enterSubtitle": "Введите подзаголовок (дополнительно)..."
     },
     "builderPanel": {
       "panelHeader": "%TPL_NAME% Конструктор",
@@ -107,14 +109,20 @@ define({
     },
     "settingsHeader": {
       "title": "Заголовок",
-      "logoEsri": "Логотип Esri",
-      "logoNone": "Без логотипа",
-      "logoCustom": "Собственный логотип",
-      "logoCustomPlaceholder": "URL-адрес (макс 250 x 50 пикселов)",
-      "logoCustomTargetPlaceholder": "Переход по ссылке",
-      "logoSocialExplain": "Настройте ссылку заголовка.",
-      "logoSocialText": "Текст",
-      "logoSocialLink": "Ссылка",
+      "logoEsriRadio": "Логотип Esri",
+      "logoNoneRadio": "Без логотипа",
+      "logoCustomRadio": "Мой логотип",
+      "logoCustomLabel": "Изображение:",
+      "logoCustomUploadHelp": "Лучше всего выглядят логотипы с соотношением сторон ширина:высота как 1:1 или 5:1. Если логотип по ссылке медленно отображается, сохраните его и загрузите сюда копию.",
+      "logoCustomUploadTooltip": "Использовать загруженный логотип",
+      "logoCustomUploadButton": "Загрузить логотип",
+      "logoUploadSizeError": "Слишком большие размеры GIF. Замените размер на ${PIXEL-WIDTH} пикселов по ширине",
+      "logoCustomLinkTooltip": "Ссылка на логотип",
+      "logoCustomLinkPlaceholder": "URL изображения",
+      "logoUploadGenericError": "Логотипом может быть файл формата .bmp, .gif, .jpg, .jpeg, или .png. Gif должен быть меньше 250 пикс в ширину и 10Мб по размеру.",
+      "logoCustomTargetPlaceholder": "Веб-страница, которая будет открываться при нажатии на логотип",
+      "logoSocialText": "Строка тегов:",
+      "logoLink": "Ссылка:",
       "lblSmallHeader": "Использовать компактный заголовок (без подзаголовка)"
     },
     "header": {

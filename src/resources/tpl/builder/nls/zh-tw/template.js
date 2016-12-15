@@ -45,9 +45,9 @@ define({
       "lblOverview": "總覽圖",
       "tooltipOverview": "顯示主地圖的同時顯示一個小總覽圖。",
       "lblLocate": "定位按鈕",
-      "tooltipLocate": "大多數行動裝置和桌面瀏覽器(Internet Explorer 9)均支援該功能。",
+      "tooltipLocate": "顯示按鈕來顯示檢視者在地圖上的位置。大多數裝置和瀏覽器都支援此功能，但只有當您分享故事作為 HTTPS 連結，並且未嵌入故事時才會出現按鈕。",
       "lblGeocoder": "地址或地點查詢器",
-      "tooltipGeocoder": "允許使用者在地圖上查詢地址和地點。",
+      "tooltipGeocoder": "允許檢視者在地圖上查詢地址和地點。",
       "lblSync": "同步地圖位置",
       "tooltipSync": "啟用後，系列中第一個地圖的初始位置將應用到所有地圖，使用者在任何地圖中的導航也將反映在所有地圖中。停用可使各個地圖的位置保持獨立。"
     },

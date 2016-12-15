@@ -45,9 +45,9 @@ define({
       "lblOverview": "Apžvalga",
       "tooltipOverview": "Kartu su pagrindiniu žemėlapiu rodyti mažą apžvalgos žemėlapį.",
       "lblLocate": "Vietos nustatymo mygtukas",
-      "tooltipLocate": "Šis funkcija palaikoma daugelyje mobilių prietaisų ir asmeninių kompiuterių naršyklėse (Internet Explorer 9).",
+      "tooltipLocate": "Rodykite mygtuką, kuris nurodo žiūrinčiojo vietą žemėlapyje. Šis elementas palaikomas daugelyje įrenginių ir naršyklių, bet mygtukas rodomas tik tada, jei bendrinate savo pasakojimą kaip HTTPS nuorodą ir pasakojimas nėra įterpiamas.",
       "lblGeocoder": "Adreso arba vietos radimo priemonė",
-      "tooltipGeocoder": "Leisti vartotojams rasti adresus ir vietas žemėlapiuose.",
+      "tooltipGeocoder": "Leiskite žiūrintiesiems rasti adresus ir vietas žemėlapiuose.",
       "lblSync": "Sinchronizuoti žemėlapio vietas",
       "tooltipSync": "Kai įgalinta, pradinė pirmojo žemėlapio vieta jūsų serijoje bus taikoma visiems žemėlapiams, o vartotojų navigacija bet kuriame žemėlapyje bus atvaizduota visuose žemėlapiuose. Išjunkite kiekvieną žemėlapio vietą, kad liktumėte nepriklausomi."
     },

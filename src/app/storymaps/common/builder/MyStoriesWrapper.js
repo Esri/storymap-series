@@ -70,7 +70,7 @@ define([
 				return;
 			}
 
-			if ( ! app.data.getStoryLength() ) {
+			if ( ! app.data.getStoryLength() && ! app.appCfg.noStoryLengthRequired) {
 				console.log('Skipping the initialization of My Stories until the story has content');
 				return;
 			}
@@ -157,6 +157,10 @@ define([
 
 			if (! app.mystories.init) {
 				myStoriesInit();
+				return;
+			}
+
+			if (! app.mystories.check) {
 				return;
 			}
 

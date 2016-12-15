@@ -48,6 +48,7 @@ define(["lib-build/tpl!./Landing",
 				]
 			];
 
+			var userItems;
 
 			container.append(viewTpl({
 				lblAdd: i18n.builder.landing.lblAdd,
@@ -68,6 +69,12 @@ define(["lib-build/tpl!./Landing",
 						.val(app.data.getWebAppItem().title)
 						.select();
 					onTitleChange();
+				}
+
+				if (!userItems && app.portal && app.portal.getPortalUser) {
+					app.portal.getPortalUser().getItems().then(function(items) {
+						userItems = items;
+					});
 				}
 
 				container.toggle(state);
@@ -92,8 +99,35 @@ define(["lib-build/tpl!./Landing",
 
 			function onClickAdd()
 			{
-				if ( ! $(this).hasClass("disabled") )
-					addFirstSectionCallback(getTitle());
+				if ( ! $(this).hasClass("disabled") ) {
+					// get title. if no title, get me out of here.
+					var newTitle = $('.add-title-wrapper input').val().trim();
+					if (!newTitle) {
+						return;
+					}
+					var isDuplicate = userItems && _.some(userItems, function(item) {
+						return item.title && item.title.toLowerCase() === newTitle.toLowerCase();
+					});
+					if (isDuplicate && app.data.getWebAppItem().title !== newTitle) {
+						$('#saveErrorPopup').modal('show');
+						return;
+					}
+					app.data.getWebAppData().setTitle(newTitle);
+					$('.builder-save').removeClass('disabled').trigger('click');
+					setTimeout(function() {
+						addFirstSectionCallback(getTitle());
+					}, 1000);
+
+					// get rid of some popups
+					$('#sharePopup').one('show.bs.modal', function(evt) {
+						evt.stopImmediatePropagation();
+						evt.preventDefault();
+					});
+					$('#sharePopupError').one('show.bs.modal', function(evt) {
+						evt.stopImmediatePropagation();
+						evt.preventDefault();
+					});
+				}
 			}
 
 			function onKeyUp(e)

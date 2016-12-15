@@ -45,9 +45,9 @@ define({
       "lblOverview": "Übersichtskarte",
       "tooltipOverview": "Eine kleine Übersichtskarte mit der Hauptkarte anzeigen.",
       "lblLocate": "Schaltfläche \"Suchen\"",
-      "tooltipLocate": "Diese Funktion wird von den meisten Browsern für mobile Geräte und Desktops (Internet Explorer 9) unterstützt.",
+      "tooltipLocate": "Zeigen Sie eine Schaltfläche an, die die Position des Betrachters auf der Karte darstellt. Diese Funktionalität wird von den meisten Geräten und Browsern unterstützt; die Schaltfläche wird jedoch nur angezeigt, wenn Sie Ihre Story als HTTPS-Link freigeben und die Story nicht eingebettet ist.",
       "lblGeocoder": "Adressen- oder Ortssuche",
-      "tooltipGeocoder": "Benutzern das Suchen von Adressen und Orten auf Ihren Karten erlauben.",
+      "tooltipGeocoder": "Ermöglichen Sie Betrachtern das Suchen von Adressen und Orten auf Ihren Karten.",
       "lblSync": "Kartenpositionen synchronisieren",
       "tooltipSync": "Wenn diese Option aktiviert ist, wird die Anfangsposition der ersten Karte in Ihrer Reihe auf alle Karten angewendet und die Navigation von Benutzern in einer Karte wird in allen Karten widergespiegelt. Deaktivieren Sie sie für die Position jeder Karte, damit sie unabhängig bleibt."
     },

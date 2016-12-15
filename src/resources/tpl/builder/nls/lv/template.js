@@ -45,9 +45,9 @@ define({
       "lblOverview": "Kartes pārskatīšana",
       "tooltipOverview": "Attēlot mazu pārskata karti blakus galvenajai kartei.",
       "lblLocate": "Atrašanas poga",
-      "tooltipLocate": "Šī funkcionalitāte ir atbalstīta vairumā mobilo ierīču un datoru pārlūku (Internet Explorer 9).",
+      "tooltipLocate": "Rādīt pogu, kas parāda skatītāja atrašanās vietu kartē. Šis līdzeklis tiek atbalstīts lielākajā daļā ierīču un pārlūkprogrammu, bet poga ir redzama tikai tad, ja stāsts tiek koplietots kā HTTPS saite un nav iegults.",
       "lblGeocoder": "Adrešu vai vietu meklētājs",
-      "tooltipGeocoder": "Ļaujiet lietotājiem atrast adreses un vietas jūsu kartēs.",
+      "tooltipGeocoder": "Ļaujiet skatītājiem atrast adreses un vietas jūsu kartēs.",
       "lblSync": "Sinhronizēt kartes izvietojumus",
       "tooltipSync": "Ja šī funkcija ir aktivizēta, sākotnējais izvietojums sērijas pirmajā kartē tiks lietots visām kartēm un lietotāju navigēšana jebkurā kartē atspoguļosies visās kartēs. Deaktivizējiet, lai katras kartes izvietojums paliktu neatkarīgs."
     },

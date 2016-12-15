@@ -45,9 +45,9 @@ define({
       "lblOverview": "Genel Bakış Haritası",
       "tooltipOverview": "Ana haritayla birlikte küçük bir genel bakış haritası görüntüleyin.",
       "lblLocate": "Bul düğmesi",
-      "tooltipLocate": "Bu işlev çoğu mobil cihazda ve masaüstü tarayıcıda (Internet Explorer 9) desteklenir.",
+      "tooltipLocate": "Haritada gözlemcinin konumunu gösteren bir düğme görüntüleyin. Bu detay çoğu cihaz ve tarayıcıda desteklenir, ancak düğme yalnızca hikayenizi bir HTTPS bağlantısı olarak paylaşırsanız ve hikaye yerleşik değilse görünür.",
       "lblGeocoder": "Adres veya Yer Bulucu",
-      "tooltipGeocoder": "Kullanıcılarınızın haritalarınızdaki adresleri ve yerleri bulmasına izin verin.",
+      "tooltipGeocoder": "İzleyicilerin haritalarınızda adresleri ve yerleri bulmasına izin verin.",
       "lblSync": "Harita konumlarını senkronize et",
       "tooltipSync": "Etkinleştirildiğinde, serinizdeki ilk haritanın başlangıç konumu tüm haritalara uygulanır ve kullanıcıların herhangi bir haritada yaptığı gezinme tüm haritalarda yansıtılır. Bağımsız olması için her haritanın konumunu devre dışı bırakın."
     },

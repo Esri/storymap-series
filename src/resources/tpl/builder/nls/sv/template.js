@@ -45,7 +45,7 @@ define({
       "lblOverview": "Översiktskarta",
       "tooltipOverview": "Visa en liten översiktskarta tillsammans med huvudkartan.",
       "lblLocate": "Sökknapp",
-      "tooltipLocate": "Den här funktionen kan användas i de flesta webbläsare för mobila enheter och datorer (Internet Explorer 9).",
+      "tooltipLocate": "Visa en knapp som visar vyns plats på kartan. Den här funktionen stöds på de flesta enheter och webbläsare, men knappen visas endast om du delar din berättelse som en HTTPS-länk och berättelsen inte är inbäddad.",
       "lblGeocoder": "Adress- eller platssökning",
       "tooltipGeocoder": "Gör att användarna kan söka efter adresser och platser på kartan.",
       "lblSync": "Synkronisera platser på kartan",

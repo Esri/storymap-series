@@ -1,32 +1,58 @@
 define(["lib-build/tpl!./ViewHome",
 		"lib-build/css!./ViewHome",
+		"storymaps/common/utils/CommonHelper",
 		"dojo/has"],
 	function (
 		viewTpl,
 		viewCss,
+		CommonHelper,
 		has
 	){
 		return function ViewHome(container, showView)
 		{
-			container.append(viewTpl({ }));
+			var _params = null;
+			container.append(viewTpl({
+				disableImageUpload: app.appCfg.disableImageUpload,
+				lblUpload: i18n.commonMedia.mediaSelector.lblUpload,
+				lblLink: i18n.commonMedia.mediaSelector.lblLink
+			}));
 
 			init();
 
 			this.present = function(params)
 			{
+				if(!$.isEmptyObject(params.media))
+					_params = params;
 				container.find('.imageSelectorHome').toggleClass('two-choices', params.mode == "import");
 				container.find('.btn-select-url').toggle(params.mode != "import");
+				container.find('.btn-select-upload').toggle((CommonHelper.getItemId() || app.isDirectCreationFirstSave) ? true : false);
+				if(app.appCfg.disableImageImportUpload){
+					if(params.mode == 'import')
+						container.find('.btn-select-upload').toggle(false);
+				}
 				container.show();
+			};
+
+			this.updateParams = function(params)
+			{
+				_params = params;
 			};
 
 			function init()
 			{
+				container.find('.btn-select-upload').click(function(){ showView('upload'); });
 				container.find('.btn-select-flickr').click(function(){ showView("flickr"); });
 				container.find('.btn-select-picasa').click(function(){ showView("picasa"); });
 				container.find('.btn-select-url').click(function(){
-					showView("configure", {
-						fromService: false
-					});
+					var params = _params ? _params : {};
+					if(app.appCfg.mediaPickerConfigureForceMode != "shortlist")
+						params.fromService = false;
+					params.mode = 'showURL';
+					if(!params.media)
+						params.media = {};
+					params.media.type = 'image';
+					params.media.image = params.media.image ? params.media.image : {};
+					showView("configure", params);
 				});
 
 				if (!app.cfg.AUTHORIZED_IMPORT_SOURCE.flickr)
@@ -69,22 +95,14 @@ define(["lib-build/tpl!./ViewHome",
 				}
 				*/
 
-				if (!has("touch")) {
-					container.find('.btn-select-url').tooltip({
-						trigger: 'hover',
-						placement: 'top',
-						html: true,
-						title: i18n.commonMedia.mediaSelector.url,
-						container: 'body'
-					});
+				if(!app.appCfg.disableFBWarning){
+					container.find('.facebook-warning').html(
+						i18n.commonMedia.imageSelectorFacebook.warning.replace(
+							'${learn}',
+							'<a href="http://links.esri.com/storymaps/facebook_support" target="_blank">' + i18n.commonMedia.imageSelectorFacebook.learn + '</a>'
+						)
+					);
 				}
-
-				container.find('.facebook-warning').html(
-					i18n.commonMedia.imageSelectorFacebook.warning.replace(
-						'${learn}',
-						'<a href="http://links.esri.com/storymaps/facebook_support" target="_blank">' + i18n.commonMedia.imageSelectorFacebook.learn + '</a>'
-					)
-				);
 			}
 		};
 	}

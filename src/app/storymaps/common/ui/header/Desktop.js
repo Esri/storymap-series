@@ -28,11 +28,11 @@ define(["lib-build/css!./Desktop",
 				// Desktop builder
 				if( isInBuilder ) {
 					container.addClass('isBuilder');
-					title =  "<div class='text_edit_label'>" + (title || i18n.commonCore.inlineFieldEdit.editMe) + "</div>";
+					title =  "<div class='text_edit_label'>" + (title || i18n.commonCore.inlineFieldEdit.enterTitle) + "</div>";
 					title += "<div class='text_edit_icon' title='" + i18n.commonCore.header.title.replace("%TPL_NAME%", app.cfg.TPL_NAME) + "'></div>";
 					title += "<textarea rows='1' class='text_edit_input form-control' type='text' spellcheck='true'></textarea>";
 
-					subtitle =  "<span class='text_edit_label'>" + (subtitle || i18n.commonCore.inlineFieldEdit.editMe) + "</span>";
+					subtitle =  "<span class='text_edit_label'>" + (subtitle || i18n.commonCore.inlineFieldEdit.enterSubtitle) + "</span>";
 					subtitle += "<div class='text_edit_icon' title='" + i18n.commonCore.header.subtitle.replace("%TPL_NAME%", app.cfg.TPL_NAME) + "'></div>";
 					subtitle += "<textarea rows='3' class='text_edit_input form-control' type='text' spellcheck='true'></textarea>";
 				}
@@ -115,10 +115,11 @@ define(["lib-build/css!./Desktop",
 
 			this.setTitleAndSubtitle = function(title, subtitle)
 			{
-				var defaultText = isInBuilder ? i18n.commonCore.inlineFieldEdit.editMe : '';
+				var defaultTitleText = isInBuilder ? i18n.commonCore.inlineFieldEdit.enterTitle : '';
+				var defaultSubtitleText = isInBuilder ? i18n.commonCore.inlineFieldEdit.enterSubtitle : '';
 
-				container.find('.title' + (isInBuilder ? ' .text_edit_label' : '')).html(title || defaultText);
-				container.find('.subtitle' + (isInBuilder ? ' .text_edit_label' : '')).html(subtitle || defaultText);
+				container.find('.title' + (isInBuilder ? ' .text_edit_label' : '')).html(title || defaultTitleText);
+				container.find('.subtitle' + (isInBuilder ? ' .text_edit_label' : '')).html(subtitle || defaultSubtitleText);
 			};
 
 			this.toggleSocialBtnAppSharing = function(disable)
