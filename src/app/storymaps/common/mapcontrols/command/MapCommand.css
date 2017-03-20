@@ -39,7 +39,7 @@ body.mobile-view .mapCommandHomeBtn.loading.touch {
 	left: 20px;
 	z-index: 30;
 	width: 32px;
-	background: url(../../_resources/icons/mapcommand-location.png) 2px 2px;
+	background: url(../../_resources/icons/mapcommand-location.png) 2.2px 2.2px;
 	height: 32px;
 	background-size: 26px 26px;
 	background-color: #FFF;

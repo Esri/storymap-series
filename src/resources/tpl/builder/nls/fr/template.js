@@ -45,11 +45,15 @@ define({
       "lblOverview": "Vue générale",
       "tooltipOverview": "Accompagnez la carte principale d'une petite vue générale.",
       "lblLocate": "Bouton Localiser",
-      "tooltipLocate": "Affichez un bouton indiquant l'emplacement de l'utilisateur sur la carte. La plupart des appareils et navigateurs prennent en charge cette entité, mais le bouton ne s'affiche que si vous partagez votre narration comme un lien HTTPS et si la narration n'est pas incorporée.",
-      "lblGeocoder": "Répertoire géographique",
-      "tooltipGeocoder": "Permettez à vos utilisateurs de trouver des adresses et des lieux sur vos cartes.",
+      "tooltipLocate": "Permettez à vos lecteurs de visualiser leur emplacement sur la carte. La plupart des appareils et navigateurs prennent en charge cette entité, mais le bouton ne s'affiche que si vous partagez votre récit sous forme de lien HTTPS et si le récit n'est pas incorporé.",
+      "lblGeocoder": "Outil de recherche d’adresses, d’endroits et d’entités",
+      "tooltipGeocoder": "Permettez à vos lecteurs de rechercher des adresses, des endroits et/ou des entités sur votre carte. Vous pouvez configurer les options de recherche sur la page des éléments d'une carte Web, sous Paramètres > Carte Web > Application > Rechercher un emplacement.",
       "lblSync": "Synchroniser les emplacements de la carte",
       "tooltipSync": "Lorsque cette fonction est activée, l'emplacement initial de la première carte de votre série est appliqué à toutes les cartes et la navigation des utilisateurs sur n'importe quelle carte est reflétée dans toutes les cartes. Désactivez cette fonction pour que l'emplacement de chaque carte demeure indépendant."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Thème de l’organisation",
+      "lblModTheme": "Thème actuel"
     },
     "initPopup": {
       "title": "Bienvenue dans"

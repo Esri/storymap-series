@@ -9,8 +9,9 @@ define({
 				lblControls: "Extras",
 				lblOverview: "Overview Map",
 				lblLegend: "Legend",
-				lblGeocoder: "Address or Place Finder",
-				tooltipGeocoder: "Allow your users to find addresses and places on your maps.",
+				lblGeocoder: "Address, Place, and Feature Finder",
+				tooltipGeocoder: "Allow your readers to search for addresses, places, and/or features on your map. Search options can be configured on a web map's item page under Settings > Web Map > Application > Find Locations.",
+				lblEsriGeocoder: "World Placefinder",
 				loadingTitle: "Loading title",
 				entry: "Entry",
 				entries: "Entries",
@@ -103,6 +104,7 @@ define({
 	"fi": 1,
 	"fr": 1,
 	"he": 1,
+	"hi": 1,
 	"hr": 1,
 	"id": 1,
 	"it": 1,
@@ -123,6 +125,6 @@ define({
 	"tr": 1,
 	"vi": 1,
 	"zh-cn": 1,
-	"zh-hk": 1, 
-	"zh-tw": 1 
+	"zh-hk": 1,
+	"zh-tw": 1
 });

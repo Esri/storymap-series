@@ -82,6 +82,7 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 
 				topic.publish("EDITOR-OPEN-INLINE-MEDIA", {
 					selectedMedia: media,
+					editor: editor,
 					editorCallback: function(cfg){
 						var DEFAULT_WIDTH = '100%',
 							outputEl = "",

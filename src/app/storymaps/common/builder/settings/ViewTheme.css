@@ -1,13 +1,49 @@
+.settings-colors {
+	max-height: 300px;
+	overflow-y: auto;
+}
+
 .settings-colors .layout-thumbnail {
-	margin-right: 45px;
-	margin-top: 18px;
+	margin-right: 12px;
+	margin-left: 16px;
+	margin-top: 6px;
+	margin-bottom: 12px;
 	cursor: pointer;
+	height: 110px;
+}
+
+.settings-colors .layout-thumbnail .header-bullets {
+	bottom: -4px;
+}
+
+/* adjust bullets and tabs to make them shorter/smaller */
+
+.settings-colors .layout-thumbnail .header-tab,
+.settings-colors .layout-thumbnail .header-bullet {
+	margin: 0 0 0 6px;
+}
+
+.settings-colors .layout-thumbnail .header-bullet {
+	width: 16px;
+	height: 16px;
+	padding: 0 5px;
+	font-size: 12px;
+}
+
+.settings-colors .layout-thumbnail .header-tab {
+	padding: 1px 3px;
+}
+
+.settings-colors .layout-thumbnail:nth-child(1),
+.settings-colors .layout-thumbnail:nth-child(2),
+.settings-colors .layout-thumbnail:nth-child(3) {
+	margin-top: 20px;
 }
 
 .settings-colors .layout-thumbnail:nth-child(3),
 .settings-colors .layout-thumbnail:nth-child(6),
 .settings-colors .layout-thumbnail:nth-child(9) {
-	margin-right: 0;
+	margin-right: 10px;
 }
 
 .settings-colors .help {

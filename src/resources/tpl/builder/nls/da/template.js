@@ -45,11 +45,15 @@ define({
       "lblOverview": "Oversigtskort",
       "tooltipOverview": "Få vist et lille oversigtskort sammen med hovedkortet.",
       "lblLocate": "Find-knap",
-      "tooltipLocate": "Vis en knap, der angiver tilskuerens position på kortet. Denne funktion understøttes af de fleste enheder og browsere, men knappen vises kun, hvis du deler din historie som et HTTPS-link, og historien ikke er indlejret.",
-      "lblGeocoder": "Adresse eller stedsøgning",
-      "tooltipGeocoder": "Tillad dine tilskuere at finde adresser og steder på dine kort.",
+      "tooltipLocate": "Gør det muligt for dine læsere at få vist deres aktuelle position på kortet. Denne funktion understøttes af de fleste enheder og browsere, men knappen vises kun, hvis du deler din historie som et HTTPS-link, og historien ikke er indlejret.",
+      "lblGeocoder": "Adresse-, sted- og objektsøgning",
+      "tooltipGeocoder": "Gør det muligt for dine læsere at søge efter adresser, steder og/eller objekter på dit kort. Søgefunktionerne kan konfigureres på webkortets elementoplysningsside under Indstillinger > Webkort > Applikation > Find steder.",
       "lblSync": "Synkronisér kortpositioner",
       "tooltipSync": "Når indstillingen er aktiveret, anvendes den første position på det første kort i serien til alle kortene, og navigation udført af brugere i ethvert kort vil blive reflekteret i alle kort. Deaktivér indstillingen, for at få ethvert korts position til at forblive uafhængig."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Organisationstema",
+      "lblModTheme": "Aktuelt tema"
     },
     "initPopup": {
       "title": "Velkommen til"

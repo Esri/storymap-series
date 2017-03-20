@@ -382,6 +382,17 @@ define(["dojo/_base/lang",
 			},
 
 			/*
+			 * organizational geocoders
+			 */
+			getAppGeocoders: function() {
+				return this.getSettings().appGeocoders;
+			},
+			setAppGeocoders: function(geocoders) {
+				_data.values.settings = _data.values.settings || {};
+				_data.values.settings.appGeocoders = geocoders;
+			},
+
+			/*
 			 * Map Series
 			 */
 			getStory: function()

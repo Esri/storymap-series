@@ -45,11 +45,15 @@ define({
       "lblOverview": "Übersichtskarte",
       "tooltipOverview": "Eine kleine Übersichtskarte mit der Hauptkarte anzeigen.",
       "lblLocate": "Schaltfläche \"Suchen\"",
-      "tooltipLocate": "Zeigen Sie eine Schaltfläche an, die die Position des Betrachters auf der Karte darstellt. Diese Funktionalität wird von den meisten Geräten und Browsern unterstützt; die Schaltfläche wird jedoch nur angezeigt, wenn Sie Ihre Story als HTTPS-Link freigeben und die Story nicht eingebettet ist.",
-      "lblGeocoder": "Adressen- oder Ortssuche",
-      "tooltipGeocoder": "Ermöglichen Sie Betrachtern das Suchen von Adressen und Orten auf Ihren Karten.",
+      "tooltipLocate": "Erlauben Sie Ihren Nutzern, ihre aktuelle Position auf der Karte anzuzeigen. Diese Funktion wird auf den meisten Geräten und Browsern unterstützt, die Schaltfläche wird jedoch nur dann angezeigt, wenn Sie Ihre Story als HTTPS-Link freigeben und sie nicht eingebettet ist.",
+      "lblGeocoder": "Adressen-, Orts- und Feature-Suche",
+      "tooltipGeocoder": "Erlauben Sie Ihren Nutzern, nach Adressen, Orten und/oder Features auf Ihrer Karte zu suchen. Suchoptionen können auf der Elementseite einer Webkarte unter Einstellungen > Webkarte > Anwendung > Positionen suchen konfiguriert werden.",
       "lblSync": "Kartenpositionen synchronisieren",
       "tooltipSync": "Wenn diese Option aktiviert ist, wird die Anfangsposition der ersten Karte in Ihrer Reihe auf alle Karten angewendet und die Navigation von Benutzern in einer Karte wird in allen Karten widergespiegelt. Deaktivieren Sie sie für die Position jeder Karte, damit sie unabhängig bleibt."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Design der Organisation",
+      "lblModTheme": "Aktuelles Design"
     },
     "initPopup": {
       "title": "Willkommen bei"

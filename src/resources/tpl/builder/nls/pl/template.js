@@ -45,11 +45,15 @@ define({
       "lblOverview": "Mapa przeglądowa",
       "tooltipOverview": "Wyświetl małą mapę przeglądową wraz z mapą główną.",
       "lblLocate": "Przycisk Zlokalizuj",
-      "tooltipLocate": "Wyświetl przycisk pokazujący lokalizację przeglądającego na mapie. Ta funkcja jest obsługiwana w większości urządzeń i przeglądarek, ale przycisk jest wyświetlany tylko wtedy, gdy udostępnisz narrację jako łącze HTTPS i narracja nie jest osadzona.",
-      "lblGeocoder": "Wyszukiwarka adresu lub miejsca",
-      "tooltipGeocoder": "Umożliwia przeglądającym znajdowanie adresów i miejsc na Twoich mapach.",
+      "tooltipLocate": "Zezwalaj czytelnikom na wyświetlanie bieżącej lokalizacji na mapie. Ta funkcja jest obsługiwana w większości urządzeń i przeglądarek, ale przycisk jest wyświetlany tylko wtedy, gdy udostępnisz narrację jako łącze HTTPS i narracja nie jest osadzona.",
+      "lblGeocoder": "Poszukiwacz adresów, miejsc i obiektów",
+      "tooltipGeocoder": "Zezwalaj czytelnikom na wyszukiwanie adresów, miejsc i/lub obiektów na mapie. Opcje wyszukiwania można skonfigurować na stronie elementu mapy w obszarze Ustawienia > Mapa internetowa > Aplikacja > Wyszukiwanie lokalizacji.",
       "lblSync": "Synchronizuj lokalizacje map",
       "tooltipSync": "Gdy opcja jest włączona, początkowa lokalizacja pierwszej mapy z serii zostanie zastosowana dla wszystkich map, a nawigacja użytkownika na dowolnej mapie zostanie pokazana na wszystkich mapach. Wyłącz tę opcję, jeśli chcesz, żeby lokalizacja każdej mapy pozostała niezależna od reszty."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Motyw instytucji",
+      "lblModTheme": "Bieżący motyw"
     },
     "initPopup": {
       "title": "Witamy w"

@@ -157,6 +157,27 @@ define(["./WebApplicationData",
 				return filteredEntries;
 			};
 
+			this.cleanEntriesMarkup = function()
+			{
+				$.each(this.getStoryEntries(), function(i, entry) {
+					this.cleanEntryMarkup(entry);
+				}.bind(this));
+			};
+
+			this.cleanEntryMarkup = function(entry) {
+				var markup = entry.description;
+				if (!markup) {
+					return;
+				}
+				var cleanMarkup = $('<div>' + markup + '</div>');
+
+				cleanMarkup.find('img').each(function(i, imgDiv) {
+					var $imgDiv = $(imgDiv);
+					$imgDiv.attr('src', CommonHelper.possiblyAddToken($imgDiv.attr('src')));
+				});
+				entry.description = cleanMarkup.html();
+			};
+
 			this.getStoryLength = function()
 			{
 				return this.getStoryEntries().length;

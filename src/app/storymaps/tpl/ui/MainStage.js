@@ -931,7 +931,11 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						var layerIdx = popupCfg.layerId.split('_').slice(-1).join('_'),
 							layerUrl = layer2.url + '/' + layerIdx;
 
-						applyPopupConfigurationStep2Alt(map, popupCfg, index, serviceId, layerIdx, layerUrl);
+						var w; // walker
+						if ((w = layer2) && (w = w.infoTemplates) && (w = w[layerIdx]) && (w = w.layerUrl)) {
+							layerUrl = w;
+						}
+						applyPopupConfigurationStep2Alt(popupCfg, index, serviceId, layerIdx, layerUrl);
 					}
 					// On FS the layer will be null until loaded...
 					else

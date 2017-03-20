@@ -56,17 +56,26 @@ define(["lib-build/css!./Desktop",
 				}
 
 				if ( displaySwitchBuilderButton ) {
-					container.find(".switchBuilder")
+					var switchBuilderBtn = container.find(".switchBuilder")
 						.html('<span class="glyphicon glyphicon-cog"></span>' + i18n.viewer.headerFromCommon.builderButton + '<span aria-hidden="true" class="switch-builder-close">×</span>')
 						.click(CommonHelper.switchToBuilder)
 						.show();
 
+					var switchBg = switchBuilderBtn.css('background-color');
+					if (!app.appCfg.noAppThemes) {
+						var appColors = app.data.getWebAppData().getTheme().colors;
+						if (switchBg && appColors && appColors.header && CommonHelper.colorsAreSimilar(switchBg, appColors.header, true)) {
+							switchBuilderBtn.css('box-shadow', '0 0 2px 1px white');
+						}
+					}
+
+
 					if ( has("ff") || has("ie") || has("trident") == 7) {
-						container.find('.switch-builder-close').hide();
+						switchBuilderBtn.find('.switch-builder-close').hide();
 					}
 					else {
-						container.find('.switch-builder-close').click(function(){
-							container.find('.switchBuilder').hide();
+						switchBuilderBtn.find('.switch-builder-close').click(function(){
+							switchBuilderBtn.hide();
 							$(window).resize();
 							return false;
 						});
@@ -169,9 +178,17 @@ define(["lib-build/css!./Desktop",
 
 			function setColor(colors)
 			{
-				container.css("background-color", colors.header);
-				container.find(".textArea").css("color", colors.headerTitle);
-				container.find(".rightArea").css("color", colors.headerText);
+				if (!app.appCfg.noAppThemes) {
+					container.css("background-color", colors.header);
+					container.find(".textArea").css("color", colors.headerTitle);
+					container.find(".rightArea").css("color", colors.headerText);
+					var subtitle = container.find('.subtitle');
+					if (colors.name.match(/-org$|-modified$/)) {
+						subtitle.css({color: colors.headerTitle, opacity: 0.8});
+					} else {
+						subtitle.removeAttr('style');
+					}
+				}
 			}
 
 			function setHeader(headerCfg, defaultToCompact)
@@ -263,10 +280,18 @@ define(["lib-build/css!./Desktop",
 				// Sharing
 				//
 
-				container.find(".share-story")
+				var shareBtn = container.find(".share-story")
 					.html(i18n.viewer.headerFromCommon.notshared)
 					.append(closeBtn2)
 					.toggle(app.data.getWebAppItem().access == "private" || app.data.getWebAppItem().access == "shared");
+
+				var shareBg = shareBtn.css('background-color');
+				if (!app.appCfg.noAppThemes) {
+					var colors = app.data.getWebAppData().getTheme().colors;
+					if (shareBg && colors && colors.header && CommonHelper.colorsAreSimilar(shareBg, colors.header, true)) {
+						shareBtn.css('box-shadow', '0 0 2px 1px white');
+					}
+				}
 			}
 
 			/*

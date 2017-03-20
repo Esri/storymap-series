@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "אינך מורשה להשתמש באשף הבנייה של %TPL_NAME%.",
       "noBuilderIE": "אשף הבנייה אינו נתמך ב-Internet Explorer לפני גרסה %VERSION%‏. %UPGRADE%",
       "noViewerIE": "סיפור זה אינו נתמך ב- Internet Explorer לפני גירסה %VERSION%‏.‏ %UPGRADE%",
+      "noViewerIE2": "אתה מנסה להציג את הסיפור באמצעות דפדפן ישן שאינו נתמך. ייתכן כי חלק מהישויות לא יפעלו או שיתרחשו בעיות בלתי צפויות אחרות. מומלץ לשדרג ל-Internet Explorer 11 או להשתמש בדפדפן אחר, כגון Chrome.",
+      "noViewerIE3": "בסוף שנת 2017, לא תוכל עוד לטעון את הסיפור בדפדפן זה. משלב זה ואילך תצטרך להשתמש בדפדפן נתמך כדי להציג את הסיפור.",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>עדכן את הדפדפן שלך</a>.",
       "mapLoadingFail": "משהו השתבש, המפה לא נטענה באופן תקין.",
-      "signOut": "התנתק"
+      "signOut": "התנתק",
+      "attention": "שים לב!"
     },
     "mobileInfo": {
       "legend": "מקרא",

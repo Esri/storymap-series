@@ -45,11 +45,15 @@ define({
       "lblOverview": "Inset Peta",
       "tooltipOverview": "Tampilkan inset peta kecil bersamaan dengan peta utama.",
       "lblLocate": "Tombol Temukan",
-      "tooltipLocate": "Tampilkan sebuah tombol yang menampilkan lokasi pemirsa pada peta. Fitur ini didukung pada kebanyakan perangkat dan browser, tapi tombol tersebut hanya muncul jika Anda membagikan cerita Anda sebagai tautan HTTPS dan cerita tersebut tidak disematkan.",
-      "lblGeocoder": "Pencari Alamat atau Tempat",
-      "tooltipGeocoder": "Izinkan pemirsa Anda untuk menemukan alamat dan tempat di peta Anda.",
+      "tooltipLocate": "Izinkan pembaca Anda melihat lokasi mereka saat ini di peta. Fitur ini didukung pada sebagian besar perangkat dan browser, tetapi tombol hanya muncul jika Anda membagikan cerita sebagai tautan HTTPS dan cerita tersebut tidak disematkan.",
+      "lblGeocoder": "Pencari Fitur, Alamat, dan Tempat",
+      "tooltipGeocoder": "Izinkan pembaca Anda mencari alamat, tempat, dan/atau fitur di peta Anda. Opsi pencarian dapat dikonfigurasi di halaman item web map pada Pengaturan > Web Map > Aplikasi > Temukan Lokasi.",
       "lblSync": "Selaraskan lokasi peta",
       "tooltipSync": "Saat diaktifkan, lokasi awal peta pertama di rangkaian Anda akan diterapkan ke seluruh peta, dan navigasi oleh pengguna di peta mana pun akan tercermin di seluruh peta. Nonaktifkan untuk setiap lokasi peta agar tetap independen."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Tema Organisasi",
+      "lblModTheme": "Tema Saat Ini"
     },
     "initPopup": {
       "title": "Selamat datang di"

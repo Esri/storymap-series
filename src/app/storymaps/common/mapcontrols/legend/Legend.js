@@ -45,7 +45,7 @@ define(["lib-build/tpl!./Legend",
 			{
 				_container.find(".legendContainer").css({
 					// TODO need to remap color before passign them to components...
-					backgroundColor: appColors.dotNav || appColors.mapControls,
+					backgroundColor: appColors.mapControls,
 					color: appColors.text
 				});
 

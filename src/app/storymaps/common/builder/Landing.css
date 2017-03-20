@@ -90,6 +90,10 @@
 	border-top: 1px solid grey;
 }
 
+.builderLanding .btnSeparator.disabled {
+	display: none;
+}
+
 /*
  * Take a tour
  */
@@ -120,4 +124,8 @@
 
 .builderLanding .landing-tour-container .landing-btn {
 	background: url(../../../../resources/tpl/builder/icons/builder-tour.png);
+}
+
+.builderLanding .landing-tour-container.disabled {
+	display: none;
 }

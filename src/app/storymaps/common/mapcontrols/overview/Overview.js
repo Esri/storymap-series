@@ -68,7 +68,7 @@ define(["lib-build/tpl!./Overview",
 
 			this.setColors = function(appColors)
 			{
-				_containerColor = appColors.dotNav || appColors.mapControls;
+				_containerColor = appColors.mapControls;
 
 				container.find('.overviewContainer').css({
 					backgroundColor: _containerColor,
@@ -93,7 +93,7 @@ define(["lib-build/tpl!./Overview",
 				}, container.find('.overviewMap')[0]);
 				_overviewMap.startup();
 
-				var borderColor = appColors ? (appColors.dotNav || appColors.header) : _containerColor;
+				var borderColor = appColors ? appColors.header : _containerColor;
 				if ( borderColor )
 					container.find(".ovwHighlight").css("border", "3px solid " + borderColor);
 			}

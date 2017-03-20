@@ -45,11 +45,15 @@ define({
       "lblOverview": "总览图",
       "tooltipOverview": "显示主地图的同时显示一个小总览图。",
       "lblLocate": "定位按钮",
-      "tooltipLocate": "在地图中显示表示查看者位置的按钮。大多数设备和浏览器均支持此功能，但只有在将故事共享为 HTTPS 链接且未嵌入故事时才显示该按钮。",
-      "lblGeocoder": "地址或地点查找器",
-      "tooltipGeocoder": "允许查看者在地图中查找位置和地点。",
+      "tooltipLocate": "允许读者在地图中查看其当前位置。大多数设备和浏览器均支持此功能，但只有在将故事共享为 HTTPS 链接且未嵌入故事时才显示该按钮。",
+      "lblGeocoder": "地址、地点和要素查找器",
+      "tooltipGeocoder": "允许读者在地图上搜索地址、地点和/或要素。可在 Web 地图项目页面的设置 > Web 地图 > 应用程序 > 查找位置下对搜索选项进行配置。",
       "lblSync": "同步地图位置",
       "tooltipSync": "启用后，系列中第一个地图的初始位置将应用到所有地图，用户在任何地图中的导航也将反映在所有地图中。禁用可使各个地图的位置保持独立。"
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "组织主题",
+      "lblModTheme": "当前主题"
     },
     "initPopup": {
       "title": "欢迎使用"

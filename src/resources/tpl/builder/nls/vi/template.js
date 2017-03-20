@@ -45,11 +45,15 @@ define({
       "lblOverview": "Bản đồ Toàn cảnh",
       "tooltipOverview": "Hiển thị một bản đồ toàn cảnh nhỏ cùng với bản đồ chính.",
       "lblLocate": "Nút định vị",
-      "tooltipLocate": "Hiển thị nút cho biết vị trí của người xem trên bản đồ. Đối tượng này được hỗ trợ trên hầu hết các thiết bị và trình duyệt, nhưng nút chỉ hiển thị nếu bạn chia sẻ câu chuyện dưới dạng liên kết HTTPS và câu chuyện không được nhúng.",
-      "lblGeocoder": "Trình Tìm kiếm Địa chỉ hoặc Địa điểm",
-      "tooltipGeocoder": "Cho phép người xem tìm địa chỉ và địa điểm trên các bản đồ của bạn.",
+      "tooltipLocate": "Cho phép người xem xem vị trí hiện tại của bạn trên bản đồ. Tính năng này được hỗ trợ trên hầu hết các thiết bị và trình duyệt, nhưng nút chỉ hiển thị nếu bạn chia sẻ câu chuyện dưới dạng liên kết HTTPS và câu chuyện không được nhúng vào.",
+      "lblGeocoder": "Trình tìm kiếm Địa chỉ, Địa điểm và Đối tượng",
+      "tooltipGeocoder": "Cho phép người xem tìm kiếm các địa chỉ, địa điểm và/hoặc các đối tượng trên bản đồ của bạn. Các tùy chọn tìm kiếm có thể được cấu hình trên trang thông tin chi tiết của bản đồ web trong phần Thiết lập > Bản đồ Web > Ứng dụng > Tìm các Vị trí.",
       "lblSync": "Đồng bộ hóa địa điểm trên bản đồ",
       "tooltipSync": "Khi được bật, địa điểm ban đầu của bản đồ đầu tiên trong chuỗi của bạn sẽ được áp dụng cho tất cả các bản đồ và điều hướng của người dùng ở bất kỳ bản đồ nào cũng sẽ được phản ánh trên tất cả các bản đồ. Tắt địa điểm trên từng bản đồ để giữ tính độc lập."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Chủ đề Tổ chức",
+      "lblModTheme": "Chủ đề Hiện tại"
     },
     "initPopup": {
       "title": "Chào mừng đến với"

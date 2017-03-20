@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "您无权使用 %TPL_NAME% 构建器。",
       "noBuilderIE": "低于版本 %VERSION% 的 Internet Explorer 不支持构建器。%UPGRADE%",
       "noViewerIE": "低于版本 %VERSION%. %UPGRADE% 的 Internet Explorer 不支持此故事。",
+      "noViewerIE2": "您尝试查看故事所使用的浏览器版本过旧，不受支持。某些要素可能无法正常运行或出现非预期问题。我们建议您将浏览器更新至 Internet Explorer 11 或使用 Chrome 等其他浏览器。",
+      "noViewerIE3": "2017 年底，将无法在此浏览器中加载此故事。届时，您必须使用受支持的浏览器查看此故事。",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>请更新您的浏览器</a>。",
       "mapLoadingFail": "发生了一些错误，地图未正确加载。",
-      "signOut": "登出"
+      "signOut": "登出",
+      "attention": "注意!"
     },
     "mobileInfo": {
       "legend": "图例",

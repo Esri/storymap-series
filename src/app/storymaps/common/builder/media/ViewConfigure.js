@@ -91,7 +91,7 @@ define(["lib-build/css!./ViewConfigure",
 							image: {
 								title: params.media.description || params.media.name,
 								titleDisplay: 'caption',
-								url: params.media.pic_url || (this.imageSizes ? this.imageSizes[0].url : params.media.pic_url) || params.media.image.url,
+								url: params.media.pic_url || (this.imageSizes ? this.imageSizes[0].url : params.media.picUrl) || params.media.image.url,
 								sizes: params.media.sizes,
 								thumb_url: params.media.thumb_url ? params.media.thumb_url : ''
 							}
@@ -117,6 +117,7 @@ define(["lib-build/css!./ViewConfigure",
 					url = '';
 					_params.fromService = false;
 				}
+
 				container.find('.mediaURL')
 					.val(url)
 					.keyup(function(){
@@ -136,8 +137,9 @@ define(["lib-build/css!./ViewConfigure",
 				container.find('.mediaURLError').hide();
 
 				// Thumbnail URL
+				var thumbUrl = media ? media[media.type].thumb_url : '';
 				container.find('.mediaThumbURL')
-					.val(media ? media[media.type].thumb_url : '')
+					.val(thumbUrl)
 					.keyup(function(){
 						if(_params.fromService && media && media.type && (media[media.type].thumb_url != container.find('.mediaThumbURL').val()))
 							_params.fromService = false;

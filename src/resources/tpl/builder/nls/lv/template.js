@@ -45,11 +45,15 @@ define({
       "lblOverview": "Kartes pārskatīšana",
       "tooltipOverview": "Attēlot mazu pārskata karti blakus galvenajai kartei.",
       "lblLocate": "Atrašanas poga",
-      "tooltipLocate": "Rādīt pogu, kas parāda skatītāja atrašanās vietu kartē. Šis līdzeklis tiek atbalstīts lielākajā daļā ierīču un pārlūkprogrammu, bet poga ir redzama tikai tad, ja stāsts tiek koplietots kā HTTPS saite un nav iegults.",
-      "lblGeocoder": "Adrešu vai vietu meklētājs",
-      "tooltipGeocoder": "Ļaujiet skatītājiem atrast adreses un vietas jūsu kartēs.",
+      "tooltipLocate": "Sniedziet iespēju lasītājiem kartē redzēt viņu pašreizējo izvietojumu. Šis līdzeklis tiek atbalstīts lielākajā daļā ierīču un pārlūku, bet poga ir redzama tikai tad, ja stāstu kopīgojat kā HTTPS saiti un stāsts netiek iedarināts.",
+      "lblGeocoder": "Adrešu, vietu un elementu meklētājs",
+      "tooltipGeocoder": "Sniedziet iespēju lasītājiem kartē meklēt adreses, vietas un vai elementus. Meklēšanas izvēlnes var konfigurēt kartes vienību lapā zem Iestatījumi > Web karte > Lietotne > Atrast izvietojumus.",
       "lblSync": "Sinhronizēt kartes izvietojumus",
       "tooltipSync": "Ja šī funkcija ir aktivizēta, sākotnējais izvietojums sērijas pirmajā kartē tiks lietots visām kartēm un lietotāju navigēšana jebkurā kartē atspoguļosies visās kartēs. Deaktivizējiet, lai katras kartes izvietojums paliktu neatkarīgs."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Organizācijas tēma",
+      "lblModTheme": "Pašreizējā tēma"
     },
     "initPopup": {
       "title": "Laipni lūdzam"

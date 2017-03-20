@@ -39,9 +39,9 @@
 /*
  * Landing
  */
- 
+
 #builderLanding {
-	display: none; 
+	display: none;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -98,11 +98,11 @@ body.layout-bullet .mapConfigOverlay.toc {
 /*
  * Layout thumbnails
  */
- 
+
 .layout-thumbnail {
 	display: inline-block;
 	position: relative;
-	width: 150px; 
+	width: 150px;
 	height: 115px;
 	margin-right: 0;
 	margin-top: 0;
@@ -173,7 +173,7 @@ body.layout-bullet .mapConfigOverlay.toc {
  .layout-thumbnail .thumb-content {
  	color: black;
  }
-	
+
 /* Float specific */
 .layout-thumbnail .layout-block.layout-float:nth-child(2) .thumb-content {
 	margin-left: -40px;
@@ -204,8 +204,8 @@ body.layout-bullet .mapConfigOverlay.toc {
 .layout-thumbnail .panel-lbl.rotate {
 	width: 110px;
 	height: 100px;
-	-webkit-transform: rotate(-90deg); 
-	-moz-transform: rotate(-90deg);	
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
 	transform: rotate(-90deg);
 }
 
@@ -217,12 +217,12 @@ body.layout-bullet .mapConfigOverlay.toc {
 	width: 40px;
 	height: 40px;
 	z-index: 3;
+	background: url(../../../../resources/tpl/builder/icons/builder-check.png);
+	background-repeat: no-repeat;
 }
 
 .layout-thumbnail.selected .layout-selected {
 	display: block;
-	background: url(../../../../resources/tpl/builder/icons/builder-check.png);
-	background-repeat: no-repeat;
 }
 
 /*
@@ -231,4 +231,38 @@ body.layout-bullet .mapConfigOverlay.toc {
 
 .layout-thumbnail span.rotate {
 	margin-top: 15px;
+}
+
+/* theme label */
+
+.layout-thumbnail .theme-label {
+	font-size: 10px;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+
+/* outlines around buttons and text, accounting for weird theme colors */
+
+.builder-shadows.media-blues .landing-btn,
+.builder-shadows.panel-blues .accordionPanel .builder-btn {
+	border-radius: 50%;
+	box-shadow: 0 0 2px 1px white;
+}
+
+.builder-shadows.media-blues .landing-tour-container .landing-lbl {
+	color: white;
+}
+
+.builder-shadows.media-dark .landing-add-container .landing-lbl,
+.builder-shadows.media-dark #builderQuotes,
+.builder-shadows.media-dark .builderLanding .btnSeparator {
+	text-shadow: 0 0 10px #fff;
+}
+
+
+.builder-shadows.media-dark {
+
 }

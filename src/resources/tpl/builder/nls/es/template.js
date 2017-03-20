@@ -45,11 +45,15 @@ define({
       "lblOverview": "Mapa de vista general",
       "tooltipOverview": "Muestra un pequeño mapa de vista general junto con el mapa principal.",
       "lblLocate": "Botón de localización",
-      "tooltipLocate": "Visualice un botón que muestra la ubicación del visor en el mapa. Esta entidad se admite en la mayoría de los dispositivos y exploradores, pero el botón solo aparece si comparte su historia como vínculo HTTPS y la historia no se ha incorporado.",
-      "lblGeocoder": "Buscador de direcciones o lugares",
-      "tooltipGeocoder": "Permita a sus visores buscar direcciones y lugares en sus mapas.",
+      "tooltipLocate": "Permita que sus lectores vean su ubicación actual en el mapa. Esta característica se admite en la mayoría de los dispositivos y navegadores, pero el botón solo aparece si comparte su historia como vínculo HTTPS y la historia no se ha integrado.",
+      "lblGeocoder": "Buscador de direcciones, lugares y entidades",
+      "tooltipGeocoder": "Permita a sus lectores buscar direcciones, lugares y entidades en el mapa. Las opciones de búsqueda se pueden configurar en la página de elemento del mapa web en Configuración > Mapa web > Aplicación > Buscar ubicaciones.",
       "lblSync": "Sincronizar ubicaciones del mapa",
       "tooltipSync": "Cuando esté habilitada, la ubicación inicial del primer mapa de tu serie se aplicará a todos los mapas y la navegación de los usuarios en cualquier mapa se reflejará en todos los mapas. Deshabilita para conservar la ubicación independiente en cada mapa."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Tema de la organización",
+      "lblModTheme": "Tema actual"
     },
     "initPopup": {
       "title": "Bienvenido a"

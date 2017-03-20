@@ -7,13 +7,13 @@
 		</div>
 	</div>
 
-	<div class="btnSeparator">
+	<div class="btnSeparator <% if( ! hasBuilderTour ) { %> disabled <% } %>" >
 		<span class="solidline"></span>
 		<%= lblOR %>
 		<span class="solidline"></span>
 	</div>
 
-	<div class="landing-tour-container">
+	<div class="landing-tour-container <% if( ! hasBuilderTour ) { %> disabled <% } %>">
 		<div class="landing-btn"></div>
 		<div class="landing-lbl"><%= lblHelp %></div>
 	</div>

@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "%TPL_NAME% ビルダーを使用する権限がありません。",
       "noBuilderIE": "ビルダは、Internet Explorer %VERSION% より前のバージョンではサポートされていません。%UPGRADE%",
       "noViewerIE": "このストーリーは、Internet Explorer %VERSION% より前のバージョンではサポートされていません。%UPGRADE%",
+      "noViewerIE2": "このストーリーをサポートされていない古いブラウザーで表示しようとしています。動作しない機能やその他の予期しない問題がある可能性があります。Internet Explorer 11 にアップグレードするか、Chrome などの別のブラウザーを使用することをお勧めします。",
+      "noViewerIE3": "2017 年後半には、このストーリーはこのブラウザーで読み込めなくなります。その時点で、サポートされているブラウザーを使用してこのストーリーを表示する必要があります。",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>ブラウザを更新してください</a>。",
       "mapLoadingFail": "問題が発生しました。マップを正しく読み込みませんでした。",
-      "signOut": "サイン アウト"
+      "signOut": "サイン アウト",
+      "attention": "注意"
     },
     "mobileInfo": {
       "legend": "凡例",

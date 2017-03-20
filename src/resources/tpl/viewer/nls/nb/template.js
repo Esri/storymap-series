@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "Du har ikke tillatelse til å bruke byggeverktøyet %TPL_NAME%.",
       "noBuilderIE": "Byggeverktøyet er ikke støttet i Internet Explorer før versjon %VERSION%. %UPGRADE%",
       "noViewerIE": "Denne historien er ikke støttet i Internet Explorer før versjon %VERSION%. %UPGRADE%",
+      "noViewerIE2": "Du prøver å vise denne historien ved hjelp av en eldre nettleser som ikke støttes. Det kan være funksjoner som ikke fungerer eller andre uventede problemer. Vi foreslår at du oppgraderer til Internet Explorer 11 eller bruker en annen nettleser, for eksempel Chrome.",
+      "noViewerIE3": "Mot slutten av 2017 vil denne historien ikke lenger lastes på denne nettleseren. I mellomtiden må du bruke en nettleser som støttes for å se denne historien.",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Oppdater webleseren</a>.",
       "mapLoadingFail": "Noe gikk galt, og kartet ble ikke lastet inn på riktig måte.",
-      "signOut": "Logg ut"
+      "signOut": "Logg ut",
+      "attention": "Obs!"
     },
     "mobileInfo": {
       "legend": "Tegnforklaring",

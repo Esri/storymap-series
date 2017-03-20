@@ -45,11 +45,15 @@ define({
       "lblOverview": "Pregledna karta",
       "tooltipOverview": "Prikažite malu preglednu kartu uz glavnu kartu.",
       "lblLocate": "Gumb za lociranje",
-      "tooltipLocate": "Prikažite gumb koji pokazuje lokaciju gledatelja na karti. Ova je značajka podržana na većini uređaja i preglednika, no gumb se pojavljuje samo ako svoju priču podijelite kao HTTPS poveznicu i ako priča nije umetnuta.",
-      "lblGeocoder": "Tražilo adrese ili mjesta",
-      "tooltipGeocoder": "Omogućite svojim gledateljima da pronađu adrese i mjesta na vašim kartama.",
+      "tooltipLocate": "Omogućite čitateljima da vide svoju trenutačnu lokaciju na karti. Ova je značajka podržana na većini uređaja i preglednika, no gumb se pojavljuje samo ako svoju priču podijelite kao HTTPS poveznicu i ako priča nije umetnuta.",
+      "lblGeocoder": "Tražilo adrese, mjesta i geoobjekata",
+      "tooltipGeocoder": "Omogućite svojim čitateljima traženje adresa, mjesta i/ili geoobjekata na vašoj karti. Opcije pretraživanja mogu se konfigurirati na stranici sa stavkama web-karte pod Postavke > Web-karta > Aplikacija > Pronalaženje lokacija.",
       "lblSync": "Sinkronizirajte lokacije karata",
       "tooltipSync": "Kada je funkcija omogućena, početna lokacija prve karte u nizu primijenit će se na sve karte, a navigacija od strane korisnika u bilo kojoj karti prikazat će se na svim kartama. Onemogućite za lokaciju svake karte da ostanu nepovezane."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Tema organizacije",
+      "lblModTheme": "Trenutna tema"
     },
     "initPopup": {
       "title": "Dobro došli u"

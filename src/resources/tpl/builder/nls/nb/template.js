@@ -45,11 +45,15 @@ define({
       "lblOverview": "Oversiktskart",
       "tooltipOverview": "Vis et lite oversiktskart sammen med hovedkartet.",
       "lblLocate": "Finn-knapp",
-      "tooltipLocate": "Vis en knapp som viser brukerens lokasjon på kartet. Denne funksjonen støttes på de fleste enheter og nettlesere, men knappen vises bare hvis du deler historien som en HTTPS-kobling, og historien ikke er bygget inn.",
-      "lblGeocoder": "Adresse- eller stedssøk",
-      "tooltipGeocoder": "Gjør det mulig for brukerne å finne adresser og steder i kartene dine.",
+      "tooltipLocate": "La leserne se deres gjeldende lokasjon på kartet. Denne funksjonen støttes på de fleste enheter og nettlesere, men knappen vises bare hvis du deler historien som en HTTPS-kobling, og historien ikke er bygget inn.",
+      "lblGeocoder": "Adresse, Sted, og Geoobjektfinner",
+      "tooltipGeocoder": "La leserne søke etter adresser, steder og/eller geoobjekter på kartet. Søkevalg kan konfigureres på et webkarts elementside under Innstillinger> Webkart > Applikasjon > Finn lokasjoner.",
       "lblSync": "Synkronisert kartlokasjoner",
       "tooltipSync": "Når dette er aktivert, brukes den opprinnelige lokasjonen i det første kartet i serien på alle kartene. Når brukerne navigerer i et kart, vises dette i alle kartene. Deaktiver alternativet for lokasjonen i hvert kart som skal være uavhengig."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Tema for organisasjon",
+      "lblModTheme": "Gjeldende tema"
     },
     "initPopup": {
       "title": "Velkommen til"

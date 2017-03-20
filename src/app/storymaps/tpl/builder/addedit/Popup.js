@@ -8,7 +8,7 @@ define(["lib-build/tpl!./Popup",
 		"dojo/Deferred",
 		"dojo/topic",
 		"dojo/has"
-	], 
+	],
 	function (
 		viewTpl,
 		viewCss,
@@ -21,7 +21,7 @@ define(["lib-build/tpl!./Popup",
 		topic,
 		has
 	){
-		return function Popup(container) 
+		return function Popup(container)
 		{
 			container.append(viewTpl({
 				btnCancel: i18n.commonCore.common.cancel,
@@ -33,7 +33,7 @@ define(["lib-build/tpl!./Popup",
 				_visitedViews = null,
 				_btnSubmit = container.find(".btnSubmit"),
 				_viewMainStage = new MediaSelector(
-					container.find('.viewMediaSelectorContainer'), 
+					container.find('.viewMediaSelectorContainer'),
 					{
 						onOpenConfigure: toggle,
 						onCloseConfigure: toggle
@@ -43,18 +43,18 @@ define(["lib-build/tpl!./Popup",
 					container.find('.btn-back')
 				),
 				_isTemporaryHide = null;
-			
+
 			initEvents();
-			
-			this.present = function(cfg) 
-			{			
+
+			this.present = function(cfg)
+			{
 				_popupDeferred = new Deferred();
 				_cfg = cfg;
 				_visitedViews = [];
-				
+
 				_isTemporaryHide = false;
 				app.isAddEditInProgress = true;
-				
+
 				// Title / submit
 				if ( cfg.mode == "add" ) {
 					container.find('.modal-logo').removeClass("edit");
@@ -74,27 +74,27 @@ define(["lib-build/tpl!./Popup",
 					);
 					_btnSubmit.html(i18n.commonCore.common.save);
 				}
-				
+
 				container.find(".title").attr(
-					"placeholder", 
+					"placeholder",
 					i18n.builder.addEditPopup.titlePlaceholder.replace('%LBL_LAYOUT%', app.data.getWebAppData().getLayoutProperties().itemLbl)
 				);
-				
+
 				// TODO
 				container.toggleClass("isAdding", cfg.mode == "add");
 				container.toggleClass("isEditing", cfg.mode != "add");
-				
+
 				// Submit
 				updateSubmitButton();
-				
+
 				// Title
 				container.find('.titleContainer')
 					.removeClass('has-feedback has-error')
 					.find('.title').val(cfg.mode == "edit" ? cfg.entry.title : "");
-				
+
 				var showLocationControl = false;
-				
-				// If the option is enabled in the settings 
+
+				// If the option is enabled in the settings
 				if ( WebApplicationData.getMapOptions().mapsSync === false )
 					showLocationControl = true;
 				// If it's the first webmap in the project
@@ -108,12 +108,12 @@ define(["lib-build/tpl!./Popup",
 						var idx = Math.min.apply(null, webmap.entries);
 						firstMapEntryIndex = Math.min(firstMapEntryIndex, idx);
 					});
-					
+
 					// cfg.webmap[x].entries start at index 1 unlike cfg.entryIndex
 					if ( firstMapEntryIndex === Number.MAX_VALUE || cfg.entryIndex < firstMapEntryIndex )
 						showLocationControl = true;
 				}
-				
+
 				_viewMainStage.present(
 					{
 						mode: cfg.mode,
@@ -126,38 +126,38 @@ define(["lib-build/tpl!./Popup",
 							showLocationControl: showLocationControl,
 							hideOverview: true
 						}
-					}					
+					}
 				);
-				
+
 				container.modal({keyboard: true});
 				return _popupDeferred;
 			};
-			
+
 			this.close = function()
 			{
 				container.modal('hide');
 				_popupDeferred.reject();
 			};
-			
+
 			this.getAddEditEntryTitle = function()
 			{
-				return container.find('.title').val();
+				return container.find('.title').val().replace(/<\/?script>/g,'');
 			};
-			
+
 			function initEvents()
 			{
 				container.find('.title').bind('input propertychange', updateSubmitButton);
-				
+
 				container.find('.btnCancel').click(function () {
 					container.modal('hide');
 					_popupDeferred.reject();
 				});
-				
+
 				container.on('shown.bs.modal', function () {
 					postDisplay();
 					_viewMainStage.postDisplay();
 				});
-				
+
 				container.on('hide.bs.modal', function () {
 					if ( ! _isTemporaryHide ) {
 						app.isAddEditInProgress = false;
@@ -165,18 +165,18 @@ define(["lib-build/tpl!./Popup",
 						try {
 							_popupDeferred.reject();
 						} catch(e){ }
-						
+
 						container.removeClass("temporaryHide");
 					}
 					else
 						_isTemporaryHide = false;
 				});
-				
+
 				_btnSubmit.click(onClickSubmit);
-				
+
 				topic.subscribe("TOGGLE-ADD-EDIT", toggle);
 			}
-			
+
 			function postDisplay()
 			{
 				if ( _cfg.layout != "bullet" ) {
@@ -185,10 +185,10 @@ define(["lib-build/tpl!./Popup",
 					if ( ! has("ios") )
 						container.find('.title').focus();
 				}
-				
+
 				updateSubmitButton();
 			}
-			
+
 			function toggle()
 			{
 				if ( container.hasClass("in") ){
@@ -198,10 +198,10 @@ define(["lib-build/tpl!./Popup",
 				else {
 					container.removeClass("temporaryHide");
 				}
-				
+
 				container.modal('toggle');
 			}
-			
+
 			function onViewMainStageDataChange(e)
 			{
 				// If user just picked a new webmap of the project
@@ -212,13 +212,13 @@ define(["lib-build/tpl!./Popup",
 				}
 				updateSubmitButton();
 			}
-			
+
 			function onClickSubmit()
 			{
 				var errorInStep = [],
-					entryTitle = container.find('.title').val(),
+					entryTitle = container.find('.title').val().replace(/<\/?script>/g,''),
 					viewMediaData = _viewMainStage.getData();
-				
+
 				var postErrorCheck = function() {
 					if ( ! entryTitle && _cfg.layout != "bullet" )
 						container.find('.titleContainer').addClass('has-feedback has-error');
@@ -229,13 +229,13 @@ define(["lib-build/tpl!./Popup",
 								&& viewMediaData.media.webmap.extent ) {
 							var extentCorrected = Helper.getLayoutExtent(
 								new Extent(viewMediaData.media.webmap.extent),
-								true, 
+								true,
 								false
 							);
-								
+
 							viewMediaData.media.webmap.extent = extentCorrected.toJson();
 						}
-						
+
 						_popupDeferred.resolve({
 							title: entryTitle,
 							creaDate: Date.now(),
@@ -246,9 +246,9 @@ define(["lib-build/tpl!./Popup",
 						container.modal('hide');
 					}
 				};
-				
+
 				var mainStageError = _viewMainStage.checkError(_btnSubmit);
-				
+
 				if ( mainStageError instanceof Deferred ) {
 					mainStageError.then(function(hasError){
 						if ( hasError )
@@ -259,29 +259,29 @@ define(["lib-build/tpl!./Popup",
 				}
 				else if ( mainStageError )
 					errorInStep.push(0);
-				
+
 				postErrorCheck();
 			}
-			
+
 			function updateSubmitButton()
 			{
-				var entryTitle = container.find('.title').val(),
+				var entryTitle = container.find('.title').val().replace(/<\/?script>/g,''),
 					viewMediaData = _viewMainStage.getData(),
 					disableButton = true;
-				
-				if ( (entryTitle || _cfg.layout == "bullet") 
+
+				if ( (entryTitle || _cfg.layout == "bullet")
 						&& viewMediaData.media && viewMediaData.media.type && viewMediaData.media[viewMediaData.media.type] )
 					disableButton = false;
-				
+
 				if ( _cfg.mode == "edit" )
 					_btnSubmit.html(i18n.commonCore.common.save);
-				else 
+				else
 					_btnSubmit.html(i18n.commonCore.common.add);
-				
+
 				_btnSubmit.toggleClass("disabled", !! disableButton);
 				if ( disableButton ) {
 					var tooltip = i18n.builder.addEditPopup.stepMainStageNextTooltip;
-					
+
 					container.find('.btnSubmitWrapper')
 						.tooltip('destroy')
 						.tooltip({
@@ -293,7 +293,7 @@ define(["lib-build/tpl!./Popup",
 				else
 					container.find('.btnSubmitWrapper').tooltip('destroy');
 			}
-	
+
 			this.initLocalization = function()
 			{
 				//

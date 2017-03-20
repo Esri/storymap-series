@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "Sie sind nicht autorisiert, den %TPL_NAME% Builder zu verwenden.",
       "noBuilderIE": "Der Builder wird von Internet Explorer vor Version %VERSION% nicht unterstützt. %UPGRADE%",
       "noViewerIE": "Diese Story wird von Internet Explorer vor Version %VERSION% nicht unterstützt. %UPGRADE%",
+      "noViewerIE2": "Sie versuchen, diese Story mit einem älteren, nicht unterstützten Browser anzuzeigen. Einige Features funktionieren möglicherweise nicht, oder es können andere nicht erwartete Probleme auftreten. Wir empfehlen, ein Upgrade auf Internet Explorer 11 durchzuführen oder einen anderen Browser wie Chrome zu verwenden.",
+      "noViewerIE3": "Ende 2017 kann diese Story nicht mehr in diesem Browser geladen werden. Zu diesem Zeitpunkt müssen Sie einen anderen unterstützten Browser zum Darstellen dieser Story nutzen.",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Aktualisieren Sie Ihren Browser</a>.",
       "mapLoadingFail": "Ein Fehler ist aufgetreten. Die Karte wurde nicht korrekt geladen.",
-      "signOut": "Abmelden"
+      "signOut": "Abmelden",
+      "attention": "Achtung!"
     },
     "mobileInfo": {
       "legend": "Legende",

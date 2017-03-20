@@ -45,11 +45,15 @@ define({
       "lblOverview": "Yleiskatsauskartta",
       "tooltipOverview": "Näytä pieni yleiskatsauskartta pääkartan ohessa.",
       "lblLocate": "Paikanna-painike",
-      "tooltipLocate": "Näytä painike, joka näyttää katselijan sijainnin kartalla. Useimmat laitteet ja selaimet tukevat tätä ominaisuutta, mutta painike näkyy vain, jos jaat tarinasi HTTPS-linkkiä eikä tarinaa ole upotettu.",
-      "lblGeocoder": "Osoitteen tai paikan paikannus",
-      "tooltipGeocoder": "Salli käyttäjien etsiä osoitteita ja paikkoja kartoistasi.",
+      "tooltipLocate": "Salli lukijoiden nähdä heidän nykyinen sijaintinsa kartalla. Useimmat laitteet ja selaimet tukevat tätä ominaisuutta, mutta painike näkyy vain, jos jaat tarinasi HTTPS-linkkiä eikä tarinaa ole upotettu.",
+      "lblGeocoder": "Osoitteen, paikan ja kohteen paikannus",
+      "tooltipGeocoder": "Salli lukijoiden etsiä osoitteita, paikkoja ja/tai kohteita kartalta. Hakuasetukset voi määrittää Web-kartan kohdesivulla kohdassa Asetukset > Web-kartta > Sovellus > Etsi sijainteja.",
       "lblSync": "Synkronoi karttasijainnit",
       "tooltipSync": "Kun toiminto on otettu käyttöön, sarjan ensimmäisen kartan alkuperäistä sijaintia käytetään kaikissa kartoissa ja käyttäjien navigointia missä tahansa kartassa käytetään kaikissa kartoissa. Poista toiminto käytöstä kartan kussakin sijainnissa, jos haluat säilyttää riippumattomuuden."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Organisaation teema",
+      "lblModTheme": "Nykyinen teema"
     },
     "initPopup": {
       "title": "Tervetuloa"

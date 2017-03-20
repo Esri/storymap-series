@@ -45,11 +45,15 @@ define({
       "lblOverview": "Ülevaatekaart",
       "tooltipOverview": "Kuvage koos peamise kaardiga väike ülevaatekaart.",
       "lblLocate": "Nupp Määra asukoht",
-      "tooltipLocate": "Kuvab nuppu, mis tähistab vaataja asukohta kaardil. Seda funktsiooni toetab enamus seadmeid ja brausereid, aga nuppu kuvatakse ainult siis, kui jagate oma loo HTTPS-lingina ja lugu pole manustatud.",
-      "lblGeocoder": "Aadressi- või kohaleidja",
-      "tooltipGeocoder": "Võimaldab vaatajatel teie kaartidel aadresse ja kohti otsida.",
+      "tooltipLocate": "Kuvab nupu, mis tähistab vaataja asukohta kaardil. Seda funktsiooni toetab enamus seadmeid ja brausereid, aga nuppu kuvatakse ainult siis, kui jagate oma loo HTTPS-lingina ja lugu pole manustatud.",
+      "lblGeocoder": "Aadressi-, koha- ja objektileidja",
+      "tooltipGeocoder": "Võimaldab lugejatel teie kaardilt aadresse, kohti ja/või objekte otsida. Otsinguseadeid saab konfigureerida veebikaardi sisuobjekti lehelt, kui avate Seaded > Veebikaart > Rakendus > Otsi asukohti.",
       "lblSync": "Sünkroniseeri kaardi asukohad",
       "tooltipSync": "Kui see funktsioon on lubatud, rakendatakse seeria esimese kaardi algne asukoht kõigile kaartidele ja kasutajate navigeerimist mis tahes kaardil kajastatakse kõigil kaartidel. Kui soovite iga kaardi asukoha jätta sõltumatuks, keelake see funktsioon."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Organisatsiooni teema",
+      "lblModTheme": "Praegune teema"
     },
     "initPopup": {
       "title": "Tere tulemast"

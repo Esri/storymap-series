@@ -260,7 +260,7 @@ define([
       if (!portal) {
         return false;
       }
-      return '//' + portal.portalHostname.replace(/\//g, '') + '/sharing/rest';
+      return '//' + portal.portalHostname.replace(/\/$/, '') + '/sharing/rest';
     },
 
     getResourcesUrl: function() {

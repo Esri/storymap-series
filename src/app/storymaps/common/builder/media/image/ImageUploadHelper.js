@@ -142,7 +142,12 @@ define([
           biggestDataUrl = biggestDataUrl || processed.dataUrl;
         }, this);
 
-        var processedThumb = this.createCanvasAndDataUrl(img, origFile.type, {height: this.photoSettings.thumbHeight});
+        var processedThumb;
+		if(!app.appCfg.imageUploadThumbWidth)
+			processedThumb = this.createCanvasAndDataUrl(img, origFile.type, {height: this.photoSettings.thumbHeight});
+		else{
+			processedThumb = this.createCanvasAndDataUrl(img, origFile.type, {width: app.appCfg.imageUploadThumbWidth});
+		}
 
         var dataUrl = isSingle ? biggestDataUrl : processedThumb.dataUrl;
         def.resolve({

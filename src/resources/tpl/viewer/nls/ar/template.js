@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "أنت غير معتمد لاستخدام منشئ %TPL_NAME%.",
       "noBuilderIE": "المُنشئ غير مدعوم في Internet Explorer قبل الإصدار %VERSION%. %UPGRADE%",
       "noViewerIE": "هذه القصة غير مدعومة في Internet Explorer قبل الإصدار %VERSION%. %UPGRADE%",
+      "noViewerIE2": "أنت تحاول عرض هذه القصة باستخدام مستعرض قديم غير مدعوم، وقد توجد مزايا لا تعمل أو مشكلات أخرى غير متوقعة. إننا نقترح الترقية إلى Internet Explorer 11 أو استخدام مستعرض آخر مثل Chrome.",
+      "noViewerIE3": "في أواخر 2017، لن يعد يتم تحويل هذه القصة بعد الآن في هذا المستعرض. وفي ذلك الوقت، يجب استخدام مستعرض مدعوم لعرض هذه القصة.",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>يرجى تحديث المستعرض</a>.",
       "mapLoadingFail": "‏‏حدث خطأ ما، لم يتم تحميل الخريطة بشكل صحيح.",
-      "signOut": "تسجيل المغادرة"
+      "signOut": "تسجيل المغادرة",
+      "attention": "انتبه!"
     },
     "mobileInfo": {
       "legend": "وسيلة إيضاح",

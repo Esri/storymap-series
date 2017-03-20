@@ -38,3 +38,7 @@
 	width: 250px;
 	height: 187px;
 }
+
+.settings-layoutoptions .preview .layout-thumbnail .header-bullets {
+	bottom: 6px; /* move bullets up in preview so they're not overlapping panel */
+}

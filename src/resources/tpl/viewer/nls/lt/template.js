@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "Nesate autorizuoti naudoti %TPL_NAME% kūrimo priemonę.",
       "noBuilderIE": "Kūrimo priemonė neveikia „Internet Explorer“, jei jo versija mažesnė nei %VERSION%. %UPGRADE%",
       "noViewerIE": "Pasakojimas neveikia Internet Explorer, jei jo versija senesnė nei %VERSION%. %UPGRADE%",
+      "noViewerIE2": "Jūs bandote peržiūrėti šį pasakojimą naudodami senesnę, nepalaikomą naršyklę. Kai kurie elementai gali neveikti ar įvykti kitokių nenumatytų problemų. Siūlome atnaujinti naršyklės versiją į Internet Explorer 11 arba naudoti kitą naršyklę, pavyzdžiui, Chrome.",
+      "noViewerIE3": "2017 m. pabaigoje šio pasakojimo nebebus galima įkelti naudojant šią naršyklę. Tuo metu, norėdami peržiūrėti šį pasakojimą, turėsite naudoti palaikomą naršyklę.",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Atnaujinkite naršyklę</a>.",
       "mapLoadingFail": "Įvyko klaida ir žemėlapio nepavyko tinkamai įkelti.",
-      "signOut": "Atsijungti"
+      "signOut": "Atsijungti",
+      "attention": "Dėmesio!"
     },
     "mobileInfo": {
       "legend": "Legenda",

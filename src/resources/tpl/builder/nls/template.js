@@ -46,11 +46,15 @@ define({
 				lblOverview: "Overview Map",
 				tooltipOverview: "Display a small overview map along with the main map.",
 				lblLocate: "Locate button",
-				tooltipLocate: "Display a button that shows the viewer's location on the map. This feature is supported on most devices and browsers, but the button only appears if you share your story as an HTTPS link and the story is not embedded.",
-				lblGeocoder: "Address or Place Finder",
-				tooltipGeocoder: "Allow your viewers to find addresses and places on your maps.",
+				tooltipLocate: "Allow your readers to see their current location on the map. This feature is supported on most devices and browsers, but the button only appears if you share your story as an HTTPS link and the story is not embedded.",
+				lblGeocoder: "Address, Place, and Feature Finder",
+				tooltipGeocoder: "Allow your readers to search for addresses, places, and/or features on your map. Search options can be configured on a web map's item page under Settings > Web Map > Application > Find Locations.",
 				lblSync: "Synchronize map locations",
 				tooltipSync: "When enabled, the initial location of the first map in your series will be applied to all the maps, and navigation by users in any map will be reflected in all maps. Disable for each map's location to remain independent."
+			},
+			settingsThemeOptions: {
+				lblOrgTheme: "Organization Theme",
+				lblModTheme: "Current Theme"
 			},
 			initPopup: {
 				title: "Welcome to"
@@ -123,6 +127,7 @@ define({
 	"fi": 1,
 	"fr": 1,
 	"he": 1,
+	"hi": 1,
 	"hr": 1,
 	"id": 1,
 	"it": 1,
@@ -143,6 +148,6 @@ define({
 	"tr": 1,
 	"vi": 1,
 	"zh-cn": 1,
-	"zh-hk": 1, 
-	"zh-tw": 1 
+	"zh-hk": 1,
+	"zh-tw": 1
 });

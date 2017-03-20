@@ -45,11 +45,15 @@ define({
       "lblOverview": "Apžvalga",
       "tooltipOverview": "Kartu su pagrindiniu žemėlapiu rodyti mažą apžvalgos žemėlapį.",
       "lblLocate": "Vietos nustatymo mygtukas",
-      "tooltipLocate": "Rodykite mygtuką, kuris nurodo žiūrinčiojo vietą žemėlapyje. Šis elementas palaikomas daugelyje įrenginių ir naršyklių, bet mygtukas rodomas tik tada, jei bendrinate savo pasakojimą kaip HTTPS nuorodą ir pasakojimas nėra įterpiamas.",
-      "lblGeocoder": "Adreso arba vietos radimo priemonė",
-      "tooltipGeocoder": "Leiskite žiūrintiesiems rasti adresus ir vietas žemėlapiuose.",
+      "tooltipLocate": "Leiskite skaitytojams matyti jų dabartinę vietą žemėlapyje. Ši funkcija palaikoma daugelyje įrenginių ir naršyklių, tačiau mygtukas matomas tik jei jūs savo pasakojimą bendrinate kaip HTTPS saitą, ir pasakojimas nėra įdėtasis.",
+      "lblGeocoder": "Adresas, vieta ir elementų ieškiklis",
+      "tooltipGeocoder": "Leiskite skaitytojams ieškoti adresų, vietų ir (arba) elementų jūsų žemėlapyje. Paieškos parinktis galima sukonfigūruoti internetinio žemėlapio elementų puslapyje pasirinkus Parametrai > Internetinis žemėlapis > Aplikacija > Ieškoti vietų.",
       "lblSync": "Sinchronizuoti žemėlapio vietas",
       "tooltipSync": "Kai įgalinta, pradinė pirmojo žemėlapio vieta jūsų serijoje bus taikoma visiems žemėlapiams, o vartotojų navigacija bet kuriame žemėlapyje bus atvaizduota visuose žemėlapiuose. Išjunkite kiekvieną žemėlapio vietą, kad liktumėte nepriklausomi."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Organizacijos tema",
+      "lblModTheme": "Dabartinė tema"
     },
     "initPopup": {
       "title": "Sveiki atvykę į"

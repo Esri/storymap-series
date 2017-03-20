@@ -45,11 +45,15 @@ define({
       "lblOverview": "Genel Bakış Haritası",
       "tooltipOverview": "Ana haritayla birlikte küçük bir genel bakış haritası görüntüleyin.",
       "lblLocate": "Bul düğmesi",
-      "tooltipLocate": "Haritada gözlemcinin konumunu gösteren bir düğme görüntüleyin. Bu detay çoğu cihaz ve tarayıcıda desteklenir, ancak düğme yalnızca hikayenizi bir HTTPS bağlantısı olarak paylaşırsanız ve hikaye yerleşik değilse görünür.",
-      "lblGeocoder": "Adres veya Yer Bulucu",
-      "tooltipGeocoder": "İzleyicilerin haritalarınızda adresleri ve yerleri bulmasına izin verin.",
+      "tooltipLocate": "Okuyucularınızın haritada kendi geçerli konumlarını görmesine izin verin. Bu detay çoğu cihaz ve tarayıcıda desteklenir, ancak düğme yalnızca hikayenizi bir HTTPS bağlantısı olarak paylaşırsanız ve hikaye yerleşik değilse görünür.",
+      "lblGeocoder": "Adres, Yer ve Detay Bulucu",
+      "tooltipGeocoder": "Okuyucularınızın haritanızda adres, yer ve/veya detay aramasına izin verin. Arama seçenekleri bir web haritasının öğe sayfasında Ayarlar > Web Haritası > Uygulama > Konum Bul altından yapılandırılabilir.",
       "lblSync": "Harita konumlarını senkronize et",
       "tooltipSync": "Etkinleştirildiğinde, serinizdeki ilk haritanın başlangıç konumu tüm haritalara uygulanır ve kullanıcıların herhangi bir haritada yaptığı gezinme tüm haritalarda yansıtılır. Bağımsız olması için her haritanın konumunu devre dışı bırakın."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Kuruluş Teması",
+      "lblModTheme": "Geçerli Tema"
     },
     "initPopup": {
       "title": "Hoş geldiniz:"

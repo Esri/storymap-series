@@ -45,11 +45,15 @@ define({
       "lblOverview": "Mapa přehledu",
       "tooltipOverview": "Zobrazí spolu s hlavní mapou malou přehledovou mapu.",
       "lblLocate": "Tlačítko Lokalizovat",
-      "tooltipLocate": "Zobrazí tlačítko, které znázorňuje polohu pozorovatele na mapě. Tuto funkci podporuje většina zařízení. Toto tlačítko se však zobrazí pouze, pokud příběh sdílíte v podobě odkazu HTTPS a pokud příběh není vložený.",
-      "lblGeocoder": "Vyhledávání adresy nebo místa",
-      "tooltipGeocoder": "Umožňuje pozorovatelům vyhledávat adresy a místa ve vašich mapách.",
+      "tooltipLocate": "Umožněte svým čtenářům vidět jejich aktuální polohu na mapě. Tuto funkci sice podporuje většina zařízení a prohlížečů, ale tlačítko se zobrazí jen tehdy, pokud příběh sdílíte v podobě odkazu HTTPS a příběh není vložený.",
+      "lblGeocoder": "Vyhledávač adres, míst a prvků",
+      "tooltipGeocoder": "Umožněte svým uživatelům vyhledávat v mapě adresy, místa nebo prvky. Možnosti vyhledávání lze konfigurovat na stránce položky webové mapy v části Nastavení > Webová mapa > Aplikace > Vyhledat lokality.",
       "lblSync": "Synchronizovat umístění mapy",
       "tooltipSync": "Po aktivaci této možnosti se počáteční umístění první mapy v sérii použije i u všech ostatních map. Veškerá navigace ve kterékoliv z těchto map se projeví v ostatních mapách. Chcete-li, aby bylo umístění všech map nezávislé, tuto možnost deaktivujte."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Motiv organizace",
+      "lblModTheme": "Aktuální motiv"
     },
     "initPopup": {
       "title": "Vítejte v"

@@ -10,6 +10,7 @@ define(["lib-build/css!./Builder",
 		'./media/image/FileUploadHelper',
 		"dojo/_base/lang",
 		"dojo/_base/array",
+		"dojo/_base/Color",
 		"dojo/has",
 		"esri/arcgis/utils",
 		"esri/IdentityManager",
@@ -29,6 +30,7 @@ define(["lib-build/css!./Builder",
 		fileUploadHelper,
 		lang,
 		array,
+		Color,
 		has,
 		arcgisUtils,
 		IdentityManager,
@@ -115,8 +117,359 @@ define(["lib-build/css!./Builder",
 				app.builder.titleMatchOnLoad = true;
 			}
 
+			if (app.data.getWebAppData().getAppGeocoders) {
+				configureAppGeocoders();
+			}
+
+			/* themes */
+			var x; // walker
+			if ((x = app.portal) && (x = x.portalProperties) && (x = x.sharedTheme)) {
+				if (hasOrgTheme(x) && !app.appCfg.noAppThemes) {
+					addOrgThemeToConfig(x);
+				}
+				if (hasOrgLogo(x)) {
+					addOrgLogoToConfig(x);
+				}
+			}
+
+			if(!app.appCfg.noAppThemes)
+				addModifiedThemeToConfig();
+
+			var y; // walker
+			if (!app.appCfg.noAppThemes && (y = app.data.getWebAppData().getTheme()) && (y = y.colors)) {
+				if (y.name && y.name.match(/-org$|-modified$/)) {
+					// put these up here for better changing
+					var btnBlue = '#418abb',
+							textBlue = '#67AAE5',
+							textDark = '#404040',
+							btnGray = '#939393';
+
+					$('body').addClass('builder-shadows');
+					var mediaBlueShadows = CommonHelper.colorsAreSimilar(y.media, textBlue) || CommonHelper.colorsAreSimilar(y.media, btnBlue);
+					$('body').toggleClass('media-blues', mediaBlueShadows);
+					var mediaDarkShadows = CommonHelper.colorsAreSimilar(y.media, textDark);
+					$('body').toggleClass('media-dark', mediaDarkShadows);
+					var mediaGrayShadows = CommonHelper.colorsAreSimilar(y.media, btnGray);
+					$('body').toggleClass('media-gray', mediaGrayShadows);
+					var panelBlueShadows = CommonHelper.colorsAreSimilar(y.panel, btnBlue);
+					$('body').toggleClass('panel-blues', panelBlueShadows);
+				}
+			}
+
 			_builderPanel.updateSharingStatus();
 			_builderView.appInitComplete();
+		}
+
+		function hasOrgTheme(sharedTheme) {
+
+			var hasValues = false;
+			if (sharedTheme.header) {
+				hasValues = colorExists(sharedTheme.header.text) || colorExists(sharedTheme.header.background);
+			}
+			if (!hasValues && sharedTheme.body) {
+				hasValues = colorExists(sharedTheme.body.text) || colorExists(sharedTheme.body.background) || colorExists(sharedTheme.body.link);
+			}
+			if (!hasValues && sharedTheme.button) {
+				hasValues = colorExists(sharedTheme.button.text) || colorExists(sharedTheme.button.background);
+			}
+			return hasValues;
+		}
+
+		function hasOrgLogo(sharedTheme) {
+			return (sharedTheme.logo && sharedTheme.logo.small);
+		}
+
+		function configureAppGeocoders() {
+			if (!app.data.getWebAppData().getAppGeocoders()) {
+				addAppGeocoders();
+			}
+		}
+
+		function addAppGeocoders() {
+			if (app.portal.helperServices.geocode && app.portal.helperServices.geocode.length) {
+				var ajaxArr = [];
+				var originalSources = [];
+				$.each(app.portal.helperServices.geocode, function (index, geocoder) {
+					if (geocoder.url) {
+						if(window.location.protocol == "https:"){
+							if(geocoder.url.indexOf('https') < 0){
+								return;
+							}
+						}
+						ajaxArr.push($.getJSON(geocoder.url + '?f=json'));
+						originalSources.push(geocoder);
+					}
+				});
+				$.when.apply($, ajaxArr).done(function() {
+					var geocoderResponses = (ajaxArr.length > 1) ? arguments : [arguments];
+					var sources = [];
+					$.each(geocoderResponses, function(index, xhrResponse) {
+						var responseJson = xhrResponse[0];
+						var textStatus = xhrResponse[1];
+						if (!responseJson || responseJson.error || !responseJson.singleLineAddressField || !textStatus || textStatus !== 'success') {
+							return;
+						}
+						var sourceInfo = originalSources[index];
+						sources.push({
+							singleLineFieldName: responseJson.singleLineAddressField.name,
+							name: responseJson.name || sourceInfo.name,
+							placeholder: sourceInfo.placeholder,
+							url: sourceInfo.url
+						});
+					});
+					app.data.getWebAppData().setAppGeocoders(sources);
+					// save this setting now (since this is happening on startup)
+					if (app.data.getWebAppItem().id) {
+						if(app.isGalleryCreation && app.appCfg.disableGalleryCreationSaveGeocoders)
+							return;
+						saveApp(false, function() {});
+					}
+				});
+			}
+		}
+
+		function addOrgThemeToConfig(sharedTheme) {
+			var webAppData = app.data.getWebAppData();
+			var themeWithFallbacks = {
+				header: {
+					text: colorExists(sharedTheme.header.text) || '#fff',
+					background: colorExists(sharedTheme.header.background) || '#333'
+				},
+				body: {
+					text: colorExists(sharedTheme.body.text) || '#333',
+					background: colorExists(sharedTheme.body.background) || '#fff',
+					link: colorExists(sharedTheme.body.link || sharedTheme.body.text) || '#666'
+				},
+				button: {
+					text: colorExists(sharedTheme.button.text) || '#ccc',
+					background: colorExists(sharedTheme.button.background) || '#999'
+				}
+			};
+
+			var safeBodyLink = themeWithFallbacks.body.link || themeWithFallbacks.body.text;
+			var translatedTheme = {
+				group: 'org',
+				themeMajor: getWhiteOrBlackText(themeWithFallbacks.header.background),
+				header: themeWithFallbacks.header.background,
+				headerText: themeWithFallbacks.header.text,
+				headerTitle: themeWithFallbacks.header.text,
+				panel: themeWithFallbacks.body.background,
+				text: themeWithFallbacks.body.text,
+				textLink: safeBodyLink,
+				media: getMediaBackground(themeWithFallbacks),
+				mapControls: themeWithFallbacks.body.background,
+				softText: themeWithFallbacks.body.text,
+				softBtn: themeWithFallbacks.body.text,
+				esriLogo: getWhiteOrBlackText(themeWithFallbacks.header.background),
+				esriLogoMobile: 'black' // ???
+			};
+			var setOrgTheme = app.isInitializing && !webAppData.getTheme().colors;
+			app.cfg.LAYOUTS.forEach(function(layout) {
+				var alreadyHasOrgTheme = layout.themes.some(function(theme) {
+					if (theme.name.match(/-org$/)) {
+						return true;
+					}
+					return false;
+				});
+				if (!alreadyHasOrgTheme) {
+					var moreOptions = {
+						name: layout.id + '-org'
+					};
+					if (layout.id === 'tab' || layout.id === 'bullet') {
+						lang.mixin(moreOptions, {
+							// active tab
+							tabActive: themeWithFallbacks.button.background,
+							tabTextActive: themeWithFallbacks.button.text,
+							// non-active tab
+							tab: getColorRGBA(themeWithFallbacks.button.background, 0.75),
+							tabText: getColorRGBA(themeWithFallbacks.button.text, 0.6),
+							// non-active tab hover
+							tabHover: getColorRGBA(themeWithFallbacks.button.background, 0.9),
+							tabTextHover: getColorRGBA(themeWithFallbacks.button.text, 0.8)
+						});
+					} else if (layout.id === 'accordion') {
+						lang.mixin(moreOptions, {
+							// accordion text (doesn't change for active/non-active)
+							// used body.link here instead of button because background is body.background.
+							accordionNumber: safeBodyLink,
+							accordionTitle: safeBodyLink,
+							// arrow color for active section
+							accordionArrowActive: safeBodyLink,
+							// arrow color for non-active section
+							accordionArrow: getColorRGBA(safeBodyLink, 0.6),
+							// arrow color for non-active section on hover
+							accordionArrowHover: getColorRGBA(safeBodyLink, 0.8)
+						});
+					}
+					layout.themes.push(lang.mixin(moreOptions, translatedTheme));
+				}
+
+				// set to org colors if app.isInitializing
+				if (setOrgTheme && layout.id === webAppData.getLayout().id) {
+					webAppData.setTheme({
+						colors: layout.themes[layout.themes.length - 1]
+					});
+					topic.publish('CORE_UPDATE_UI');
+				}
+			});
+
+			if (setOrgTheme && !webAppData.getLayout().id) {
+				var layout0themes = app.cfg.LAYOUTS[0];
+				webAppData.setTheme({
+					colors: layout0themes[layout0themes.length - 1]
+				});
+			}
+		}
+
+		function colorExists(color) {
+			if (!color || color === 'no-color') {
+				return false;
+			}
+			return color;
+		}
+
+		function getColorRGBA(color, opacity) {
+			var djColor = new Color(color);
+			djColor.a = opacity;
+			return djColor.toString(); // returns rgba(...);
+		}
+
+		function addOrgLogoToConfig(sharedTheme) {
+			app.cfg.HEADER_ORG_LOGO_URL = sharedTheme.logo.small;
+			// set app logo to org logo if app.isInitializing
+			if (app.isInitializing && !app.data.getWebAppData().getHeader().logoURL) {
+				var newHeaderConfig = _core.getHeaderUserCfg();
+				lang.mixin(newHeaderConfig, {
+					logoURL: sharedTheme.logo.small,
+					logoTarget: ''
+				});
+				app.data.getWebAppData().setHeader(newHeaderConfig);
+				topic.publish('CORE_UPDATE_UI');
+			}
+		}
+
+		function addModifiedThemeToConfig() {
+			var currentTheme = app.data.getWebAppData().getTheme();
+			var currentColors = currentTheme.colors;
+			if (!currentColors || !currentColors.name) {
+				return;
+			}
+			var nameArr = currentColors.name.split('-');
+			var currentLayout = nameArr[0];
+
+			var commonProps = ['header', 'headerText', 'headerTitle', 'panel', 'text', 'textLink', 'media', 'mapControls', 'softText', 'softBtn'];
+			var moreTabProps = ['tab', 'tabActive', 'tabHover', 'tabText', 'tabTextHover', 'tabTextActive'];
+			var moreAccordionProps = ['accordionArrow, accordionArrowHover', 'accordionArrowActive', 'accordionNumber', 'accordionTitle'];
+
+			var found = app.cfg.LAYOUTS.some(function(layout) {
+				if (currentLayout !== layout.id) {
+					return false;
+				}
+				var specificProps;
+				if (layout.id === 'tab' || layout.id === 'bullet') {
+					specificProps = commonProps.concat(moreTabProps);
+				} else if (layout.id === 'accordion') {
+					specificProps = commonProps.concat(moreAccordionProps);
+				}
+				return layout.themes.some(function(colors) {
+					return specificProps.every(function(prop) {
+						return currentColors[prop] === colors[prop];
+					});
+				});
+			});
+
+			if (found) {
+				return;
+			}
+
+			app.cfg.LAYOUTS.forEach(function(layout) {
+				var newColors = {
+					name: layout.id + '-' + nameArr.slice(1).join('-'),
+					group: 'modified'
+				};
+				if (!newColors.name.match(/-modified$/)) {
+					newColors.name += '-modified';
+				}
+				if (currentLayout === layout.id) {
+					lang.mixin(currentColors, newColors);
+					// get new name to stick in current config
+					app.data.getWebAppData().setTheme({
+						colors: currentColors
+					});
+					// otherwise, the app uses the old name of the theme to
+					// set the colors.
+					topic.publish('CORE_UPDATE_UI');
+					layout.themes.push(currentColors);
+					return;
+				}
+				var key;
+				if (layout.id === 'tab' || layout.id === 'bullet') {
+					for (key in currentColors) {
+						if (currentColors.hasOwnProperty(key)) {
+							if (moreAccordionProps.indexOf(key) < 0 && key !== 'name' && key !== 'group') {
+								newColors[key] = currentColors[key];
+							}
+						}
+					}
+
+					var tabBackground = '#333';
+					var tabText = '#eee';
+					currentColors = lang.mixin({
+						// active, selected tab
+						tabActive: tabBackground,
+						tabTextActive: tabText,
+						// non-active tab
+						tab: getColorRGBA(tabBackground, 0.75),
+						tabText: getColorRGBA(tabText, 0.6),
+						// non-active tab hover
+						tabHover: getColorRGBA(tabBackground, 0.9),
+						tabTextHover: getColorRGBA(tabText, 0.8),
+						// group to keep selected.
+						group: 'modified'
+					}, newColors);
+
+				} else if (layout.id === 'accordion') {
+
+					for (key in currentColors) {
+						if (currentColors.hasOwnProperty(key)) {
+							if (moreAccordionProps.indexOf(key) < 0 && key !== 'name') {
+								newColors[key] = currentColors[key];
+							}
+						}
+					}
+					currentColors = lang.mixin({
+						// accordion text (doesn't change for active/non-active)
+						// used textLink here instead of button because background is body.background.
+						accordionNumber: currentColors.textLink,
+						accordionTitle: currentColors.textLink,
+						// arrow color for active section
+						accordionArrowActive: currentColors.textLink,
+						// arrow color for non-active section
+						accordionArrow: getColorRGBA(currentColors.textLink, 0.6),
+						// arrow color for non-active section on hover
+						accordionArrowHover: getColorRGBA(currentColors.textLink, 0.8),
+						group: 'modified'
+					}, newColors);
+				}
+				layout.themes.push(currentColors);
+			});
+		}
+
+		function getWhiteOrBlackText(bgColor) {
+			var yiq = getYIQ(bgColor);
+			return (yiq >= 128) ? 'black' : 'white';
+		}
+
+		function getMediaBackground(/*sharedTheme*/) {
+			// var yiq = getYIQ(sharedTheme.body.background);
+			// return (yiq >= 128) ? '#888' : '#eee';
+			return '#eee';
+		}
+
+		function getYIQ(thisColor) {
+			var djColor = new Color(thisColor);
+			var rgbArr = djColor.toRgb();
+			return (rgbArr[0] * 299 + rgbArr[1] * 587 + rgbArr[2] * 114) / 1000;
 		}
 
 		function resize(cfg)
@@ -183,14 +536,20 @@ define(["lib-build/css!./Builder",
 							return;
 						}
 
-						saveWebmap(function(response2){
-							if (!response2 || !response2.success) {
-								appSaveFailed("WEBMAP");
-								return;
-							}
+						// For SL pass thru work flow, we don't want to touch the web map.
+						// It is managed by the author outside of the builder
+						if(!app.data.getWebAppData().getIsExternalData || !app.data.getWebAppData().getIsExternalData()){
+							saveWebmap(function(response2){
+								if (!response2 || !response2.success) {
+									appSaveFailed("WEBMAP");
+									return;
+								}
 
+								appSaveSucceeded({ success: true });
+							});
+						} else if (app.data.getWebAppData().getIsExternalData()) {
 							appSaveSucceeded({ success: true });
-						});
+						}
 					});
 				},
 				function(error) {
@@ -270,6 +629,7 @@ define(["lib-build/css!./Builder",
 						appSaveSucceeded({ success: true });
 						app.isDirectCreationFirstSave = false;
 						_builderPanel.updateSharingStatus();
+						topic.publish("DIRECT_CREATION_SAVE");
 
 						History.replaceState({}, "", "index.html?appid=" + response3.id + "&edit");
 					});
@@ -563,7 +923,7 @@ define(["lib-build/css!./Builder",
 				logoURL = stripTokensFromUrls(logoURL, logoURL);
 				data.values.settings.header.logoURL = logoURL;
 			}
-			var currentUploadedLogo = $('#uploadLogoInput').val();
+			var currentUploadedLogo = CommonHelper.isAppResource(logoURL) ? logoURL : $('#uploadLogoInput').val();
 			if (currentUploadedLogo) {
 				currentUploadedLogo = CommonHelper.possiblyRemoveToken(currentUploadedLogo);
 			}

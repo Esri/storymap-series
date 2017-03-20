@@ -45,11 +45,15 @@ define({
       "lblOverview": "Pregledna mapa",
       "tooltipOverview": "Prikažite malu preglednu mapu uz glavnu mapu.",
       "lblLocate": "Dugme „Lociraj“",
-      "tooltipLocate": "Prikažite dugme koje pokazuje lokaciju gledaoca na mapi. Ova funkcija je podržana na većini uređaja i pregledača, ali se dugme prikazuje samo ako podelite priču kao HTTPS link i ako priča nije ugrađena.",
-      "lblGeocoder": "Pretraživač adrese ili mesta",
-      "tooltipGeocoder": "Omogućite gledaocima da pronađu adrese i mesta na vašim mapama.",
+      "tooltipLocate": "Omogućite čitaocima da vide svoju trenutnu lokaciju na mapi. Ova funkcija je podržana na većini uređaja i pregledača, ali se dugme prikazuje samo ako podelite priču kao HTTPS link i ako priča nije ugrađena.",
+      "lblGeocoder": "Adresa, mesto i pronalazač geoobjekta",
+      "tooltipGeocoder": "Omogućite čitaocima da pretražuju adrese, mesta i/ili geoobjekte na mapi. Opcije pretraživanja mogu da se konfigurišu na stranici stavke veb mape pod Postavke > Veb mapa > Aplikacija > Pronađi lokacije.",
       "lblSync": "Sinhronizujte lokacije mape",
       "tooltipSync": "Kada je omogućeno, početna lokacija prve mape u vašem nizu će da bude primenjena na sve mape, a kretanje korisnika po bilo kojoj mapi će da se odrazi na sve mape. Onemogućite za svaku lokaciju mape da bi ostale nezavisne."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Tema organizacije",
+      "lblModTheme": "Trenutna tema"
     },
     "initPopup": {
       "title": "Dobrodošli na"

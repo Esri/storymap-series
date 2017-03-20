@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "Sinulla ei ole luontitoiminnon %TPL_NAME% käyttöoikeuksia.",
       "noBuilderIE": "Luontitoimintoa ei tueta Internet Explorerin versiota %VERSION% edeltävissä versioissa. %UPGRADE%",
       "noViewerIE": "Tarinaa ei tueta Internet Explorerin versiota %VERSION% edeltävissä versioissa. %UPGRADE%",
+      "noViewerIE2": "Yrität tarkastella tätä tarinaa käyttämällä vanhempaa selainta, jota ei tueta. Siinä saattaa olla ominaisuuksia, jotka eivät toimi, tai muita odottamattomia ongelmia. Suosittelemme, että päivität Internet Explorer -selaimen versioon 11 tai käytät toista selainta, kuten Chromea.",
+      "noViewerIE3": "Vuoden 2017 loppupuolella tämä tarina ei enää lataudu tässä selaimessa. Käytä silloin tuettua selainta tämän tarinan katseluun.",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Päivitä selain</a>.",
       "mapLoadingFail": "Tapahtui virhe, eikä kartta latautunut oikein.",
-      "signOut": "Kirjaudu ulos"
+      "signOut": "Kirjaudu ulos",
+      "attention": "Huomio!"
     },
     "mobileInfo": {
       "legend": "Selite",

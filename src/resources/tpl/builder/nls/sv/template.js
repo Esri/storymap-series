@@ -45,11 +45,15 @@ define({
       "lblOverview": "Översiktskarta",
       "tooltipOverview": "Visa en liten översiktskarta tillsammans med huvudkartan.",
       "lblLocate": "Sökknapp",
-      "tooltipLocate": "Visa en knapp som visar vyns plats på kartan. Den här funktionen stöds på de flesta enheter och webbläsare, men knappen visas endast om du delar din berättelse som en HTTPS-länk och berättelsen inte är inbäddad.",
-      "lblGeocoder": "Adress- eller platssökning",
-      "tooltipGeocoder": "Gör att användarna kan söka efter adresser och platser på kartan.",
+      "tooltipLocate": "Låt dina läsare se sin aktuella position på kartan. Den här funktionen stöds på de flesta enheter och webbläsare, men knappen visas endast om du delar din berättelse som en HTTPS-länk och berättelsen inte är inbäddad.",
+      "lblGeocoder": "Sökning efter adresser, platser och geoobjekt",
+      "tooltipGeocoder": "Låt dina läsare söka efter adresser, platser och/eller geoobjekt på din karta. Sökalternativ kan konfigureras på en webbkartas objektssida under Inställningar > Webbkarta > Program > Hitta platser.",
       "lblSync": "Synkronisera platser på kartan",
       "tooltipSync": "Vid aktivering tillämpas ursprungsplatsen för den första kartan i din serie på alla kartor, och användarnas navigering i en karta reflekteras i alla kartor. Inaktivera alternativet om du vill att varje kartas plats ska vara oberoende."
+    },
+    "settingsThemeOptions": {
+      "lblOrgTheme": "Organisationstema",
+      "lblModTheme": "Aktuellt tema"
     },
     "initPopup": {
       "title": "Välkommen till"

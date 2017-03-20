@@ -54,7 +54,8 @@ define(["lib-build/tpl!./Landing",
 				lblAdd: i18n.builder.landing.lblAdd,
 				phAdd: i18n.builder.landing.phAdd,
 				lblOR: i18n.builder.landing.lblOR,
-				lblHelp: i18n.builder.landing.lblHelp
+				lblHelp: i18n.builder.landing.lblHelp,
+				hasBuilderTour: ! app.appCfg.disableBuilderTour
 			}));
 
 			initEvents();

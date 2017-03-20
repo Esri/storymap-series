@@ -111,6 +111,7 @@ define({
       "title": "Záhlaví",
       "logoEsriRadio": "Logo Esri",
       "logoNoneRadio": "Bez loga",
+      "logoOrgRadio": "Logo organizace",
       "logoCustomRadio": "Moje logo",
       "logoCustomLabel": "Obrázek:",
       "logoCustomUploadHelp": "Loga vypadají nejlépe, pokud poměr jejich šířky a výšky spadá do rozmezí 1:1 až 5:1. Pokud se odkazované logo načítá pomalu, uložte jeho kopii a nahrajte ji zde.",

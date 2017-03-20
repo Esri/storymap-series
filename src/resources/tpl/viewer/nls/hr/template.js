@@ -30,9 +30,12 @@ define({
       "notAuthorizedBuilder": "Niste ovlašteni za upotrebu sastavljača %TPL_NAME%.",
       "noBuilderIE": "Sastavljač nije podržan u ranijim verzijama preglednika Internet Explorer prije verzije %VERSION%. %UPGRADE%",
       "noViewerIE": "Priča nije podržana u ranijim verzijama preglednika Internet Explorer prije verzije %VERSION%. %UPGRADE%",
+      "noViewerIE2": "Pokušavate prikazati ovu priču preko starijeg, nepodržanog preglednika. Možda neki geoobjekti ne rade ili je došlo do drugih neočekivanih problema. Predlažemo nadogradnju u Internet Explorer 11 ili korištenje drugog preglednika, primjerice Chromea.",
+      "noViewerIE3": "Krajem 2017. ova se priča više neće moći učitati u ovom pregledniku. Tada ćete morati koristiti podržani preglednik za prikaz ove priče.",
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Ažurirajte svoj preglednik</a>.",
       "mapLoadingFail": "Nešto nije u redu, karta se nije točno učitala.",
-      "signOut": "Odjava"
+      "signOut": "Odjava",
+      "attention": "Pozor!"
     },
     "mobileInfo": {
       "legend": "Legenda",
