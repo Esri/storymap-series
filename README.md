@@ -443,6 +443,3 @@ Some open-source components of this project are licensed under other License ter
 | jQuery UI 			| MIT 		|
 | FastClick 			| MIT 		|
 | jQuery UI Touch Punch | MIT 		|
-
-[](Esri Tags: Storytelling MapSeries ArcGIS-Online Template Map Series Tabs Accordion)
-[](Esri Language: JavaScript)
