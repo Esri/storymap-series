@@ -1,4 +1,5 @@
-define(["lib-build/css!./MainView",
+define(["maptiks/mapWrapper",
+    "lib-build/css!./MainView",
     "../ui/MainStage",
     "./Config",
     "./Data",
@@ -28,6 +29,7 @@ define(["lib-build/css!./MainView",
     "storymaps/common/utils/CommonHelper",
     "dojo/has",
     "dojo/topic",
+    "dojo/_base/lang",
     "esri/arcgis/utils",
     "esri/geometry/Extent",
     "../ui/StoryText",
@@ -37,6 +39,7 @@ define(["lib-build/css!./MainView",
     "lib-build/css!../ui/Responsive"
   ],
   function (
+    mapWrapper,
     viewCss,
     MainStage,
     Config,
@@ -61,6 +64,7 @@ define(["lib-build/css!./MainView",
     CommonHelper,
     has,
     topic,
+    lang,
     arcgisUtils,
     Extent,
     StoryText
@@ -312,7 +316,24 @@ define(["lib-build/css!./MainView",
           bingMapsKey: app.cfg.BING_MAPS_KEY,
           editable: false,
           layerMixins: app.data.getAppProxies()
-        });
+        }).then(lang.hitch(this, function (response) {
+           
+            // *******************************************
+            // **** Maptiks Changes below
+            // *******************************************
+
+            var maptiksMapOptions = {
+              extent: response.map.extent,
+              maptiks_trackcode: this.config.maptiks_trackcode,
+              maptiks_id: this.config.maptiks_id,
+            };
+            mapWrapper(container, maptiksMapOptions, response.map);
+
+            // *******************************************
+            // **** Maptiks Changes done
+            // *******************************************
+            
+        }));
       };
 
       this.firstWebmapLoaded = function()
