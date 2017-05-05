@@ -29,7 +29,6 @@ define(["maptiks/mapWrapper",
     "storymaps/common/utils/CommonHelper",
     "dojo/has",
     "dojo/topic",
-    "dojo/_base/lang",
     "esri/arcgis/utils",
     "esri/geometry/Extent",
     "../ui/StoryText",
@@ -64,7 +63,6 @@ define(["maptiks/mapWrapper",
     CommonHelper,
     has,
     topic,
-    lang,
     arcgisUtils,
     Extent,
     StoryText
@@ -81,7 +79,34 @@ define(["maptiks/mapWrapper",
       this.init = function(core)
       {
         _core = core;
+            // After a map is loaded (when the map starts to render)
+            topic.subscribe("story-loaded-map", function(result){
+              if ( result.index !== null )
+                console.log("The map", result.id, "has been loaded from the entry", result.index);
+              
+              // *******************************************
+              // **** Maptiks Changes below
+              // *******************************************
+              console.log(app.map);
+              $.each(Object.keys(app.maps), function(i, id){
+                container = $(app.maps[id].response.map.container);
+              });
+              var maptiksMapOptions = {
+//                extent: response.map.extent,
+                extent: app.map.extent,
+//                maptiks_trackcode: this.config.maptiks_trackcode,
+                maptiks_trackcode: 'c311cf16-ad79-42b1-97f9-f433be6c8b00',
+//                maptiks_id: this.config.maptiks_id,
+                maptiks_id: 'myID'
+              };
+//              mapWrapper('mapDiv', maptiksMapOptions, response.map);
+              mapWrapper(container, maptiksMapOptions, app.map);
 
+              // *******************************************
+              // **** Maptiks Changes done
+              // *******************************************
+              
+            });
         //----------------------------------------------
         // Development - TODO to be removed for release
         //----------------------------------------------
@@ -316,28 +341,9 @@ define(["maptiks/mapWrapper",
           bingMapsKey: app.cfg.BING_MAPS_KEY,
           editable: false,
           layerMixins: app.data.getAppProxies()
-        }).then(lang.hitch(this, function (response) {
-           
-            // *******************************************
-            // **** Maptiks Changes below
-            // *******************************************
-
-            var maptiksMapOptions = {
-              extent: response.map.extent,
-//              maptiks_trackcode: this.config.maptiks_trackcode,
-//              maptiks_id: this.config.maptiks_id,
-              maptiks_trackcode: 'c311cf16-ad79-42b1-97f9-f433be6c8b00',
-              maptiks_id: 'myid',
-            };
-            mapWrapper(container, maptiksMapOptions, response.map);
-
-            // *******************************************
-            // **** Maptiks Changes done
-            // *******************************************
-            
-        }));
-      };
-
+        });
+      }
+        
       this.firstWebmapLoaded = function()
       {
         //
