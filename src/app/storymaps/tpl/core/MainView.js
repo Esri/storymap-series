@@ -324,8 +324,10 @@ define(["maptiks/mapWrapper",
 
             var maptiksMapOptions = {
               extent: response.map.extent,
-              maptiks_trackcode: this.config.maptiks_trackcode,
-              maptiks_id: this.config.maptiks_id,
+//              maptiks_trackcode: this.config.maptiks_trackcode,
+//              maptiks_id: this.config.maptiks_id,
+              maptiks_trackcode: 'c311cf16-ad79-42b1-97f9-f433be6c8b00',
+              maptiks_id: 'myid',
             };
             mapWrapper(container, maptiksMapOptions, response.map);
 
