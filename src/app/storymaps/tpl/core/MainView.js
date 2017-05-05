@@ -79,34 +79,27 @@ define(["maptiks/mapWrapper",
       this.init = function(core)
       {
         _core = core;
-            // After a map is loaded (when the map starts to render)
-            topic.subscribe("story-loaded-map", function(result){
-              if ( result.index !== null )
-                console.log("The map", result.id, "has been loaded from the entry", result.index);
-              
-              // *******************************************
-              // **** Maptiks Changes below
-              // *******************************************
-              console.log(app.map);
-              $.each(Object.keys(app.maps), function(i, id){
-                container = $(app.maps[id].response.map.container);
-              });
-              var maptiksMapOptions = {
-//                extent: response.map.extent,
-                extent: app.map.extent,
-//                maptiks_trackcode: this.config.maptiks_trackcode,
-                maptiks_trackcode: 'c311cf16-ad79-42b1-97f9-f433be6c8b00',
-//                maptiks_id: this.config.maptiks_id,
-                maptiks_id: 'myID'
-              };
-//              mapWrapper('mapDiv', maptiksMapOptions, response.map);
-              mapWrapper(container, maptiksMapOptions, app.map);
+        // After a map is loaded (when the map starts to render)
+        topic.subscribe("story-loaded-map", function(result){
+          if ( result.index !== null )
+            console.log("The map", result.id, "has been loaded from the entry", result.index);
 
-              // *******************************************
-              // **** Maptiks Changes done
-              // *******************************************
-              
-            });
+          // *******************************************
+          // **** Maptiks Changes below
+          // *******************************************
+          container = $(app.maps[result.id].response.map.container); // the current map div
+          var maptiksMapOptions = {
+            extent: app.map.extent,
+            maptiks_trackcode: 'c311cf16-ad79-42b1-97f9-f433be6c8b00',
+            maptiks_id: 'myID:' + app.data.getCurrentEntry().title // ID:tabname
+          };
+          mapWrapper(container, maptiksMapOptions, app.map);
+
+          // *******************************************
+          // **** Maptiks Changes done
+          // *******************************************
+
+        });
         //----------------------------------------------
         // Development - TODO to be removed for release
         //----------------------------------------------
