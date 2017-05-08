@@ -90,8 +90,8 @@ define(["maptiks/mapWrapper",
           container = $(app.maps[result.id].response.map.container); // the current map div
           var maptiksMapOptions = {
             extent: app.map.extent,
-            maptiks_trackcode: 'c311cf16-ad79-42b1-97f9-f433be6c8b00',
-            maptiks_id: 'myID:' + app.data.getCurrentEntry().title // ID:tabname
+            maptiks_trackcode: WebApplicationData.getMapOptions().maptiksTrackcode, // from Builder map options
+            maptiks_id: WebApplicationData.getMapOptions().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder map options, ID:tabname
           };
           mapWrapper(container, maptiksMapOptions, app.map);
 
