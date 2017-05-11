@@ -1,4 +1,5 @@
-define(["lib-build/css!./MainView",
+define(["maptiks/mapWrapper",
+    "lib-build/css!./MainView",
     "../ui/MainStage",
     "./Config",
     "./Data",
@@ -37,6 +38,7 @@ define(["lib-build/css!./MainView",
     "lib-build/css!../ui/Responsive"
   ],
   function (
+    mapWrapper,
     viewCss,
     MainStage,
     Config,
@@ -77,6 +79,25 @@ define(["lib-build/css!./MainView",
       this.init = function(core)
       {
         _core = core;
+        
+        // *******************************************
+        // **** Maptiks Changes below
+        // *******************************************
+        
+        // After a map is loaded (when the map starts to render)
+        topic.subscribe("story-loaded-map", function(result){
+          var container = $(app.maps[result.id].response.map.container); // the current map div
+          var maptiksMapOptions = {
+            extent: app.map.extent,
+            maptiks_trackcode: WebApplicationData.getMapOptions().maptiksTrackcode, // from Builder map options
+            maptiks_id: WebApplicationData.getMapOptions().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder map options, ID:tabname
+          };
+          mapWrapper(container, maptiksMapOptions, app.map);
+        });
+        
+        // *******************************************
+        // **** Maptiks Changes done
+        // *******************************************
 
         //----------------------------------------------
         // Development - TODO to be removed for release
@@ -313,8 +334,8 @@ define(["lib-build/css!./MainView",
           editable: false,
           layerMixins: app.data.getAppProxies()
         });
-      };
-
+      }
+        
       this.firstWebmapLoaded = function()
       {
         //
