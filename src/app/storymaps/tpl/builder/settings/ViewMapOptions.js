@@ -40,8 +40,8 @@ define(["lib-build/tpl!./ViewMapOptions",
 				
 				_contentContainer.find(".opt-checkbox-sync").prop("checked", settings.mapsSync);
 				
-                _contentContainer.find(".maptiks-trackcode").prop("value", settings.maptiksTrackcode);
-                _contentContainer.find(".maptiks-id").prop("value", settings.maptiksId);
+                _contentContainer.find("#maptiks-trackcode").prop("value", settings.maptiksTrackcode);
+                _contentContainer.find("#maptiks-id").prop("value", settings.maptiksId);
 				_settings = settings;
 			};
 			
@@ -64,8 +64,8 @@ define(["lib-build/tpl!./ViewMapOptions",
 						enable: _contentContainer.find(".opt-checkbox-geocoder").prop("checked")
 					},
 					mapsSync: _contentContainer.find(".opt-checkbox-sync").prop("checked"),
-                    maptiksTrackcode: _contentContainer.find(".maptiks-trackcode").prop("value"),
-                    maptiksId: _contentContainer.find(".maptiks-id").prop("value")
+                    maptiksTrackcode: _contentContainer.find("#maptiks-trackcode").prop("value"),
+                    maptiksId: _contentContainer.find("#maptiks-id").prop("value")
 				};
 			};
 			

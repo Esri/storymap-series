@@ -79,27 +79,26 @@ define(["maptiks/mapWrapper",
       this.init = function(core)
       {
         _core = core;
+        
+        // *******************************************
+        // **** Maptiks Changes below
+        // *******************************************
+        
         // After a map is loaded (when the map starts to render)
         topic.subscribe("story-loaded-map", function(result){
-          if ( result.index !== null )
-            console.log("The map", result.id, "has been loaded from the entry", result.index);
-
-          // *******************************************
-          // **** Maptiks Changes below
-          // *******************************************
-          container = $(app.maps[result.id].response.map.container); // the current map div
+          var container = $(app.maps[result.id].response.map.container); // the current map div
           var maptiksMapOptions = {
             extent: app.map.extent,
             maptiks_trackcode: WebApplicationData.getMapOptions().maptiksTrackcode, // from Builder map options
             maptiks_id: WebApplicationData.getMapOptions().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder map options, ID:tabname
           };
           mapWrapper(container, maptiksMapOptions, app.map);
-
-          // *******************************************
-          // **** Maptiks Changes done
-          // *******************************************
-
         });
+        
+        // *******************************************
+        // **** Maptiks Changes done
+        // *******************************************
+
         //----------------------------------------------
         // Development - TODO to be removed for release
         //----------------------------------------------
