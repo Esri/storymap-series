@@ -89,8 +89,8 @@ define(["maptiks/mapWrapper",
           var container = $(app.maps[result.id].response.map.container); // the current map div
           var maptiksMapOptions = {
             extent: app.map.extent,
-            maptiks_trackcode: WebApplicationData.getMapOptions().maptiksTrackcode, // from Builder map options
-            maptiks_id: WebApplicationData.getMapOptions().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder map options, ID:tabname
+            maptiks_trackcode: WebApplicationData.getMaptiks().maptiksTrackcode, // from Builder map options
+            maptiks_id: WebApplicationData.getMaptiks().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder map options, ID:tabname
           };
           mapWrapper(container, maptiksMapOptions, app.map);
         });
