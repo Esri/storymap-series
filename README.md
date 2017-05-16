@@ -21,8 +21,8 @@ For more infomation about using and customizing Esri's Storytelling Apps follow 
 
  * [Introduction](#introduction)
  * [Instructions](#instructions)
- * [Feedback / support](#feedback--support)
  * [Maptiks integration](#maptiks-integration)
+ * [Feedback / support](#feedback--support)
  * [FAQ](#faq)
  * [Configuration](#configuration)
  * [Customize the look and feel](#customize-the-look-and-feel)
