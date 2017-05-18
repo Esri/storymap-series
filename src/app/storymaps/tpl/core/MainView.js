@@ -79,11 +79,11 @@ define(["maptiks/mapWrapper",
       this.init = function(core)
       {
         _core = core;
-        
+
         // *******************************************
         // **** Maptiks Changes below
         // *******************************************
-        
+
         // After a map is loaded (when the map starts to render)
         topic.subscribe("story-loaded-map", function(){
           var container = $(app.map.container); // the current map div
@@ -94,7 +94,7 @@ define(["maptiks/mapWrapper",
           };
           mapWrapper(container, maptiksMapOptions, app.map);
         });
-        
+
         // *******************************************
         // **** Maptiks Changes done
         // *******************************************
