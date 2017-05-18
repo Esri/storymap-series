@@ -68,7 +68,7 @@ function defineDojoConfig()
 			},
 			{
 				name: 'commonResources',
-				location: path1 + (app.isProduction ? 'resources/common' : 'app/storymaps/common/_resources')
+				location: path1 + (app.isProduction ? 'resources/common' : 'app/storymaps/common/_resources/')
 			}
 		],
 		aliases: [
