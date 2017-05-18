@@ -14,6 +14,7 @@ define(["lib-build/tpl!./BuilderView",
 		"./settings/ViewMapOptions",
 		"storymaps/common/builder/settings/ViewTheme",
 		"storymaps/common/builder/settings/ViewHeader",
+        "./settings/ViewMaptiks",
 		// Template
 		"./addedit/Popup",
 		"./OrganizePopup",
@@ -45,6 +46,7 @@ define(["lib-build/tpl!./BuilderView",
 		ViewMapOptions,
 		ViewTheme,
 		ViewHeader,
+        ViewMaptiks,
 		// Template
 		AddEditPopup,
 		OrganizePopup,
@@ -422,7 +424,8 @@ define(["lib-build/tpl!./BuilderView",
 					new ViewTheme(),
 					new ViewHeader({
 						smallSizeOpt: app.appCfg.headerCompactOpt
-					})
+					}),
+                    new ViewMaptiks()
 				];
 			};
 
@@ -438,7 +441,8 @@ define(["lib-build/tpl!./BuilderView",
 							layoutCfg: WebApplicationData.getLayoutOptions().layoutCfg,
 							theme: WebApplicationData.getTheme()
 						},
-						WebApplicationData.getHeader()
+						WebApplicationData.getHeader(),
+                        WebApplicationData.getMaptiks()
 					],
 					null
 				);
@@ -465,7 +469,8 @@ define(["lib-build/tpl!./BuilderView",
 					colors: data.settings[3].colors
 				});
 				WebApplicationData.setHeader(data.settings[4]);
-
+                WebApplicationData.setMaptiks(data.settings[5]);
+              
 				// TODO deprecate nbChange ...
 				if ( nbChange ) {
 					topic.publish("BUILDER_INCREMENT_COUNTER", nbChange);
