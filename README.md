@@ -80,14 +80,14 @@ See [customize the look and feel section](#customize-the-look-and-feel) or [deve
 
 	```
 	topic.subscribe("story-loaded-map", function(result){
-  		var container = app.map.container; // the current map div
-  		var maptiksMapOptions = {
-   			extent: app.map.extent,
-    		maptiks_trackcode: app.data.getWebAppData().getMaptiks().maptiksTrackcode, // from Builder map options
-    		maptiks_id: app.data.getWebAppData().getMaptiks().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder map options, ID:tabname. Could also use app.data.getCurrentEntryIndex() to append tab index rather than tab name.
-  		};
-  		mapWrapper(container, maptiksMapOptions, app.map);
-	});
+        var container = app.map.container; // the current map div
+        var maptiksMapOptions = {
+            extent: app.map.extent,
+            maptiks_trackcode: app.data.getWebAppData().getMaptiks().maptiksTrackcode, // from Builder map options
+            maptiks_id: app.data.getWebAppData().getMaptiks().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder map options, ID:tabname. Could also use app.data.getCurrentEntryIndex() to append tab index rather than tab name.
+        };
+        mapWrapper(container, maptiksMapOptions, app.map);
+    });
 	```
 
 ## Feedback / support
