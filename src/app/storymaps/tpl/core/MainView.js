@@ -1,4 +1,4 @@
-define(["maptiks/mapWrapper",
+define([
     "lib-build/css!./MainView",
     "../ui/MainStage",
     "./Config",
@@ -38,7 +38,6 @@ define(["maptiks/mapWrapper",
     "lib-build/css!../ui/Responsive"
   ],
   function (
-    mapWrapper,
     viewCss,
     MainStage,
     Config,
@@ -85,14 +84,16 @@ define(["maptiks/mapWrapper",
         // *******************************************
         
         // After a map is loaded (when the map starts to render)
-        topic.subscribe("story-loaded-map", function(result){
-          var container = $(app.map.container); // the current map div
-          var maptiksMapOptions = {
-            extent: app.map.extent,
-            maptiks_trackcode: app.data.getWebAppData().getMaptiks().maptiksTrackcode, // from Builder Maptiks settings
-            maptiks_id: app.data.getWebAppData().getMaptiks().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder Maptiks settings, ID:tabname
-          };
-          mapWrapper(container, maptiksMapOptions, app.map);
+        topic.subscribe("story-loaded-map", function(){
+          require(['maptiks'], function (mapWrapper) {
+            var container = $(app.map.container); // the current map div
+            var maptiksMapOptions = {
+              extent: app.map.extent,
+              maptiks_trackcode: '2982a9b6-8e46-4db8-84cb-c3f19e17dcdb',
+              maptiks_id: 'deploy' + ":" + app.data.getCurrentEntry().title
+            };
+            mapWrapper(container, maptiksMapOptions, app.map);
+          });
         });
         
         // *******************************************
@@ -334,7 +335,7 @@ define(["maptiks/mapWrapper",
           editable: false,
           layerMixins: app.data.getAppProxies()
         });
-      }
+      };
         
       this.firstWebmapLoaded = function()
       {
