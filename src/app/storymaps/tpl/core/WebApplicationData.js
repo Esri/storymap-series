@@ -450,7 +450,7 @@ define(["dojo/_base/lang",
             {
                 _data.values.settings = _data.values.settings || {};
 				_data.values.settings.maptiks = data;
-            },
+            }
 			/*
 			 * TODO
 			 */
