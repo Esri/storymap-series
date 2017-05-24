@@ -16,7 +16,7 @@ deployment:
   prod:
     branch: master
     commands:
-      - aws s3 sync src/ s3://templates.maptiks.com/esri/apps/storymap-series/ --delete --quiet --quiet
+      - aws s3 sync src/ s3://templates.maptiks.com/esri/apps/storymap-series/ --delete --quiet
       - >
         curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache"
         -H "X-Auth-Email: will@sparkgeo.com"
