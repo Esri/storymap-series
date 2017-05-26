@@ -4,19 +4,28 @@ general:
       - master
       - staging
       - develop
-test:
-  override:
-    - echo "no test"
+
 machine:
   node:
     version: 6.3.1
   environment:
     AWS_DEFAULT_REGION: us-west-2
+
+dependencies:
+  override:
+    - npm install
+    - npm install grunt-cli
+    - grunt
+
+test:
+  override:
+    - echo "no tests"
+
 deployment:
   prod:
     branch: master
     commands:
-      - aws s3 sync src/ s3://templates.maptiks.com/esri/apps/storymap-series/ --delete --quiet
+      - aws s3 sync deploy/ s3://templates.maptiks.com/esri/apps/storymap-series/ --delete --quiet
       - >
         curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache"
         -H "X-Auth-Email: will@sparkgeo.com"
@@ -28,7 +37,7 @@ deployment:
     owner: sparkgeo
     commands:
       # - find . -name 'index.html' -exec sed -i 's/cdn.maptiks.com/cdn-staging.maptiks.com/g' {} +
-      - aws s3 sync src/ s3://templates-staging.maptiks.com/esri/apps/storymap-series/ --delete --quiet
+      - aws s3 sync deploy/ s3://templates-staging.maptiks.com/esri/apps/storymap-series/ --delete --quiet
       - >
         curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache"
         -H "X-Auth-Email: will@sparkgeo.com"
@@ -39,7 +48,7 @@ deployment:
     branch: develop
     commands:
       # - find . -name 'index.html' -exec sed -i 's/cdn.maptiks.com/cdn-dev.maptiks.com/g' {} +
-      - aws s3 sync src/ s3://templates-dev.maptiks.com/esri/apps/storymap-series/ --delete --quiet
+      - aws s3 sync deploy/ s3://templates-dev.maptiks.com/esri/apps/storymap-series/ --delete --quiet
       - >
         curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache"
         -H "X-Auth-Email: will@sparkgeo.com"
