@@ -25,7 +25,7 @@ deployment:
   prod:
     branch: master
     commands:
-      - aws s3 sync deploy/ s3://templates.maptiks.com/StoryMapSeries/ --delete --quiet
+      - aws s3 sync deploy/ s3://templates.maptiks.com/MapSeries/ --delete --quiet
       - >
         curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache"
         -H "X-Auth-Email: will@sparkgeo.com"
@@ -37,7 +37,7 @@ deployment:
     owner: sparkgeo
     commands:
       # - find . -name 'index.html' -exec sed -i 's/cdn.maptiks.com/cdn-staging.maptiks.com/g' {} +
-      - aws s3 sync deploy/ s3://templates-staging.maptiks.com/StoryMapSeries/ --delete --quiet
+      - aws s3 sync deploy/ s3://templates-staging.maptiks.com/MapSeries/ --delete --quiet
       - >
         curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache"
         -H "X-Auth-Email: will@sparkgeo.com"
@@ -48,7 +48,7 @@ deployment:
     branch: develop
     commands:
       # - find . -name 'index.html' -exec sed -i 's/cdn.maptiks.com/cdn-dev.maptiks.com/g' {} +
-      - aws s3 sync deploy/ s3://templates-dev.maptiks.com/StoryMapSeries/ --delete --quiet
+      - aws s3 sync deploy/ s3://templates-dev.maptiks.com/MapSeries/ --delete --quiet
       - >
         curl -X DELETE "https://api.cloudflare.com/client/v4/zones/34e8519f80106c3699e76002b4153ce5/purge_cache"
         -H "X-Auth-Email: will@sparkgeo.com"
