@@ -103,7 +103,7 @@ define([
         //----------------------------------------------
         // Development - TODO to be removed for release
         //----------------------------------------------
-        
+        /*
         if ( app.isProduction ) {
           require(["esri/IdentityManager", "dojo/on"], function(IdentityManager, on){
             CommonHelper.isArcGISHosted = function(){ return true; };
@@ -117,7 +117,7 @@ define([
             });
           });
         }
-        
+        */
         //----------------------------------------------
 
         // Do not allow builder under IE 10
