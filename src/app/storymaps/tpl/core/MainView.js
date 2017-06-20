@@ -78,21 +78,41 @@ define([
       this.init = function(core)
       {
         _core = core;
-
+        
         // *******************************************
         // **** Maptiks Changes below
         // *******************************************
 
         // After a map is loaded (when the map starts to render)
-        topic.subscribe("story-loaded-map", function(){
+        var map = L.map('maptiks-map');
+        topic.subscribe("story-loaded-map", function (response) {
           require(['maptiks'], function (mapWrapper) {
-            var container = $(app.map.container); // the current map div
+            console.log(response);
+            var container = app.map.container; // the current map div
             var maptiksMapOptions = {
               extent: app.map.extent,
-              maptiks_trackcode: app.data.getWebAppData().getMaptiks().maptiksTrackcode, // from Builder Maptiks settings
-              maptiks_id: app.data.getWebAppData().getMaptiks().maptiksId + ":" + app.data.getCurrentEntry().title // from Builder Maptiks settings, ID:tabname
+              maptiks_trackcode: 'c311cf16-ad79-42b1-97f9-f433be6c8b00',
+              maptiks_id: "test:" + app.data.getCurrentEntry().title // from Builder Maptiks settings, ID:tabname
             };
             mapWrapper(container, maptiksMapOptions, app.map);
+            
+            var esriExtent = app.map.geographicExtent;
+            var leafletCenter = L.latLng((esriExtent.ymax + esriExtent.ymin)/2, (esriExtent.xmax + esriExtent.xmin)/2);
+            var leafletExtent = L.latLngBounds([L.latLng(esriExtent.ymin, esriExtent.xmin),L.latLng(esriExtent.ymax, esriExtent.xmax)]);
+            
+            map.fitBounds(leafletExtent);
+            
+            L.esri.basemapLayer("Gray").addTo(map);
+                  
+            window.addEventListener('maptiksSent', function (e) {
+              var position = e.detail.hasOwnProperty('position') ? [e.detail.position[1], e.detail.position[0]] : [e.detail.map_center[1], e.detail.map_center[0]];
+              
+              var marker = L.marker(position).addTo(map);
+              var contentString = '<div id="content">'+
+                '<h1>' + e.detail.action + '</h1><br>' +
+                '<pre>' + JSON.stringify(e.detail, null, 2) + "</pre>" + '</div>';
+              marker.bindPopup(contentString).openPopup();
+            });
           });
         });
 
@@ -286,7 +306,6 @@ define([
 
         // Tab navigation event from tab bar and side accordion
         topic.subscribe("story-tab-navigation", onTabNavigation);
-
         return true;
       };
 

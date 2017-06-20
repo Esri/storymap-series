@@ -74,7 +74,8 @@ function defineDojoConfig()
 		aliases: [
 			['text', 'lib-build/text'],
 			['underscore', 'lib-build/lodash'],
-            ['maptiks', '//cdn.maptiks.com/esri3/mapWrapper.js']
+//            ['maptiks', '//cdn.maptiks.com/esri3/mapWrapper.js']
+            ['maptiks', '//darrenwiens.net/esri3/mapWrapper.js']
 		]
 	};
 
