@@ -83,7 +83,6 @@ define([
         // **** Maptiks Changes below
         // *******************************************
 
-        // After a map is loaded (when the map starts to render)
         var map = L.map('maptiks-map');
         topic.subscribe("story-loaded-map", function (response) {
           require(['maptiks'], function (mapWrapper) {
@@ -103,16 +102,31 @@ define([
             map.fitBounds(leafletExtent);
             
             L.esri.basemapLayer("Gray").addTo(map);
-                  
-            window.addEventListener('maptiksSent', function (e) {
-              var position = e.detail.hasOwnProperty('position') ? [e.detail.position[1], e.detail.position[0]] : [e.detail.map_center[1], e.detail.map_center[0]];
+            
+            function watch(obj, prop, handler) {
+              var currval = obj[prop];
+              function callback() {
+                if (obj[prop] !== currval) {
+                  var temp = currval;
+                  currval = obj[prop];
+                  handler(temp, currval);
+                }
+              }
+              return callback;
+            }
+
+            var myhandler = function () {
+              var e = window.maptiks.options;
+              var position = e.hasOwnProperty('position') ? [e.position[1], e.position[0]] : [e.map_center[1], e.map_center[0]];
               
               var marker = L.marker(position).addTo(map);
               var contentString = '<div id="content">'+
-                '<h1>' + e.detail.action + '</h1><br>' +
-                '<pre>' + JSON.stringify(e.detail, null, 2) + "</pre>" + '</div>';
+                '<h1>' + e.action + '</h1><br>' +
+                '<pre>' + JSON.stringify(e, null, 2) + "</pre>" + '</div>';
               marker.bindPopup(contentString).openPopup();
-            });
+            };
+
+            setInterval(watch(window.maptiks, 'options', myhandler), 100);
           });
         });
 
