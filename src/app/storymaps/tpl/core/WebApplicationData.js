@@ -441,8 +441,16 @@ define(["dojo/_base/lang",
 			{
 				_data.values.settings = _data.values.settings || {};
 				_data.values.settings.mapOptions = mapOptions;
-			}
-
+			},
+            getMaptiks: function ()
+            {
+                return this.getSettings().maptiks || {};
+            },
+            setMaptiks: function (data)
+            {
+                _data.values.settings = _data.values.settings || {};
+				_data.values.settings.maptiks = data;
+            }
 			/*
 			 * TODO
 			 */

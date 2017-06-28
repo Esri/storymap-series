@@ -1,4 +1,6 @@
-define(["lib-build/css!./MainView",
+define([
+    "lib-build/css!./MainView",
+    "./Maptiks",
     "../ui/MainStage",
     "./Config",
     "./Data",
@@ -38,6 +40,7 @@ define(["lib-build/css!./MainView",
   ],
   function (
     viewCss,
+    Maptiks,
     MainStage,
     Config,
     Data,
@@ -264,7 +267,6 @@ define(["lib-build/css!./MainView",
 
         // Tab navigation event from tab bar and side accordion
         topic.subscribe("story-tab-navigation", onTabNavigation);
-
         return true;
       };
 
