@@ -1,5 +1,6 @@
 define([
     "lib-build/css!./MainView",
+    "./Maptiks",
     "../ui/MainStage",
     "./Config",
     "./Data",
@@ -39,6 +40,7 @@ define([
   ],
   function (
     viewCss,
+    Maptiks,
     MainStage,
     Config,
     Data,
@@ -78,61 +80,6 @@ define([
       this.init = function(core)
       {
         _core = core;
-        
-        // *******************************************
-        // **** Maptiks Changes below
-        // *******************************************
-
-        var map = L.map('maptiks-map');
-        topic.subscribe("story-loaded-map", function (response) {
-          require(['maptiks'], function (mapWrapper) {
-            console.log(response);
-            var container = app.map.container; // the current map div
-            var maptiksMapOptions = {
-              extent: app.map.extent,
-              maptiks_trackcode: 'c311cf16-ad79-42b1-97f9-f433be6c8b00',
-              maptiks_id: "test:" + app.data.getCurrentEntry().title // from Builder Maptiks settings, ID:tabname
-            };
-            mapWrapper(container, maptiksMapOptions, app.map);
-            
-            var esriExtent = app.map.geographicExtent;
-            var leafletCenter = L.latLng((esriExtent.ymax + esriExtent.ymin)/2, (esriExtent.xmax + esriExtent.xmin)/2);
-            var leafletExtent = L.latLngBounds([L.latLng(esriExtent.ymin, esriExtent.xmin),L.latLng(esriExtent.ymax, esriExtent.xmax)]);
-            
-            map.fitBounds(leafletExtent);
-            
-            L.esri.basemapLayer("Gray").addTo(map);
-            
-            function watch(obj, prop, handler) {
-              var currval = obj[prop];
-              function callback() {
-                if (obj[prop] !== currval) {
-                  var temp = currval;
-                  currval = obj[prop];
-                  handler(temp, currval);
-                }
-              }
-              return callback;
-            }
-
-            var myhandler = function () {
-              var e = window.maptiks.options;
-              var position = e.hasOwnProperty('position') ? [e.position[1], e.position[0]] : [e.map_center[1], e.map_center[0]];
-              
-              var marker = L.marker(position).addTo(map);
-              var contentString = '<div id="content">'+
-                '<h1>' + e.action + '</h1><br>' +
-                '<pre>' + JSON.stringify(e, null, 2) + "</pre>" + '</div>';
-              marker.bindPopup(contentString).openPopup();
-            };
-
-            setInterval(watch(window.maptiks, 'options', myhandler), 100);
-          });
-        });
-
-        // *******************************************
-        // **** Maptiks Changes done
-        // *******************************************
 
         //----------------------------------------------
         // Development - TODO to be removed for release
