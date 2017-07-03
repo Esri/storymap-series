@@ -37,9 +37,9 @@ define(["esri/request",
 
 				var user = portal.getPortalUser();
 				var rqUrl = this.getSharingURL(portal)
-								+ "content/users/" + user.credential.userId
+								+ "content/users/" + (app.appCfg.useWebmapOwnerAsSave ? item.owner : user.credential.userId)
 								+ (item.ownerFolder ? ("/" + item.ownerFolder) : "")
-								+ "/addItem";
+								+ (item.id ? "/items/" + item.id + "/update" : "/addItem");
 
 				var rqData = {
 					item: item.item,

@@ -960,7 +960,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				if (!layer._collection) {
 					query.returnGeometry = true;
 					query.outFields = ["*"]; // popupCfg.fieldName ?
-					query.outSpatialReference = app.map.spatialReference;
+					query.outSpatialReference = map.spatialReference;
 				}
 
 				// TODO: Image Services
@@ -986,7 +986,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				query.objectIds = [popupCfg.fieldValue];
 				query.returnGeometry = true;
 				query.outFields = ["*"]; // popupCfg.fieldName ?
-				query.outSpatialReference = app.map.spatialReference;
+				query.outSpatialReference = map.spatialReference;
 
 				queryTask.execute(query, function(featureSet) {
 					applyPopupConfigurationStep3(map, popupCfg, featureSet.features, index, serviceId, layerIdx);
@@ -1017,7 +1017,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 
 				map.infoWindow.show(center);
 				// Center the map is the geometry isn't visible
-				if ( ! app.map.extent.contains(center) ) {
+				if ( ! map.extent.contains(center) ) {
 					map.centerAt(center);
 					// Show back btn only if it's a Main Stage action
 					if ( index === null ) {
@@ -1040,7 +1040,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				var mapContainer = $(map.container),
 					width = mapContainer.width(),
 					height = mapContainer.height(),
-					pos = map.toScreen(app.map.infoWindow.location),
+					pos = map.toScreen(map.infoWindow.location),
 					visibleControls = mapContainer.find('.esriSimpleSlider:visible, .geocoderBtn:visible'),
 					posControls = visibleControls.last().position() || { left: 0 },
 					posPanel = $(".descLegendPanel:visible").position(),

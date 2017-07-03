@@ -810,12 +810,16 @@ define(["dojo/cookie",
 
 			possiblyAddToken: function(url) {
 
-				if (!this.needsToken(url)) {
+				if (!this.isAppResource(url)) {
 					return url;
 				}
 
 				// might as well refresh the token...?
 				url = this.removeToken(url);
+
+				if (!this.needsTokenAdded(url)) {
+					return url;
+				}
 
 				var token = '';
 
@@ -847,7 +851,7 @@ define(["dojo/cookie",
 					&& url.match(new RegExp('\/sharing\/rest\/content\/items\/' + appItem.id + '\/resources\/'));
 			},
 
-			needsToken: function(url) {
+			needsTokenAdded: function(url) {
 				var appItem = app.data && app.data.getWebAppItem && app.data.getWebAppItem();
 				if (!appItem) {
 					return false;
@@ -874,7 +878,7 @@ define(["dojo/cookie",
 			},
 
 			possiblyRemoveToken: function(url) {
-				if (!this.needsToken(url)) {
+				if (!this.isAppResource(url)) {
 					return url;
 				}
 				return this.removeToken(url);

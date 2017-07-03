@@ -339,9 +339,10 @@ define(["lib-build/css!./Builder",
 			// set app logo to org logo if app.isInitializing
 			if (app.isInitializing && !app.data.getWebAppData().getHeader().logoURL) {
 				var newHeaderConfig = _core.getHeaderUserCfg();
+				var clickthroughLink = sharedTheme.logo.link ? sharedTheme.logo.link.trim() : '';
 				lang.mixin(newHeaderConfig, {
 					logoURL: sharedTheme.logo.small,
-					logoTarget: ''
+					logoTarget: clickthroughLink
 				});
 				app.data.getWebAppData().setHeader(newHeaderConfig);
 				topic.publish('CORE_UPDATE_UI');

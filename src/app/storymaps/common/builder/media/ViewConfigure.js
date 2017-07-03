@@ -24,35 +24,22 @@ define(["lib-build/css!./ViewConfigure",
 				cfg.mode = app.appCfg.mediaPickerConfigureForceMode;
 			}
 
-			container.append(viewTpl({
+			var strs = lang.mixin({
 				mode: cfg.mode,
-				lblURL: i18n.commonMedia.mediaConfigure.lblURL,
-				lblURLPH: i18n.commonMedia.mediaConfigure.lblURLPH,
-				lblURLError: i18n.commonMedia.mediaConfigure.lblURLError,
-				lblLabel: i18n.commonMedia.mediaConfigure.lblLabel,
-				lblLabelPH: i18n.commonMedia.mediaConfigure.lblLabelPH,
-				lblMaximize: i18n.commonMedia.mediaConfigure.lblMaximize,
-				lblMaximizeHelp: i18n.commonMedia.mediaConfigure.lblMaximizeHelp,
-				lblPosition: i18n.commonMedia.mediaConfigure.lblPosition,
-				lblPosition1: i18n.commonMedia.mediaConfigure.lblPosition1,
-				lblPosition2: i18n.commonMedia.mediaConfigure.lblPosition2,
-				lblPosition3: i18n.commonMedia.mediaConfigure.lblPosition3,
-				lblPosition4: i18n.commonMedia.mediaConfigure.lblPosition4,
-				lblPosition5: i18n.commonMedia.mediaConfigure.lblPosition5,
 				phWidth: i18n.commonCore.common.width,
 				phHeight: i18n.commonCore.common.height,
-				lblPosition2Explain: i18n.commonMedia.mediaConfigure.lblPosition2Explain,
-				lblPosition3Explain: i18n.commonMedia.mediaConfigure.lblPosition3Explain,
-				lblPosition3Explain2: i18n.commonMedia.mediaConfigure.lblPosition3Explain2,
-				lblPosition4Explain: i18n.commonMedia.mediaConfigure.lblPosition4Explain,
-				lblURLHelp: app.appCfg.mediaPickerConfigureForceMode != "shortlist" ? i18n.commonMedia.mediaConfigure.lblURLHelp : 'For best results, images should be less than 400 KB. The recommended size & shape is 1000 x 750 pixels (4:3 width:height ratio) or smaller. Larger images can slow performance. For best performance use compressed JPG images at 80% image quality.',
-				lblThumbURLHelp: 'The recommended thumbnail size & shape is 280 x 210 pixels (4:3 width:height ratio). Larger thumbnails can slow performance. 4:3 aspect ratio thumbnails fit into their tiles without being cropped.',
-				unloadLbl: i18n.commonMedia.mediaConfigure.unloadLbl,
-				unloadHelp: i18n.commonMedia.mediaConfigure.unloadHelp,
-				embedProtocolLabel: i18n.commonMedia.mediaConfigure.embedProtocolLabel,
-				embedProtocolInfo: location.protocol == 'https:' ? i18n.commonMedia.mediaConfigure.embedProtocolWarning1 : i18n.commonMedia.mediaConfigure.embedProtocolWarning2,
-				lblThumbURL: "Thumbnail link"
-			}));
+				embedProtocolInfo: location.protocol == 'https:' ? i18n.commonMedia.mediaConfigure.embedProtocolWarning1 : i18n.commonMedia.mediaConfigure.embedProtocolWarning2
+			}, i18n.commonMedia.mediaConfigure);
+
+			if (app.appCfg.mediaPickerConfigureForceMode === 'shortlist') {
+				lang.mixin(strs, {
+					lblURLHelp: i18n.builder.detailPanelBuilder.imageSizeHelperUpdated,
+					lblThumbURLHelp: i18n.builder.detailPanelBuilder.thumbnailHelp || 'The recommended thumbnail size & shape is 280 x 210 pixels (4:3 width:height ratio). Larger thumbnails can slow performance. 4:3 aspect ratio thumbnails fit into their tiles without being cropped.',
+					lblThumbURL: i18n.builder.detailPanelBuilder.thumbnailLink
+				});
+			}
+
+			container.append(viewTpl(strs));
 
 			initEvents();
 
@@ -131,6 +118,17 @@ define(["lib-build/css!./ViewConfigure",
 						}
 						container.find('.mediaURLError').fadeOut();
 					})
+					.on('paste', function(){
+						if(_params.fromService && media && media.type && (media[media.type].url != container.find('.mediaURL').val()))
+							_params.fromService = false;
+
+						if (app.appCfg.mediaPickerConfigureForceMode == "shortlist"){
+							if(container.find('.mediaThumbURL').val().length){
+								container.parent().parent().parent().parent().parent().parent().parent().find('.modal-footer').find('.btnSubmit').attr("disabled",false);
+							}
+						}
+						container.find('.mediaURLError').fadeOut();
+					})
 					.parent().toggle(
 							(params.fromService === false || (app.appCfg.mediaPickerConfigureForceMode == "shortlist" && params.mode == "showURL")) && _mediaType == "image" && _mediaType == "image"
 					);
@@ -141,6 +139,16 @@ define(["lib-build/css!./ViewConfigure",
 				container.find('.mediaThumbURL')
 					.val(thumbUrl)
 					.keyup(function(){
+						if(_params.fromService && media && media.type && (media[media.type].thumb_url != container.find('.mediaThumbURL').val()))
+							_params.fromService = false;
+						if (app.appCfg.mediaPickerConfigureForceMode == "shortlist"){
+							if(container.find('.mediaURL').val().length){
+								container.parent().parent().parent().parent().parent().parent().parent().find('.modal-footer').find('.btnSubmit').attr("disabled",false);
+							}
+						}
+						container.find('.mediaThumbURLError').fadeOut();
+					})
+					.on('paste', function(){
 						if(_params.fromService && media && media.type && (media[media.type].thumb_url != container.find('.mediaThumbURL').val()))
 							_params.fromService = false;
 						if (app.appCfg.mediaPickerConfigureForceMode == "shortlist"){

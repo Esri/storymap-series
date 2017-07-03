@@ -128,7 +128,7 @@ define({
       "preview": "Voorbeeld actie"
     },
     "editorActionMedia": {
-      "lblTitle": "De inhoud van het hoofdvenster wijzigen"
+      "lblTitle": "De content van het hoofdvenster wijzigen"
     },
     "editorInlineMedia": {
       "lblTitle": "Een afbeelding, video of webpagina invoegen"
