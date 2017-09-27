@@ -32,9 +32,17 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 				var media = null;
 
 				if ( elemIsImg ) {
-					var mediaImg = elem.children('img').eq(0),
+					var mediaImg = elem.find('img').eq(0),
 						caption = mediaImg.parents('figure').children('figcaption'),
-						title = caption && caption.length ? caption.html() : mediaImg.attr('title');
+						title = caption && caption.length ? caption.html() : mediaImg.attr('title'),
+						figureContainer = mediaImg.parents('figure'),
+						activateFullScreen = false;
+
+					if (figureContainer.length) {
+						activateFullScreen = (figureContainer.find('.activate-fullscreen').length > 0);
+					} else {
+						activateFullScreen = (mediaImg.parents('.activate-fullscreen').length > 0);
+					}
 
 					media = {
 						type: "image",
@@ -44,7 +52,7 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 							title: title,
 							width: mediaImg.attr('width'),
 							height: mediaImg.attr('height'),
-							activateFullScreen: mediaImg.parents(".image-container").hasClass("activate-fullscreen")
+							activateFullScreen: activateFullScreen
 						}
 					};
 				}
@@ -115,10 +123,14 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 						// Media with caption (image only)
 						if ( cfg.title ) {
 							var url = cfg.url;
-							// TODO: SIZES. not being used...
+							// TODO: SIZES. can't really store this stuff in the html because
+							// it gets stripped out either in the editor or in agol.
+							// agol also limits tags, so can't use srcset.
 							if (cfg.sizes && cfg.sizes.length > 1) {
 								var sorted = _.sortBy(cfg.sizes, 'width').reverse();
 								url = sorted[0].url;
+								// somehow storing the images with sizes in the data model
+								// would be the only way to go here.
 								cfg.url = url;
 							}
 
@@ -134,8 +146,9 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 						else {
 							outputEl = CKEDITOR.dom.element.createFromHtml(mediaTpl, editor.document);
 
-							if ( ! (cfg.type == "webpage" && cfg.frameTag) )
-								outputEl.getChildren().$[0].setAttribute('src', cfg.url);
+							if ( ! (cfg.type == "webpage" && cfg.frameTag) ) {
+								outputEl.getChildren().$[0].setAttribute('src', CommonHelper.possiblyAddToken(cfg.url));
+							}
 
 							outputEl.getChildren().$[0].setAttribute('width', DEFAULT_WIDTH);
 

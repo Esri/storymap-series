@@ -1,4 +1,4 @@
-define([], 
+define([],
 	function(){
 		/**
 		 * BuilderHelper
@@ -45,6 +45,14 @@ define([],
 			},
 			getBlankWebmapJSON: function()
 			{
+				var spatialReference = {
+					"latestWkid": 3857,
+					"wkid": 102100
+				};
+
+				if (app.map && app.map.spatialReference) {
+					spatialReference = app.map.spatialReference;
+				}
 				return {
 					item: {
 						"id": "",
@@ -93,7 +101,8 @@ define([],
 							}],
 							"title": "Topographic"
 						},
-						"version": "1.9"
+						"spatialReference": spatialReference,
+						"version": "2.9"
 					}
 				};
 			}

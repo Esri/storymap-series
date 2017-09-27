@@ -121,6 +121,7 @@
 
 .footerMobile .embed-btn-left.disabled .embed-btn {
 	background-position: 42px 0;
+	visibility: hidden;
 }
 
 /* Right button */
@@ -135,4 +136,5 @@
 
 .footerMobile .embed-btn-right.disabled .embed-btn {
 	background-position: 42px -42px;
+	visibility: hidden;
 }

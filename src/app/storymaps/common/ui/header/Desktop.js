@@ -82,7 +82,10 @@ define(["lib-build/css!./Desktop",
 					}
 				}
 
-				if ( ! app.isInBuilder && app.userCanEdit && has("ie") != 9 && ! CommonHelper.getUrlParams().preview ) {
+				var urlParams = CommonHelper.getUrlParams();
+				var isPreview = (urlParams.preview === 'true' || urlParams.preview === '');
+				var isAutoplay = (urlParams.autoplay === 'true' || urlParams.autoplay === '');
+				if ( ! app.isInBuilder && app.userCanEdit && has("ie") != 9 && !isPreview && !isAutoplay ) {
 					container.find('.error-status').addClass('enabled');
 					topic.subscribe("MYSTORIES_SCAN", updateErrorStatus);
 					updateErrorStatus("start");

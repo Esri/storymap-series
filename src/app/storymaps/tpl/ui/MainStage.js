@@ -924,18 +924,26 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 
 					map.infoWindow.clearFeatures();
 
-					if ( layer )
-						applyPopupConfigurationStep2(map, popupCfg, index);
+					if ( layer ) {
+						if (layer.updating) {
+							var eventListener = layer.on('update-end', function() {
+								eventListener.remove();
+								applyPopupConfigurationStep2(map, popupCfg, index);
+							});
+						} else {
+							applyPopupConfigurationStep2(map, popupCfg, index);
+						}
+					}
 					// TODO
 					else if ( layer2 ) {
 						var layerIdx = popupCfg.layerId.split('_').slice(-1).join('_'),
 							layerUrl = layer2.url + '/' + layerIdx;
 
-						var w; // walker
-						if ((w = layer2) && (w = w.infoTemplates) && (w = w[layerIdx]) && (w = w.layerUrl)) {
-							layerUrl = w;
-						}
-						applyPopupConfigurationStep2Alt(popupCfg, index, serviceId, layerIdx, layerUrl);
+						var testUrl = lang.getObject('infoTemplates.' + layerIdx + '.layerUrl', false, layer2);
+						layerUrl = testUrl || layerUrl;
+
+						// NOTE! step2Alt needs a map argument! Unlike Journal!
+						applyPopupConfigurationStep2Alt(map, popupCfg, index, serviceId, layerIdx, layerUrl);
 					}
 					// On FS the layer will be null until loaded...
 					else

@@ -49,7 +49,7 @@ define({
       "lblEnd": "Pasiekėte pasakojimo pabaigą"
     },
     "headerFromCommon": {
-      "storymapsText": "Žemėlapis su pasakojimu",
+      "storymapsText": "Žemėlapio pasakojimas",
       "builderButton": "Redaguoti",
       "facebookTooltip": "Dalintis Facebook",
       "twitterTooltip": "Dalintis Twitter",

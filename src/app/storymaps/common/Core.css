@@ -196,7 +196,7 @@ a:hover{
 	height: 20px;
 	background: url(../../../resources/tpl/viewer/icons/loading-light.gif);
 	background-size: 17px 20px;
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
 	vertical-align: -5px;
 	margin-right: 2px;
 }
@@ -207,7 +207,7 @@ a:hover{
 
 #my-stories-hidden-container {
 	position: absolute;
-	bottom: -800px;
+	bottom: -2800px;
 	left: 0;
 	visibility: hidden;
 }
@@ -216,7 +216,7 @@ a:hover{
  * Bootstrap override
  */
 .tooltip-inner {
- 	text-align: left;
+	text-align: left;
 }
 
 /* something seems to go wrong during the build and this is rule from bootstrap is removed */

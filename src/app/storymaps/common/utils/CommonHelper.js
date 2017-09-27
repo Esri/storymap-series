@@ -835,7 +835,12 @@ define(["dojo/cookie",
 				else {
 					token = this.getCookieToken();
 				}
-				return url + '?token=' + token;
+				return this.forceHttps(url) + '?token=' + token;
+			},
+
+			forceHttps: function(url) {
+				var urlWithoutProtocol = url.replace(/^.*?\/\//, '');
+				return 'https://' + urlWithoutProtocol;
 			},
 
 			isAppResource: function(url, appItem) {

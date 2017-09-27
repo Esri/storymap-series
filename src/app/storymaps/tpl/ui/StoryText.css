@@ -80,7 +80,7 @@ figure figcaption {
 }
 
 .btn-fullscreen {
-	display: inline-block;
+	display: none;
 	position: absolute;
 	right: 10px;
 	width: 26px;
@@ -117,17 +117,11 @@ p.has-width.float-right img {
 	text-align: right !important;
 }
 
-.image-container:not(.activate-fullscreen) .btn-fullscreen {
-	display: none;
+.activate-fullscreen .btn-fullscreen {
+	display: inline-block;
 }
 
-p:not(.activate-fullscreen) > .image-wrapper > .btn-fullscreen {
-	display: none;
-}
-
-.image-container.activate-fullscreen > .image-wrapper,
-.image-container.activate-fullscreen > span > .image-wrapper,
-.image-container.activate-fullscreen > p > .image-wrapper,
+.image-container.activate-fullscreen .image-wrapper,
 /* that should not happen */
 figure > .image-wrapper {
 	cursor: pointer;
@@ -153,6 +147,7 @@ p[tabindex='0'] > .image-wrapper {
 	pointer-events: none;
 }
 
+/* if an image is a link, don't show fullscreen button */
 .image-container > a > .image-wrapper .btn-fullscreen {
 	display: none;
 }

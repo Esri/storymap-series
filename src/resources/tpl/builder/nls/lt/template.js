@@ -1,7 +1,7 @@
 define({
   "builder": {
     "layouts": {
-      "tabTitle": "Kortelėse",
+      "tabTitle": "Kortelės",
       "tabDescr": "Pateikite žemėlapius ir kitą turinį naudodami korteles su pasirinktiniu skydeliu aprašomajam tekstui.",
       "tabItem": "Kortelė",
       "tabItems": "Kortelės",
@@ -9,7 +9,7 @@ define({
       "sideDescr": "Pateikite žemėlapius ir kitą turinį naudodami išplečiamą valdiklį, kuris apimtų aprašomąjį tekstą.",
       "sideItem": "Įrašas",
       "sideItems": "Įrašai",
-      "bulletTitle": "Su ženkleliais",
+      "bulletTitle": "Ženkleliai",
       "bulletDescr": "Pateikite žemėlapius ir kitą turinį naudodami ženklelius su pasirinktiniu skydeliu aprašomajam tekstui.",
       "bulletItem": "Ženklelis",
       "bulletItems": "Ženkleliai"
