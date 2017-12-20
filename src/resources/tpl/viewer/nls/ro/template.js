@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Aceasta nu este disponibilă în modul de redare automată",
       "notshared": "Scenariul nu este partajat"
     },
-    "overviewFromCommon": {
-      "title": "Hartă de prezentare generală"
-    },
-    "legendFromCommon": {
-      "title": "Legendă"
+    "mapFromCommon": {
+      "overview": "Hartă de prezentare generală",
+      "legend": "Legendă",
+      "home": "Zoom Pagină principală"
     },
     "shareFromCommon": {
       "copy": "Copiere",

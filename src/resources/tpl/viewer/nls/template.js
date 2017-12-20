@@ -64,11 +64,10 @@ define({
 				tooltipAutoplayDisabled: "This isn't available in autoplay mode",
 				notshared: "Story not shared"
 			},
-			overviewFromCommon: {
-				title: "Overview Map"
-			},
-			legendFromCommon: {
-				title: "Legend"
+			mapFromCommon: {
+				overview: "Overview Map",
+				legend: "Legend",
+				home: "Zoom Home"
 			},
 			shareFromCommon: {
 				copy: "Copy",
@@ -113,6 +112,7 @@ define({
 	"pt-pt": 1,
 	"ro": 1,
 	"ru": 1,
+	"sl": 1,
 	"sr": 1,
 	"sv": 1,
 	"th": 1,

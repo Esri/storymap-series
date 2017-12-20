@@ -102,7 +102,7 @@ define({
       "lblMaximizeHelp": "Рекомендуется только для фотографий высокого качества",
       "lblPosition": "Положение",
       "lblPosition1": "По центру",
-      "lblPosition2": "Заливка",
+      "lblPosition2": "Заполнение",
       "lblPosition3": "Разместить",
       "lblPosition4": "Растяжка",
       "lblPosition5": "Настраиваемый",

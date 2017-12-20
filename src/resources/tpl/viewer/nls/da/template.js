@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Dette er ikke tilgængeligt i autoplay-tilstand.",
       "notshared": "Historien deles ikke"
     },
-    "overviewFromCommon": {
-      "title": "Oversigtskort"
-    },
-    "legendFromCommon": {
-      "title": "Signaturforklaring"
+    "mapFromCommon": {
+      "overview": "Oversigtskort",
+      "legend": "Signaturforklaring",
+      "home": "Zoom hjem"
     },
     "shareFromCommon": {
       "copy": "Kopiér",

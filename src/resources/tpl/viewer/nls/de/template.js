@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Dies ist im Modus für automatische Wiedergabe nicht verfügbar",
       "notshared": "Story wurde nicht freigegeben"
     },
-    "overviewFromCommon": {
-      "title": "Übersichtskarte"
-    },
-    "legendFromCommon": {
-      "title": "Legende"
+    "mapFromCommon": {
+      "overview": "Übersichtskarte",
+      "legend": "Legende",
+      "home": "Auf Standardausdehnung zoomen"
     },
     "shareFromCommon": {
       "copy": "Kopieren",

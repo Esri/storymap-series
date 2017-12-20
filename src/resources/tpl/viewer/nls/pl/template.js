@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "To nie jest dostępne w trybie automatycznego odtwarzania",
       "notshared": "Narracja nieudostępniona"
     },
-    "overviewFromCommon": {
-      "title": "Mapa przeglądowa"
-    },
-    "legendFromCommon": {
-      "title": "Legenda"
+    "mapFromCommon": {
+      "overview": "Mapa przeglądowa",
+      "legend": "Legenda",
+      "home": "Powiększ: Strona główna"
     },
     "shareFromCommon": {
       "copy": "Kopiuj",

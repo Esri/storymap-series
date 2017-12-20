@@ -106,6 +106,9 @@ define(["lib-build/css!./ViewConfigure",
 					_params.fromService = false;
 				}
 
+				if(url && app.appCfg.mediaPickerConfigureForceMode == "shortlist" && url.indexOf(("sharing/rest/content/items/") > -1))
+					url = CommonHelper.possiblyAddToken(url);
+
 				container.find('.mediaURL')
 					.val(url)
 					.keyup(function(){
@@ -137,6 +140,8 @@ define(["lib-build/css!./ViewConfigure",
 
 				// Thumbnail URL
 				var thumbUrl = media ? media[media.type].thumb_url : '';
+				if(thumbUrl && app.appCfg.mediaPickerConfigureForceMode == "shortlist" && thumbUrl.indexOf(("sharing/rest/content/items/") > -1))
+					thumbUrl = CommonHelper.possiblyAddToken(thumbUrl);
 				container.find('.mediaThumbURL')
 					.val(thumbUrl)
 					.keyup(function(){

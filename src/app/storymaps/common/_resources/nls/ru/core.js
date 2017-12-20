@@ -68,7 +68,7 @@ define({
     },
     "share": {
       "shareTitle": "Откройте доступ к истории",
-      "preview": "Предварительный просмотр",
+      "preview": "Просмотр",
       "viewlive": "Просмотр истории",
       "btnPrivate": "Частный",
       "btnPrivateTooltip": "Только вы видите историю.",

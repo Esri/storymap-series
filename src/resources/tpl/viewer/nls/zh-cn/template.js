@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "这不适用于自动播放模式",
       "notshared": "故事未共享"
     },
-    "overviewFromCommon": {
-      "title": "总览图"
-    },
-    "legendFromCommon": {
-      "title": "图例"
+    "mapFromCommon": {
+      "overview": "鹰眼图",
+      "legend": "图例",
+      "home": "缩放主页"
     },
     "shareFromCommon": {
       "copy": "复制",

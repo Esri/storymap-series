@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "これは、自動再生モードでは使用できません",
       "notshared": "ストーリーが共有されていません"
     },
-    "overviewFromCommon": {
-      "title": "概観図"
-    },
-    "legendFromCommon": {
-      "title": "凡例"
+    "mapFromCommon": {
+      "overview": "概観図",
+      "legend": "凡例",
+      "home": "ホームへズーム"
     },
     "shareFromCommon": {
       "copy": "コピー",

@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Dit is niet beschikbaar in autoplaymodus.",
       "notshared": "Verhaal niet gedeeld"
     },
-    "overviewFromCommon": {
-      "title": "Overzichtskaart"
-    },
-    "legendFromCommon": {
-      "title": "Legenda"
+    "mapFromCommon": {
+      "overview": "Overzichtskaart",
+      "legend": "Legenda",
+      "home": "Zoom Home"
     },
     "shareFromCommon": {
       "copy": "Kopiëren",

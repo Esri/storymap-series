@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "자동 재생 모드에서는 사용할 수 없습니다.",
       "notshared": "스토리가 공유되지 않음"
     },
-    "overviewFromCommon": {
-      "title": "오버뷰 맵"
-    },
-    "legendFromCommon": {
-      "title": "범례"
+    "mapFromCommon": {
+      "overview": "오버뷰 맵",
+      "legend": "범례",
+      "home": "홈 확대/축소"
     },
     "shareFromCommon": {
       "copy": "복사",

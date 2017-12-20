@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "ไม่สามารถโหมดเล่นอัตโนมัติได้",
       "notshared": "ไม่ได้แชร์สตอรี่"
     },
-    "overviewFromCommon": {
-      "title": "ภาพรวมของแผนที่"
-    },
-    "legendFromCommon": {
-      "title": "คำอธิบาย"
+    "mapFromCommon": {
+      "overview": "ภาพรวมของแผนที่",
+      "legend": "คำอธิบายสัญลักษณ์",
+      "home": "ซูมบ้าน"
     },
     "shareFromCommon": {
       "copy": "คัดลอก",

@@ -194,7 +194,7 @@ define(["lib-build/tpl!./AccordionPanelEntry",
 				if ( containerHeight - contentHeight < 120 )
 					container.find(".accordion-content")
 						.css("height", "")
-						.css("max-height", containerHeight / 3);
+						.css("max-height", containerHeight / 1.5);
 				else
 					container.find(".accordion-content")
 						.css("height", containerHeight - contentHeight)

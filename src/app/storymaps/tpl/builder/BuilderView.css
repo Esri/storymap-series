@@ -18,6 +18,15 @@
 	background-repeat: no-repeat;
 }
 
+#builderPanel.more-conflicting-text .appTitle {
+ 	width: 240px;
+ 	height: 26px;
+ 	top: 17px;
+ 	background-size: contain;
+ 	background-repeat: no-repeat;
+ 	left: 5px;
+ }
+
 #builderPanel .buttons {
 	left: 280px;
 }
@@ -148,7 +157,7 @@ body.layout-bullet .mapConfigOverlay.toc {
 	padding: 0 6px;
 	margin: 0 3px;
 	border-radius: 80px;
-	box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 3px !important;
+	/*box-shadow: rgba(0, 0, 0, 0.498039) 1px 1px 3px !important;*/
 }
 
 .layout-thumbnail .layout-block {
@@ -249,7 +258,7 @@ body.layout-bullet .mapConfigOverlay.toc {
 .builder-shadows.media-blues .landing-btn,
 .builder-shadows.panel-blues .accordionPanel .builder-btn {
 	border-radius: 50%;
-	box-shadow: 0 0 2px 1px white;
+	/*box-shadow: 0 0 2px 1px white;*/
 }
 
 .builder-shadows.media-blues .landing-tour-container .landing-lbl {

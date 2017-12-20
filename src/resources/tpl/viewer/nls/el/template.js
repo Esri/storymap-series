@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Αυτή η επιλογή δεν είναι διαθέσιμη στη λειτουργία αυτόματης αναπαραγωγής",
       "notshared": "Η αφήγηση δεν κοινοποιείται"
     },
-    "overviewFromCommon": {
-      "title": "Χάρτης αναφοράς"
-    },
-    "legendFromCommon": {
-      "title": "Υπόμνημα"
+    "mapFromCommon": {
+      "overview": "Χάρτης επισκόπησης",
+      "legend": "Υπόμνημα",
+      "home": "Μεγέθυνση αρχικής σελίδας"
     },
     "shareFromCommon": {
       "copy": "Αντιγραφή",

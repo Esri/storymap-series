@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Esto no está disponible en el modo de reproducción automática",
       "notshared": "No se ha compartido la historia"
     },
-    "overviewFromCommon": {
-      "title": "Mapa de vista general"
-    },
-    "legendFromCommon": {
-      "title": "Leyenda"
+    "mapFromCommon": {
+      "overview": "Mapa de vista general",
+      "legend": "Leyenda",
+      "home": "Zoom Inicio"
     },
     "shareFromCommon": {
       "copy": "Copiar",

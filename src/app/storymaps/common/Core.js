@@ -188,7 +188,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 					// Get the portal instance name
 					var instance = location.pathname.substr(0,appLocation);
 
-					app.indexCfg.sharingurl = "//" + location.host + instance + "/sharing/content/items";
+					app.indexCfg.sharingurl = "//" + location.host + instance + "/sharing/rest/content/items";
 					app.indexCfg.proxyurl =  "//" + location.host + instance +  "/sharing/proxy";
 				}
 				else

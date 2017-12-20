@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Tidak tersedia pada mode pemutaran otomatis",
       "notshared": "Cerita tidak dibagikan"
     },
-    "overviewFromCommon": {
-      "title": "Inset Peta"
-    },
-    "legendFromCommon": {
-      "title": "Legenda"
+    "mapFromCommon": {
+      "overview": "Inset Peta",
+      "legend": "Legenda",
+      "home": "Zoom Beranda"
     },
     "shareFromCommon": {
       "copy": "Salin",

@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Dette er ikke tilgjengelig i automatisk avspillingsmodus",
       "notshared": "Historien er ikke delt"
     },
-    "overviewFromCommon": {
-      "title": "Oversiktskart"
-    },
-    "legendFromCommon": {
-      "title": "Tegnforklaring"
+    "mapFromCommon": {
+      "overview": "Oversiktskart",
+      "legend": "Tegnforklaring",
+      "home": "Zoom hjem"
     },
     "shareFromCommon": {
       "copy": "Kopier",

@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "وهو غير متوفر في عرض التشغيل التلقائي",
       "notshared": "لم يتم مشاركة القصة"
     },
-    "overviewFromCommon": {
-      "title": "خريطة النظرة العامة"
-    },
-    "legendFromCommon": {
-      "title": "وسيلة إيضاح"
+    "mapFromCommon": {
+      "overview": "خريطة النظرة العامة",
+      "legend": "وسيلة الإيضاح",
+      "home": "الصفحة الرئيسية للتكبير/التصغير"
     },
     "shareFromCommon": {
       "copy": "نسخ",

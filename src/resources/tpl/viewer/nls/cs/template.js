@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Není k dispozici v režimu automatického přehrávání.",
       "notshared": "Příběh není sdílen"
     },
-    "overviewFromCommon": {
-      "title": "Mapa přehledu"
-    },
-    "legendFromCommon": {
-      "title": "Legenda"
+    "mapFromCommon": {
+      "overview": "Přehledová mapa",
+      "legend": "Legenda",
+      "home": "Výchozí přiblížení"
     },
     "shareFromCommon": {
       "copy": "Kopírovat",

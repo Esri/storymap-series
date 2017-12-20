@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Tämä toiminto ei ole käytettävissä automaattisen toiston tilassa",
       "notshared": "Tarinaa ei ole jaettu"
     },
-    "overviewFromCommon": {
-      "title": "Yleiskatsauskartta"
-    },
-    "legendFromCommon": {
-      "title": "Selite"
+    "mapFromCommon": {
+      "overview": "Yleiskatsauskartta",
+      "legend": "Selite",
+      "home": "Lähennä aloitussivuun"
     },
     "shareFromCommon": {
       "copy": "Kopioi",

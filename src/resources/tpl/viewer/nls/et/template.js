@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "See pole automaatesituse režiimis saadaval",
       "notshared": "Lugu pole jagatud"
     },
-    "overviewFromCommon": {
-      "title": "Ülevaatekaart"
-    },
-    "legendFromCommon": {
-      "title": "Legend"
+    "mapFromCommon": {
+      "overview": "Ülevaatekaart",
+      "legend": "Legend",
+      "home": "Suumi avalehele"
     },
     "shareFromCommon": {
       "copy": "Kopeeri",

@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Tính năng này không khả dụng trong chế độ phát tự động",
       "notshared": "Câu chuyện không được chia sẻ"
     },
-    "overviewFromCommon": {
-      "title": "Bản đồ Toàn cảnh"
-    },
-    "legendFromCommon": {
-      "title": "Chú giải"
+    "mapFromCommon": {
+      "overview": "Bản đồ Toàn cảnh",
+      "legend": "Chú giải",
+      "home": "Thu phóng Trang chủ"
     },
     "shareFromCommon": {
       "copy": "Sao chép",

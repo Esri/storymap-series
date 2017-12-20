@@ -54,7 +54,7 @@ app.cfg = {
 					// Description link
 					textLink: "#555555",
 					// Media background
-					media: "#FFFFFF",
+					media: "#8f999f",
 					// Map Controls background
 					mapControls: "#DBD9DA",
 					// Map Controls text
@@ -104,7 +104,7 @@ app.cfg = {
 					panel: "#FFFFFF",
 					text: "#333333",
 					textLink: "#555555",
-					media: "#FFFFFF",
+					media: "#DBDBDB",
 					mapControls: "#FFFFFF",
 					softText: "#444444",
 					softBtn: "#444444",
@@ -150,7 +150,7 @@ app.cfg = {
 					panel: "#D4E6C3",
 					text: "#231F20",
 					textLink: "#555555",
-					media: "#FFFFFF",
+					media: "#c6cdc0",
 					mapControls: "#D4E6C3",
 					softText: "#444444",
 					softBtn: "#444444",
@@ -182,7 +182,7 @@ app.cfg = {
 					panel: "#DBD9DA",
 					text: "#000000",
 					textLink: "#555555",
-					media: "#FFFFFF",
+					media: "#8f999f",
 					mapControls: "#DBD9DA",
 					softText: "#444444",
 					softBtn: "#444444",
@@ -227,7 +227,7 @@ app.cfg = {
 					panel: "#FFFFFF",
 					text: "#333333",
 					textLink: "#555555",
-					media: "#FFFFFF",
+					media: "#DBDBDB",
 					mapControls: "#FFFFFF",
 					softText: "#444444",
 					softBtn: "#444444",
@@ -271,7 +271,7 @@ app.cfg = {
 					panel: "#D4E6C3",
 					text: "#231F20",
 					textLink: "#555555",
-					media: "#FFFFFF",
+					media: "#c6cdc0",
 					mapControls: "#D4E6C3",
 					softText: "#444444",
 					softBtn: "#444444",
@@ -302,7 +302,7 @@ app.cfg = {
 					panel: "#DBD9DA",
 					text: "#000000",
 					textLink: "#555555",
-					media: "#FFFFFF",
+					media: "#8f999f",
 					mapControls: "#DBD9DA",
 					softText: "#444444",
 					softBtn: "#444444",
@@ -348,7 +348,7 @@ app.cfg = {
 					panel: "#FFFFFF",
 					text: "#333333",
 					textLink: "#555555",
-					media: "#FFFFFF",
+					media: "#DBDBDB",
 					mapControls: "#FFFFFF",
 					softText: "#444444",
 					softBtn: "#444444",
@@ -394,7 +394,7 @@ app.cfg = {
 					panel: "#D4E6C3",
 					text: "#231F20",
 					textLink: "#555555",
-					media: "#FFFFFF",
+					media: "#c6cdc0",
 					mapControls: "#D4E6C3",
 					softText: "#444444",
 					softBtn: "#444444",
@@ -478,8 +478,8 @@ app.cfg = {
 	// Edit those to set a custom sharing or proxy URL
 	// You have to edit those only if your webmap is deployed on Portal for ArcGIS instance and if you are not deploying the template on the Portal webserver
 	// If you are using ArcGIS Online or deploying the template on a Portal instance, you don't have to edit those URL
-	DEFAULT_SHARING_URL: "//www.arcgis.com/sharing/content/items",
-	//DEFAULT_SHARING_URL: "//portal.internal.com/arcgis/sharing/content/items",
+	DEFAULT_SHARING_URL: "//www.arcgis.com/sharing/rest/content/items",
+	//DEFAULT_SHARING_URL: "//portal.internal.com/arcgis/sharing/rest/content/items",
 	DEFAULT_PROXY_URL: "//www.arcgis.com/sharing/proxy"
 	//DEFAULT_PROXY_URL: "//portal.internal.com/arcgis/sharing/proxy"
 };

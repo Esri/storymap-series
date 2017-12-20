@@ -1,9 +1,9 @@
 #mainStagePanel {
     position: relative;
     background-size: 100% 100%;
-	-webkit-box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
+	/*-webkit-box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
 	-moz-box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
-	box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
+	box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);*/
 }
 
 body.layout-tab #mainStagePanel,

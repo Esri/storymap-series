@@ -117,7 +117,7 @@ define([],
 				height = 100 - headerHeight - 1,
 				styleOpt = "",
 				styleOptPanel = "",
-				styleOptMedia = "box-shadow: inset 0px 0px 52px 3px rgba(0,0,0,0.3);";
+				styleOptMedia = "";
 
 			if ( layout == "accordion" ) {
 				if ( options.panel.size == 'small' ) {

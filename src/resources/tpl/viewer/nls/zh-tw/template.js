@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "這不適用於自動播放模式",
       "notshared": "未分享故事"
     },
-    "overviewFromCommon": {
-      "title": "總覽圖"
-    },
-    "legendFromCommon": {
-      "title": "圖例"
+    "mapFromCommon": {
+      "overview": "總覽圖",
+      "legend": "圖例",
+      "home": "縮放首頁"
     },
     "shareFromCommon": {
       "copy": "複製",

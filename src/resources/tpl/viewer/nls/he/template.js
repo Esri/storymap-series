@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "זה לא זמין במצב ניגון אוטומטי",
       "notshared": "הסיפור לא משותף"
     },
-    "overviewFromCommon": {
-      "title": "מפת התמצאות"
-    },
-    "legendFromCommon": {
-      "title": "מקרא"
+    "mapFromCommon": {
+      "overview": "מפת התמצאות",
+      "legend": "מקרא",
+      "home": "התמקד לדף הבית"
     },
     "shareFromCommon": {
       "copy": "העתק",

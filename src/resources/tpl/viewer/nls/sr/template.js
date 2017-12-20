@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Ovo nije dostupno u režimu automatske reprodukcije",
       "notshared": "Priča nije podeljena"
     },
-    "overviewFromCommon": {
-      "title": "Pregledna mapa"
-    },
-    "legendFromCommon": {
-      "title": "Legenda"
+    "mapFromCommon": {
+      "overview": "Pregledna mapa",
+      "legend": "Legenda",
+      "home": "Zumiraj matičnu stranicu"
     },
     "shareFromCommon": {
       "copy": "Kopiraj",

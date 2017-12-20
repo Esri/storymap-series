@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Automatinio paleidimo režimu nepasiekiamas",
       "notshared": "Pasakojimas nebendrinamas"
     },
-    "overviewFromCommon": {
-      "title": "Apžvalga"
-    },
-    "legendFromCommon": {
-      "title": "Legenda"
+    "mapFromCommon": {
+      "overview": "Apžvalga",
+      "legend": "Legenda",
+      "home": "Keisti mastelį į pradinį"
     },
     "shareFromCommon": {
       "copy": "Kopijuoti",

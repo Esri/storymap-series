@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Недоступно в режиме автовоспроизведения",
       "notshared": "История не в общем доступе"
     },
-    "overviewFromCommon": {
-      "title": "Обзорная карта"
-    },
-    "legendFromCommon": {
-      "title": "Легенда"
+    "mapFromCommon": {
+      "overview": "Обзорная карта",
+      "legend": "Легенда",
+      "home": "Приблизиться к главной"
     },
     "shareFromCommon": {
       "copy": "Скопировать",

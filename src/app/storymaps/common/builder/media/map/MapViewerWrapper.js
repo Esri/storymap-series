@@ -167,13 +167,13 @@ define([
 			function receiveMessage(event)
 			{
 				if ( event.origin !== MapViewerWrapperUtils.getPortalDomain() ) {
-					console.log("MV ignored a message from another domain:", event.origin, event.data);
+					// ignoring a message from another domain
 					return;
 				}
 
 				var json = _.isString(event.data) ? JSON.parse(event.data) : event.data;
 				if (!json || !json.type) {
-					console.log('MV ignored event without data or without data type', event.data);
+					// ignoring event without data or data type
 					return;
 				}
 				console.log("MV received", json);

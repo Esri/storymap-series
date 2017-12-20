@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "यह ऑटोप्ले मोड में उपलब्ध नहीं है",
       "notshared": "कहानी साझा नहीं की गई है"
     },
-    "overviewFromCommon": {
-      "title": "संक्षिप्त मानचित्र"
-    },
-    "legendFromCommon": {
-      "title": "लीजेंड"
+    "mapFromCommon": {
+      "overview": "संक्षिप्त मानचित्र",
+      "legend": "लिजेंड",
+      "home": "होम ज़ूम करें"
     },
     "shareFromCommon": {
       "copy": "प्रतिलिपि",

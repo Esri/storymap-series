@@ -36,7 +36,7 @@ define(["lib-build/tpl!./Overview",
 
 			var tplStrings = {
 				isInBuilder: isInBuilder,
-				title: i18n.viewer.overviewFromCommon.title,
+				title: i18n.viewer.mapFromCommon.overview,
 				overlayHeader: '',
 				basemapGalleryBtnLabel: '',
 				expandFactorLabel: ''

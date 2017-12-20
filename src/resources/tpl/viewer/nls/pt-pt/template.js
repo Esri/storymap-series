@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Isto não está disponível no modo de reprodução automática",
       "notshared": "História não partilhada"
     },
-    "overviewFromCommon": {
-      "title": "Mapa de Vista Geral"
-    },
-    "legendFromCommon": {
-      "title": "Legenda"
+    "mapFromCommon": {
+      "overview": "Vista Geral do Mapa",
+      "legend": "Legenda",
+      "home": "Aplicar Zoom a Página Inicial"
     },
     "shareFromCommon": {
       "copy": "Copiar",

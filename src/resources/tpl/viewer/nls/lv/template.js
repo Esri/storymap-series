@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Tas nav pieejams automātiskās demonstrēšanas režīmā",
       "notshared": "Stāsts nav koplietots"
     },
-    "overviewFromCommon": {
-      "title": "Kartes pārskatīšana"
-    },
-    "legendFromCommon": {
-      "title": "Apzīmējumi"
+    "mapFromCommon": {
+      "overview": "Pārskata karte",
+      "legend": "Apzīmējumi",
+      "home": "Mērogmaiņas sākumlapa"
     },
     "shareFromCommon": {
       "copy": "Kopēt",

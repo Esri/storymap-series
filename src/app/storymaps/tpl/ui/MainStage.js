@@ -1275,6 +1275,17 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						embedContainer.off('load').load(stopMainStageLoadingIndicator);
 						startMainStageLoadingIndicator();
 
+						// vimeo changed their player in fall 2017 to make it more... compact? idk.
+						// in any case, it screws up expected styling for "fill" layout on mainstage
+						// so we're adding a url param transparent=0 to revert to the old styling
+						if (url.match('//player.vimeo.com/video') && !url.match('transparent=0')) {
+							if (url.match(/\?/)) {
+								url = url + '&transparent=0';
+							} else {
+								url = url + '?transparent=0';
+							}
+						}
+
 						// TODO youtube recommand an origin param "&origin=" + encodeURIComponent(document.location.origin)
 						// https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
 						embedContainer.attr('src', url);

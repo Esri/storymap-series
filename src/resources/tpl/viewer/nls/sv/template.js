@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Funktionen finns inte tillgänglig i autouppspelningsläge",
       "notshared": "Berättelsen delas inte"
     },
-    "overviewFromCommon": {
-      "title": "Översiktskarta"
-    },
-    "legendFromCommon": {
-      "title": "Teckenförklaring"
+    "mapFromCommon": {
+      "overview": "Översiktskarta",
+      "legend": "Teckenförklaring",
+      "home": "Zooma hem"
     },
     "shareFromCommon": {
       "copy": "Kopiera",

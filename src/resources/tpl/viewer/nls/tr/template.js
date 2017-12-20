@@ -63,11 +63,10 @@ define({
       "tooltipAutoplayDisabled": "Bu özellik otomatik oynatma modunda kullanılamaz",
       "notshared": "Hikaye paylaşılmıyor"
     },
-    "overviewFromCommon": {
-      "title": "Genel Bakış Haritası"
-    },
-    "legendFromCommon": {
-      "title": "Gösterim"
+    "mapFromCommon": {
+      "overview": "Genel Bakış Haritası",
+      "legend": "Gösterim",
+      "home": "Evi Yakınlaştır"
     },
     "shareFromCommon": {
       "copy": "Kopyala",
