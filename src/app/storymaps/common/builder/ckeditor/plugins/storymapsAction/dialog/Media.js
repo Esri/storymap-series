@@ -2,15 +2,19 @@ define(["lib-build/tpl!./Media",
 		"lib-build/css!./Media",
 		"lib-build/css!../../Common",
 		"storymaps/common/builder/media/MediaSelector",
-		"dojo/Deferred",
-		"dojo/topic"],
+		"storymaps/tpl/core/Helper",
+		"esri/geometry/Extent",
+		"dojo/topic",
+		"dojo/Deferred"],
 	function (
 		viewTpl,
 		viewCss,
 		commonCss,
 		MediaSelector,
-		Deferred,
-		topic
+		Helper,
+		Extent,
+		topic,
+		Deferred
 	){
 		return function Media(container)
 		{
@@ -45,7 +49,8 @@ define(["lib-build/tpl!./Media",
 					mode: cfg.mode,
 					webmaps: cfg.webmaps,
 					media: cfg.media,
-					disableMapExtras: cfg.disableMapExtras
+					disableMapExtras: true,
+					fromAction: true
 				}, function(){});
 
 				container.find(".modal-content").css("min-height", contentHeight);
@@ -57,13 +62,17 @@ define(["lib-build/tpl!./Media",
 			function onOpenConfigure()
 			{
 				container.modal('toggle');
-				topic.publish("TOGGLE-ADD-EDIT");
+				// TOGGLE-ADD-EDIT works for MJ because the panel text is
+				// being edited in the addEdit popup. But it isn't showing here.
+				// topic.publish("TOGGLE-ADD-EDIT");
 			}
 
 			function onCloseConfigure()
 			{
 				container.modal('toggle');
-				topic.publish("TOGGLE-ADD-EDIT");
+				// TOGGLE-ADD-EDIT works for MJ because the panel text is
+				// being edited in the addEdit popup. But it isn't showing here.
+				// topic.publish("TOGGLE-ADD-EDIT");
 			}
 
 			function updateSubmitButton()
@@ -81,10 +90,16 @@ define(["lib-build/tpl!./Media",
 
 				var postErrorCheck = function()
 				{
+					var media = _viewMediaSelector.getData().media;
+					//if (media && media.type === 'webmap' && media.webmap.extent) {
+					//	var originalExtent = new Extent(media.webmap.extent);
+					//	var correctedExtent = Helper.getLayoutExtent(originalExtent, true, false);
+					//	media.webmap.extent = correctedExtent.toJson();
+					//}
 					_dialogDeferred.resolve({
 						id: _cfg.mode == "add" ? "MJ-ACTION-" + Date.now() : null,
 						text: _cfg.text,
-						media: _viewMediaSelector.getData().media
+						media: media
 					});
 					container.modal('toggle');
 				};
@@ -99,9 +114,14 @@ define(["lib-build/tpl!./Media",
 					postErrorCheck();
 			}
 
+			function onClickCancel() {
+				topic.publish('story-navigate-entry', app.data.getCurrentSectionIndex());
+			}
+
 			function initEvents()
 			{
 				container.find(".btnSubmit").click(onClickSubmit);
+				container.find(".btnCancel").click(onClickCancel);
 
 				container.on('shown.bs.modal', function(){
 					_viewMediaSelector.postDisplay();

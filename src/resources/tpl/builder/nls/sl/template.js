@@ -47,7 +47,7 @@ define({
       "lblLocate": "Najdi gumb",
       "tooltipLocate": "Omogočite svojim bralcem, da na karti vidijo svojo trenutno lokacijo. Ta funkcionalnost je podprta na večini naprav in brskalnikov, vendar se gumb prikaže le, če svojo zgodbo delite kot povezavo HTTPS in ni vdelana.",
       "lblGeocoder": "Naslov, kraj in iskalnik geoobjektov",
-      "tooltipGeocoder": "Omogočite svojim bralcem, da po vaši karti iščejo naslove, kraje in/ali geoobjekte. Iskalne možnosti je mogoče konfigurirati na strani elementov spletne karte pod Nastavitve > Spletna karta > Aplikacija > Poišči lokacije.",
+      "tooltipGeocoder": "Omogočite svojim bralcem, da po vaši karti iščejo naslove, kraje in/ali geoobjekte. Iskalne možnosti je mogoče konfigurirati na strani elementov spletne karte pod Nastavitve > Spletna karta > Aplikacija > Najdi lokacije.",
       "lblSync": "Sinhroniziraj lokacije karte",
       "tooltipSync": "Ko je funkcionalnost omogočena, bo začetna lokacija na prvi karti v vaši seriji veljala za vse karte in navigacija uporabnikov na katerikoli karti bo prikazana na vseh kartah. Onemogočite lokacije posamezne karte, da ostanejo samostojne."
     },
@@ -61,7 +61,7 @@ define({
     "addEditPopup": {
       "lblAdd": "Dodaj",
       "lblEdit": "Uredi",
-      "disabled": "Možnost Dodaj je onemogočena, ker je bilo doseženo največje število dovoljenih %LBL_LAYOUT%.",
+      "disabled": "Možnost Dodaj je onemogočena, ker je bilo doseženo maksimalno število dovoljenih %LBL_LAYOUT%.",
       "titleAdd": "Dodaj",
       "titleEdit": "Uredi",
       "stepMainStageNextTooltip": "Vnesite ime in vsebino %LBL_LAYOUT%",
@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Tukaj dodajte besedilo, povezave in majhne grafike.",
-      "placeholder2": "Če ostane prazno, bo plošča skrita."
+      "placeholder2": "Če ostane prazno, bo plošča skrita.",
+      "editorActionsTitle": "Dejanja zgodbe",
+      "editorActionsHelpDescr": "Ustvarite povezave v zgodbi, ki pomaga povedati vašo zgodbo. Dejanje zgodbe lahko poveže drugi razdelek ali spremeni glavni oder. Na primer, konfigurirate lahko dejanja, da premaknete karto na drugo lokacijo, vklopite/izklopite sloje karte ali spremenite medije glavnega odra na drugačno sliko, video, karto ali spletno stran.",
+      "mainStageDisabled": "Ko je urejevalnik maksimiziran, so dejanja zgodbe onemogočena"
     },
     "organizePopup": {
       "title": "Organiziraj",
@@ -108,10 +111,24 @@ define({
       "content6AltDiv4": "Da onemogočite sinhronizacijo, pojdite na Nastavitve > Možnosti karte in odkljukajte »Sinhroniziraj lokacije karte«."
     },
     "landing": {
-      "lblAdd": "Kako želite poimenovati svoje serije kart z zgodbo %LAYOUT_TITLE%?",
+      "lblAdd": "Kako želite poimenovati svoje kartne serije z zgodbo %LAYOUT_TITLE%?",
       "phAdd": "Vnesite svoje ime ...",
       "lblOR": "Ali",
-      "lblHelp": "Pojdi na Potopis"
+      "lblHelp": "Pojdi na Potopis",
+      "quote0": "Vedno je prostor za zgodbo, ki lahko popelje ljudi na drug kraj.",
+      "quote1": "Danes je pripovedovanje zgodb najboljši način, da predstavite svoje ideje svetu.",
+      "quote2": "Zgodbe, ki jih povemo dobesedno, ustvarjajo svet. Če želite spremeniti svet, morate spremeniti vašo zgodbo. Ta resnica velja kako za posameznike kot za ustanove.",
+      "quote3": "Najkrajša razdalja med človekom in resnico je zgodba.",
+      "quote4": "Ljudje si ne želijo več informacij. Informacij imajo že na pretek. V zgodbi, ki jo pripovedujete, želijo verjeti vam, vašim ciljem, vašemu uspehu.",
+      "quote5": "Resnično verjamem, da ljudje iščejo zgodbe, ki imajo resničen pomen: zgodbe, ki so odrešujoče, navdihujoče in večje od posameznika.",
+      "quote6": "Če želite vplivati na posameznika ali skupino, da v vsakdanjem življenju prevzamejo določeno vrednoto, jim povejte prepričljivo zgodbo.",
+      "quote7": "Če mi to poveste, je to esej. Če mi pokažete, je to zgodba.",
+      "quote8": "Če ne razločite dreves, se lahko izgubite v gozdu, če pa ne poznate zgodb, se lahko izgubite v življenju.",
+      "quote9": "Zgodbe so ustvarjalna pretvorba življenja v močnejše, jasnejše in bolj smiselno doživetje. So valuta človeškega stika.",
+      "quote10": "Ni večjega trpljenja, kot če v sebi zadržujete neizrečeno zgodbo.",
+      "quote11": "Mogoče so zgodbe samo podatki z dušo.",
+      "quote12": "Zgodbe so eno izmed najmočnejših orožij arzenala vodje.",
+      "quote13": "Značilnost zgodb je, da izpustijo veliko več, kot pa vsebujejo."
     }
   }
 });

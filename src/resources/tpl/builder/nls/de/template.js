@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Text, Links und kleine Grafiken hier hinzufügen.",
-      "placeholder2": "Wenn der Bereich leer bleibt, wird er ausgeblendet."
+      "placeholder2": "Wenn der Bereich leer bleibt, wird er ausgeblendet.",
+      "editorActionsTitle": "Story-Aktionen",
+      "editorActionsHelpDescr": "Erstellen Sie Links in Ihrer Story, die beim Präsentieren der Informationen hilfreich sind. Eine Story-Aktion kann auf einen anderen Abschnitt verweisen oder den Hauptbereich ändern. Beispielsweise können Sie eine Aktion konfigurieren, um die Karte an einen anderen Platz zu verschieben, Karten-Layer zu aktivieren/deaktivieren oder als Medium für den Hauptbereich ein anderes Bild, Video bzw. eine andere Karte oder Website darzustellen.",
+      "mainStageDisabled": "Story-Aktionen werden deaktiviert, wenn der Editor maximiert wird"
     },
     "organizePopup": {
       "title": "Organisieren",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Welchen Namen möchten Sie der %LAYOUT_TITLE% Map Series geben?",
       "phAdd": "Titel eingeben...",
       "lblOR": "Oder",
-      "lblHelp": "Einführung"
+      "lblHelp": "Einführung",
+      "quote0": "Eine Geschichte, in die der Zuhörer eintauchen kann, findet immer Anklang.",
+      "quote1": "Geschichten sind die beste Methode, neue Ideen in die Welt zu setzen.",
+      "quote2": "Unsere Geschichten prägen im wahrsten Sinne des Wortes die Welt. Wenn Sie die Welt verändern möchten, müssen Sie Ihre Geschichte verändern – egal, ob als Einzelner oder als große Organisation.",
+      "quote3": "Die kürzeste Entfernung zwischen einem Menschen und der Wahrheit ist eine Geschichte.",
+      "quote4": "Menschen möchten nicht noch mehr Informationen. Sie werden regelrecht damit überhäuft. Sie möchten Ihnen Glauben schenken – an Sie, Ihre Ziele, Ihren Erfolg und Ihre Geschichte glauben.",
+      "quote5": "Ich bin der Meinung, dass Menschen auf der Suche nach bedeutungsvollen Geschichten sind – Geschichten, die heilen, die inspirieren, die größer als der Einzelne sind.",
+      "quote6": "Wenn Sie eine Person oder eine Gruppe beeinflussen möchten, ihnen einen bestimmten Wert für ihr tägliches Leben vermitteln möchten, erzählen Sie ihnen eine fesselnde Geschichte.",
+      "quote7": "Wenn Sie davon berichten, ist es ein Aufsatz. Wenn Sie es anschaulich darstellen, ist es eine Geschichte.",
+      "quote8": "Wenn Sie die Bäume nicht kennen, haben Sie sich wohl im Wald verlaufen; wenn Sie aber die Geschichten nicht kennen, haben Sie vielleicht den Sinn des Lebens aus den Augen verloren.",
+      "quote9": "Durch Geschichten wird das Leben selbst auf kreative Weise zu einer machtvolleren, klareren und bedeutungsvolleren Erfahrung. Sie sind die Ausdrucksform der zwischenmenschlichen Kommunikation.",
+      "quote10": "Es gibt nichts Schlimmeres, als eine nicht erzählte Geschichte in sich zu tragen.",
+      "quote11": "Vielleicht sind Geschichten auch nur Daten mit einer Seele.",
+      "quote12": "Geschichten sind die mit Abstand mächtigsten Waffen eines Motivators.",
+      "quote13": "Es liegt in der Natur eine Geschichte, mehr der Fantasie zu überlassen, als zu beschreiben."
     }
   }
 });

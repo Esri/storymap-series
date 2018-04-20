@@ -37,6 +37,15 @@ define({
       "signOut": "Abmelden",
       "attention": "Achtung!"
     },
+    "mainStage": {
+      "back": "Zurück",
+      "errorDeleted": "Dieser Link ist nicht aktiv (Abschnitt wurde gelöscht)",
+      "errorNotPublished": "Dieser Link ist nicht aktiv (Abschnitt wurde nicht veröffentlicht)"
+    },
+    "panel": {
+      "collapse": "Bereich ausblenden",
+      "expand": "Bereich einblenden"
+    },
     "mobileInfo": {
       "legend": "Legende",
       "description": "Beschreibung",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Sie haben das Ende der Story erreicht"
     },
     "headerFromCommon": {
-      "storymapsText": "Eine Story Map",
+      "storymapsText": "Eine Story-Map",
       "builderButton": "Bearbeiten",
       "facebookTooltip": "Auf Facebook freigeben",
       "twitterTooltip": "Auf Twitter freigeben",

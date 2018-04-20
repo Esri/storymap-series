@@ -212,6 +212,7 @@ define(["lib-build/css!./MainView",
         topic.subscribe("story-navigate-entry", navigateStoryToIndex);
         topic.subscribe("story-update-entries", updateUIStory);
         topic.subscribe("story-update-entry", updateStoryEntry);
+        topic.subscribe("story-perform-action-media", app.ui.mainStage.updateMainMediaWithStoryAction);
         topic.subscribe("story-entry-reset-map-extent", resetEntryMapExtent);
 
         topic.subscribe("ADDEDIT_LOAD_WEBMAP", app.ui.mainStage.loadTmpWebmap);
@@ -399,6 +400,7 @@ define(["lib-build/css!./MainView",
           storyIndexUrl = parseInt(CommonHelper.getUrlParams().entry, 10);
 
         app.data.cleanEntriesMarkup();
+        app.data.cleanEntriesActions();
 
         if ( storyIndexUrl )
           storyIndex = storyIndexUrl - 1;
@@ -589,20 +591,47 @@ define(["lib-build/css!./MainView",
         initLayout();
 
         setCommonLayoutColor();
+        StoryText.createMainMediaActionLink();
         StoryText.createMediaFullScreenButton();
         StoryText.styleSectionPanelContent();
 
         navigateStoryToIndex(app.data.getCurrentSectionIndex());
 
-        if ( builderView )
+        if ( builderView ) {
           builderView.updateUI();
+        }
       }
 
       function updateStoryEntry(cfg)
       {
         // TODO: should only refresh the item
+        var sectionWebmap = cfg.section && cfg.section.media && cfg.section.media.webmap;
+        if (sectionWebmap && app.appCfg.mapsSyncAppOption && WebApplicationData.getMapOptions().mapsSync) {
+          var firstMapInfo = app.data.getFirstWebmapInfo();
+          if (firstMapInfo && firstMapInfo.index === cfg.index && firstMapInfo.webmap.id === sectionWebmap.id) {
+            onSyncedFirstMapEntryUpdate(sectionWebmap);
+          }
+        }
         updateUIStory();
         navigateStoryToIndex(cfg.index);
+      }
+
+      // when we're here, the app has synced maps, and the section we're in is the first webmap
+      function onSyncedFirstMapEntryUpdate(sectionWebmap) {
+        var extentToPublish = null;
+
+        if (sectionWebmap.extent) {
+          extentToPublish = new Extent(sectionWebmap.extent);
+        }
+        else {
+          extentToPublish = CommonHelper.getWebMapExtentFromItem(app.mapItem.item, true);
+        }
+        if (extentToPublish) {
+          // setTimeout for builder changing mainstage map
+          setTimeout(function() {
+            topic.publish('CORE_UPDATE_EXTENT', extentToPublish);
+          }, 200);
+        }
       }
 
       // Layout only
@@ -625,7 +654,9 @@ define(["lib-build/css!./MainView",
           // Need to wait a bit for Side Panel
           setTimeout(function(){
             navigateStoryToIndex(app.data.getCurrentSectionIndex());
-            updateUIStory();
+            if (!builderView) {
+              updateUIStory();
+            }
           }, 50);
         }
 
@@ -727,8 +758,8 @@ define(["lib-build/css!./MainView",
 
               // Map Controls
               CommonHelper.addCSSRule(
-                bodyPrefix + layout.id + "-left-" + size + " .esriSimpleSlider,"
-                + bodyPrefix + layout.id + "-left-" + size + " .geocoderBtn"
+                bodyPrefix + layout.id + "-left-" + size + " #mainStagePanel .esriSimpleSlider,"
+                + bodyPrefix + layout.id + "-left-" + size + " #mainStagePanel .geocoderBtn"
                 + "{ left:" + targetSize + "; }"
               );
 
@@ -927,6 +958,7 @@ define(["lib-build/css!./MainView",
         }
 
         // Refresh Main Stage
+        app.ui.mainStage.beforeMainMediaUpdate(app.data.getCurrentSectionIndex());
         app.ui.mainStage.updateMainMediaWithStoryMainMedia(index, animateMainStageTransition);
 
         $('.mediaBackContainer').hide();
@@ -1026,10 +1058,55 @@ define(["lib-build/css!./MainView",
         if ( ! currentSectionIsWebmap )
           return;
 
-        if ( currentSectionDefineExtent )
-          topic.publish("CORE_UPDATE_EXTENT", new Extent(currentSection.media.webmap.extent));
-        else
-          topic.publish("CORE_UPDATE_EXTENT", app.maps[webmapId].response.map._params.extent /*CommonHelper.getWebMapExtentFromItem(webmapItemInfo)*/);
+        var extentToPublish;
+
+        // if the maps are synced, the home extent is the same for all maps --
+        // the initial extent of the *first* map to appear in the story.
+        if (app.appCfg.mapsSyncAppOption && WebApplicationData.getMapOptions().mapsSync) {
+          var firstMapInfo = app.data.getFirstWebmapInfo();
+          if (!firstMapInfo) {
+            return;
+          }
+          // the first webmap has an explicit extent set
+          if (firstMapInfo.webmap.extent) {
+            extentToPublish = new Extent(firstMapInfo.webmap.extent);
+          }
+          else {
+            // find the opening extent of the map.
+            var firstMap = app.maps[firstMapInfo.webmap.id];
+            if (firstMap && firstMap.response) {
+              extentToPublish = firstMap.response.map._params.extent;
+            }
+          }
+          // this is correcting for the way map extents are calculated when the first section
+          // isn't a map (and thus we don't have the side panel visible yet to calculate a width adjustment
+          // so we just use the whole space). when this happens, we want the home extent to also match this
+          // slightly adjusted extent.
+          if (firstMapInfo.index > 0) {
+            extentToPublish = Helper.getLayoutExtent(extentToPublish, true);
+          }
+        }
+        else if (currentSectionDefineExtent) {
+          // not synced, defined extent
+          extentToPublish = new Extent(currentSection.media.webmap.extent);
+        }
+        else {
+          // not synced, default extent. try these.
+          if (app.mapItem && app.mapItem.item && app.mapItem.item.extent) {
+            extentToPublish = CommonHelper.getWebMapExtentFromItem(app.mapItem.item, true);
+          }
+          else {
+            extentToPublish = app.maps[webmapId].response.map._params.extent;
+          }
+        }
+
+        if (extentToPublish) {
+          // setTimeout for builder changing mainstage map
+          setTimeout(function() {
+            topic.publish('CORE_UPDATE_EXTENT', extentToPublish);
+          }, 100);
+        }
+
       }
 
       this.prepareMobileViewSwitch = function()

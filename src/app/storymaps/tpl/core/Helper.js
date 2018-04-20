@@ -54,8 +54,8 @@ define(["./WebApplicationData",
 					ymax: extent.ymax,
 					spatialReference: extent.spatialReference
 				});
-				
-				if ( debug ) {
+
+				if ( debug && !app.isProduction && app.map) {
 					var testLayer = new esri.layers.GraphicsLayer();
 					testLayer.add(new esri.Graphic(extent, new esri.symbol.SimpleFillSymbol().setColor(new esri.Color([255,0,0,0.5]))));
 					testLayer.add(new esri.Graphic(newExtent, new esri.symbol.SimpleFillSymbol()));

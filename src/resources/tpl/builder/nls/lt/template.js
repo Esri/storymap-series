@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Čia pridėkite tekstą, nuorodas ir mažus grafinius elementus.",
-      "placeholder2": "Jei paliksite tuščią, skydelis bus paslėptas."
+      "placeholder2": "Jei paliksite tuščią, skydelis bus paslėptas.",
+      "editorActionsTitle": "Pasakojimo veiksmai",
+      "editorActionsHelpDescr": "Kurkite nuorodas pasakojimo tekste, kad lengviau iliustruotumėte savo pasakojimą. Pasakojimo veiksmas gali nurodyti į kitą skiltį arba pakeisti pagrindinę sritį. Pavyzdžiui, galite konfigūruoti veiksmą, kad perkeltumėte žemėlapį į kitą vietą, įjungti arba išjungti žemėlapio sluoksnius arba pakeisti pagrindinės srities mediją į kitą atvaizdą, vaizdo įrašą, žemėlapį ar tinklalapį.",
+      "mainStageDisabled": "Redaktorių padidinus, pasakojimo veiksmai išjungiami"
     },
     "organizePopup": {
       "title": "Tvarkyti",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Kaip norite pavadinti savo %LAYOUT_TITLE% žemėlapių serijas?",
       "phAdd": "Įveskite pavadinimą...",
       "lblOR": "Arba",
-      "lblHelp": "Susipažinkite"
+      "lblHelp": "Susipažinkite",
+      "quote0": "Visuomet užteks vietos pasakojimui, kuris nukels žmones į kitą vietą.",
+      "quote1": "Šiais laikais istorijų pasakojimas yra veiksmingiausias būdas dalintis idėjomis.",
+      "quote2": "Iš esmės mūsų pasakojimai sudaro pasaulį. Norėdami jį pakeisti, turite pakeisti pasakojimą. Ši tiesa taikoma visiems.",
+      "quote3": "Pasakojimas yra trumpiausias kelias tarp žmogaus ir tiesos.",
+      "quote4": "Žmonėms nereikia daugiau informacijos. Jie jos perpildyti. Pasakojime žmonėms reikia tikėjimo jumis, jūsų tikslais, jūsų sėkme.",
+      "quote5": "Tikiu, kad žmonės ieško pasakojimų, kurie iš tiesų kažką reiškia, kurie yra pagrįsti, įkvepiantys ir svarbesni už asmenybę.",
+      "quote6": "Papasakokite istoriją, jei norite daryti įtaką kitiems, kad jie priimtų tam tikras vertybes į savo kasdienį gyvenimą.",
+      "quote7": "Jei papasakosite tai man – sukursite esė. Jei parodysite – sukursite pasakojimą.",
+      "quote8": "Jei nepažįstate medžių, galite pasiklysti miške, bet jei nežinote pasakojimų, galite pasiklysti gyvenime.",
+      "quote9": "Pasakojimai yra kūrybingas pokalbis apie gyvenimą su aiškesne ir prasmingesne patirtimi.",
+      "quote10": "Nėra didesnės kančios nei nešiotis savyje nepapasakotą istoriją.",
+      "quote11": "Gali būti, kad pasakojimai yra duomenys su siela.",
+      "quote12": "Pasakojimai gali daryti didelę įtaką kitiems.",
+      "quote13": "Pasakojimų prasmė atsiskleidžia, kai jie skaitomi tarp eilučių."
     }
   }
 });

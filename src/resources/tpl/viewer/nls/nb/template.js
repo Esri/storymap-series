@@ -37,6 +37,15 @@ define({
       "signOut": "Logg ut",
       "attention": "Obs!"
     },
+    "mainStage": {
+      "back": "TILBAKE",
+      "errorDeleted": "Denne koblingen er ikke aktiv (seksjonen er slettet)",
+      "errorNotPublished": "Denne koblingen er ikke aktiv (seksjonen er ikke publisert)"
+    },
+    "panel": {
+      "collapse": "Skjul panel",
+      "expand": "Vis panel"
+    },
     "mobileInfo": {
       "legend": "Tegnforklaring",
       "description": "Beskrivelse",

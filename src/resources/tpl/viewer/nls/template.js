@@ -38,6 +38,15 @@ define({
 				signOut: "Sign Out",
 				attention: "Attention!"
 			},
+			mainStage: {
+				back: "Back",
+				errorDeleted: "This link is not active (section has been deleted)",
+				errorNotPublished: "This link is not active (section is not published)"
+			},
+			panel: {
+				collapse: "Collapse panel",
+				expand: "Expand panel"
+			},
 			mobileInfo: {
 				legend: "Legend",
 				description: "Description",
@@ -50,7 +59,7 @@ define({
 				lblEnd: "You have reached the end of the story"
 			},
 			headerFromCommon: {
-				storymapsText: "A story map",
+				storymapsText: "A Story Map",
 				builderButton: "Edit",
 				facebookTooltip: "Share on Facebook",
 				twitterTooltip: "Share on Twitter",

@@ -37,6 +37,15 @@ define({
       "signOut": "Disconnetti",
       "attention": "Attenzione."
     },
+    "mainStage": {
+      "back": "Indietro",
+      "errorDeleted": "Questo collegamento non è attivo (sezione eliminata)",
+      "errorNotPublished": "Questo collegamento non è attivo (sezione non pubblicata)"
+    },
+    "panel": {
+      "collapse": "Comprimi riquadro",
+      "expand": "Espandi riquadro"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Descrizione",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "È stata raggiunta la fine della storia"
     },
     "headerFromCommon": {
-      "storymapsText": "Mappa collegata a una storia",
+      "storymapsText": "Story Map",
       "builderButton": "Modifica",
       "facebookTooltip": "Condividi su Facebook",
       "twitterTooltip": "Condividi su Twitter",

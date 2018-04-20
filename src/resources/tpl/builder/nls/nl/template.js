@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Voeg hier tekst, koppelingen en kleine afbeeldingen toe.",
-      "placeholder2": "Indien leeg gelaten wordt het panel verborgen."
+      "placeholder2": "Indien leeg gelaten wordt het panel verborgen.",
+      "editorActionsTitle": "Verhaalacties",
+      "editorActionsHelpDescr": "Maak koppelingen in uw verhaal waarmee u uw verhaal kunt vertellen. Een verhaalactie kan verwijzen naar een andere sectie of het hoofdvenster wijzigen. U kunt bijvoorbeeld een actie configureren om de kaart te verplaatsen naar een andere locatie, kaartlagen aan/uit zetten of de hoofdvenstermedia wijzigen naar een ​​ander beeld, video, kaart of webpagina.",
+      "mainStageDisabled": "Verhaalacties worden uitgeschakeld als de editor wordt gemaximaliseerd"
     },
     "organizePopup": {
       "title": "Rangschikken",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Hoe wilt u uw %LAYOUT_TITLE% kaartserie noemen?",
       "phAdd": "Voer de titel in...",
       "lblOR": "Of",
-      "lblHelp": "Volg een rondleiding"
+      "lblHelp": "Volg een rondleiding",
+      "quote0": "Er is altijd ruimte voor een verhaal dat mensen naar een andere plaats kan brengen.",
+      "quote1": "Verhalen vertellen is de meest krachtige manier om vandaag de dag ideeën in de wereld te zetten.",
+      "quote2": "De verhalen die we vertellen maken de wereld letterlijk. Als je de wereld wilt veranderen, moet je je verhaal veranderen. Deze waarheid geldt zowel voor individuen als instellingen.",
+      "quote3": "TDe kortste afstand tussen een mens en de waarheid is een verhaal.",
+      "quote4": "Mensen willen geen meer informatie. Ze worden al overladen met informatie. Ze willen vertrouwen in jou, je doelen, je succes, in het verhaal dat je vertelt.",
+      "quote5": "Ik geloof echt dat mensen op zoek zijn naar verhalen die echt iets betekenen, verhalen die verlossen, inspireren en groter zijn dan een individu.",
+      "quote6": "Als je een persoon of een groep wilt beïnvloeden om een ​​bepaalde waarde in hun dagelijks leven te omarmen, vertel ze dan een meeslepend verhaal.",
+      "quote7": "Als je het mij vertelt, het is een essay. Als je het me laat zien, is het een verhaal.",
+      "quote8": "Als je de bomen niet kent, ben je misschien verdwaald in het bos, maar als je de verhalen niet kent, ben je misschien verdwaald in het leven.",
+      "quote9": "Verhalen zijn de creatieve bekering van het leven zelf in een krachtigere, duidelijkere, zinvollere ervaring. Ze zijn de valuta van menselijk contact.",
+      "quote10": "Er is geen grotere ondraaglijke pijn dan het dragen van een onverteld verhaal in jezelf.",
+      "quote11": "Misschien zijn verhalen slechts gegevens met een ziel.",
+      "quote12": "Verhalen zijn het meest krachtige wapen in het arsenaal van een leider.",
+      "quote13": "Het is de aard van verhalen om veel meer weg te laten dan ze bevatten."
     }
   }
 });

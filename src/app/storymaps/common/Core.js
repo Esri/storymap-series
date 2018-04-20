@@ -427,6 +427,7 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 
 						var section = {
 								title: "",
+								contentActions: [],
 								creaDate: Date.now(),
 								status: 'PUBLISHED',
 								media: {
@@ -884,15 +885,17 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			}
 
 			var mapExtentFit = app.appCfg.mapExtentFit ? app.appCfg.mapExtentFit : false;
-			if( map.spatialReference.wkid == extent.spatialReference.wkid )
+			if( map.spatialReference.wkid == extent.spatialReference.wkid ) {
 				return map.setExtent(_mainView.getLayoutExtent(extent, false), mapExtentFit);
+			}
 			else {
 				var resultDeferred = new Deferred();
 				esriConfig.defaults.geometryService.project([extent], map.spatialReference, function(features){
 					if( ! features || ! features[0] )
 						return;
 
-					map.setExtent(_mainView.getLayoutExtent(features[0], false), mapExtentFit);
+					var newExtent = _mainView.getLayoutExtent(features[0], false);
+					map.setExtent(newExtent, mapExtentFit);
 					resultDeferred.resolve();
 				});
 				return resultDeferred;

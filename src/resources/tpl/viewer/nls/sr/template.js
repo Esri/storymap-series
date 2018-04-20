@@ -37,6 +37,15 @@ define({
       "signOut": "Odjavite se",
       "attention": "Napomena!"
     },
+    "mainStage": {
+      "back": "Nazad",
+      "errorDeleted": "Ova veza nije aktivna (odeljak je izbrisan)",
+      "errorNotPublished": "Ova veza nije aktivna (odeljak nije objavljen)"
+    },
+    "panel": {
+      "collapse": "Preklopi tablu",
+      "expand": "Proširi tablu"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Opis",

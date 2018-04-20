@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Aggiungere qui testo, collegamenti ed elementi grafici di piccole dimensioni.",
-      "placeholder2": "Se viene lasciato vuoto, il pannello verrà nascosto."
+      "placeholder2": "Se viene lasciato vuoto, il pannello verrà nascosto.",
+      "editorActionsTitle": "Azioni storia",
+      "editorActionsHelpDescr": "Creare collegamenti all'interno della narrazione per facilitare la descrizione della storia. L'azione storia può essere collegata a un'altra sezione oppure modificare la visualizzazione principale. Ad esempio, è possibile configurare un'azione in modo da spostare la mappa in una posizione diversa, attivare/disattivare i layer mappa oppure modificare il supporto della visualizzazione principale su un'immagine, un video, una mappa o una pagina Web diversi.",
+      "mainStageDisabled": "Le azioni storia sono disabilitate quando l'editor è visualizzato a schermo intero"
     },
     "organizePopup": {
       "title": "Organizza",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Come si desidera chiamare la serie di mappe %LAYOUT_TITLE%?",
       "phAdd": "Immettere il titolo...",
       "lblOR": "O",
-      "lblHelp": "Tour"
+      "lblHelp": "Tour",
+      "quote0": "C'è sempre spazio per una storia in grado di trasportare le persone in luoghi diversi.",
+      "quote1": "Storytelling è il modo attualmente più efficace per proporre idee al mondo intero.",
+      "quote2": "Le storie che raccontiamo modellano letteralmente il mondo. Se si desidera cambiare il mondo, si deve cominciare cambiando le storie. Questa verità è valida per le istituzioni e per ciascun individuo.",
+      "quote3": "La distanza più breve tra un essere umano e la verità è una storia.",
+      "quote4": "Le persone non hanno bisogno di più informazioni, ne hanno fin sopra i capelli delle informazioni. Quello che vogliono è avere fede in qualcuno, nei suoi obiettivi, nei suoi successi e nella storia che racconta.",
+      "quote5": "Sono alla ricerca di storie che abbiano un significato vero, che siano redentrici e servano d’ispirazione e che siano più grandi del singolo individuo.",
+      "quote6": "Se si desidera influenzare un singolo individuo o un intero gruppo affinché abbracci un determinato valore nella vita di tutti i giorni, è necessario raccontare una storia avvincente.",
+      "quote7": "Un saggio descrive un avvenimento. Una storia lo mostra.",
+      "quote8": "Se non si conoscono gli alberi ci si può perdere nella foresta, ma se non si conoscono le storie ci si può perdere nella vita.",
+      "quote9": "Le storie sono la trasformazione creativa della vita stessa in un’esperienza più potente, chiara e significativa. Sono la valuta del contatto umano.",
+      "quote10": "Non esiste agonia più profonda di quella di chi ha dentro di sé una storia non raccontata.",
+      "quote11": "Forse non sono altro che dati con un’anima.",
+      "quote12": "Ma le storie sono l'arma più potente nell'arsenale di un leader.",
+      "quote13": "Ed è nella loro natura lasciare all’esterno più di quanto ci sia al loro interno."
     }
   }
 });

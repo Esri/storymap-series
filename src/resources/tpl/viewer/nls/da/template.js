@@ -37,6 +37,15 @@ define({
       "signOut": "Log ud",
       "attention": "Bemærk!"
     },
+    "mainStage": {
+      "back": "Tilbage",
+      "errorDeleted": "Dette link er ikke aktivt (sektionen er blevet slettet)",
+      "errorNotPublished": "Dette link er ikke aktivt (sektionen er blevet publiceret)"
+    },
+    "panel": {
+      "collapse": "Skjul sidepanel",
+      "expand": "Udvid sidepanel"
+    },
     "mobileInfo": {
       "legend": "Signaturforklaring",
       "description": "Beskrivelse",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Du er nået til slutningen af historien"
     },
     "headerFromCommon": {
-      "storymapsText": "Et historiekort",
+      "storymapsText": "Et Story Map",
       "builderButton": "Redigér",
       "facebookTooltip": "Del på Facebook",
       "twitterTooltip": "Del på Twitter",

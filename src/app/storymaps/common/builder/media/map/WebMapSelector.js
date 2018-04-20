@@ -6,6 +6,7 @@ define(["lib-build/tpl!./WebMapSelector",
 		"./MapConfigOverlay",
 		"./MapViewerWrapperUtils",
 		"./ErrorDialog",
+		"storymaps/tpl/core/Helper",
 		"esri/geometry/Extent",
 		"dojo/Deferred",
 		"dojo/topic",
@@ -23,6 +24,7 @@ define(["lib-build/tpl!./WebMapSelector",
 		MapConfigOverlay,
 		MapViewerWrapperUtils,
 		ErrorDialog,
+		Helper,
 		Extent,
 		Deferred,
 		topic,
@@ -81,8 +83,12 @@ define(["lib-build/tpl!./WebMapSelector",
 					};
 
 					// TODO should be able to know if this is the webmap initial extent or not
-					if ( cfg.mode == "add" )
-						_mapConfig.extent = app.map ? app.map.extent.toJson() : null;
+					if ( cfg.mode == "add" ) {
+						_mapConfig.extent = app.map ? Helper.getLayoutExtent(app.map.extent, true).toJson() : null;
+					}
+					else if (cfg.fromAction) {
+						topic.publish("story-perform-action-media", cfg.media);
+					}
 				}
 
 				container.find('.webmaps-list-btn-inner').data('webmap', '');
@@ -561,21 +567,13 @@ define(["lib-build/tpl!./WebMapSelector",
 				if ( ! webmapId )
 					return;
 
-				if ( isCurrentSectionWebmapSelected() ) {
-					/*
-					if ( _cfg.mode == "edit" && _mapConfig.extent )
-						app.map.setExtent(new Extent(_mapConfig.extent)).then(function(){
-							switchToConfigureOverlay(type, _cfg.media);
-						});
-					else
-					*/
-					switchToConfigureOverlay(type, _mapConfig);
-				}
-				// Configuring a webmap already used in the project
-				else if ( $.inArray(webmapId, _cfg.webmaps) != -1 ) {
+				// Configuring a webmap already used in the project, or selected in the same section
+				// Doing these together now to correctly handle editing of story actions in sections
+				// where the original mainstage isn't a map, but the storyaction is a map.
+				if (isCurrentSectionWebmapSelected() || $.inArray(webmapId, _cfg.webmaps) != -1 ) {
 					var handle = topic.subscribe("ADDEDIT_WEBMAP_DONE", function() {
 						handle.remove();
-						switchToConfigureOverlay(type);
+						switchToConfigureOverlay(type, _mapConfig);
 					});
 					topic.publish("ADDEDIT_SHOW_WEBMAP", webmapId);
 				}
@@ -587,7 +585,7 @@ define(["lib-build/tpl!./WebMapSelector",
 						handleLoadSuccess.remove();
 						handleLoadFail.remove();
 
-						switchToConfigureOverlay(type);
+						switchToConfigureOverlay(type, _mapConfig);
 					});
 
 					handleLoadFail = topic.subscribe("ADDEDIT_LOAD_WEBMAP_FAIL", function() {
@@ -616,8 +614,9 @@ define(["lib-build/tpl!./WebMapSelector",
 					media || {}
 				).then(
 					function(mapConfigResult){
-						if ( type == "LOCATION" )
-							_mapConfig.extent = mapConfigResult.extent ? mapConfigResult.extent.toJson() : null;
+						if ( type == "LOCATION" ) {
+							_mapConfig.extent = mapConfigResult.extent ? Helper.getLayoutExtent(mapConfigResult.extent, true).toJson() : null;
+						}
 						else if ( type == "CONTENT" )
 							_mapConfig.layers = mapConfigResult.layers;
 						else if ( type == "POPUP" )

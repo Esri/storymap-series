@@ -37,6 +37,15 @@ define({
       "signOut": "Wyloguj się",
       "attention": "Uwaga!"
     },
+    "mainStage": {
+      "back": "Powrót",
+      "errorDeleted": "To łącze jest nieaktywne (sekcja została usunięta)",
+      "errorNotPublished": "To łącze jest nieaktywne (sekcja nie została opublikowana)"
+    },
+    "panel": {
+      "collapse": "Zwiń panel",
+      "expand": "Rozwiń panel"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Opis",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Znajdujesz się na końcu scenariusza"
     },
     "headerFromCommon": {
-      "storymapsText": "mapa narracji (Story Map)",
+      "storymapsText": "Mapa narracyjna",
       "builderButton": "Edytuj",
       "facebookTooltip": "Udostępnij na Facebooku",
       "twitterTooltip": "Udostępnij na Twitterze",

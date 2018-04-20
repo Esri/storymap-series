@@ -37,6 +37,15 @@ define({
       "signOut": "Izrakstīties",
       "attention": "Uzmanību!"
     },
+    "mainStage": {
+      "back": "Atpakaļ",
+      "errorDeleted": "Šī saite nav aktīva (sadaļa ir dzēsta)",
+      "errorNotPublished": "Šī saite nav aktīva (sadaļa nav publicēta)"
+    },
+    "panel": {
+      "collapse": "Samazināt paneli",
+      "expand": "Izvērst paneli"
+    },
     "mobileInfo": {
       "legend": "Apzīmējumi",
       "description": "Apraksts",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Ir sasniegtas stāsta beigas"
     },
     "headerFromCommon": {
-      "storymapsText": "Stāstu karte",
+      "storymapsText": "Kartes stāsts",
       "builderButton": "Rediģēt",
       "facebookTooltip": "Koplietot Facebook",
       "twitterTooltip": "Koplietot Twitter",

@@ -37,6 +37,15 @@ define({
       "signOut": "ลงชื่อออก",
       "attention": "ความสนใจ!"
     },
+    "mainStage": {
+      "back": "กลับ",
+      "errorDeleted": "ลิงค์นี้ไม่ได้ใช้งาน (ส่วนได้ถูกลบไปแล้ว)",
+      "errorNotPublished": "ลิงค์นี้ไม่ได้ใช้งาน (ส่วนจะไม่เผยแพร่)"
+    },
+    "panel": {
+      "collapse": "ยุบแผง",
+      "expand": "ขยายแผง"
+    },
     "mobileInfo": {
       "legend": "คำอธิบาย",
       "description": "คำบรรยาย",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "คุณอ่านมาถึงตอนจบของเรื่องแล้ว"
     },
     "headerFromCommon": {
-      "storymapsText": "A story map",
+      "storymapsText": "Story Map",
       "builderButton": "แก้ไข",
       "facebookTooltip": "แชร์ผ่าน Facebook",
       "twitterTooltip": "แชร์ผ่าน Twitter",

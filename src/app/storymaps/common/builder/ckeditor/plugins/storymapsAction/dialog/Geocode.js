@@ -49,7 +49,7 @@ define(["lib-build/tpl!./Geocode",
 				_cfg = cfg;
 				_dialogDeferred = new Deferred();
 
-				initMap(_cfg.mode == "add" ? _cfg.text : "");
+				initMap(_cfg.mode == "add" ? _cfg.zoom : null);
 
 				container.find(".mapMarker").prop('checked', _cfg.mode == "add" || _cfg.edit.zoom.mapMarker);
 
@@ -77,13 +77,24 @@ define(["lib-build/tpl!./Geocode",
 				}
 			}
 
-			function initMap(/*value*/)
+			function initMap(currentZoomConfig)
 			{
 				if ( ! app.map || ! app.map.layerIds || ! app.map.layerIds.length )
 					return;
 
+				var startingPointInfo = currentZoomConfig ? currentZoomConfig.center : app.map.extent.getCenter();
+				var marker = new PictureMarkerSymbol(app.cfg.SECTION_ACTION_ZOOM_MAP_MARKER, 32, 32);
+
+				_geocoderGraphic = new Graphic(new Point(startingPointInfo), marker);
+
 				if ( _map ) {
 					container.find('#esri_dijit_Geocoder_0_input').val(/*value*/ '');
+					var lyr = _map.getLayer('geocode-lyr');
+					if (lyr) {
+						lyr.clear();
+						lyr.add(_geocoderGraphic);
+					}
+					_map.setExtent(app.map.extent);
 					return;
 				}
 
@@ -99,12 +110,7 @@ define(["lib-build/tpl!./Geocode",
 				// Add a basemap - copy first layer, default to light grey canvas if bing or not tile/dynamic
 				_map.addLayer(CommonHelper.cloneLayer(app.map.getLayer(app.map.layerIds[0])));
 
-				var pointLayer = new GraphicsLayer();
-
-				_geocoderGraphic = new Graphic(
-					new Point(app.map.extent.getCenter()),
-					new PictureMarkerSymbol(app.cfg.SECTION_ACTION_ZOOM_MAP_MARKER, 32, 32)
-				);
+				var pointLayer = new GraphicsLayer({id: 'geocode-lyr'});
 
 				pointLayer.add(_geocoderGraphic);
 				_map.addLayer(pointLayer);

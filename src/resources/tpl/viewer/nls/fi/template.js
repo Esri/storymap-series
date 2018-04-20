@@ -37,6 +37,15 @@ define({
       "signOut": "Kirjaudu ulos",
       "attention": "Huomio!"
     },
+    "mainStage": {
+      "back": "Edellinen",
+      "errorDeleted": "Tämä linkki ei ole aktiivinen (osio on poistettu)",
+      "errorNotPublished": "Tämä linkki ei ole aktiivinen (osiota ei ole julkaistu)"
+    },
+    "panel": {
+      "collapse": "Tiivistä paneeli",
+      "expand": "Laajenna paneeli"
+    },
     "mobileInfo": {
       "legend": "Selite",
       "description": "Kuvaus",

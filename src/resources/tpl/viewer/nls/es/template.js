@@ -37,6 +37,15 @@ define({
       "signOut": "Cerrar sesión",
       "attention": "Atención"
     },
+    "mainStage": {
+      "back": "Atrás",
+      "errorDeleted": "Este vínculo no está activo (se ha eliminado la sección)",
+      "errorNotPublished": "Este vínculo no está activo (no se publica la sección)"
+    },
+    "panel": {
+      "collapse": "Contraer panel",
+      "expand": "Expandir panel"
+    },
     "mobileInfo": {
       "legend": "Leyenda",
       "description": "Descripción",

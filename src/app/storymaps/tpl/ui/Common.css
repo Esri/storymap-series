@@ -18,3 +18,33 @@
 	margin: inherit;
 	padding: 10px 40px;
 }
+
+.textEditorContent .description table,
+.textEditorContent .description th,
+.textEditorContent .description td {
+  border: 1px dotted #d3d3d3;
+}
+
+.textEditorContent .description abbr[title] {
+  border: none;
+}
+
+.textEditorContent .description select {
+  font-family: unset;
+  color: initial;
+}
+
+.textEditorContent .description h1,
+.textEditorContent .description h2,
+.textEditorContent .description h3,
+.textEditorContent .description h4,
+.textEditorContent .description h5,
+.textEditorContent .description h6,
+.textEditorContent .description p,
+.textEditorContent .description ul {
+  margin: 0.5em 0;
+}
+
+.textEditorContent .description hr {
+  border-color: #ccc;
+}

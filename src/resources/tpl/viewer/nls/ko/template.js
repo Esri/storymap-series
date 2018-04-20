@@ -37,6 +37,15 @@ define({
       "signOut": "로그아웃",
       "attention": "주의!"
     },
+    "mainStage": {
+      "back": "뒤로",
+      "errorDeleted": "이 링크가 활성화되어 있지 않음(섹션이 삭제됨)",
+      "errorNotPublished": "이 링크가 활성화되어 있지 않음(섹션이 발행되지 않음)"
+    },
+    "panel": {
+      "collapse": "패널 축소",
+      "expand": "패널 확대"
+    },
     "mobileInfo": {
       "legend": "범례",
       "description": "설명",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "스토리 끝에 도달했습니다."
     },
     "headerFromCommon": {
-      "storymapsText": "스토리 맵",
+      "storymapsText": "스토리맵",
       "builderButton": "편집",
       "facebookTooltip": "Facebook에  공유",
       "twitterTooltip": "Twitter에  공유",

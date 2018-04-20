@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Adicione texto, ligações e pequenos gráficos aqui.",
-      "placeholder2": "Se for deixado em branco, o painel será ocultado."
+      "placeholder2": "Se for deixado em branco, o painel será ocultado.",
+      "editorActionsTitle": "Story Actions",
+      "editorActionsHelpDescr": "Crie ligações na sua narrativa que ajudam a contar a sua história. Uma Story Action pode ligar a outra secção ou alterar o ecrã principal. Por exemplo, pode configurar uma ação para mover o mapa para outra localização, alternar camadas entre ligado/desligado, ou alterar o recurso de media do ecrã principal para uma imagem, vídeo ou página web diferente.",
+      "mainStageDisabled": "As Story Actions ficam desativadas quando o editor se encontra maximizado"
     },
     "organizePopup": {
       "title": "Organizar",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Que nome quer dar à sua série de mapas %LAYOUT_TITLE%?",
       "phAdd": "Introduza o seu título...",
       "lblOR": "Ou",
-      "lblHelp": "Veja uma Apresentação"
+      "lblHelp": "Veja uma Apresentação",
+      "quote0": "Existe sempre espaço para uma história que pode transportar-nos para outro lugar.",
+      "quote1": "Contar histórias é a forma mais poderosa de colocar ideias no mundo nos dias que correm.",
+      "quote2": "As histórias que contamos constroem, literalmente, o mundo. Se quer mudar o mundo, necessita de mudar a sua história. Esta verdade aplica-se tanto a indivíduos como a instituições.",
+      "quote3": "A menor distância entre um ser humano e a verdade é uma história.",
+      "quote4": "As pessoas não pretendem mais informação. Estão fartas de informação. Querem confiar em si, nos seus objetivos, no seu sucesso, na história que conta.",
+      "quote5": "Acredito realmente que as pessoas procuram histórias que tenham significado real, histórias redentoras, inspiradoras e maiores do que um indivíduo.",
+      "quote6": "Se pretende influenciar um indivíduo ou grupo para que adote um valor específico na sua vida, conte-lhe uma história envolvente.",
+      "quote7": "Se me contar, é um ensaio. Se me mostrar, é uma história.",
+      "quote8": "Se não conhecer as árvores, pode perder-se na floresta, mas se não conhecer as histórias, pode perder-se na vida.",
+      "quote9": "As histórias representam a conversão criativa da própria vida numa experiência mais poderosa, mais clara, com mais significado. São a divisa do contacto humano.",
+      "quote10": "Não existe maior desespero do que trazer uma história por contar dentro de si.",
+      "quote11": "Talvez as histórias sejam apenas dados com alma.",
+      "quote12": "As histórias são a mais poderosa das armas do arsenal de um líder.",
+      "quote13": "Faz parte da natureza das histórias deixar de fora muito mais do que aquilo que incluem."
     }
   }
 });

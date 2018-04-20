@@ -37,6 +37,15 @@ define({
       "signOut": "Đăng xuất",
       "attention": "Chú ý!"
     },
+    "mainStage": {
+      "back": "Quay lại",
+      "errorDeleted": "Liên kết này không hoạt động (phần đã bị xóa)",
+      "errorNotPublished": "Liên kết này không hoạt động (phần chưa được phát hành)"
+    },
+    "panel": {
+      "collapse": "Thu gọn bảng điều khiển",
+      "expand": "Mở rộng bảng điều khiển"
+    },
     "mobileInfo": {
       "legend": "Chú giải",
       "description": "Mô tả",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Bạn đã đến phần kết của câu chuyện"
     },
     "headerFromCommon": {
-      "storymapsText": "Story map",
+      "storymapsText": "Story Map",
       "builderButton": "Chỉnh sửa",
       "facebookTooltip": "Chia sẻ trên Facebook",
       "twitterTooltip": "Chia sẻ trên Twitter",

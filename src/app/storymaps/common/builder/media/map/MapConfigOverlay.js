@@ -294,7 +294,7 @@ define(["lib-build/tpl!./MapConfigOverlay",
 
 				if ( layer.layerObject )
 					layerObject.setVisibility(newVisibility);
-				else {
+				else if (layer.featureCollection) {
 					$.each(layer.featureCollection.layers, function(i, l){
 						l.layerObject.setVisibility(newVisibility);
 					});

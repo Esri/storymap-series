@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Adăugaţi text, linkuri şi mici imagini aici.",
-      "placeholder2": "Dacă nu este completat, panoul va fi ascuns."
+      "placeholder2": "Dacă nu este completat, panoul va fi ascuns.",
+      "editorActionsTitle": "Acţiuni relatare",
+      "editorActionsHelpDescr": "Creaţi linkuri în naraţiune, care vă ajută să relataţi. O Acţiune de relatare poate face legătura cu altă secţiune sau poate schimba scena principală. De exemplu, puteţi configura o acţiune pentru a muta harta într-o altă locaţie, pentru a activa/dezactiva straturi tematice sau pentru a schimba fişierul media pentru scena principală cu altă imagine, clip video, hartă sau pagină web.",
+      "mainStageDisabled": "Acţiunile pentru relatare sunt dezactivate când editorul este maximizat"
     },
     "organizePopup": {
       "title": "Organizare",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Cum doriţi să denumiţi seria dvs. de hărţi %LAYOUT_TITLE%?",
       "phAdd": "Introduceţi titlul...",
       "lblOR": "Sau",
-      "lblHelp": "Efectuaţi un tur"
+      "lblHelp": "Efectuaţi un tur",
+      "quote0": "O poveste care poate face oamenii să se simtă într-un alt loc nu este niciodată de prisos.",
+      "quote1": "Poveştile reprezintă cea mai puternică modalitate de a introduce în prezent idei în lume.",
+      "quote2": "Poveştile pe care le relatăm efectiv crează o lume. Dacă doriţi să schimbaţi lumea, trebuie să vă schimbaţi povestea. Acest lucru este valabil atât pentru persoanele fizice, cât şi pentru instituţii.",
+      "quote3": "Cea mai scurtă distanţă dintre o fiinţă umană şi adevăr este o poveste.",
+      "quote4": "Oamenii nu doresc mai multe informaţii. Ei sunt deja invadați de prea multe informaţii. Vor să aibă încredere în tine, în ţelurile tale, în succesul tău, în povestea pe care o spui.",
+      "quote5": "Cred cu tărie că oamenii sunt în căutarea de povești care înseamnă într-adevăr ceva; povești cu morală, care inspiră şi sunt înălţătoare.",
+      "quote6": "Dacă doriţi să influenţați un individ sau un grup pentru a adera la o anumită valoare în viaţa lor de zi cu zi, spuneţi-le o poveste convingătoare.",
+      "quote7": "Dacă-mi spui, e un eseu. Dacă îmi arăţi, e o poveste.",
+      "quote8": "Dacă nu recunoști copacii s-ar putea să te pierzi în pădure, dar dacă nu ştii poveşti s-ar putea să ai o existenţă pierdută.",
+      "quote9": "Poveştile reprezintă transformarea creativă a vieţii însăşi într-o experienţă mai puternică, mai clară, mai semnificativă. Sunt moneda contactului uman.",
+      "quote10": "Nu există o agonie mai mare decât să porţi o poveste nespusă în tine.",
+      "quote11": "Poate că poveştile sunt doar date cu suflet.",
+      "quote12": "Poveştile sunt cea mai puternică armă din arsenalul unui lider.",
+      "quote13": "Este o trăsătură caracteristică a poveştilor să omită mult mai mult decât ceea ce includ."
     }
   }
 });

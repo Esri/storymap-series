@@ -113,15 +113,15 @@ body .legendMobileErrorExplain {
 
 body.hasTouch .legendMobileErrorExplain {
 	display: block;
-	font-style: italic; 
-	font-size: 0.9em; 
+	font-style: italic;
+	font-size: 0.9em;
 	margin-top: 10px;
 }
 
 /*
  * Map
  */
- 
+
 .mapContainer {
     border:none;
     padding:0;

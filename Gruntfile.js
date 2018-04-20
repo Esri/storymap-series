@@ -243,7 +243,13 @@
 					{
 						expand: true,
 						cwd: 'src/app/storymaps/common/builder/ckeditor/',
-						src:['editor.css', 'plugins/storymapsInlineMedia/plugin.js', 'plugins/storymaps*/icons/**'],
+						src:[
+							'editor.css',
+							'plugins/storymapsInlineMedia/plugin.js',
+							'plugins/storymapsInlineMedia/icons/**',
+							'plugins/storymapsAction/plugin.js',
+							'plugins/storymapsAction/icons/**'
+						],
 						dest: 'deploy/resources/lib/ckeditor/'
 					}]
 				},

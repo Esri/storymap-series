@@ -37,6 +37,15 @@ define({
       "signOut": "Odjava",
       "attention": "Pozor!"
     },
+    "mainStage": {
+      "back": "Nazaj",
+      "errorDeleted": "Ta povezava ni dejavna (razdelek je bil izbrisan)",
+      "errorNotPublished": "Ta povezava ni dejavna (razdelek ni objavljen)"
+    },
+    "panel": {
+      "collapse": "Strni ploščo",
+      "expand": "Razširi ploščo"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Opis",

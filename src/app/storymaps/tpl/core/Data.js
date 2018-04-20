@@ -176,6 +176,29 @@ define(["./WebApplicationData",
 					$imgDiv.attr('src', CommonHelper.possiblyAddToken($imgDiv.attr('src')));
 				});
 				entry.description = cleanMarkup.html();
+				entry.contentActions = entry.contentActions || [];
+			};
+
+			this.cleanEntriesActions = function() {
+				var storyEntries = this.getStoryEntries();
+				$.each(storyEntries, function(i, entry) {
+					this.cleanEntryActions(entry);
+				}.bind(this));
+			};
+
+			this.cleanEntryActions = function(entry) {
+				if (!entry.contentActions || !entry.contentActions.length){
+					return;
+				}
+				var jqLinks = $(entry.description).find('a[data-storymaps]');
+				var linkActionIds = _.map(jqLinks, function(link) {
+					return $(link).data('storymaps');
+				});
+
+				entry.contentActions = _.filter(entry.contentActions, function(action) {
+					return _.contains(linkActionIds, action.id);
+				});
+
 			};
 
 			this.getStoryLength = function()
@@ -186,6 +209,35 @@ define(["./WebApplicationData",
 			this.getStoryByIndex = function(index)
 			{
 				return this.getStoryEntries()[index];
+			};
+
+			/*  this adjusts the index of entry navigation where people can request
+				* a specific entry. the ONLY case that is currently using this
+				* function is for story action entry navigation. In Journal, url params
+				* also use this, but there are too many visible numbers in Series (bullets,
+				* accordion) so we decided it would look funny here to have the url
+				* say "entry=3" but the active bullet to obviously be #2.
+				*/
+			this.getAdjustedIndex = function(index) {
+				// but in BUILDER, all entries are visible, so ignore this call.
+				if (app.isInBuilder || _storyStorage !== "WEBAPP") {
+					return index;
+				}
+				var adjustedIndex = index;
+				var allEntries = WebApplicationData.getStoryEntries().slice(0, app.cfg.MAX_NB_ENTRIES);
+				// do this until we get to the current index.
+				_.every(allEntries || [], function(entry, i){
+					if (i > index) {
+						return false;
+					}
+					// note that Journal has the ability to _schedule_ a section for publishing
+					// in the future. In Series, the section is either published or hidden.
+					if (entry.status !== "PUBLISHED") {
+						adjustedIndex--;
+					}
+					return true;
+				});
+				return adjustedIndex;
 			};
 
 			this.getCurrentSection = function()
@@ -253,9 +305,21 @@ define(["./WebApplicationData",
 			this.getWebmaps = function()
 			{
 				// Main Stage webmaps
-				var webmaps = $.map(this.getStoryEntries(), function(section){
-					return section.media && section.media.type == "webmap" && section.media.webmap ? section.media.webmap.id : null;
+				var webmaps = $.map(this.getStoryEntries(), function(entry){
+					return entry.media && entry.media.type == "webmap" && entry.media.webmap ? entry.media.webmap.id : null;
 				});
+
+				// Story actions webmaps
+				$.each(this.getStoryEntries(), function(i, entry) {
+					if (entry.contentActions) {
+						$.each(entry.contentActions, function(j, action) {
+							if (action.type === 'media' && action.media.webmap) {
+								webmaps.push(action.media.webmap.id);
+							}
+						});
+					}
+				});
+
 				// Make the array unique
 				webmaps = $.grep(webmaps, function(webmap, index) {
 					if ( ! webmap || webmap.length != 32 )
@@ -264,6 +328,21 @@ define(["./WebApplicationData",
 				});
 
 				return webmaps;
+			};
+
+			this.getFirstWebmapInfo = function() {
+				var sections = this.getStoryEntries();
+				var firstWebmapInfo = null;
+				_.some(sections, function(section, i) {
+					if (section.media && section.media.webmap) {
+						firstWebmapInfo = {
+							webmap: section.media.webmap,
+							index: i
+						};
+						return true;
+					}
+				});
+				return firstWebmapInfo;
 			};
 
 			/*
@@ -306,12 +385,12 @@ define(["./WebApplicationData",
 					}
 				};
 
-				$.each(this.getStoryEntries(), function(i, section){
-					if ( section.media && section.media.type == "webmap" && section.media.webmap )
-						store(section.media.webmap.id, "entries", i+1);
+				$.each(this.getStoryEntries(), function(i, entry){
+					if ( entry.media && entry.media.type == "webmap" && entry.media.webmap )
+						store(entry.media.webmap.id, "entries", i+1);
 
-					if ( section.contentActions ) {
-						$.each(section.contentActions, function(j, action){
+					if ( entry.contentActions ) {
+						$.each(entry.contentActions, function(j, action){
 							if ( action.type == "media" && action.media.webmap )
 								store(action.media.webmap.id, "actions", i+1);
 						});
@@ -391,8 +470,19 @@ define(["./WebApplicationData",
 			this.getImages = function()
 			{
 				// Story Main Stage images
-				var images = $.map(this.getStoryEntries(), function(section){
-					return section.media && section.media.type == "image" && section.media.image ? section.media.image.url : null;
+				var images = $.map(this.getStoryEntries(), function(entry){
+					return entry.media && entry.media.type == "image" && entry.media.image ? entry.media.image.url : null;
+				});
+
+				// story action images
+				$.each(this.getStoryEntries(), function(i, entry) {
+					if (entry.contentActions) {
+						$.each(entry.contentActions, function(j, action) {
+							if (action.type == 'media' && action.media.image) {
+								images.push(action.media.image.url);
+							}
+						});
+					}
 				});
 
 				// Make the array unique
@@ -434,12 +524,51 @@ define(["./WebApplicationData",
 					return section.media[section.media.type];
 				});
 
+				// story action embeds
+				$.each(this.getStoryEntries(), function(i, entry) {
+					if (entry.contentActions) {
+						$.each(entry.contentActions, function(j, action) {
+							if (action.type === 'media' && (action.media.webpage || action.media.video)) {
+								embeds.push(action.media.webpage || action.media.video);
+							}
+						});
+					}
+				});
+
 				// Make the array unique
 				embeds = $.grep(embeds, function(embed, index) {
 					return index == $.inArray(embed, embeds);
 				});
 
 				return embeds;
+			};
+
+			this.getContentActions = function()
+			{
+				var actions = [];
+				$.each(this.getStoryEntries(), function(i, entry){
+					if (entry.contentActions) {
+						$.each(entry.contentActions, function(j, action){
+							actions.push(action);
+						});
+					}
+				});
+				return actions;
+			};
+
+			this.getContentStyles = function() {
+				var entries = this.getStoryEntries();
+				var contentStyles = [];
+				_.each(entries, function(section) {
+					var jqSection = $(section.description);
+					_.each(jqSection.find('style'), function(styleTag) {
+						contentStyles.push(styleTag.textContent);
+					});
+					_.each(jqSection.filter('style'), function(styleTag) {
+						contentStyles.push(styleTag.textContent);
+					});
+				});
+				return contentStyles.join(' ');
 			};
 
 			this.getCurrentLayoutStaticConfig = function()

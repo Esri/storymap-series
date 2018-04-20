@@ -37,6 +37,15 @@ define({
       "signOut": "Logi välja",
       "attention": "Tähelepanu!"
     },
+    "mainStage": {
+      "back": "Tagasi",
+      "errorDeleted": "See link pole aktiivne (jaotis on kustutatud)",
+      "errorNotPublished": "See link pole aktiivne (jaotist pole avaldatud)"
+    },
+    "panel": {
+      "collapse": "Ahenda paneeli",
+      "expand": "Laienda paneeli"
+    },
     "mobileInfo": {
       "legend": "Legend",
       "description": "Kirjeldus",

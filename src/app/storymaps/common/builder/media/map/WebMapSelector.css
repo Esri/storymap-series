@@ -119,7 +119,8 @@
 }
 
 .webmapSelector .map-cfg-btns {
-	padding-left: 22px;
+	padding-right: 0;
+	min-width: 50%;
 }
 
 .webmapSelector .map-cfg-controls div.checkbox {

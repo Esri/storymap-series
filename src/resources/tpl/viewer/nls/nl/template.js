@@ -37,6 +37,15 @@ define({
       "signOut": "Afmelden",
       "attention": "Let op!"
     },
+    "mainStage": {
+      "back": "Terug",
+      "errorDeleted": "Deze koppeling is niet actief (sectie is verwijderd)",
+      "errorNotPublished": "Deze koppeling is niet actief (sectie is niet gepubliceerd)"
+    },
+    "panel": {
+      "collapse": "Paneel samenvouwen",
+      "expand": "Paneel uitvouwen"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Beschrijving",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "U heeft het eind van het verhaal bereikt"
     },
     "headerFromCommon": {
-      "storymapsText": "Een kaartverhaal",
+      "storymapsText": "Een Story Map",
       "builderButton": "Bewerken",
       "facebookTooltip": "Delen op Facebook",
       "twitterTooltip": "Delen op Twitter",

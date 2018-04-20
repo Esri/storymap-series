@@ -1,7 +1,7 @@
 ﻿Story Map Series
 ================
 
-The Story Map Series app lets you present a series of maps via tabs, numbered bullets, or a side accordion. In addition to maps, you can also include images, video and web content in your series to tell your story and engage your audience. For example the first tab in a tabbed series can be a compelling photo that sets the scene.
+The Story Map Series app lets you present a series of maps via tabs, numbered bullets, or a side accordion. In addition to maps, you can also include images, video and web content in your series to tell your story and engage your audience. For example the first tab in a tabbed series can be a compelling photo that sets the scene. Actions can also be defined in an entry's text so that, for instance, clicking a word automatically zooms the entry's map to a particular location.
 
 ![App](map-series-storytelling-template-js.png)
 
@@ -13,7 +13,7 @@ The Story Map Series app lets you present a series of maps via tabs, numbered bu
 [Download](http://links.esri.com/storymaps/map_series_template_zip) |
 [Map Series page on Esri Story Maps website](http://links.esri.com/storymaps/map_series_app)
 
-**Latest release is version 1.10.1**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
+**Latest release is version 1.11.3**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
 
 For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
 
@@ -79,72 +79,79 @@ We actively test the application in all major browsers but if you experience dif
 ### Tips for your content
 
 #### Link between entries
-One popular request is to add the ability to navigate between Series's entries using map features popup. This can for example allow the first entry map to be the spatial index to your story. To do that you need to download the application and include a piece of code in `index.html`, look at the end of the file and modify it as below. Follow the instructions to configure the web map and the layer that will receive the click event.
+One popular request is to add the ability to navigate between a Series's entries using links in the panel or through map features popup. As of April 2018, this ability is now available in the builder.
+
+To add a link to another entry in the narrative panel, highlight the text for which you want to create the link and use the `Naviage to an entry` action in the toolbar. See [this blog](https://blogs.esri.com/esri/arcgis/2016/09/14/whats-new-story-maps-september-2016/) for more information.
+
+You can also add this capability to map feature popups. This can, for example, allow the first entry map to be the spatial index to your story. To do that you need to download the application and include a piece of code in `app/custom-scripts.js`. Modify that file as shown below. Follow the instructions to configure the web map and the layer that will receive the click event.
+
 
 
 ```
-require(["dojo/topic"], function(topic) {
-	// The application is ready
-	topic.subscribe("tpl-ready", function(){
-		/* */
-	});
+define(["dojo/topic"], function(topic) {
+  /*
+   * Custom Javascript to be executed while the application is initializing goes here
+   */
 
-	/*
-	 * Set up a click handler on the feature of the map to navigate the story
-	 */
+  // The application is ready
+  topic.subscribe("tpl-ready", function(){
 
-	//
-	// *************************************
-	// Configure the webmap id and layer id
-	// *************************************
-	//
-	// First find the webmap id through the URL when you open the map in Map Viewer
-	// To get the layer id, paste the webmap id below and open the application,
-	//   then open the developer console, all the layers ids will be listed,
-	//   find the correct one and paste it below
-	// After this setup, clicking the 3rd feature of your layer, will navigate to the third entry
-	var WEBMAP_ID = "0bb11c0469f042b3afaf8b0d76572822";
-	var LAYER_ID = "csv_7673_0";
+  /*
+   * Set up a click handler on the feature of the map to navigate the story
+   */
 
-	var clickHandlerIsSetup = false;
+  //
+  // *************************************
+  // Configure the webmap id and layer id
+  // *************************************
+  //
+  // First find the webmap id through the URL when you open the map in Map Viewer
+  // To get the layer id, paste the webmap id below and open the application,
+  //   then open the developer console, all the layers ids will be listed,
+  //   find the correct one and paste it below
+  // After this setup, clicking the 3rd feature of your layer, will navigate to the third entry
+  var WEBMAP_ID = "0bb11c0469f042b3afaf8b0d76572822";
+  var LAYER_ID = "csv_7673_0";
 
-	topic.subscribe("story-loaded-map", function(result){
-		if ( result.id == WEBMAP_ID && ! clickHandlerIsSetup ) {
-			var map = app.maps[result.id].response.map,
-				layer = map.getLayer(LAYER_ID);
+  var clickHandlerIsSetup = false;
 
-			console.log(map.graphicsLayerIds);
+  topic.subscribe("story-loaded-map", function(result){
+    if ( result.id == WEBMAP_ID && ! clickHandlerIsSetup ) {
+      var map = app.maps[result.id].response.map,
+        layer = map.getLayer(LAYER_ID);
 
-			if ( layer ) {
-				layer.on("mouse-over", function(e){
-					map.setMapCursor("pointer");
-					map.infoWindow.setContent("<b>"+e.graphic.attributes.name.split(",")[0]+"</b><br/><i>Click to zoom</i>");
-					map.infoWindow.show(e.graphic.geometry);
-				});
+      console.log(map.graphicsLayerIds);
 
-				layer.on("mouse-out", function(e){
-					map.setMapCursor("default");
-					map.infoWindow.hide();
-				});
+      if ( layer ) {
+        layer.on("mouse-over", function(e){
+          map.setMapCursor("pointer");
+          map.infoWindow.setContent("<b>"+e.graphic.attributes.name.split(",")[0]+"</b><br/><i>Click to zoom</i>");
+          map.infoWindow.show(e.graphic.geometry);
+        });
 
-				layer.on("click", function(e){
-					var index = e.graphic.attributes["__OBJECTID"];
+        layer.on("mouse-out", function(e){
+          map.setMapCursor("default");
+          map.infoWindow.hide();
+        });
 
-					// Temporarily prevent the new bullet to be focused
-					app.isLoading = true;
+        layer.on("click", function(e){
+          var index = e.graphic.attributes["__OBJECTID"];
 
-					topic.publish("story-navigate-entry", index);
+          // Temporarily prevent the new bullet to be focused
+          app.isLoading = true;
 
-					// Set back isLoading
-					setTimeout(function(){
-						app.isLoading = false;
-					}, 100);
-				});
-			}
+          topic.publish("story-navigate-entry", index);
 
-			clickHandlerIsSetup = true;
-		}
-	});
+          // Set back isLoading
+          setTimeout(function(){
+            app.isLoading = false;
+          }, 100);
+        });
+      }
+
+      clickHandlerIsSetup = true;
+    }
+  });
 });
 ```
 
@@ -270,9 +277,9 @@ The easiest way to find the id or path of a DOM element that you want to customi
 Customization can achieved through the `style` tag already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
 
 ## Developer guide
-This developer guide is intended for developers that wants to modify the behavior or add new functionalities to the Map Series application.
+This developer guide is intended for developers who want to modify the behavior of or add new functionalities to the Map Series application.
 It requires knowledge of HTML, Javascript and CSS languages.
-If you only need to customize look and feel, you should be able to do so using the [customize section above](#customize-the-look-and-feel).
+If you only need to customize the look and feel, you should be able to do so using the [customize section above](#customize-the-look-and-feel).
 
 ### Application life cycle
 Map Series fires events that allow customization with lose integration. This mean that you don't need to understand the application internals to implement simple extension.
@@ -413,7 +420,7 @@ Find a bug or want to request a new feature?  Please let us know by submitting a
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## Licensing
-Copyright 2017 Esri
+Copyright 2018 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

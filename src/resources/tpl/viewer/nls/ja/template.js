@@ -37,6 +37,15 @@ define({
       "signOut": "サイン アウト",
       "attention": "注意"
     },
+    "mainStage": {
+      "back": "戻る",
+      "errorDeleted": "このリンクはアクティブではありません (セクションが削除されています)",
+      "errorNotPublished": "このリンクはアクティブではありません (セクションが公開されていません)"
+    },
+    "panel": {
+      "collapse": "パネルの折りたたみ",
+      "expand": "パネルの展開"
+    },
     "mobileInfo": {
       "legend": "凡例",
       "description": "説明",

@@ -49,23 +49,8 @@
  * Landing
  */
 
-#builderLanding {
+.show-landing .medias {
 	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
-	margin: auto;
-	height: 220px;
-	z-index: 100;
-}
-
-@media screen {
-	#builderQuotes {
-		padding: 5% 0px !important;
-	}
 }
 
 /*
@@ -262,7 +247,7 @@ body.layout-bullet .mapConfigOverlay.toc {
 }
 
 .builder-shadows.media-blues .landing-tour-container .landing-lbl {
-	color: white;
+	color: darkgray;
 }
 
 .builder-shadows.media-dark .landing-add-container .landing-lbl,

@@ -37,6 +37,15 @@ define({
       "signOut": "Déconnexion",
       "attention": "Attention !"
     },
+    "mainStage": {
+      "back": "Précédent",
+      "errorDeleted": "Ce lien est inactif (section supprimée).",
+      "errorNotPublished": "Ce lien est inactif (section non publiée)."
+    },
+    "panel": {
+      "collapse": "Réduire le volet",
+      "expand": "Développer le volet"
+    },
     "mobileInfo": {
       "legend": "Légende",
       "description": "Description",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Vous êtes parvenu au terme du récit"
     },
     "headerFromCommon": {
-      "storymapsText": "Story Map",
+      "storymapsText": "Une Story Map",
       "builderButton": "Mettre à jour",
       "facebookTooltip": "Partager sur Facebook",
       "twitterTooltip": "Partager sur Twitter",

@@ -37,6 +37,15 @@ define({
       "signOut": "Выйти",
       "attention": "Внимание!"
     },
+    "mainStage": {
+      "back": "Назад",
+      "errorDeleted": "Эта ссылка не активна (раздел был удален)",
+      "errorNotPublished": "Эта ссылка не активна (раздел не опубликован)"
+    },
+    "panel": {
+      "collapse": "Свернуть панель",
+      "expand": "Развернуть панель"
+    },
     "mobileInfo": {
       "legend": "Легенда",
       "description": "Описание",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Вы дошли до конца истории"
     },
     "headerFromCommon": {
-      "storymapsText": "История на карте",
+      "storymapsText": "Карта-история",
       "builderButton": "Редактировать",
       "facebookTooltip": "Разместить в Facebook",
       "twitterTooltip": "Разместить в Twitter",

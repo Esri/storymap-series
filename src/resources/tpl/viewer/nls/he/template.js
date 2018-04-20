@@ -37,6 +37,15 @@ define({
       "signOut": "התנתק",
       "attention": "שים לב!"
     },
+    "mainStage": {
+      "back": "חזור",
+      "errorDeleted": "קישור זה אינו פעיל (המקטע נמחק)",
+      "errorNotPublished": "קישור זה אינו פעיל (המקטע לא פורסם)"
+    },
+    "panel": {
+      "collapse": "כווץ חלונית",
+      "expand": "הרחב חלונית"
+    },
     "mobileInfo": {
       "legend": "מקרא",
       "description": "תיאור",

@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Šeit pievienojiet tekstu, saites un maza izmēra grafikas.",
-      "placeholder2": "Ja tas tiks atstāts tukšs, panelis tiks paslēpts."
+      "placeholder2": "Ja tas tiks atstāts tukšs, panelis tiks paslēpts.",
+      "editorActionsTitle": "Stāsta darbības",
+      "editorActionsHelpDescr": "Izveidojiet savā stāstījumā saites, kuras palīdz pastāstīt stāstu. Stāsta darbības var saistīt ar citu sadaļu vai mainīt galveno posmu. Piemēram, jūs varat konfigurēt darbību, lai pārvietotu karti uz citu vietu, ieslēgtu/izslēgtu kartes slāņus vai mainītu galvenā posma mediju uz citu attēlu, video, karti vai tīmekļa lapu.",
+      "mainStageDisabled": "Stāsta darbības ir atspējotas, ja redaktors ir maksimizēts"
     },
     "organizePopup": {
       "title": "Organizē",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Kādu nosaukumu vēlaties piešķirt savai %LAYOUT_TITLE% karšu sērijai?",
       "phAdd": "Ievadiet nosaukumu...",
       "lblOR": "Vai",
-      "lblHelp": "Iepazīties"
+      "lblHelp": "Iepazīties",
+      "quote0": "Vienmēr atradīsies vieta stāstam, kas aizvedīs lietotāju citā pasaulē.",
+      "quote1": "Stāstījums mūsdienās ir vislabākais veids, kā pasaulei darīt zināmas savas idejas.",
+      "quote2": "Mūsu stāsti tiešā nozīmē veido pasauli. Ja vēlaties izmainīt pasauli, ir jāizmaina stāsts — tas attiecas gan uz indivīdiem, gan uzņēmumiem.",
+      "quote3": "Īsākais attālums no cilvēka līdz patiesībai ir stāsts.",
+      "quote4": "Cilvēkiem nav nepieciešama jauna informācija— tiem informācijas ir pietiekoši. Viņi vēlas uzticēties jums, jūsu mērķiem, jūsu veiksmei un stāstam.",
+      "quote5": "Es patiesi ticu, ka cilvēki meklē jēgpilnus stāstus, kas tos iedvesmos un rosinās domāt plašāk.",
+      "quote6": "Ja vēlaties ietekmēt indivīdu vai grupu un panākt vērtību maiņu, izstāstiet aizraujošu stāstu.",
+      "quote7": "Ja informācija tiek stāstīta, tā ir eseja. Ja informācija tiek rādīta, tas ir stāsts.",
+      "quote8": "Ja nepazīstat kokus, varat apmaldīties mežā. Ja jūsu rīcībā nav stāstu, varat apmaldīties dzīvē.",
+      "quote9": "Stāsti ir radošs veids, kā dzīves notikumus pārveidot par spēcīgāku, skaidrāku un jēgpilnāku pieredzi. Stāsti ir cilvēku savstarpējās saskarsmes valūta.",
+      "quote10": "Ir neizsakāmi grūti “nēsāt” neizstāstītu stāstu.",
+      "quote11": "Iespējams, stāsti ir dati ar dvēseli.",
+      "quote12": "Stāsti ir vislabākais līdera rīcībā esošais ierocis.",
+      "quote13": "Lielāka daļa stāsta satura vienmēr tiek atstāta iztēlei."
     }
   }
 });

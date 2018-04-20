@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Adicione texto, links e pequenos gráficos aqui.",
-      "placeholder2": "Se deixado em branco o painel será ocultado."
+      "placeholder2": "Se deixado em branco o painel será ocultado.",
+      "editorActionsTitle": "Ações da História",
+      "editorActionsHelpDescr": "Cria links na sua narrativa que ajudam a contar sua história. Uma Ação da História pode vincular outra seção ou alterar a fase principal. Por exemplo, você pode configurar uma ação para mover o mapa para outro local, ativar ou desativar camadas do mapa, ou alterar a mídia da fase principal para uma imagem, vídeo, mapa ou página da web diferente.",
+      "mainStageDisabled": "As Ações da História são desativadas quando o editor é maximizado"
     },
     "organizePopup": {
       "title": "Organizar",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Como você deseja chamar sua Série de Mapa do %LAYOUT_TITLE%?",
       "phAdd": "Insira seu título...",
       "lblOR": "Ou",
-      "lblHelp": "Obter uma Apresentação"
+      "lblHelp": "Obter uma Apresentação",
+      "quote0": "Sempre há espaço para uma história que pode transportar pessoas para outro lugar.",
+      "quote1": "A narrativa é o caminho mais eficaz para expor as idéias no mundo de hoje.",
+      "quote2": "As histórias que nós literalmente contamos fazem o mundo. Se você desejar mudar o mundo, você precisa mudar sua história. Esta verdade se aplica ambos para indivíduos e instituições.",
+      "quote3": "A menor distância entre um ser humano e a verdade é uma história.",
+      "quote4": "A pessoas não querem mais informações. Elas já estão muitas informações. Eles querem ter fé em você, suas metas, seu sucesso, na história que você conta.",
+      "quote5": "Eu acredito verdadeiramente que as pessoas estão procurando por histórias que realmente dizem algo, histórias que são remissórias, inspiradoras e maiores que um individual.",
+      "quote6": "Se você desejar influenciar um individuo ou um grupo para seguir um valor particular em suas vidas diariamente, conte uma história atrativa.",
+      "quote7": "Se você me contar, é uma composição. Se você me mostrar, é uma história.",
+      "quote8": "Se você não souber as árvores que podem ser perdidas na floresta, imagina se você não souber as histórias que podem ser perdidas na vida.",
+      "quote9": "As histórias são a conversão criativa da vida propriamente em uma experiência mais significante mais eficiente e limpa. Elas são a moeda corrente de contato humano.",
+      "quote10": "Não há agonia maior que carrega uma história não contada dentro de você.",
+      "quote11": "Talvez as histórias são apenas dados com uma alma.",
+      "quote12": "A história é a única arma eficiente em um arsenal do líder.",
+      "quote13": "É a natureza das histórias omitir muito mais que elas incluem."
     }
   }
 });

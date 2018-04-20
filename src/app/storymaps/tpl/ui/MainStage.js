@@ -215,6 +215,22 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			// Management of Main Stage: all media
 			//
 
+			this.beforeMainMediaUpdate = function(index)
+			{
+				var section = app.data.getStoryByIndex(index);
+				if ( section && section.media && section.media.type == 'webmap' ) {
+					var webmapId = section.media.webmap.id;
+					if (app.maps[webmapId]) {
+						var map = app.maps[webmapId].response.map;
+						var locLayer = map.getLayer("MJActionsLocate");
+						if (locLayer) {
+							map.removeLayer(locLayer);
+						}
+					}
+
+				}
+			};
+
 			this.updateMainMediaWithStoryMainMedia = function(index, animateTransition)
 			{
 				var section = app.data.getStoryByIndex(index);
@@ -226,10 +242,10 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 
 			this.updateMainMediaWithStoryAction = function(media)
 			{
-				updateMainMedia(media, app.data.getCurrentSection(), null, true);
+				updateMainMedia(media, app.data.getCurrentSection(), null, false, true);
 			};
 
-			function updateMainMedia(media, section, index, animateTransition)
+			function updateMainMedia(media, section, index, animateTransition, fromAction)
 			{
 				// Refresh any iframe that would be the current Main Stage Media
 				// If it's a video player this will stop current video playback
@@ -252,7 +268,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				stopMainStageLoadingIndicator();
 
 				if ( media.type == "webmap" )
-					updateMainMediaMaps(media.webmap.id, section, index, media, false, animateTransition);
+					updateMainMediaMaps(media.webmap.id, section, index, media, false, animateTransition, fromAction);
 				else if ( media.type == "image" )
 					updateMainMediaPicture(media.image, animateTransition);
 				else if ( media.type == "video" )
@@ -289,7 +305,8 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					panelIsLeft = panelCfg.position == "left",
 					bodyWidth = $("body").width(),
 					panelWidth = 0,
-					panelPos = null;
+					panelPos = null,
+					mapArea = null;
 
 				// Resize embed that are have display fit
 				styleMainStageEmbed();
@@ -301,6 +318,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				if ( appLayout == "tab" || appLayout == "bullet" ) {
 					panelWidth = $("#descLegendPanel:visible").width() || 0;
 					panelPos = $("#descLegendPanel:visible").position() || {};
+					mapArea = panelIsLeft ? bodyWidth - (panelPos.left + panelWidth) : panelPos.left;
 
 					// Attribution
 					var mapOverviewPos = $(".mainMediaContainer.active .overviewContainer:visible").css("right"),
@@ -359,6 +377,11 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						.css({ paddingRight: 0, paddingLeft: 0 })
 						.css(paddingDir, val);
 
+					// Back button
+					$(".mediaBackContainer")
+						.css({ left: 'inherit', right: 'inherit' })
+						.css(posDir, val + mapArea / 2);
+
 					// Help goes over the floating panel when screen too small
 					if ( bodyWidth <= 1067 )
 						$("#builderHelp").css(paddingDir, 0);
@@ -383,7 +406,6 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						$("#autoplay").css({ left: '50%', right: 'inherit' });
 					}
 					else {
-						var mapArea = panelIsLeft ? bodyWidth - (panelPos.left + panelWidth) : panelPos.left;
 						var panelHeight = $("#descLegendPanel:visible").height();
 						var mapHeight = $("#contentPanel").height();
 
@@ -494,10 +516,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				}
 			};
 
-			// TODO params of the next two function has to be cleanedup
+			// TODO params of this and updateMainMediaMapsStep2 should be cleaned up
 
-			function updateMainMediaMaps(newWebmapId, section, index, media, isPreloading, animateTransition)
-			{
+			function updateMainMediaMaps(newWebmapId, section, index, media, isPreloading, animateTransition, fromAction) {
 				console.log("tpl.core.MainStage - updateMainMediaMaps:", newWebmapId, index, isPreloading);
 
 				var mapContainer = $('.mapContainer[data-webmapid="' + newWebmapId + '"]');
@@ -509,46 +530,22 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				mapContainer.parent().toggleClass("animate", !! animateTransition);
 
 				if ( newWebmapId ) {
+					var isAlreadyMap = mapContainer.hasClass('map');
+					var isStillLoading = mapContainer.hasClass('isLoading');
+
 					// The map has already been loaded and is ready
-					if ( mapContainer.hasClass('map') && ! isPreloading && ! mapContainer.hasClass('isLoading') ) {
-						var extentBeforeUpdate = app.map ? app.map.extent : null;
-
-						app.map = app.maps[newWebmapId].response.map;
-						app.mapItem = app.maps[newWebmapId].response.itemInfo;
-						app.mapConfig = app.maps[newWebmapId];
-
-						updateMainMediaMapsStep2(
-							app.map,
-							mapContainer,
-							section,
-							extentBeforeUpdate,
-							index,
-							media,
-							false,
-							isPreloading
-						);
+					if ( isAlreadyMap && ! isPreloading && ! isStillLoading ) {
+						updateLoadedMap(newWebmapId, section, index, media, isPreloading, fromAction, mapContainer);
 					}
 					// The map has already been loaded but is not ready (preloading but not ready)
-					else if ( mapContainer.hasClass('map') && ! isPreloading && mapContainer.hasClass('isLoading') ) {
-						startMainStageLoadingIndicator();
-						var handle = topic.subscribe("story-loaded-map", function(p){
-							if ( p.id == newWebmapId ) {
-								app.map = app.maps[newWebmapId].response.map;
-								app.mapItem = app.maps[newWebmapId].response.itemInfo;
-								app.mapConfig = app.maps[newWebmapId];
-
-								setTimeout(function(){
-									stopMainStageLoadingIndicator();
-								}, 50);
-
-								handle.remove();
-							}
-						});
+					else if ( isAlreadyMap && ! isPreloading && isStillLoading ) {
+						updateLoadingMap(newWebmapId);
 					}
 					// Need to load the map
-					else if ( ! mapContainer.hasClass('map') && ! mapContainer.hasClass('isLoading') ){
-						if ( ! isPreloading )
+					else if ( ! isAlreadyMap && ! isStillLoading ){
+						if ( ! isPreloading ) {
 							startMainStageLoadingIndicator();
+						}
 
 						mapContainer.addClass('isLoading');
 
@@ -563,169 +560,8 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						}
 
 						mainView.loadWebmap(newWebmapId, mapContainer[0], extent).then(
-							lang.hitch(_this, function(response){
-								var extentBeforeUpdate = app.map ? app.map.extent : null;
-
-								mapContainer.removeClass('isLoading');
-
-								app.maps[newWebmapId] = mainView.getMapConfig(response, mapContainer);
-								if ( ! isPreloading ) {
-									app.map = response.map;
-									app.mapItem = app.maps[newWebmapId].response.itemInfo;
-									app.mapConfig = app.maps[newWebmapId];
-								}
-
-								// Popup
-								if ( response.map.infoWindow ) {
-									$(response.map.infoWindow.domNode).addClass("light");
-									response.map.infoWindow.markerSymbol = new SimpleMarkerSymbol().setSize(0);
-								}
-
-								updateMainMediaMapsStep2(
-									response.map,
-									mapContainer,
-									section,
-									extentBeforeUpdate,
-									index,
-									media,
-									true,
-									isPreloading
-								);
-
-								//
-								// Register events for the builder
-								//  because we need to know for Map Configuration what is the intended extent
-								//  before the zoom when there is lods (the resulting extent will always be different)
-								//
-								if ( isInBuilder ) {
-									// *********************************************
-									// TODO this has to be made safe for preloading
-									// *********************************************
-
-									// can't use update-end as it's not correct value for setExtent when lods
-									app.ignoreNextEvent = false;
-									aspect.before(response.map, "setExtent", function(extent) {
-										console.log("Set extent:", newWebmapId);
-										if ( ! app.ignoreNextEvent ) {
-											app.lastExtentSet = extent;
-											// A pan or zoom will also be triggered
-											app.ignoreNextEvent = true;
-										}
-									});
-
-									var handle = response.map.on("update-end", function(){
-										handle.remove();
-										app.lastExtentSet = response.map.extent;
-										// store the initial extent in a new property
-										// TODO is that necessary? to not mess with browser resize and init map extent?
-										//response.map._params.extent = response.map.extent;
-										response.map.mapJournalInitExtent = response.map.extent;
-										app.ignoreNextEvent = true;
-									});
-
-									var onPanOrZoomEnd = function(e)
-									{
-										if ( ! app.ignoreNextEvent )
-											app.lastExtentSet = e.extent;
-										else
-											app.ignoreNextEvent = false;
-									};
-									response.map.on("zoom-end", onPanOrZoomEnd);
-									response.map.on("pan-end", onPanOrZoomEnd);
-								}
-
-								if ( ! isPreloading ) {
-									setTimeout(function(){
-										stopMainStageLoadingIndicator();
-									}, 50);
-								}
-
-								// Maps extent sync
-								response.map.on("extent-change", function(){
-									if ( app.appCfg.mapsSyncAppOption && WebApplicationData.getMapOptions().mapsSync ) {
-										/*
-										if ( this.ignoreNextUpdateEnd ) {
-											this.ignoreNextUpdateEnd = false;
-										}
-										else {
-											$.each(Object.keys(app.maps), function(i, webmapId){
-												if ( newWebmapId != webmapId ) {
-													// TODO != proj
-													app.maps[webmapId].response.map.ignoreNextUpdateEnd = true;
-													app.maps[webmapId].response.map.setExtent(response.map.extent);
-												}
-											});
-											app.lastMapExtent = response.map.extent;
-										}
-										*/
-
-										if ( mapContainer.parent().hasClass('active') ) {
-											$.each(Object.keys(app.maps), function(i, webmapId){
-												if ( newWebmapId != webmapId ) {
-													mainView.setMapExtent(
-														mainView.getLayoutExtent(response.map.extent, true),
-														app.maps[webmapId].response.map
-													);
-												}
-											});
-											app.lastMapExtent = response.map.extent;
-										}
-									}
-
-									setTimeout(function(){
-										setPopupPosition(response.map, response.map.infoWindow);
-									}, 100);
-								});
-
-								// Mobile Maps info popup content toggle between description and legend
-								mapContainer.siblings('.mobileInfo').find('.content-toggles .btn').click(app.ui.mobileEntryInfo.onPopupContentToggle);
-
-								// Mobile infoWindow
-								var mobileInfoWindow = new ContentPane(
-									{},
-									mapContainer.siblings('.mobileInfoWindow').find('.dijitContainer')[0]
-								);
-								mobileInfoWindow.startup();
-
-								response.map.infoWindow.on("set-features", function(){
-									var isOnMobileView = $("body").hasClass("mobile-view");
-									if ( isOnMobileView ) {
-										var feature = response.map.infoWindow.getSelectedFeature();
-										mobileInfoWindow.set("content", feature ? feature.getContent() : "");
-										MobilePopupUtils.open(mapContainer.siblings('.mobileInfoWindow'));
-									}
-									response.map.infoWindow.set("popupWindow", ! isOnMobileView);
-								});
-
-								/*
-								response.map.infoWindow.on("selection-change", function(e, f){
-									setPopupPosition(response.map, response.map.infoWindow);
-								});
-								*/
-
-								aspect.after(response.map.infoWindow, "show", function() {
-									setPopupPosition(response.map, response.map.infoWindow);
-								});
-
-								if ( ! app.lastMapExtent )
-									app.lastMapExtent = response.map.extent;
-
-								mapContainer.parent().removeClass("has-error");
-							}),
-							lang.hitch(_this, function(){
-								if ( ! isPreloading )
-									stopMainStageLoadingIndicator();
-
-								mapContainer.removeClass('isLoading');
-								mapContainer.parent().addClass("has-error");
-								mapContainer.parent().find('.error').html(i18n.viewer.errors.mapLoadingFail);
-
-								topic.publish("story-loaded-map", {
-									id: newWebmapId,
-									index: index
-								});
-								topic.publish("ADDEDIT_LOAD_WEBMAP_FAIL");
-							})
+							lang.partial(mapLoadCallback, newWebmapId, section, index, media, isPreloading, fromAction, mapContainer),
+							lang.partial(mapLoadErrback, newWebmapId, section, index, media, isPreloading, fromAction, mapContainer)
 						);
 
 						// Publish an early loaded after two second in case the map is slow to load
@@ -736,7 +572,221 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				}
 			}
 
-			function updateMainMediaMapsStep2(map, mapContainer, section, oldExtent, index, media, firstLoad, isPreloading)
+			// The map has already been loaded and is ready
+			function updateLoadedMap(newWebmapId, section, index, media, isPreloading, fromAction, mapContainer) {
+				var extentBeforeUpdate = app.map ? app.map.extent : null;
+
+				app.map = app.maps[newWebmapId].response.map;
+				app.mapItem = app.maps[newWebmapId].response.itemInfo;
+				app.mapConfig = app.maps[newWebmapId];
+
+				updateMainMediaMapsStep2(
+					app.map,
+					mapContainer,
+					section,
+					extentBeforeUpdate,
+					index,
+					media,
+					false,
+					isPreloading,
+					fromAction
+				);
+			}
+
+			// The map has already been loaded but is not ready (preloading but not ready)
+			function updateLoadingMap(newWebmapId) {
+				startMainStageLoadingIndicator();
+				var handle = topic.subscribe("story-loaded-map", function(p){
+					if ( p.id == newWebmapId ) {
+						app.map = app.maps[newWebmapId].response.map;
+						app.mapItem = app.maps[newWebmapId].response.itemInfo;
+						app.mapConfig = app.maps[newWebmapId];
+
+						setTimeout(function(){
+							stopMainStageLoadingIndicator();
+						}, 50);
+
+						handle.remove();
+					}
+				});
+			}
+
+			function mapLoadCallback(newWebmapId, section, index, media, isPreloading, fromAction, mapContainer, response) {
+				var extentBeforeUpdate = app.map ? app.map.extent : null;
+
+				mapContainer.removeClass('isLoading');
+
+				app.maps[newWebmapId] = mainView.getMapConfig(response, mapContainer);
+				if ( ! isPreloading ) {
+					app.map = response.map;
+					app.mapItem = app.maps[newWebmapId].response.itemInfo;
+					app.mapConfig = app.maps[newWebmapId];
+				}
+
+				// Popup
+				if ( response.map.infoWindow ) {
+					$(response.map.infoWindow.domNode).addClass("light");
+					response.map.infoWindow.markerSymbol = new SimpleMarkerSymbol().setSize(0);
+				}
+
+				updateMainMediaMapsStep2(
+					response.map,
+					mapContainer,
+					section,
+					extentBeforeUpdate,
+					index,
+					media,
+					true,
+					isPreloading,
+					fromAction
+				);
+
+				//
+				// Register events for the builder
+				//  because we need to know for Map Configuration what is the intended extent
+				//  before the zoom when there is lods (the resulting extent will always be different)
+				//
+				if ( isInBuilder ) {
+					dealWithMapInBuilder(response, newWebmapId);
+				}
+
+				if ( ! isPreloading ) {
+					setTimeout(function(){
+						stopMainStageLoadingIndicator();
+					}, 50);
+				}
+
+				// Maps extent sync
+				response.map.on("extent-change", lang.partial(onExtentChange, response, newWebmapId, mapContainer));
+
+				// Mobile Maps info popup content toggle between description and legend
+				mapContainer.siblings('.mobileInfo').find('.content-toggles .btn').click(app.ui.mobileEntryInfo.onPopupContentToggle);
+
+				// Mobile infoWindow
+				var mobileIWContainer = mapContainer.siblings('.mobileInfoWindow').find('.dijitContainer')[0];
+				var mobileInfoWindow = new ContentPane({}, mobileIWContainer);
+				mobileInfoWindow.startup();
+
+				response.map.infoWindow.on("set-features", lang.partial(onSetFeatures, response, mapContainer, mobileInfoWindow));
+
+				/*
+				response.map.infoWindow.on("selection-change", function(e, f){
+					setPopupPosition(response.map, response.map.infoWindow);
+				});
+				*/
+
+				aspect.after(response.map.infoWindow, "show", function() {
+					setPopupPosition(response.map, response.map.infoWindow);
+				});
+
+				if ( ! app.lastMapExtent )
+					app.lastMapExtent = response.map.extent;
+
+				mapContainer.parent().removeClass("has-error");
+			}
+
+			function dealWithMapInBuilder(response, newWebmapId) {
+				// *********************************************
+				// TODO this has to be made safe for preloading
+				// *********************************************
+
+				// can't use update-end as it's not correct value for setExtent when lods
+				app.ignoreNextEvent = false;
+				aspect.before(response.map, "setExtent", function(extent) {
+					console.log("Set extent:", newWebmapId);
+					if ( ! app.ignoreNextEvent ) {
+						app.lastExtentSet = Helper.getLayoutExtent(extent, true, false);
+						// A pan or zoom will also be triggered
+						app.ignoreNextEvent = true;
+					}
+				});
+
+				var handle = response.map.on("update-end", function(){
+					handle.remove();
+					app.lastExtentSet = Helper.getLayoutExtent(response.map.extent, true, false);
+					// store the initial extent in a new property
+					// TODO is that necessary? to not mess with browser resize and init map extent?
+					//response.map._params.extent = response.map.extent;
+					response.map.mapJournalInitExtent = response.map.extent;
+					app.ignoreNextEvent = true;
+				});
+
+				response.map.on("zoom-end", onPanOrZoomEnd);
+				response.map.on("pan-end", onPanOrZoomEnd);
+			}
+
+			function onPanOrZoomEnd(evt) {
+				if ( ! app.ignoreNextEvent ) {
+					app.lastExtentSet = Helper.getLayoutExtent(evt.extent, true, false);
+				}
+				else {
+					app.ignoreNextEvent = false;
+				}
+			}
+
+			function onExtentChange(response, newWebmapId, mapContainer) {
+				if ( isMapSync() ) {
+					/*
+					if ( this.ignoreNextUpdateEnd ) {
+						this.ignoreNextUpdateEnd = false;
+					}
+					else {
+						$.each(Object.keys(app.maps), function(i, webmapId){
+							if ( newWebmapId != webmapId ) {
+								// TODO != proj
+								app.maps[webmapId].response.map.ignoreNextUpdateEnd = true;
+								app.maps[webmapId].response.map.setExtent(response.map.extent);
+							}
+						});
+						app.lastMapExtent = response.map.extent;
+					}
+					*/
+
+					if ( mapContainer.parent().hasClass('active') ) {
+						$.each(Object.keys(app.maps), function(i, webmapId){
+							if ( newWebmapId != webmapId ) {
+								mainView.setMapExtent(
+									mainView.getLayoutExtent(response.map.extent, true),
+									app.maps[webmapId].response.map
+								);
+							}
+						});
+						app.lastMapExtent = response.map.extent;
+					}
+				}
+
+				setTimeout(function(){
+					setPopupPosition(response.map, response.map.infoWindow);
+				}, 100);
+			}
+
+			function onSetFeatures(response, mapContainer, mobileInfoWindow) {
+				var isOnMobileView = $("body").hasClass("mobile-view");
+				if ( isOnMobileView ) {
+					var feature = response.map.infoWindow.getSelectedFeature();
+					mobileInfoWindow.set("content", feature ? feature.getContent() : "");
+					MobilePopupUtils.open(mapContainer.siblings('.mobileInfoWindow'));
+				}
+				response.map.infoWindow.set("popupWindow", ! isOnMobileView);
+			}
+
+			function mapLoadErrback(newWebmapId, section, index, media, isPreloading, fromAction, mapContainer) {
+				if ( ! isPreloading )
+					stopMainStageLoadingIndicator();
+
+				mapContainer.removeClass('isLoading');
+				mapContainer.parent().addClass("has-error");
+				mapContainer.parent().find('.error').html(i18n.viewer.errors.mapLoadingFail);
+
+				topic.publish("story-loaded-map", {
+					id: newWebmapId,
+					index: index
+				});
+				topic.publish("ADDEDIT_LOAD_WEBMAP_FAIL");
+
+			}
+
+			function updateMainMediaMapsStep2(map, mapContainer, section, oldExtent, index, media, firstLoad, isPreloading, fromAction)
 			{
 				_this.updateMainStageWithLayoutSettings();
 				setMapControlsColor();
@@ -746,165 +796,216 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					map.reposition();
 				} catch(e) { }
 
-				// If this is a story section
+				// This is a story section. Update all the things.
+				// popup configuration called along with mapExtent updates.
 				if ( section || media ) {
-					//
-					// Layers
-					//
-
-					//  - Array of {id:'', visible:''} for the overrided layers (compared to the webmap initial state)
-					//  - Only overrided layers are present there to allow the webmap to evolve outside of the app
-					//     - If default visibility of layers are changed outside of the app, all view that didn't override the value will see the change
-					//     - if the webmap evolve the array may reference deleted layers. That's cleaned anytime user open the Configure map View and Save
-					var layerCfg = media && media.webmap ? media.webmap.layers : null,
-						mapDefault = app.maps[media.webmap.id].response.itemInfo.itemData.operationalLayers;
-
-					// Loop through webmap layers and set the visibility
-					// The visibility is set to the section definition when defined or to the webmap initial visibility
-					$.each(mapDefault, function(i, layer){
-						var override;
-
-						if ( layer.layerObject) {
-							override = $(layerCfg).filter(function(i, l){ return l.id == layer.layerObject.id; });
-
-							var updateVisibility = function()
-							{
-								layer.layerObject.setVisibility(override.length ? override[0].visibility : layer.visibility);
-							};
-
-							if ( layer.layerObject.loaded )
-								updateVisibility();
-							else {
-								layer.layerObject.on("load", updateVisibility);
-							}
-						}
-						else if ( layer.featureCollection && layer.featureCollection.layers ) {
-							$.each(layer.featureCollection.layers, function(i, fcLayer){
-								override = $(layerCfg).filter(function(i, l){
-									// Because the configuration store the map layerObject id like "mapNotes_914_0" instead of "mapNotes_914"
-									// Should change that and keep V1.0 compatibility
-									return l.id.split('_').slice(0,-1).join('_') == fcLayer.layerObject.id.split('_').slice(0,-1).join('_');
-								});
-								fcLayer.layerObject.setVisibility(override.length ? override[0].visibility : fcLayer.visibility);
-							});
-						}
-					});
-
-					//
-					// Extent
-					//
-
-					// If the entry has an extent defined
-					var extent = media && media.webmap ? media.webmap.extent : null;
-					if ( extent ) {
-						try {
-							extent = new Extent(extent);
-						} catch (e){
-							//
-						}
-					}
-
-					// Preloading the first map of the series is preloaded (the first entry is not a map)
-					if ( app.firstMapIsPreloaded && ! app.lastMapExtent )
-						extent = Helper.getLayoutExtent(extent || map._params.extent, true);
-					// Preloading a map after the first map of the Series has been loaded (or preloaded)
-					//  and maps are synced
-					else if ( isPreloading && firstLoad && isMapSync(index) && app.lastMapExtent )
-						extent = Helper.getLayoutExtent(app.lastMapExtent, true);
-					// Navigating to an already loaded section and map is synced
-					else if ( ! firstLoad && isMapSync(index) )
-						extent = null;
-					// Navigating to an already loaded section, not synced that use default location
-					else if ( ! extent && ! isMapSync(index) ) {
-						extent = Helper.getLayoutExtent(map._params.extent, true);
-						extent = Helper.getLayoutExtent(extent, false);
-					}
-					else if ( ! extent && isMapSync(index) && app.lastMapExtent ) {
-						extent = Helper.getLayoutExtent(app.lastMapExtent, true);
-					}
-					else if ( ! extent ) {
-						extent = Helper.getLayoutExtent(map._params.extent, true);
-						if ( firstLoad )
-							extent = Helper.getLayoutExtent(extent, false);
-					}
-
-					var publishMapLoadedEvent = function() {
-						topic.publish("story-loaded-map", {
-							id: media.webmap.id,
-							index: index
-						});
-					};
-
-					if ( extent ) {
-						mainView.setMapExtent(extent, map).then(function(){
-							applyPopupConfiguration(map, media.webmap.popup, index);
-							publishMapLoadedEvent();
-						});
-					}
-					else
-						publishMapLoadedEvent();
-
-					//
-					// Map Controls
-					//
-
-					var overviewSettings = media.webmap.overview || {},
-						legendSettings = media.webmap.legend || {},
-						globalMapSettings = WebApplicationData.getSettings().mapOptions;
-
-					// If the app use some global Map settings
-					if ( globalMapSettings ) {
-						if ( globalMapSettings.overview && globalMapSettings.overview )
-							overviewSettings = globalMapSettings.overview;
-					}
-
-					// If it's a Main Stage Action, look to use the section Main Stage media
-					//  configuration IF it's a webmap
-					if ( index === null && section.media && section.media.webmap  ) {
-						overviewSettings = section.media.webmap.overview || {},
-						legendSettings = section.media.webmap.legend || {};
-					}
-
-					if ( overviewSettings.enable !== undefined ) {
-						app.maps[media.webmap.id].overview.toggle(overviewSettings.enable, WebApplicationData.getColors());
-						app.maps[media.webmap.id].overview.toggleExpanded(overviewSettings.openByDefault);
-						app.maps[media.webmap.id].overview.setSettings(overviewSettings);
-					}
-
-					if ( legendSettings.enable !== undefined ) {
-						app.maps[media.webmap.id].legend.toggle(legendSettings.enable);
-						app.maps[media.webmap.id].legend.toggleExpanded(legendSettings.openByDefault);
-						app.maps[media.webmap.id].legend.setSettings(legendSettings);
-					}
-
-					//
-					// Popup
-					//
-
-					if ( ! extent )
-						applyPopupConfiguration(map, media.webmap.popup, index);
-					// Otherwise called through extent change callback
+					_this.updateMapLayers(media);
+					updateMapExtent(map, index, media, firstLoad, isPreloading, fromAction);
+					updateMapControls(media, section, index);
 				}
 				else
 					topic.publish("ADDEDIT_WEBMAP_DONE");
 			}
 
-			function isMapSync(index)
-			{
-				// If app and user config have SYNC enabled
-				if ( app.appCfg.mapsSyncAppOption && WebApplicationData.getMapOptions().mapsSync ) {
-					// Find the first Map entry of the app
-					var firstMapEntryIndex = Number.MAX_VALUE;
-					$.each(app.data.getWebmapsInfo(), function(i, webmap){
-						var idx = Math.min.apply(null, webmap.entries);
-						firstMapEntryIndex = Math.min(firstMapEntryIndex, idx);
-					});
+			this.updateMapLayers = function(media) {
+				//  - Array of {id:'', visible:''} for the overrided layers (compared to the webmap initial state)
+				//  - Only overrided layers are present there to allow the webmap to evolve outside of the app
+				//     - If default visibility of layers are changed outside of the app, all view that didn't override the value will see the change
+				//     - if the webmap evolve the array may reference deleted layers. That's cleaned anytime user open the Configure map View and Save
+				var isWebmap = media && media.webmap,
+					layerCfg = isWebmap ? media.webmap.layers : null,
+					mapDefault = isWebmap ? app.maps[media.webmap.id].response.itemInfo.itemData.operationalLayers : [];
 
-					// webmap.entries index start at 1
-					return index >= firstMapEntryIndex - 1;
+				// Loop through webmap layers and set the visibility
+				// The visibility is set to the section definition when defined or to the webmap initial visibility
+				$.each(mapDefault, lang.partial(maybeUpdateLayerVisibility, layerCfg));
+
+			};
+
+			function maybeUpdateLayerVisibility(layerCfg, i, layerInfo) {
+				var override;
+				var layerObj = layerInfo.layerObject;
+				var layerFC = layerInfo.featureCollection;
+				var newVisibility;
+
+				if ( layerObj) {
+					override = $(layerCfg).filter(function(i, l){ return l.id == layerObj.id; });
+					newVisibility = override.length ? override[0].visibility : layerInfo.visibility;
+
+					if ( layerObj.loaded && layerObj.visible !== newVisibility) {
+						setTimeout(function() {
+							layerObj.setVisibility(newVisibility);
+						}, 100);
+					}
+					else {
+						layerObj.on("load", function() {
+							layerObj.setVisibility(newVisibility);
+						});
+					}
+				}
+				else if ( layerFC && layerFC.layers ) {
+					$.each(layerFC.layers, function(i, fcLayer){
+						var lyrObj = fcLayer.layerObject;
+						override = $(layerCfg).filter(function(i, l){
+							// Because the configuration store the map layerObject id like "mapNotes_914_0" instead of "mapNotes_914"
+							// Should change that and keep V1.0 compatibility
+							return l.id.split('_').slice(0,-1).join('_') == lyrObj.id.split('_').slice(0,-1).join('_');
+						});
+						newVisibility = override.length ? override[0].visibility : fcLayer.visibility;
+						if (lyrObj.visible !== newVisibility) {
+							// need to take this out of the execution loop. Not really sure why, but setting visibility
+							// to true here wasn't working correctly. The <g> element of the layer still had `display: none;`
+							// after regular setVisibility. Tried events or map/layer refresh, and nothing else seemed to work.
+							setTimeout(function() {
+								lyrObj.setVisibility(newVisibility);
+							}, 100);
+						}
+					});
+				}
+			}
+
+			function updateMapExtent(map, index, media, firstLoad, isPreloading, fromAction) {
+				//
+				// Extent
+				//
+
+				// If the entry has an extent defined
+				var extent = media && media.webmap ? media.webmap.extent : null;
+				if ( extent ) {
+					try {
+						extent = new Extent(extent);
+					} catch (e){
+						//
+					}
 				}
 
-				return false;
+				// set up some vars to use below in a various if/else if blocks
+				var mapsSynced = isMapSync();
+				var webmapId = media.webmap && media.webmap.id;
+				var webmapItemInfo = app.maps && webmapId && app.maps[webmapId] && app.maps[webmapId].response ? app.maps[webmapId].response.itemInfo.item : null;
+				var firstMapInfo = app.data.getFirstWebmapInfo();
+
+				// Preloading the first map of the series is preloaded (the first entry is not a map)
+				if ( app.firstMapIsPreloaded && ! app.lastMapExtent ) {
+					extent = Helper.getLayoutExtent(extent || map._params.extent, true);
+				}
+				// Preloading a map after the first map of the Series has been loaded (or preloaded)
+				//  and maps are synced
+				else if ( isPreloading && firstLoad && mapsSynced && app.lastMapExtent ) {
+					if (firstMapInfo && firstMapInfo.webmap && firstMapInfo.webmap.extent && firstMapInfo.index > 0) {
+						var firstMap = app.maps[firstMapInfo.webmap.id] ? app.maps[firstMapInfo.webmap.id].response.map : null;
+						// skip all the fancy calculations and just set the next extents to the first map's starting extent.
+						if (firstMap && firstMap.extent) {
+							map.setExtent(firstMap.extent).then(function() {
+								applyPopupConfiguration(map, media.webmap.popup, index);
+								publishMapLoadedEvent(media, index);
+							});
+							return;
+						}
+					}
+					extent = Helper.getLayoutExtent(app.lastMapExtent, true);
+				}
+				// Navigating to an already loaded section and map is synced
+				else if ( ! firstLoad && mapsSynced && !fromAction) {
+					extent = null;
+				}
+				// Navigating to an already loaded section, not synced that use default location
+				else if ( ! extent && (!mapsSynced || fromAction)) {
+					if (webmapItemInfo) {
+						extent = CommonHelper.getWebMapExtentFromItem(webmapItemInfo, true);
+					} else {
+						extent = Helper.getLayoutExtent(map._params.extent, true);
+						extent = Helper.getLayoutExtent(extent, false);
+					}
+				}
+				else if ( ! extent && mapsSynced && app.lastMapExtent ) {
+					extent = Helper.getLayoutExtent(app.lastMapExtent, true);
+				}
+				else if ( ! extent ) {
+					extent = Helper.getLayoutExtent(map._params.extent, true);
+					if ( firstLoad ) {
+						extent = Helper.getLayoutExtent(extent, false);
+					}
+				}
+
+				if ( extent ) {
+					mainView.setMapExtent(extent, map).then(function(){
+						applyPopupConfiguration(map, media.webmap.popup, index);
+						publishMapLoadedEvent(media, index);
+					});
+				}
+				else {
+					publishMapLoadedEvent(media, index);
+					applyPopupConfiguration(map, media.webmap.popup, index);
+				}
+			}
+
+			function publishMapLoadedEvent(media, index) {
+				topic.publish("story-loaded-map", {
+					id: media.webmap.id,
+					index: index
+				});
+			}
+
+			function updateMapControls(media, section, index) {
+				//
+				// Map Controls
+				//
+
+				var overviewSettings = media.webmap.overview || {},
+					legendSettings = media.webmap.legend || {},
+					globalMapSettings = WebApplicationData.getSettings().mapOptions,
+					thisMap = app.maps[media.webmap.id];
+
+				// If the app use some global Map settings
+				if ( globalMapSettings ) {
+					if ( globalMapSettings.overview && globalMapSettings.overview )
+						overviewSettings = globalMapSettings.overview;
+				}
+
+				// If it's a Main Stage Action, look to use the section Main Stage media
+				//  configuration IF it's a webmap
+				if ( index === null && section.media && section.media.webmap  ) {
+					overviewSettings = section.media.webmap.overview || {},
+					legendSettings = section.media.webmap.legend || {};
+				}
+
+				if ( overviewSettings.enable !== undefined ) {
+					var thisOverview = thisMap.overview;
+					thisOverview.toggle(overviewSettings.enable, WebApplicationData.getColors());
+					thisOverview.toggleExpanded(overviewSettings.openByDefault);
+					thisOverview.setSettings(overviewSettings);
+				}
+
+				if ( legendSettings.enable !== undefined ) {
+					var thisLegend = thisMap.legend;
+					thisLegend.toggle(legendSettings.enable);
+					thisLegend.toggleExpanded(legendSettings.openByDefault);
+					thisLegend.setSettings(legendSettings);
+				}
+			}
+
+			function isMapSync(/*index*/)
+			{
+				// If app and user config have SYNC enabled
+				return ( app.appCfg.mapsSyncAppOption && WebApplicationData.getMapOptions().mapsSync );
+				//if ( app.appCfg.mapsSyncAppOption && WebApplicationData.getMapOptions().mapsSync ) {
+				//	// Find the first Map entry of the app
+				//	var firstMapEntryIndex = Number.MAX_VALUE;
+				//	var sections = WebApplicationData.getStoryEntries();
+				//	_.some(sections, function(section, idx) {
+				//		if (section.media && section.media.webmap) {
+				//			firstMapEntryIndex = idx;
+				//			return true;
+				//		}
+				//		return false;
+				//	});
+
+				//	// webmap.entries index start at 1
+				//	return index > firstMapEntryIndex;
+				//}
+
+				//return false;
 			}
 
 			function applyPopupConfiguration(map, popupCfg, index)
@@ -1023,17 +1124,25 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					map.infoWindow.setFeatures(features);
 				}
 
-				map.infoWindow.show(center);
+				if (map.updating || map.__panning) {
+					var handle = map.on('update-end', function() {
+						handle.remove();
+						map.infoWindow.show(center);
+					});
+				}
+				else {
+					map.infoWindow.show(center);
+				}
 				// Center the map is the geometry isn't visible
-				if ( ! map.extent.contains(center) ) {
+				if ( ! map.extent.contains(center) && !isMapSync(index)) {
 					map.centerAt(center);
-					// Show back btn only if it's a Main Stage action
-					if ( index === null ) {
-						$('.mediaBackContainer')
-							.show()
-							.css("marginLeft", - $(".mediaBackContainer .backButton").outerWidth() / 2)
-							.css("marginRight", - $(".mediaBackContainer .backButton").outerWidth() / 2);
-					}
+					//// Show back btn only if it's a Main Stage action
+					//if ( index === null ) {
+					//	$('.mediaBackContainer')
+					//		.show()
+					//		.css("marginLeft", - $(".mediaBackContainer .backButton").outerWidth() / 2)
+					//		.css("marginRight", - $(".mediaBackContainer .backButton").outerWidth() / 2);
+					// }
 				}
 			}
 
@@ -1042,8 +1151,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			 */
 			function setPopupPosition(map, popup)
 			{
-				if (! map || ! popup || ! popup.getSelectedFeature() || ! popup.location)
+				if (! map || ! popup || ! popup.getSelectedFeature() || ! popup.location) {
 					return;
+				}
 
 				var mapContainer = $(map.container),
 					width = mapContainer.width(),
@@ -1103,8 +1213,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				}
 
 				// If geom not visible
-				if ( pos.x <= 0 || pos.y <= 10 || pos.x >= width || pos.y >= height )
+				if (mapContainer.parent().hasClass('active') && (pos.x <= 0 || pos.y <= 10 || pos.x >= width || pos.y >= height )) {
 					$('.esriPopup').addClass('app-hidden');
+				}
 			}
 
 			function setMapControlsColor()

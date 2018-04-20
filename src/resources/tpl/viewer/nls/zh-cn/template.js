@@ -37,6 +37,15 @@ define({
       "signOut": "登出",
       "attention": "注意!"
     },
+    "mainStage": {
+      "back": "返回",
+      "errorDeleted": "此链接为非活动链接(章节已被删除)",
+      "errorNotPublished": "此链接为非活动链接(章节未发布)"
+    },
+    "panel": {
+      "collapse": "折叠面板",
+      "expand": "展开面板"
+    },
     "mobileInfo": {
       "legend": "图例",
       "description": "描述",

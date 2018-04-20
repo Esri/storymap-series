@@ -37,6 +37,15 @@ define({
       "signOut": "Keluar",
       "attention": "Perhatian!"
     },
+    "mainStage": {
+      "back": "Kembali",
+      "errorDeleted": "Tautan ini tidak aktif (bagian telah dihapus)",
+      "errorNotPublished": "Tautan ini tidak aktif (bagian tidak diterbitkan)"
+    },
+    "panel": {
+      "collapse": "Tutup panel",
+      "expand": "Bentangkan panel"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Deskripsi",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Anda telah mencapai akhir cerita."
     },
     "headerFromCommon": {
-      "storymapsText": "Peta cerita",
+      "storymapsText": "Story Map",
       "builderButton": "Edit",
       "facebookTooltip": "Bagikan ke Facebook",
       "twitterTooltip": "Bagikan ke Twitter",

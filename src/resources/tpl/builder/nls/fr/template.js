@@ -69,7 +69,10 @@ define({
     },
     "textEditor": {
       "placeholder1": "Ajoutez du texte, des liens et de petits graphiques ici.",
-      "placeholder2": "Si aucune valeur n'est renseignée, le volet est masqué."
+      "placeholder2": "Si aucune valeur n'est renseignée, le volet est masqué.",
+      "editorActionsTitle": "Actions de narration",
+      "editorActionsHelpDescr": "Créez des liens dans votre contenu pour faciliter votre narration. Une action de narration permet d'accéder à une autre section ou de modifier la grande scène. Par exemple, vous pouvez configurer une action pour déplacer la carte vers un autre emplacement, activer/désactiver l'affichage des couches ou remplacer la grande scène par une autre image, vidéo, carte ou page web.",
+      "mainStageDisabled": "Les actions de narration sont désactivées lorsque l'éditeur est agrandi."
     },
     "organizePopup": {
       "title": "Organiser",
@@ -111,7 +114,21 @@ define({
       "lblAdd": "Quel nom voulez-vous donner à votre série de cartes %LAYOUT_TITLE% ?",
       "phAdd": "Entrez votre titre...",
       "lblOR": "Ou",
-      "lblHelp": "Suivre une visite"
+      "lblHelp": "Suivre une visite",
+      "quote0": "Un récit capable de transporter son public ailleurs trouvera toujours sa place.",
+      "quote1": "Raconter une histoire est le moyen le plus efficace pour proposer des idées dans le monde actuel.",
+      "quote2": "Les récits que nous racontons constituent le monde. Si vous voulez changer le monde, vous devez changer votre récit. Cette vérité s’applique à la fois aux individus et aux institutions.",
+      "quote3": "La distance la plus courte entre un être humain et la vérité est un récit.",
+      "quote4": "Les gens ne veulent pas davantage d’informations. Ils sont saturés d’informations. Ils souhaitent avoir foi en vous, vos objectifs, vos succès et le récit que vous racontez.",
+      "quote5": "Je crois profondément que les gens recherchent des récits qui ont un sens réel, des récits rédempteurs, inspirants et englobant davantage qu’un seul individu.",
+      "quote6": "Si vous souhaitez influencer un individu ou un groupe et faire en sorte qu’ils adhèrent à une valeur en particulier dans leur vie de tous les jours, racontez-leur un récit qui les captive.",
+      "quote7": "Si vous racontez, c’est un essai. Si vous montrez, c’est un récit.",
+      "quote8": "Si vous ne connaissez pas les arbres, vous risquez de vous perdre en forêt, mais si ne connaissez pas les récits, vous risquez de vous perdre dans la vie.",
+      "quote9": "Les récits convertissent de façon créative la vie elle-même en une expérience plus puissante, plus claire et plus significative. Ils constituent la monnaie du contact humain.",
+      "quote10": "Il n’existe pas de plus grande agonie que de garder un récit inédit pour vous seul.",
+      "quote11": "Les récits ne sont peut-être que des données dotées d’une âme.",
+      "quote12": "Ils constituent l’arme la plus puissante de l’arsenal d’un leader.",
+      "quote13": "Il est dans la nature même des récits d’omettre beaucoup plus que d’inclure."
     }
   }
 });

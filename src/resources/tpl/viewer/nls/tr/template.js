@@ -37,6 +37,15 @@ define({
       "signOut": "Oturumu Kapat",
       "attention": "Dikkat!"
     },
+    "mainStage": {
+      "back": "Geri",
+      "errorDeleted": "Bu bağlantı etkin değil (bölüm silinmiş)",
+      "errorNotPublished": "Bu bağlantı etkin değil (bölüm yayınlanmamış)"
+    },
+    "panel": {
+      "collapse": "Paneli daralt",
+      "expand": "Paneli genişlet"
+    },
     "mobileInfo": {
       "legend": "Gösterim",
       "description": "Açıklama",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Öykünün sonuna geldiniz"
     },
     "headerFromCommon": {
-      "storymapsText": "Öykü haritası",
+      "storymapsText": "Bir Story Map",
       "builderButton": "Düzenle",
       "facebookTooltip": "Facebook'ta Paylaş",
       "twitterTooltip": "Twitter'da Paylaş",

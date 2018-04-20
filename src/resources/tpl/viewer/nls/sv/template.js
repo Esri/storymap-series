@@ -37,6 +37,15 @@ define({
       "signOut": "Logga ut",
       "attention": "Obs!"
     },
+    "mainStage": {
+      "back": "BACKA",
+      "errorDeleted": "Den här länken är inte aktiv (sektionen har tagits bort)",
+      "errorNotPublished": "Den här länken är inte aktiv (sektionen är inte publicerad)"
+    },
+    "panel": {
+      "collapse": "Dölj panel",
+      "expand": "Visa panel"
+    },
     "mobileInfo": {
       "legend": "Teckenförklaring",
       "description": "Beskrivning",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Du har nått slutet av berättelsen"
     },
     "headerFromCommon": {
-      "storymapsText": "En berättelsekarta",
+      "storymapsText": "En Story Map",
       "builderButton": "Redigera",
       "facebookTooltip": "Dela på Facebook",
       "twitterTooltip": "Dela på Twitter",

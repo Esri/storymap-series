@@ -174,6 +174,28 @@ define(["dojo/cookie",
 						&& extent1[1][0] == extent2[1][0]
 						&& extent1[1][1] == extent2[1][1];
 			},
+			extentsAreCloseEnough: function(ext1, ext2, map, pixelTolerance) {
+				map = map || app.map;
+				if (!map) {
+					return;
+				}
+
+				if (pixelTolerance === undefined) {
+					pixelTolerance = 30;
+				}
+				var bottomLeft1 = map.toScreen(new Point({x: ext1.xmin, y: ext1.ymin, spatialReference: ext1.spatialReference}));
+				var bottomLeft2 = map.toScreen(new Point({x: ext2.xmin, y: ext2.ymin, spatialReference: ext2.spatialReference}));
+
+				if (Math.abs(bottomLeft1.x - bottomLeft2.x) > pixelTolerance || Math.abs(bottomLeft1.y - bottomLeft2.y) > pixelTolerance) {
+					return false;
+				}
+				var topRight1 = map.toScreen(new Point({x: ext1.xmax, y: ext1.ymax, spatialReference: ext1.spatialReference}));
+				var topRight2 = map.toScreen(new Point({x: ext2.xmax, y: ext2.ymax, spatialReference: ext2.spatialReference}));
+				if (Math.abs(topRight1.x - topRight2.x) > pixelTolerance || Math.abs(topRight1.y - topRight2.y) > pixelTolerance) {
+					return false;
+				}
+				return true;
+			},
 			/*
 			 * Clone Bing/OSM/Tile/Dynamic Map layer
 			 * Default to light grey canvas if bing or not tile/dynamic

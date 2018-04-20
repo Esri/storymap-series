@@ -37,6 +37,15 @@ define({
       "signOut": "Atsijungti",
       "attention": "Dėmesio!"
     },
+    "mainStage": {
+      "back": "Atgal",
+      "errorDeleted": "Ši nuoroda neaktyvi (skiltis ištrinta)",
+      "errorNotPublished": "Ši nuoroda neaktyvi (skiltis nepublikuota)"
+    },
+    "panel": {
+      "collapse": "Sutraukti skydelį",
+      "expand": "Išplėsti skydelį"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Aprašas",

@@ -37,6 +37,15 @@ define({
       "signOut": "Sair",
       "attention": "Atenção!"
     },
+    "mainStage": {
+      "back": "Voltar",
+      "errorDeleted": "Este link não está ativo (a seção foi excluída)",
+      "errorNotPublished": "Este link não está ativo (a seção não foi publicada)"
+    },
+    "panel": {
+      "collapse": "Recolher painel",
+      "expand": "Expandir painel"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Descrição",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Você alcançou o final do histórico"
     },
     "headerFromCommon": {
-      "storymapsText": "Um mapa histórico",
+      "storymapsText": "Um Mapa Histórico",
       "builderButton": "Editar",
       "facebookTooltip": "Compartilhar no Facebook",
       "twitterTooltip": "Compartilhar no Twitter",

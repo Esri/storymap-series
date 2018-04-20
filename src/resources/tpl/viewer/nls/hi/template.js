@@ -37,6 +37,15 @@ define({
       "signOut": "साइन आउट करें",
       "attention": "ध्यान दें!"
     },
+    "mainStage": {
+      "back": "पीछे जाएँ",
+      "errorDeleted": "यह लिंक सक्रिय नहीं है (अनुभाग मिटा दिया गया है)",
+      "errorNotPublished": "यह लिंक सक्रिय नहीं है (अनुभाग प्रकाशित नहीं है)"
+    },
+    "panel": {
+      "collapse": "पैनल संक्षिप्त करें",
+      "expand": "पैनल विस्तृत करें"
+    },
     "mobileInfo": {
       "legend": "लीजेंड",
       "description": "विवरण",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "आप कहानी के अंत तक पहुँच गए हैं"
     },
     "headerFromCommon": {
-      "storymapsText": "एक कहानी मानचित्र",
+      "storymapsText": "स्टोरी मैप",
       "builderButton": "संपादित करें",
       "facebookTooltip": "Facebook पर साझा करें",
       "twitterTooltip": "Twitter पर साझा करें",

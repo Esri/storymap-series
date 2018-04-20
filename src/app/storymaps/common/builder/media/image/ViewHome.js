@@ -48,10 +48,12 @@ define(["lib-build/tpl!./ViewHome",
 					if(app.appCfg.mediaPickerConfigureForceMode != "shortlist")
 						params.fromService = false;
 					params.mode = 'showURL';
-					if(!params.media)
-						params.media = {};
-					params.media.type = 'image';
-					params.media.image = params.media.image ? params.media.image : {};
+					if(!params.media || !params.media.image) {
+						params.media = {
+							type: 'image',
+							image: {}
+						};
+					}
 					showView("configure", params);
 				});
 

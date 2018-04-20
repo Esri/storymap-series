@@ -1,3 +1,116 @@
 .cke_editor_descriptionEditor_dialog .cke_dialog_contents_body {
 	height: 90px !important;
 }
+
+.cke_inner .cke_button {
+  padding: 4px;
+  cursor: pointer;
+}
+
+.cke_inner a.cke_button {
+  text-decoration: none !important;
+}
+
+.cke_inner .cke_button.cke_button_disabled {
+  cursor: default;
+  color: silver;
+}
+
+.cke_inner .cke_button_disabled:hover {
+  background: none;
+  box-shadow: none;
+}
+
+/* specific buttons */
+
+.cke_button__inlinemedia,
+.cke_button__inlinemedia .cke_button_icon {
+  width: 27px;
+  background-size: 27px !important;
+}
+
+/* story actions group */
+
+/* needs three selectors to override default styling */
+.cke_inner .cke_toolgroup.storyActionsGroup {
+  border: 1px solid #428BC9;
+  cursor: pointer;
+  padding-right: 3px
+}
+
+.cke_inner .storyActionsBtn {
+  float: left;
+  text-align: center;
+  padding: 0;
+}
+
+.cke_inner .storyActionsBtn .label {
+  font-size: 0.8em;
+  display: inline-block;
+  height: 100%;
+  word-wrap: break-word; white-space: normal;
+  color: #428BC9;
+  width: 68px;
+}
+
+/* specific story action buttons */
+
+.cke_inner .storyActionsGroup .fa {
+  font-family: FontAwesome !important;
+}
+
+.cke_inner .mainstagetooltip * {
+  text-align: center;
+  cursor: pointer;
+}
+
+.cke_button__media,
+.cke_button__media .cke_button_icon {
+  width: 42px;
+  background-size: 42px !important;
+}
+
+.storyActionsGroup .cke_button__previewaction {
+  font-size: 16px;
+  color: #428BC9;
+}
+
+.storyActionsGroup .cke_button__previewaction:not(.cke_button_disabled) {
+  opacity: 1;
+  -webkit-animation: fade 2s linear;
+  animation: fade 2s linear;
+}
+
+.cke_button__previewaction_icon {
+  display: none !important;
+}
+
+/* actual tooltip */
+.tooltip.storyaction {
+  opacity: 1;
+  width: 220px;
+}
+
+.tooltip.storyaction .tooltip-inner {
+  text-align: left;
+  color: #000;
+  background-color: #e9e9e9;
+  padding-bottom: 7px;
+  border-radius: 0;
+}
+
+.tooltip.storyaction .title {
+  color: #428BC9;
+  font-size: 1.1em;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.tooltip.storyaction .tooltip-arrow {
+  border-bottom-color: #e9e9e9;
+}
+
+@keyframes fade {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.1; }
+}

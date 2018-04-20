@@ -37,6 +37,15 @@ define({
       "signOut": "Odjava",
       "attention": "Pozor!"
     },
+    "mainStage": {
+      "back": "Natrag",
+      "errorDeleted": "Ova poveznica nije aktivna (odjeljak je izbrisan)",
+      "errorNotPublished": "Poveznica nije aktivna (odjeljak nije objavljen)"
+    },
+    "panel": {
+      "collapse": "Sažmi ploču",
+      "expand": "Proširi ploču"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Opis",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Došli ste do kraja priče"
     },
     "headerFromCommon": {
-      "storymapsText": "Karta s pričom",
+      "storymapsText": "Story Map",
       "builderButton": "Uredi",
       "facebookTooltip": "Podijeli na Facebooku",
       "twitterTooltip": "Podijeli na Twitteru",

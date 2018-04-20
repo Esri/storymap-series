@@ -37,6 +37,15 @@ define({
       "signOut": "Odhlásit",
       "attention": "Upozornění!"
     },
+    "mainStage": {
+      "back": "Zpět",
+      "errorDeleted": "Tento odkaz není aktivní (sekce byla smazána)",
+      "errorNotPublished": "Tento odkaz není aktivní (sekce nebyla publikována)"
+    },
+    "panel": {
+      "collapse": "Sbalit panel",
+      "expand": "Rozbalit panel"
+    },
     "mobileInfo": {
       "legend": "Legenda",
       "description": "Popis",

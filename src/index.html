@@ -65,8 +65,8 @@
 
 		<script type="text/javascript">
 			var app = {
-				version: '1.10.1',
-				pathJSAPI: 'https://js.arcgis.com/3.23/'
+				version: '1.11.2',
+				pathJSAPI: 'https://js.arcgis.com/3.24/'
 			};
 		</script>
 		<noscript>
@@ -166,6 +166,13 @@
 							<div id="mainStageLoadingIndicator" class="loadingIndicator" role="alert" aria-live="polite">
 							  <img src="resources/tpl/viewer/icons/loading-light.gif" alt="This content is loading."/>
 							</div>
+							<!-- Back button -->
+							<div class="mediaBackContainer">
+								<button class="backButton">
+									<div class="backArrow"></div>
+									<span class="backLbl"></span>
+								</button>
+							</div>
 							<!-- Mobile info button -->
 							<div id="mobileInfoBtn" class="mobileInfoBtn"></div>
 							<!-- Builder -->
@@ -205,10 +212,7 @@
 				width: 100%;
 				height: 100%;
 				overflow: hidden;
-				background-color: #E5E5E5;
-				-webkit-box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
-				-moz-box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
-				box-shadow: inset 0px 0px 82px 19px rgba(0,0,0,0.3);
+				background-color: #EFEFEF;
 			}
 
 			@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }

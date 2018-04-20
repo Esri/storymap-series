@@ -10,6 +10,8 @@ app.cfg = {
 	TIMEOUT_VIEWER_REQUEST: 12000,
 	TIMEOUT_BUILDER_REQUEST: 20000,
 
+	SECTION_ACTION_ZOOM_MAP_MARKER: "resources/tpl/viewer/icons/map-pin-circle-blue.png",
+
 	// Control the social button configuration in builder
 	// If disabled author won't be able to activate them
 	// if disabled after the app has been created, this will override the settings

@@ -114,12 +114,14 @@ define({
       "logoOrgRadio": "Organisaation logo",
       "logoCustomRadio": "Oma logo",
       "logoCustomLabel": "Kuva:",
-      "logoCustomUploadHelp": "Logot näyttävät parhaimmilta, kun niiden leveys:korkeus-suhde on 1:1–5:1. Jos linkitetty logo tulee näkyviin hitaasti, tallenna sen kopio ja lataa se tähän.",
+      "logoCustomUploadHelp": "Logon kuvalinkin on alettava merkkijonolla HTTPS. Logot näyttävät parhaimmilta, kun niiden leveys:korkeus-suhde on 1:1–5:1. Jos linkitetty logo tulee näkyviin hitaasti, tallenna sen kopio ja lataa se tähän.",
       "logoCustomUploadTooltip": "Käytä tilille ladattua logoa",
       "logoCustomUploadButton": "Lataa logo tilille",
       "logoUploadSizeError": "GIF-kuvan mitat ovat liian suuret. Muuta leveydeksi ${PIXEL-WIDTH}.",
+      "logoCustomLinkHTTPSError": "Linkin on alettava merkkijonolla HTTPS",
       "logoCustomLinkTooltip": "Linkitä logo",
       "logoCustomLinkPlaceholder": "Kuvan URL",
+      "logoCustomLinkPlaceholderHTTPS": "https://example.com/logo.jpg",
       "logoUploadGenericError": "Logo voi olla .bmp-, .gif-, .jpg-, .jpeg- tai .png-tiedosto. Gif-tiedostojen on oltava alle 250 kuvapisteen levyisiä ja alle 10 Mt:n kokoisia.",
       "logoCustomTargetPlaceholder": "Logoa napsautettaessa avattava verkkosivu",
       "logoSocialText": "Iskulause:",
@@ -129,6 +131,28 @@ define({
     "header": {
       "title": "Muokkaa tarinan %TPL_NAME% otsikkoa",
       "subtitle": "Muokkaa tarinan %TPL_NAME% alaotsikkoa"
+    },
+    "bannerNotification": {
+      "learnMore": "Lisätietoja",
+      "close": "Sulje",
+      "dontShowAgain": "Älä näytä tätä viestiä uudelleen"
+    },
+    "httpsTransitionMessage": {
+      "bannerMsg": "Tärkeä viesti verkon suojauksesta ja tarinakartoista",
+      "s1h1": "Esri parantaa tarinakarttojen suojausta",
+      "s1p1": "Tarinakarttasi ovat reaaliaikaisesti verkossa, ja verkkoyhteisö tekee parhaansa kaiken aikaa paremman turvallisuuden puolesta. HTTPS-protokollasta, joka tarjoaa suojatun yhteyden Internetissä lähetetylle sisällölle, on tullut odotettu tapa käyttää verkkosisältöä. Useimmat nykyaikaiset selaimet näyttävät nykyisin varoitusviestin, jos HTTPS-yhteyden sijasta käytetään HTTP-yhteyttä. Tämän yleistyneen standardin ja kesäkuussa 2018 tulevan ArcGIS Online -päivityksen takia tarinakartoissa on käytettävä HTTPS-protokollaa.",
+      "s1p2": "Käytännössä tämä tarkoittaa sitä, että tarinakarttaa ja kaikkea sen sisältöä (myös kuvia, karttatasoja, upotettuja sovelluksia ja verkkosivustoja) on käytettävä sellaisten linkkien kautta, jotka alkavat merkkijonolla HTTPS eivätkä merkkijonolla HTTP. Tämä takaa parhaan kokemuksen lukijoille, koska useimmat verkkoselaimet osoittavat, että tarinasi ovat suojattuja.",
+      "s2h1": "Mitä minun on tehtävä?",
+      "s2p1": "Esri yrittää tehdä siirtymästä helpon tarinakarttojen tekijöille ja lukijoille. Tarinakarttojen luontitoiminnoissa ja Omat tarinat -palvelussa on käytettävissä työkaluja, joiden avulla voit etsiä suojaamatonta sisältöä (HTTP) tarinoistasi. Työkalut tarjoavat myös suosituksia siihen, miten voit ratkaista suojausongelmat. Tarkista, onko tarinoissa suojaamatonta sisältöä, ja päivitä HTTPS-protokollaan ennen kesäkuuta 2018.",
+      "action1": "Sulje",
+      "action2": "Tarkista omat tarinani nyt",
+      "action3": "Lisätietoja"
+    },
+    "sectionNavigation": {
+      "select": "Valitse merkintä...",
+      "section": "Merkintä",
+      "thisSection": "Tämä merkintä",
+      "hiddenSection": "Piilotettu merkintä"
     }
   }
 });

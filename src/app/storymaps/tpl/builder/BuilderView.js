@@ -198,6 +198,8 @@ define(["lib-build/tpl!./BuilderView",
 				var storyLength = forceStoryLength || app.data.getStoryLength();
 				$(".builder-add, .builder-organize").removeClass("active");
 
+				$('#mainStagePanel').toggleClass('show-landing', !storyLength);
+
 				_landingUI.toggle(! storyLength);
 				$(".builder-content-panel").toggle(!! storyLength);
 				$("#sidePanel .builder, #floatingPanel .builder").toggleClass("large", ! app.data.getStoryLength());
@@ -366,9 +368,19 @@ define(["lib-build/tpl!./BuilderView",
 			function persistDescription(params)
 			{
 				var section = app.data.getStoryByIndex(params.index);
+				var shouldUpdate = false;
 				if ( params.value != section.description ) {
 					section.description = params.value;
-					app.data.editSection(section);
+					shouldUpdate = true;
+				}
+
+				if (params.actions != section.contentActions) {
+					section.actions = params.actions;
+					shouldUpdate = true;
+				}
+
+				if (shouldUpdate) {
+					app.data.editSection(params.index, section);
 					topic.publish("BUILDER_INCREMENT_COUNTER", 1);
 				}
 			}

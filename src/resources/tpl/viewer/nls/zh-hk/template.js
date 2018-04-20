@@ -37,6 +37,15 @@ define({
       "signOut": "登出",
       "attention": "注意!"
     },
+    "mainStage": {
+      "back": "返回",
+      "errorDeleted": "此連結停用 (已刪除部分)",
+      "errorNotPublished": "此連結停用 (未發佈部分)"
+    },
+    "panel": {
+      "collapse": "折疊面板",
+      "expand": "展開面板"
+    },
     "mobileInfo": {
       "legend": "圖例",
       "description": "描述",

@@ -37,6 +37,15 @@ define({
       "signOut": "Ieşire",
       "attention": "Atenţie!"
     },
+    "mainStage": {
+      "back": "Înapoi",
+      "errorDeleted": "Acest link nu este activ (secţiunea a fost ştearsă)",
+      "errorNotPublished": "Acest link nu este activ (secţiunea nu este publicată)"
+    },
+    "panel": {
+      "collapse": "Restrângeți panoul",
+      "expand": "Extindeți panoul"
+    },
     "mobileInfo": {
       "legend": "Legendă",
       "description": "Descriere",
@@ -49,7 +58,7 @@ define({
       "lblEnd": "Aţi ajuns la finalul informaţiilor"
     },
     "headerFromCommon": {
-      "storymapsText": "O hartă informativă",
+      "storymapsText": "O Story Map",
       "builderButton": "Editare",
       "facebookTooltip": "Partajare pe Facebook",
       "twitterTooltip": "Partajare pe Twitter",

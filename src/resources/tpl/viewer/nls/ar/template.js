@@ -37,6 +37,15 @@ define({
       "signOut": "تسجيل المغادرة",
       "attention": "انتبه!"
     },
+    "mainStage": {
+      "back": "الخلف",
+      "errorDeleted": "هذا الرابط غير نشط (تم حذف القسم)",
+      "errorNotPublished": "هذا الرابط غير نشط (لم يتم نشر القسم)"
+    },
+    "panel": {
+      "collapse": "طي اللوحة",
+      "expand": "توسيع اللوحة"
+    },
     "mobileInfo": {
       "legend": "وسيلة إيضاح",
       "description": "الوصف",
