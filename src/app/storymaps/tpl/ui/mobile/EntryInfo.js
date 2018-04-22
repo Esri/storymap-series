@@ -70,6 +70,7 @@ define(["lib-build/css!./EntryInfo",
 						)
 					);
 					
+					StoryText.createMainMediaActionLink(popupContainer);
 					// If it's a map can toggle description and legend
 					if ( popupContainer.find('.content-toggles') ) {
 						var needToggles = _layoutEntryCfg.description && description && _layoutEntryCfg.legend;

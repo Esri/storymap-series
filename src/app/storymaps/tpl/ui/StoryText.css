@@ -32,8 +32,11 @@
 }
 */
 
-.textEditorContent .entry a[data-storymaps] {
- 	border-bottom: 1px dashed #555;
+/* same border-bottom color as journal.
+ * consider matching this dynamically
+ * with the link color */
+.textEditorContent a[data-storymaps] {
+	border-bottom: 1px dashed #555;
 	text-decoration: none;
 	cursor: pointer;
 }

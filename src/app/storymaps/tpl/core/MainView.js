@@ -385,7 +385,7 @@ define(["lib-build/css!./MainView",
           container = mapContainer.siblings('.mobilePopup').find('.legendMobile');
         }
         else if ( placement == "panel" )
-          container = app.ui.descLegendPanel.getLegendContainer(webmapId);
+          container = app.ui.descLegendPanel.getOrCreateLegendContainer(webmapId);
 
         return {
           mode: placement,
@@ -923,8 +923,10 @@ define(["lib-build/css!./MainView",
             animateMainStageTransition = true;
         }
 
+        var backBtnIsVisible = $('.mediaBackContainer:visible').length > 0;
+
         if ( hasMobileView() ) {
-          if (! newEntry || newEntry.media.type != 'webmap' || ! newEntry.media.webmap.popup) {
+          if ((!newEntry && !backBtnIsVisible) || newEntry.media.type != 'webmap' || ! newEntry.media.webmap.popup) {
             MobilePopupUtils.close($(".mainMediaContainer.active .mapContainer").siblings('.mobileInfoWindow'));
           }
         }

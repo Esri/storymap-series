@@ -78,6 +78,7 @@ define(["lib-build/tpl!./Legend",
 					layerInfos: arcgisUtils.getLegendLayers(response)
 				}, _container.find('.legendDijit')[0]);
 				_legend.startup();
+				topic.publish('story-created-legend', response.itemInfo.item.id);
 			}
 
 			function destroy()

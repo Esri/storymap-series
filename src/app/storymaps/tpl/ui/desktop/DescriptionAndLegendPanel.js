@@ -34,7 +34,7 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 				_entries = entries;
 				_entryIndex = null;
 
-				render();
+				render.bind(this)();
 				this.update(layoutOptions, colors, entryLayoutCfg);
 				this.showEntryIndex(entryIndex, false, entryLayoutCfg);
 
@@ -128,9 +128,14 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 				_entryIndex = null;
 			};
 
-			this.getLegendContainer = function(id)
+			this.getOrCreateLegendContainer = function(id)
 			{
-				return container.find('.legendWrapper[data-webmap=' + id + ']');
+				var legendWrapper = container.find('.legendWrapper[data-webmap=' + id + ']');
+				if (!legendWrapper.length) {
+					legendWrapper = $('<div class="legendWrapper" data-webmap="' + id + '"></div>');
+					container.find('.legends').append(legendWrapper);
+				}
+				return legendWrapper;
 			};
 
 			this.focus = function()
@@ -146,6 +151,10 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 			function render()
 			{
 				var contentHTML = "";
+				// combat the .hide on the destroy function above. useful when
+				// changing layouts in builder
+				container.find('.legends').show();
+				var self = this;
 
 				$.each(_entries, function(i, entry) {
 					contentHTML += viewEntryTpl({
@@ -157,8 +166,7 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 
 					// Legend
 					if ( entry.media.type == "webmap" ) {
-						if ( ! container.find('.legendWrapper[data-webmap=' + entry.media.webmap.id + ']').length )
-							container.find('.legends').append('<div class="legendWrapper" data-webmap="' + entry.media.webmap.id + '"></div>');
+						self.getOrCreateLegendContainer();
 					}
 				});
 

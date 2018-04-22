@@ -51,6 +51,7 @@
 .mobilePopup .description {
 	overflow-y: auto;
 	max-height: 100%;
+	padding-bottom: 2px; /* for action underlines */
 }
 
 /*

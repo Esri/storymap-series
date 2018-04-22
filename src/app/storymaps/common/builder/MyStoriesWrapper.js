@@ -38,6 +38,9 @@ define([
 		function loadMyStoriesError()
 		{
 			$(".check-story").hide();
+			// if no resize, the now-hidden check-story badge takes over
+			// the space of the title in the header.
+			$(window).resize();
 		}
 
 		function loadMyStoriesStep2()

@@ -112,11 +112,12 @@ define(["dojo/topic",
 		 * Create Section panel actions link
 		 */
 
-		function createMainMediaActionLink()
+		function createMainMediaActionLink(optionalContainer)
 		{
-			$.each(app.data.getContentActions(), function(i, action){
-				var link = $("a[data-storymaps=" + action.id + "]"),
-					validAction = true;
+			$.each(app.data.getContentActions(), function(i, action) {
+				var selectorStr = 'a[data-storymaps=' + action.id + ']';
+				var link = optionalContainer ? $(optionalContainer).find(selectorStr) : $(selectorStr),
+					validAction = link.length > 0;
 
 				if (action.type == 'navigate' && (action.index == -1 || action.hiddenSection)) {
 					validAction = false;
@@ -239,7 +240,6 @@ define(["dojo/topic",
 			}
 			else if ( action.type == "media" ) {
 				handleMediaAction(action.media, currentMedia, backBtnWasVisible);
-
 			}
 		}
 
@@ -287,9 +287,62 @@ define(["dojo/topic",
 					}
 				}
 
+				if (!actionWebmap || !actionWebmap.popup) {
+					showMobilePanel();
+				}
+
+				if (actionIsWebmap) {
+					if (currentMediaIsWebmap) {
+						maybeShowLegend(actionWebmap, currentMedia.webmap.legend);
+						switchToMobileDesc();
+					}
+				}
+				else {
+					maybeShowLegend();
+				}
+
 				if (actionChangeWebmap || !actionIsWebmap || !currentMediaIsWebmap || isRealExtentChange || actionChangeLayers || backBtnWasVisible) {
 					showBackBtn();
 				}
+		}
+
+		function maybeShowLegend(webmapInfo, legendInfo) {
+			$('#descLegendPanel .legendWrapper').removeClass('active');
+			var showLegend = (legendInfo && legendInfo.enable) || (!legendInfo && webmapInfo && webmapInfo.legend && webmapInfo.legend.enable);
+			if (showLegend) {
+				var legendSelector = '.legendWrapper[data-webmap=' + webmapInfo.id + ']';
+				var targetLegend = $(legendSelector).addClass('active');
+				if (!targetLegend.length) {
+					var handle = topic.subscribe('story-created-legend', function(legendId) {
+						if (legendId === webmapInfo.id) {
+							$(legendSelector).addClass('active');
+							handle.remove();
+							switchToMobileDesc();
+						}
+					});
+					setTimeout(function() {
+						handle.remove();
+					}, 2000);
+				}
+			}
+			switchToMobileDesc();
+		}
+
+		function showMobilePanel() {
+			if ($('body').hasClass('mobile-view') && $('#mobileInfoBtn:visible').length) {
+				// show the mobile panel
+				$('#mobileInfoBtn').click();
+			}
+		}
+
+		function switchToMobileDesc() {
+			if ($('body').hasClass('mobile-view')) {
+				// yes, this seems hacky, but it's how EntryInfo does it...
+				// take out of execution loop so it actually happens.
+				setTimeout(function() {
+					$('.mainMediaContainer.active .mobilePopup.mobileInfo').find('.content-toggles .btn').eq(0).click();
+				}, 1);
+			}
 		}
 
 		function showBackBtn() {
@@ -309,8 +362,12 @@ define(["dojo/topic",
 				if (locateLayer) {
 					app.map.removeLayer(locateLayer);
 				}
+
+				maybeShowLegend(sectionMedia.webmap);
 			}
 			$('.mediaBackContainer').hide();
+			showMobilePanel();
+			switchToMobileDesc();
 
 			//	// Was on a webmap and action is the same webmap
 			//	// Manually restore the state
@@ -385,6 +442,7 @@ define(["dojo/topic",
 					currentExtent
 				));
 			}
+			switchToMobileDesc();
 		}
 
 		// Add a marker layer, if configured

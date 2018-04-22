@@ -295,6 +295,7 @@ define(["lib-build/css!./Desktop",
 						shareBtn.css('box-shadow', '0 0 2px 1px white');
 					}
 				}
+				_this.resize();
 			}
 
 			/*

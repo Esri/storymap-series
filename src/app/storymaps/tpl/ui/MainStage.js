@@ -306,7 +306,8 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					bodyWidth = $("body").width(),
 					panelWidth = 0,
 					panelPos = null,
-					mapArea = null;
+					mapArea = null,
+					isMobile = $("body").hasClass("mobile-view");
 
 				// Resize embed that are have display fit
 				styleMainStageEmbed();
@@ -356,8 +357,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						panelIsLeft ? ((panelWidth + bodyWidth) / 2) : ((bodyWidth - panelWidth) / 2)
 					);
 
-					if ( $("body").hasClass("mobile-view") )
+					if (isMobile) {
 						$("#mainStageLoadingIndicator, .mainStageErrorContainer").css("left", "50%");
+					}
 
 					//
 					// Center some components on the Main Stage space at the left or right of the panel
@@ -367,20 +369,26 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						posDir = panelIsLeft ? "left" : "right",
 						val = panelPos.left;
 
-					if ( panelIsLeft )
+					if ( panelIsLeft ) {
 						val += panelWidth;
-					else
+					}
+					else {
 						val = bodyWidth - panelPos.left;
+					}
 
 					// Help, builder landing&quotes
 					$(".centerAlignOnFloat")
 						.css({ paddingRight: 0, paddingLeft: 0 })
 						.css(paddingDir, val);
 
+					var backBtnAdjust = val + mapArea / 2;
+					if (isMobile) {
+						backBtnAdjust = (bodyWidth - $('.mediaBackContainer').width()) / 2 || '40%';
+					}
 					// Back button
 					$(".mediaBackContainer")
 						.css({ left: 'inherit', right: 'inherit' })
-						.css(posDir, val + mapArea / 2);
+						.css(posDir, backBtnAdjust);
 
 					// Help goes over the floating panel when screen too small
 					if ( bodyWidth <= 1067 )
