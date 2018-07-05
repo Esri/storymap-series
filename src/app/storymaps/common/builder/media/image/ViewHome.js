@@ -14,7 +14,10 @@ define(["lib-build/tpl!./ViewHome",
 			container.append(viewTpl({
 				disableImageUpload: app.appCfg.disableImageUpload,
 				lblUpload: i18n.commonMedia.mediaSelector.lblUpload,
-				lblLink: i18n.commonMedia.mediaSelector.lblLink
+				lblLink: i18n.commonMedia.mediaSelector.lblLink,
+				thirdPartyTerms: i18n.commonMedia.mediaSelector.thirdPartyTerms,
+				flickrTermsLink: app.cfg.FLICKR_TERMS_LINK || '',
+				googleTermsLink: app.cfg.GOOGLE_TERMS_LINK || ''
 			}));
 
 			init();
@@ -96,15 +99,6 @@ define(["lib-build/tpl!./ViewHome",
 					});
 				}
 				*/
-
-				if(!app.appCfg.disableFBWarning){
-					container.find('.facebook-warning').html(
-						i18n.commonMedia.imageSelectorFacebook.warning.replace(
-							'${learn}',
-							'<a href="http://links.esri.com/storymaps/facebook_support" target="_blank">' + i18n.commonMedia.imageSelectorFacebook.learn + '</a>'
-						)
-					);
-				}
 			}
 		};
 	}

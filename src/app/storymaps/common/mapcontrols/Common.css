@@ -24,6 +24,14 @@
 	padding: 5px 10px 0 10px;
 }
 
+.mapControls button.titleBtn {
+	padding: 0 10px;
+	background: none;
+	border: none;
+	width: 100%;
+	text-align: left;
+}
+
 .mapControls .collapseBtn {
 	display: inline-block;
 	width: 18px;

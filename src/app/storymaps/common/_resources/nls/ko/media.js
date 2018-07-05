@@ -12,7 +12,8 @@ define({
       "disabled": "이 기능은 관리자가 사용하지 않도록 설정했습니다.",
       "userLookup": "앨범 로드",
       "notImplemented": "아직 구현되지 않았습니다.",
-      "noData": "공개 앨범을 찾을 수 없음"
+      "noData": "공개 앨범을 찾을 수 없음",
+      "thirdPartyTerms": "서드 파티 서비스를 사용하면 서비스 약관에 동의하는 것입니다. "
     },
     "imageSelector": {
       "lblStep1": "서비스 선택",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "사용자 이름",
       "signInMsg2": "사용자를 찾을 수 없습니다.",
       "loadingFailed": "불러오기 실패"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebook 사용자",
-      "rightHeader": "Facebook 페이지",
-      "pageExplain": "Facebook 페이지는 공용 브랜드/제품 또는 <b>esrigis</b>와 같은 유명 브랜드/제품입니다. 페이지 URL의 첫 번째 '/' 뒤에서 페이지 이름을 확인할 수 있습니다.",
-      "pageInputLbl": "페이지 이름",
-      "lookupMsgError": "페이지를 찾을 수 없음",
-      "warning": "Facebook 지원이 중단되었습니다. ${learn}",
-      "learn": "자세한 정보"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "이메일 또는 Google ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "웹 페이지에 오디오 또는 비디오 미디어가 있는 경우 이 옵션을 선택 상태로 유지하여 독자가 다른 위치를 탐색할 때 콘텐츠가 재생되는 것을 방지할 수 있습니다. 독자가 스토리를 진행할 때 사운드 트랙이 재생되도록 하려는 등의 경우에는 옵션을 선택 취소합니다.<br />웹 페이지가 응용프로그램인 경우 독자가 돌아왔을 때 스토리를 다시 불러오지 않도록 이 옵션을 선택 취소합니다.",
       "embedProtocolLabel": "보안 연결(HTTPS)을 통해 페이지 불러오기",
       "embedProtocolWarning1": "스토리에서 이 페이지를 불러오지 않는 경우 웹 보안상의 이유로 임베드되지 않을 수 있습니다. 대신 이야기에 링크를 추가하여 새 브라우저 탭에서 페이지를 열 수 있습니다. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>자세한 정보</a>",
-      "embedProtocolWarning2": "스토리에서 이 페이지를 불러오지 않는 경우 이 옵션을 선택 취소하고 다시 시도하세요. 해당 페이지를 여전히 불러올 수 없으면 웹 보안상의 이유로 임베드되지 않을 수 있습니다. 대신 이야기에 링크를 추가하여 새 브라우저 탭에서 페이지를 열 수 있습니다. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>자세한 정보</a>"
+      "embedProtocolWarning2": "스토리에서 이 페이지를 불러오지 않는 경우 이 옵션을 선택 취소하고 다시 시도하세요. 해당 페이지를 여전히 불러올 수 없으면 웹 보안상의 이유로 임베드되지 않을 수 있습니다. 대신 이야기에 링크를 추가하여 새 브라우저 탭에서 페이지를 열 수 있습니다. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>자세한 정보</a>",
+      "learn": "자세한 정보",
+      "lblAltText": "대체 텍스트",
+      "placeholderAltText": "시각장애인을 위한 미디어에 설명 입력...",
+      "tooltipAltText": "이 미디어 콘텐츠에 대한 설명을 제공합니다. 이 설명은 화면 읽기 소프트웨어 등의 보조 기술에 사용됩니다. 설명은 선택 사항이지만 WCAG 및 Section 508 등의 웹 접근성 지침을 충족시키기 위해 권장됩니다."
     },
     "editorActionGeocode": {
       "lblTitle": "주소 또는 장소 찾기",

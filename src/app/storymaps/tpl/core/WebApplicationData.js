@@ -22,7 +22,8 @@ define(["dojo/_base/lang",
 				if( ! data || ! data.values )
 					return;
 
-				_data = data;
+				var shouldSanitize = app.data.getWebAppItem().created > app.cfg.HTML_SANITIZER_DATE;
+				_data = shouldSanitize ? app.sanitizer.sanitize(data) : data;
 			},
 			get: function()
 			{

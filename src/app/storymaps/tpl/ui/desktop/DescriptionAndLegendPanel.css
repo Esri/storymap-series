@@ -27,7 +27,7 @@ body.has-builder-mask .descLegendPanel {
 .descLegendPanel .legends {
 	opacity: 0.99;
 }
-	
+
 body.layout-tab-right .descLegendPanel,
 body.layout-bullet-right .descLegendPanel {
 	border-radius: 0 0 0 20px;
@@ -43,6 +43,17 @@ body.layout-bullet-right .descLegendPanel {
 
 .descLegendPanel .entry.active {
 	display: block;
+}
+
+.descLegendPanel .focus-mainstage-wrapper {
+	position: absolute;
+	top: 3px;
+	left: 0;
+}
+
+.descLegendPanel .focus-mainstage {
+	display: block;
+	font-size: 10px;
 }
 
 /*

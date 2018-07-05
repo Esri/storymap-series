@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Închidere"
+      "close": "Închidere",
+      "focusMainstage": "Transmitere focalizare tastatură către material media",
+      "expandImage": "Extindere imagine"
+    },
+    "a11y": {
+      "skipToContent": "Salt la conținut",
+      "headerAria": "Antet relatare",
+      "panelAria": "Conținut relatare",
+      "mainStageAria": "Medii înregistrare relatare curentă",
+      "logoLinkAria": "Link siglă",
+      "toTop": "Accesați prima înregistrare",
+      "focusContent": "Reveniți la conținut",
+      "navAria": "Înregistrări de relatări",
+      "toEntryAria": "Accesați înregistrarea %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Înregistrarea %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Conținutul relatării se încarcă",
+      "skipBelowContent": "Salt sub acest conținut",
+      "skipBelowVideo": "Salt sub acest videoclip",
+      "skipAboveContent": "Salt deasupra acestui conținut",
+      "skipAboveVideo": "Salt deasupra acestui videoclip",
+      "moreEntries": "Mai multe înregistrări"
     },
     "loading": {
       "long": "Povestea se iniţializează",

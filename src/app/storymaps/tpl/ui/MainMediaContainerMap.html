@@ -1,4 +1,4 @@
-<div class="mainMediaContainer">
+<div class="mainMediaContainer" tabindex="0" aria-label="<%= altText %>">
     <div class="mapContainer" data-webmapid="<%= webmapid %>" data-temporary="<%= isTemporary %>"></div>
 	<div class="overview"></div>
 	<div class="legend"></div>
@@ -6,7 +6,8 @@
 	<div class="mainStageErrorContainer">
 		<div class="error"></div>
 	</div>
-	
+	<button class="visible-on-focus return-to-content bottom"><%= focusToPanel %></button>
+
 	<div class="mobilePopup mobileInfo hideContent">
 		<div class="content-toggles">
 			<div class="btn-group">
@@ -27,7 +28,7 @@
 	<div class="mobilePopup mobileInfoWindow hideContent">
 		<div class="dijitContainer"></div>
 	</div>
-	
+
 	<div class="mapLocationError">
 		<div class="mapLocationMsg"></div>
 	</div>

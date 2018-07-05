@@ -1,10 +1,10 @@
 <li class="dropdown pull-right"> <!-- tabindex="0" -->
-	<a class="dropdown-toggle" data-toggle="dropdown">
-		<span class="glyphicon glyphicon-th-list"></span> <span class="caret"></span>
-	</a>
+	<button class="dropdown-toggle" data-toggle="dropdown" aria-role="button" tabindex="0" aria-label="<%= dropdownAria %>">
+		<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <span class="caret"></span>
+	</button>
 	<ul class="dropdown-menu">
-		<!-- 
-			tabs are injected here a second time 
+		<!--
+			tabs are injected here a second time
 			that way they are just toggled and not moved around
 		-->
 		<%= entries %>

@@ -35,7 +35,7 @@
  * Tab entries
  */
 
-.nav-bar.isTab .nav-tabs > li > a,
+.nav-bar.isTab .nav-tabs > li > button,
 .nav-bar.isTab .dropdown-toggle {
 	margin: 3px 5px 0px 3px;
 	padding: 7px 12px 10px 12px;
@@ -72,8 +72,8 @@
 /*
  * Bullet entries
  */
- 
-.nav-bar.isBullet .nav-tabs > li > a,
+
+.nav-bar.isBullet .nav-tabs > li > button,
 .nav-bar.isBullet .dropdown-toggle {
 	width: 34px;
 	height: 34px;
@@ -137,7 +137,7 @@
 }
 */
 
- /* Bullet entries tooltip and builder add disabled */ 
+ /* Bullet entries tooltip and builder add disabled */
 /*
 .nav-bar .nav-tabs > .tooltip .tooltip-arrow,
 .nav-bar .builder-content-panel .tooltip-arrow {
@@ -157,11 +157,21 @@
 /*
  * More toggle
  */
- 
+
  .nav-bar .dropdown.open .dropdown-menu {
 	right: 4px;
 	max-height: 250px;
 	overflow-y: auto;
+}
+
+/* links were changed to buttons */
+.nav-bar .dropdown-menu > li > button {
+	display: block;
+  padding: 4px 20px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline-offset: -3px;
 }
 
 /*

@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "닫기"
+      "close": "닫기",
+      "focusMainstage": "키보드 포커스를 미디어에 보냄",
+      "expandImage": "이미지 확장"
+    },
+    "a11y": {
+      "skipToContent": "콘텐츠로 건너뛰기",
+      "headerAria": "스토리 헤더",
+      "panelAria": "스토리 콘텐츠",
+      "mainStageAria": "현재 스토리 항목 미디어",
+      "logoLinkAria": "로고 링크",
+      "toTop": "첫 번째 항목으로 이동",
+      "focusContent": "콘텐츠로 돌아가기",
+      "navAria": "스토리 항목",
+      "toEntryAria": "%ENTRY_NUMBER% 항목으로 이동: %ENTRY_TITLE%",
+      "entryAria": "%ENTRY_NUMBER% 항목: %ENTRY_TITLE%",
+      "loadingAria": "스토리 콘텐츠를 불러오는 중",
+      "skipBelowContent": "이 콘텐츠 아래로 건너뛰기",
+      "skipBelowVideo": "이 비디오 아래로 건너뛰기",
+      "skipAboveContent": "이 콘텐츠 위로 건너뛰기",
+      "skipAboveVideo": "이 비디오 위로 건너뛰기",
+      "moreEntries": "추가 항목"
     },
     "loading": {
       "long": "스토리를 초기화하는 중",

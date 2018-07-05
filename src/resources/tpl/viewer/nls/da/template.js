@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Luk"
+      "close": "Luk",
+      "focusMainstage": "Send tastaturfokus til medier",
+      "expandImage": "Udvid billede"
+    },
+    "a11y": {
+      "skipToContent": "Fortsæt til indhold",
+      "headerAria": "Historieoverskrift",
+      "panelAria": "Historieindhold",
+      "mainStageAria": "Aktuelle historiemedier",
+      "logoLinkAria": "Logo-link",
+      "toTop": "Gå til første post",
+      "focusContent": "Vend tilbage til indhold",
+      "navAria": "Historieposter",
+      "toEntryAria": "Gå til post %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Post %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Historieindhold indlæses",
+      "skipBelowContent": "Fortsæt under dette indhold",
+      "skipBelowVideo": "Fortsæt under denne video",
+      "skipAboveContent": "Fortsæt over dette indhold",
+      "skipAboveVideo": "Fortsæt over denne video",
+      "moreEntries": "Flere poster"
     },
     "loading": {
       "long": "Historien starter",

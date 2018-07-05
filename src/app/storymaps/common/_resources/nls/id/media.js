@@ -12,7 +12,8 @@ define({
       "disabled": "Fitur ini telah dinonaktifkan oleh Administrator",
       "userLookup": "Muat album",
       "notImplemented": "Belum diterapkan.",
-      "noData": "Album publik tidak ditemukan"
+      "noData": "Album publik tidak ditemukan",
+      "thirdPartyTerms": "Dengan menggunakan layanan pihak ketiga, berarti Anda menyetujui ketentuan layanannya: "
     },
     "imageSelector": {
       "lblStep1": "Pilih layanan",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Nama pengguna",
       "signInMsg2": "Pengguna tidak ditemukan",
       "loadingFailed": "Gagal memuat"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Pengguna Facebook",
-      "rightHeader": "Halaman Facebook",
-      "pageExplain": "Halaman Facebook seperti produk/merek publik atau selebriti seperti <b>esrigis</b>. Anda bisa mendapatkan nama halaman setelah '/' pertama di URL halaman.",
-      "pageInputLbl": "Nama halaman",
-      "lookupMsgError": "Halaman tidak ditemukan",
-      "warning": "Dukungan untuk Facebook telah dihentikan, ${learn}.",
-      "learn": "pelajari selengkapnya"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "ID email atau ID Google",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Jika halaman web memiliki media audio atau video, centang opsi ini untuk menghentikan konten tersebut agar tidak diputar saat pembaca beralih. Hapus centang misalnya untuk tetap memutar musik latar selagi pembaca membaca cerita.<br />Jika halaman web merupakan aplikasi, hapus centang pada opsi ini sehingga cerita tidak dimuat ulang saat pembaca kembali membacanya.",
       "embedProtocolLabel": "Muat halaman melalui koneksi aman (HTTPS)",
       "embedProtocolWarning1": "Jika halaman ini tidak dimuat dalam cerita Anda, halaman ini tidak dapat disematkan untuk alasan keamanan web. Sebagai alternatif, tambahkan tautan di narasi Anda untuk membuka halaman di tab browser baru. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Pelajari selengkapnya</a>",
-      "embedProtocolWarning2": "Jika halaman ini tidak dimuat dalam cerita Anda, batalkan centang opsi ini dan coba lagi. Jika halaman tetap tidak dimuat, halaman ini tidak dapat disematkan untuk alasan keamanan web. Sebagai alternatif, tambahkan tautan di narasi Anda untuk membuka halaman di tab browser baru. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Pelajari selengkapnya</a>"
+      "embedProtocolWarning2": "Jika halaman ini tidak dimuat dalam cerita Anda, batalkan centang opsi ini dan coba lagi. Jika halaman tetap tidak dimuat, halaman ini tidak dapat disematkan untuk alasan keamanan web. Sebagai alternatif, tambahkan tautan di narasi Anda untuk membuka halaman di tab browser baru. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Pelajari selengkapnya</a>",
+      "learn": "Pelajari lebih lanjut",
+      "lblAltText": "Teks Alternatif",
+      "placeholderAltText": "Masukkan deskripsi media ini untuk pembaca tunanetra...",
+      "tooltipAltText": "Sediakan deskripsi konten media ini yang digunakan oleh teknologi bantuan seperti perangkat lunak pembaca layar. Deskripsi adalah opsional tetapi disarankan untuk memenuhi pedoman aksesibilitas web seperti WCAG dan Bagian 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Temukan alamat atau tempat",

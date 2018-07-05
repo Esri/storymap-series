@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Schließen"
+      "close": "Schließen",
+      "focusMainstage": "Tastaturfokus an Medien senden",
+      "expandImage": "Bild einblenden"
+    },
+    "a11y": {
+      "skipToContent": "Bis zum Inhalt überspringen",
+      "headerAria": "Kopfzeile der Story",
+      "panelAria": "Story-Inhalt",
+      "mainStageAria": "Medien des aktuellen Story-Eintrags",
+      "logoLinkAria": "Logolink",
+      "toTop": "Zum ersten Eintrag gehen",
+      "focusContent": "Zum Inhalt zurückkehren",
+      "navAria": "Story-Einträge",
+      "toEntryAria": "Gehe zu Eintrag %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Eintrag %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Story-Inhalt wird geladen",
+      "skipBelowContent": "Unter diesen Inhalt springen",
+      "skipBelowVideo": "Unter dieses Video springen",
+      "skipAboveContent": "Über diesen Inhalt springen",
+      "skipAboveVideo": "Über dieses Video springen",
+      "moreEntries": "Weitere Einträge"
     },
     "loading": {
       "long": "Story wird initialisiert",

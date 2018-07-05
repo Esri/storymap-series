@@ -12,7 +12,8 @@ define({
       "disabled": "Deze functie is uitgeschakeld door de beheerder",
       "userLookup": "Albums laden",
       "notImplemented": "Nog niet geïmplementeerd.",
-      "noData": "Geen openbaar album gevonden"
+      "noData": "Geen openbaar album gevonden",
+      "thirdPartyTerms": "Als u een dienst van derden gebruikt, gaat u akkoord met de servicevoorwaarden van die derden: "
     },
     "imageSelector": {
       "lblStep1": "Kies de service",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Gebruikersnaam",
       "signInMsg2": "Gebruiker niet gevonden",
       "loadingFailed": "Laden mislukt"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebook-gebruiker",
-      "rightHeader": "Facebook-pagina",
-      "pageExplain": "Een Facebook-pagina is een openbaar merk/product of beroemdheid zoals <b>esrigis</b>. U vindt de naam van de pagina achter de eerste  '/' in de URL van de pagina.",
-      "pageInputLbl": "Paginanaam",
-      "lookupMsgError": "Pagina niet gevonden",
-      "warning": "Facebook ondersteuning is stopgezet, ${learn}.",
-      "learn": "meer informatie"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "E-mail- of Google-ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Houd deze optie aangevinkt als de webpagina audio- of videomedia heeft om te voorkomen dat de content wordt afgespeeld als de lezer weggaat. Haal het vinkje weg om een soundtrack te laten doorspelen als de lezer verdergaat door het verhaal.<br />Als de webpagina een applicatie is, haal het vinkje dan weg zodat de applicatie het niet opnieuw laadt als de lezer terugkeert.",
       "embedProtocolLabel": "Pagina laden d.m.v. een beveiligde verbinding (HTTPS)",
       "embedProtocolWarning1": "Als deze pagina niet in uw verhaal geladen wordt, dan kan het niet geïnbed worden omwille van webbeveiligingsredenen. Voeg als alternatief een koppeling toe aan uw verhaal om de pagina te openen in een nieuw browsertabblad. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Meer informatie</a>",
-      "embedProtocolWarning2": "Als deze pagina niet in uw verhaal geladen wordt, vink deze optie dan uit en probeer nogmaals. Als de pagina nog steeds niet geladen kan worden, dan kan het niet geïnbed worden omwille van webbeveiligingsredenen. Voeg als alternatief een koppeling toe aan uw verhaal om de pagina te openen in een nieuw browsertabblad. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Meer informatie</a>"
+      "embedProtocolWarning2": "Als deze pagina niet in uw verhaal geladen wordt, vink deze optie dan uit en probeer nogmaals. Als de pagina nog steeds niet geladen kan worden, dan kan het niet geïnbed worden omwille van webbeveiligingsredenen. Voeg als alternatief een koppeling toe aan uw verhaal om de pagina te openen in een nieuw browsertabblad. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Meer informatie</a>",
+      "learn": "Meer weten",
+      "lblAltText": "Alternatieve tekst",
+      "placeholderAltText": "Voeg voor slechtzienden een beschrijving van deze media toe...",
+      "tooltipAltText": "Geef een beschrijving van deze mediacontent die wordt gebruikt door ondersteunende technologieën zoals schermleessoftware. Een beschrijving is optioneel, maar wordt aanbevolen om te voldoen aan richtlijnen voor webtoegankelijkheid, zoals WCAG en sectie 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Een adres of plaats zoeken",

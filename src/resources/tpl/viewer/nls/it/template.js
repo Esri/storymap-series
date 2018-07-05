@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Chiudi"
+      "close": "Chiudi",
+      "focusMainstage": "Invia focus tastiera al file multimediale",
+      "expandImage": "Espandere immagine"
+    },
+    "a11y": {
+      "skipToContent": "Passa a contenuto",
+      "headerAria": "Intestazione della storia",
+      "panelAria": "Contenuto della storia",
+      "mainStageAria": "Supporto di immissione della storia corrente",
+      "logoLinkAria": "Collegamento al logo",
+      "toTop": "Vai alla prima voce",
+      "focusContent": "Torna al contenuto",
+      "navAria": "Voci della storia",
+      "toEntryAria": "Vai alla voce %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Voce %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Il contenuto della storia si sta caricando",
+      "skipBelowContent": "Salta sotto questo contenuto",
+      "skipBelowVideo": "Salta sotto questo video",
+      "skipAboveContent": "Salta sopra questo contenuto",
+      "skipAboveVideo": "Salta sopra questo video",
+      "moreEntries": "Altre voci"
     },
     "loading": {
       "long": "Inizializzazione della storia in corso",

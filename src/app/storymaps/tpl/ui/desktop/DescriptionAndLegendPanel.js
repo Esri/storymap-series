@@ -43,8 +43,9 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 						var focusElem = $(':focus');
 
 						if ( focusElem ) {
-							var nextFocusable = e.shiftKey ? focusElem.prevAll("*[tabindex=0]") : focusElem.nextAll("*[tabindex=0]");
-							if ( ! nextFocusable.length ) {
+							var allFocusables = container.find('.entry.active').find(app.appCfg.focusable).filter(':visible'); // add :visible in case some of the .btn-fullscreens are inexplicably hidden
+							var focusElemIndex = allFocusables.index(focusElem);
+							if ((focusElemIndex === 0 && e.shiftKey) || (focusElemIndex === allFocusables.length - 1 && !e.shiftKey)) {
 								topic.publish("story-tab-navigation", {
 									from: "panel",
 									direction: e.shiftKey ? "backward" : "forward"
@@ -140,7 +141,12 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 
 			this.focus = function()
 			{
-				container.find('.entry.active .description > *[tabindex=0]').eq(0).focus();
+				// either focus the panel or send focus back to the tab/bullet for this section
+				if (container.hasClass('hasDescription')) {
+					container.find('.entry.active .entry-inner .focus-mainstage').eq(0).focus();
+				} else {
+					$('li.entry.active button.entryLbl').focus();
+				}
 			};
 
 			/*
@@ -161,6 +167,7 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 						isInBuilder: app.isInBuilder,
 						optHtmlClass: entry["status"] != "PUBLISHED" ? "hidden-entry" : "",
 						description: entry["description"] || "",
+						lblMainstageBtn: i18n.viewer.common.focusMainstage,
 						editorPlaceholder: app.isInBuilder ? i18n.builder.textEditor.placeholder1 + " " + i18n.builder.textEditor.placeholder2 : ""
 					});
 

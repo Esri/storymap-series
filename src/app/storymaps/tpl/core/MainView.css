@@ -1,5 +1,5 @@
 /*
- * Using a table to properly align Side Accordion Panel and Main Stage seems to be 
+ * Using a table to properly align Side Accordion Panel and Main Stage seems to be
  * the only way to have the edit button to properly overflow the Side Panel
  */
 .containerPanelInner {
@@ -27,7 +27,7 @@ body.layout-accordion:not(.isBuilderLanding) #accordionPanel {
 /*
  * Tab and bullet description
  */
- 
+
 #descLegendPanel {
 	display: none;
 	position: absolute;
@@ -54,7 +54,7 @@ body.layout-bullet:not(.isBuilderLanding) #nav-bar {
 body.layout-tab-right #descLegendPanel,
 body.layout-bullet-right #descLegendPanel {
 	left: inherit;
-	right: 0;	
+	right: 0;
 }
 
 /*
@@ -70,7 +70,7 @@ body.layout-bullet-right:not(.mobile-view) .esriAttribution {
 /*
  * Map controls legend
  */
- 
+
 body.layout-accordion .mainMediaContainer .legendContainer,
 body.layout-tab .mainMediaContainer .legendContainer,
 body.layout-bullet .mainMediaContainer .legendContainer {
@@ -105,4 +105,23 @@ body.layout-bullet #headerDesktop.hideDesktop {
 	height: 6px;
 	/* hide the bullet tooltip */
 	z-index: 9;
+}
+
+.skip-to-content {
+	position: absolute;
+	z-index: 3; /* over side panel */
+}
+
+body.layout-tab-left .mainMediaContainer .return-to-content,
+body.layout-accordion-left .mainMediaContainer .return-to-content,
+body.layout-bullet-left .mainMediaContainer .return-to-content {
+	left: auto;
+	right: 20%;
+}
+
+body.layout-tab-right .mainMediaContainer .return-to-content,
+body.layout-accordion-right .mainMediaContainer .return-to-content,
+body.layout-bullet-right .mainMediaContainer .return-to-content {
+	right: auto;
+	left: 20%;
 }

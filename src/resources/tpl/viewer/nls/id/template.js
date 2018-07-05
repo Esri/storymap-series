@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Tutup"
+      "close": "Tutup",
+      "focusMainstage": "Kirim fokus keyboard ke media",
+      "expandImage": "Perbesar gambar"
+    },
+    "a11y": {
+      "skipToContent": "Lewati ke konten",
+      "headerAria": "Judul cerita",
+      "panelAria": "Konten cerita",
+      "mainStageAria": "Media entri cerita saat ini",
+      "logoLinkAria": "Tautan logo",
+      "toTop": "Masuk ke entri pertama",
+      "focusContent": "Kembali ke konten",
+      "navAria": "Entri cerita",
+      "toEntryAria": "Masuk ke entri %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Entri %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Konten cerita sedang dimuat",
+      "skipBelowContent": "Lewati di bawah konten ini",
+      "skipBelowVideo": "Lewati di bawah video ini",
+      "skipAboveContent": "Lewati di atas konten ini",
+      "skipAboveVideo": "Lewati di atas video ini",
+      "moreEntries": "Lebih banyak entri"
     },
     "loading": {
       "long": "Cerita sedang menginisialisasi",

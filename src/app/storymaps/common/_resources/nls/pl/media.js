@@ -12,7 +12,8 @@ define({
       "disabled": "Opcja ta została wyłączona przez Administratora",
       "userLookup": "Wczytaj albumy",
       "notImplemented": "Jeszcze nie wprowadzone",
-      "noData": "Nie znaleziono żadnych albumów publicznych"
+      "noData": "Nie znaleziono żadnych albumów publicznych",
+      "thirdPartyTerms": "Używając usługi innych producentów, zgadzasz się na warunki jej użytkowania: "
     },
     "imageSelector": {
       "lblStep1": "Wybierz usługę",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Nazwa użytkownika",
       "signInMsg2": "Nie odnaleziono użytkownika",
       "loadingFailed": "Wczytywanie zakończyło się niepowodzeniem"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Użytkownik Facebook",
-      "rightHeader": "Strona Facebook",
-      "pageExplain": "Strona Facebook to publiczna strona marki/produktu lub znanej osoby, np.<b>esrigis</b>. Nazwa strony została umieszczona po pierwszym znaku „/” w adresie URL strony.",
-      "pageInputLbl": "Nazwa strony",
-      "lookupMsgError": "Nie znaleziono strony",
-      "warning": "Facebook nie jest już obsługiwany, ${learn}.",
-      "learn": "więcej informacji"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "Adres e-mail lub identyfikator z serwisu Google",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Jeśli w witrynie internetowej są udostępniane materiały audio lub wideo, ta opcja powinna być zaznaczona, aby po przejściu czytelnika dalej odtwarzanie tych treści było przerywane. Należy wyłączyć zaznaczenie opcji, aby na przykład podczas czytania tekstu przez czytelnika odtwarzane były utwory muzyczne.<br />Jeżeli ta witryna internetowa jest aplikacją, tę opcję należy wyłączyć, aby uniknąć ponownego wczytywania tej narracji, gdy czytelnik do niej wróci.",
       "embedProtocolLabel": "Wczytywanie strony przez bezpieczne połączenie (HTTPS)",
       "embedProtocolWarning1": "Jeśli ta strona nie jest wczytywana w narracji, nie można jej osadzać ze względów bezpieczeństwa internetowego. Alternatywnie można dodać łącze w narracji umożliwiające otwarcie tej strony na nowej karcie przeglądarki. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Dowiedz się więcej</a>",
-      "embedProtocolWarning2": "Jeśli ta strona nie jest wczytywana w narracji, wyłącz zaznaczenie tej opcji i spróbuj ponownie. Jeśli ta strona nadal nie jest wczytywana, nie można jej osadzać ze względów bezpieczeństwa internetowego. Alternatywnie można dodać łącze w narracji umożliwiające otwarcie tej strony na nowej karcie przeglądarki. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Dowiedz się więcej</a>"
+      "embedProtocolWarning2": "Jeśli ta strona nie jest wczytywana w narracji, wyłącz zaznaczenie tej opcji i spróbuj ponownie. Jeśli ta strona nadal nie jest wczytywana, nie można jej osadzać ze względów bezpieczeństwa internetowego. Alternatywnie można dodać łącze w narracji umożliwiające otwarcie tej strony na nowej karcie przeglądarki. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Dowiedz się więcej</a>",
+      "learn": "Dowiedz się więcej",
+      "lblAltText": "Tekst alternatywny",
+      "placeholderAltText": "Wprowadź opis tego medium dla odbiorców niedowidzących...",
+      "tooltipAltText": "Podaj opis zawartości tego medium, który będzie używany przez technologie wspomagające, takie jak oprogramowanie do czytania tekstu z ekranu. Opis jest opcjonalny, ale zalecany w celu spełnienia wytycznych dotyczących dostępności zawartości internetowej, takich jak WCAG oraz artykuł 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Lokalizuj adres lub miejsce",

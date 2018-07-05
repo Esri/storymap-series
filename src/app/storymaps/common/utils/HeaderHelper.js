@@ -36,6 +36,7 @@ define([
 					var logoLink = container.find('.logoLink');
 					if (headerCfg.logoTarget) {
 						logoLink.css('cursor', 'pointer')
+										.attr('aria-label', i18n.viewer.a11y ? i18n.viewer.a11y.logoLinkAria : '')
 										.attr('href', headerCfg.logoTarget);
 					} else {
 						logoLink.css('cursor', 'default')
@@ -55,13 +56,15 @@ define([
 						resizeLinkContainer(container);
 					};
 
-					logoImg.attr("src", CommonHelper.possiblyAddToken(headerCfg.logoURL)).show();
+					logoImg.attr("src", CommonHelper.possiblyAddToken(headerCfg.logoURL))
+									.attr('alt', i18n.viewer.a11y ? i18n.viewer.a11y.logoAria : '')
+									.show();
 				}
 			},
 			setLink: function(container, headerCfg)
 			{
 				if( headerCfg.linkURL && headerCfg.linkText )
-					container.find('.linkContainer').html('<a href="' + headerCfg.linkURL + '" class="link" target="_blank" tabindex="-1">' + headerCfg.linkText + '</a>');
+					container.find('.linkContainer').html('<a href="' + headerCfg.linkURL + '" class="link" target="_blank">' + headerCfg.linkText + '</a>');
 				else
 					container.find('.linkContainer').html(headerCfg.linkText);
 			},
@@ -125,6 +128,22 @@ define([
 			},
 			initEvents: function(container/*, bitlyPlacement*/)
 			{
+				// force tab order from header to panel even though it would naturally go to mainstage
+				if (app.ui && app.ui.accordionPanel) {
+					container.off('keydown').on('keydown', function(evt) {
+						if (evt.keyCode !== 9 || evt.shiftKey || app.isInBuilder || app.data.getWebAppData().getLayoutId() !== 'accordion') {
+							return;
+						}
+						var focusables = container.find(app.appCfg.focusable).filter(':visible');
+						var focusElem = $(':focus');
+						var focusIndex = focusables.index(focusElem);
+						if (focusIndex === focusables.length - 1) {
+							app.ui.accordionPanel.focus(0);
+							return false;
+						}
+					});
+
+				}
 				container.find(".share_facebook").off('click').click(function(){
 					if ( $(this).hasClass("disabled") )
 						return;
@@ -191,9 +210,11 @@ define([
 					}
 				});
 
-				container.find('.share_facebook').attr("title", i18n.viewer.headerFromCommon.facebookTooltip);
-				container.find('.share_twitter').attr("title", i18n.viewer.headerFromCommon.twitterTooltip);
-				container.find('.share_bitly').attr("title", i18n.viewer.headerFromCommon.bitlyTooltip);
+				var headerStrs = i18n.viewer.headerFromCommon;
+
+				container.find('.share_facebook').attr("title", headerStrs.facebookTooltip).attr('aria-label', headerStrs.facebookTooltip);
+				container.find('.share_twitter').attr("title", headerStrs.twitterTooltip).attr('aria-label', headerStrs.twitterTooltip);
+				container.find('.share_bitly').attr("title", headerStrs.bitlyTooltip).attr('aria-label', headerStrs.bitlyTooltip);
 
 				$(window).resize(function(){
 					resizeLinkContainer(container);

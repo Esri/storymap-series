@@ -10,6 +10,10 @@
 	box-shadow: rgba(0, 0, 0, 0.498039) 0px 4px 7px !important;
 }
 
+.legendContainer .titleBtn {
+	outline-offset: -3px; /* get focus ring to show */
+}
+
 .legendContainer table {
 	border-collapse: initial !important;
 	border-spacing: 2px !important;

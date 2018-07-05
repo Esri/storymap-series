@@ -9,7 +9,7 @@
 					<td class="accordion-header-number"><%= index %></td>
 				<% } %>
 				<td class="accordion-header-title">
-					<div class="accordion-header-title-wrapper"><%= title %></div>
+					<h2 class="accordion-header-title-wrapper"><%= title %></h2>
 				</td>
 			</tr>
 		</table>
@@ -21,6 +21,9 @@
 	</div>
 	<div class="accordion-content">
 		<% if ( ! isInBuilder ) { %>
+			<div class="centering focus-mainstage-wrapper">
+				<button class="link visible-on-focus focus-mainstage"><%= lblMainstageBtn %></button>
+			</div>
 			<div class="description">
 				<%= description %>
 			</div>

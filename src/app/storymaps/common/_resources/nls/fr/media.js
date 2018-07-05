@@ -12,7 +12,8 @@ define({
       "disabled": "Cette fonction a été désactivée par l'administrateur",
       "userLookup": "Charger des albums",
       "notImplemented": "Fonction pas encore implémentée.",
-      "noData": "Aucun album public trouvé"
+      "noData": "Aucun album public trouvé",
+      "thirdPartyTerms": "En utilisant un service tiers, vous acceptez ses conditions d’utilisation : "
     },
     "imageSelector": {
       "lblStep1": "Choisir le service",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Nom d'utilisateur",
       "signInMsg2": "Utilisateur introuvable",
       "loadingFailed": "Echec du chargement"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Utilisateur de Facebook",
-      "rightHeader": "Page Facebook",
-      "pageExplain": "Une page Facebook est une marque, une célébrité ou un produit public, comme <b>esrigis</b>. Vous pouvez obtenir le nom de la page après la première barre oblique inverse '/' de l'URL de la page.",
-      "pageInputLbl": "Nom de page",
-      "lookupMsgError": "Page introuvable",
-      "warning": "La prise en charge de Facebook a été interrompue, ${learn}.",
-      "learn": "en savoir plus"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "Adresse électronique ou identifiant Google",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Si la page Web comporte un support audio ou vidéo, cette option doit rester activée pour empêcher la lecture du contenu lorsque le lecteur quitte cette section. Désactivez cette option pour continuer la lecture d'une piste audio pendant que le lecteur avance dans le récit.<br />Si la page Web est une application, désactivez cette option pour que le récit ne se recharge pas si le lecteur revient à cette section.",
       "embedProtocolLabel": "Charger la page via une connexion sécurisée (HTTPS)",
       "embedProtocolWarning1": "Si cette page ne se charge pas dans votre récit, elle ne peut pas être incorporée pour des raisons de sécurité Web. Vous pouvez également ajouter un lien dans votre narration afin d'ouvrir la page dans un nouvel onglet du navigateur. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>En savoir plus</a>",
-      "embedProtocolWarning2": "Si cette page ne se charge pas dans votre récit, désélectionnez cette option et réessayez. Si la page ne se charge toujours pas, elle ne peut pas être incorporée pour des raisons de sécurité Web. Vous pouvez également ajouter un lien dans votre narration afin d'ouvrir la page dans un nouvel onglet du navigateur. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>En savoir plus</a>"
+      "embedProtocolWarning2": "Si cette page ne se charge pas dans votre récit, désélectionnez cette option et réessayez. Si la page ne se charge toujours pas, elle ne peut pas être incorporée pour des raisons de sécurité Web. Vous pouvez également ajouter un lien dans votre narration afin d'ouvrir la page dans un nouvel onglet du navigateur. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>En savoir plus</a>",
+      "learn": "En savoir plus",
+      "lblAltText": "Texte de remplacement",
+      "placeholderAltText": "Entrez une description de ce support pour les lecteurs malvoyants...",
+      "tooltipAltText": "Indiquez une description du contenu de ce support qui sera utilisée par les technologies d’assistance, telles que les logiciels de lecteur d’écran. Cette description est facultative mais conseillée à des fins de compatibilité avec les directives en matière d’accessibilité Web, telles que WCAG et Section 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Localiser une adresse ou un lieu",

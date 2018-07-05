@@ -12,7 +12,8 @@ define({
       "disabled": "Bu özellik Yönetici tarafından devre dışı bırakıldı",
       "userLookup": "Albüm yükle",
       "notImplemented": "Henüz uygulanmadı.",
-      "noData": "Hiçbir genel albüm bulunamadı"
+      "noData": "Hiçbir genel albüm bulunamadı",
+      "thirdPartyTerms": "Bir üçüncü parti hizmetini kullanarak, hizmet şartlarını kabul etmiş olursunuz: "
     },
     "imageSelector": {
       "lblStep1": "Servisi seç",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Kullanıcı adı",
       "signInMsg2": "Kullanıcı bulunamadı",
       "loadingFailed": "Yükleme başarısız"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebook Kullanıcısı",
-      "rightHeader": "Facebook Sayfası",
-      "pageExplain": "Facebook sayfası, <b>esrigis</b> gibi genel bir marka/ürün veya ünlü kişiliktir. Sayfa adını sayfa URL'sindeki ilk '/' karakterinden alabilirsiniz.",
-      "pageInputLbl": "Sayfa adı",
-      "lookupMsgError": "Sayfa bulunamadı",
-      "warning": "Facebook desteği artık verilmemektedir, ${learn}.",
-      "learn": "daha fazla bilgi"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "E-posta veya Google ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Web sayfasında ses veya video ortamı varsa, okuyucu başka bir yere gittiğinde içeriğin oynatımını durdurmak için bu seçeneği işaretli bırakın. Okuyucu metin boyunca ilerlerken örneğin bir arka plan müziğini oynatmaya devam etmek için işareti kaldırın.<br />Web sayfası bir uygulamaysa, bu seçeneğin işaretini kaldırarak, okuyucu geri döndüğünde hikayenin yeniden yüklenmesini önleyebilirsiniz.",
       "embedProtocolLabel": "Sayfayı bir güvenli bağlantı üzerinden yükle (HTTPS)",
       "embedProtocolWarning1": "Bu sayfa hikayenizde yüklenmiyorsa, web güvenliği nedeniyle katıştırılamaz. Alternatif olarak, açıklamanıza bir bağlantı ekleyerek sayfayı yeni bir tarayıcı sekmesinde açabilirsiniz. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Daha fazla bilgi</a>",
-      "embedProtocolWarning2": "Bu sayfa hikayenizde yüklenmiyorsa, bu seçeneğin işaretini kaldırın ve yeniden deneyin. Sayfa yine de yüklenmiyorsa, web güvenliği nedeniyle katıştırılamaz. Alternatif olarak, açıklamanıza bir bağlantı ekleyerek sayfayı yeni bir tarayıcı sekmesinde açabilirsiniz. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Daha fazla bilgi</a>"
+      "embedProtocolWarning2": "Bu sayfa hikayenizde yüklenmiyorsa, bu seçeneğin işaretini kaldırın ve yeniden deneyin. Sayfa yine de yüklenmiyorsa, web güvenliği nedeniyle katıştırılamaz. Alternatif olarak, açıklamanıza bir bağlantı ekleyerek sayfayı yeni bir tarayıcı sekmesinde açabilirsiniz. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Daha fazla bilgi</a>",
+      "learn": "Daha fazla bilgi",
+      "lblAltText": "Alternatif Metin",
+      "placeholderAltText": "Görme engelli okuyucular için bu medyanın bir açıklamasını girin...",
+      "tooltipAltText": "Bu medya içeriği için, ekran okuyucu yazılımı gibi yardımcı teknolojiler tarafından kullanılacak bir açıklama girin. Açıklama isteğe bağlıdır ancak WCAG ve Bölüm 508 gibi web erişilebilirlik kurallarını karşılamak için önerilir."
     },
     "editorActionGeocode": {
       "lblTitle": "Adres veya yer bul",

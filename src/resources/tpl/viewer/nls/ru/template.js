@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Закрыть"
+      "close": "Закрыть",
+      "focusMainstage": "Отправить фокус ввода с клавиатуры в медиа",
+      "expandImage": "Развернуть изображение"
+    },
+    "a11y": {
+      "skipToContent": "Перейти к ресурсам",
+      "headerAria": "Заголовок истории",
+      "panelAria": "Ресурсы истории",
+      "mainStageAria": "Медиа записи текущей истории",
+      "logoLinkAria": "Ссылка на логотип",
+      "toTop": "Перейти к первой записи",
+      "focusContent": "Вернуться к ресурсу",
+      "navAria": "Записи истории",
+      "toEntryAria": "Перейти к записи %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Запись %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Содержание истории загружено",
+      "skipBelowContent": "Пропустить под этим ресурсом",
+      "skipBelowVideo": "Пропустить под этим видео",
+      "skipAboveContent": "Пропустить над этим ресурсом",
+      "skipAboveVideo": "Пропустить над этим видео",
+      "moreEntries": "Больше записей"
     },
     "loading": {
       "long": "История инициализируется.",

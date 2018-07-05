@@ -41,8 +41,17 @@ define(["dojo/topic",
 			str2 = $(str2);
 			str2.find('.description > *').each(function(i, elem){
 				var $elem = $(elem);
-				if ( $elem.html() != "&nbsp;" )
-					$elem.attr("tabindex", "0");
+				if (($elem).attr('tabindex')) {
+					// remove tabindex from paragraphs (they're stored in the story json)
+					var tagName = $elem.prop('tagName');
+					if (tagName === 'P' || tagName === 'FIGURE') {
+						$elem.removeAttr('tabindex');
+					} else {
+						// todo: what other things currently have tabindex?
+					}
+				}
+				// make story actions tabbable by adding a href="#" property
+				$elem.find('a[data-storymaps]:not([href])').prop('href', '#');
 			});
 
 			return str2;
@@ -59,7 +68,35 @@ define(["dojo/topic",
 
 			content.find("iframe").each(function(i, frame){
 				var $frame = $(frame),
-					dataUnload = $frame.attr('data-unload');
+					dataUnload = $frame.attr('data-unload'),
+					a11yStrs = i18n.viewer.a11y,
+					btnStr1 = a11yStrs.skipBelowContent,
+					btnStr2 = a11yStrs.skipAboveContent;
+				if ($frame.attr('src').match(/vimeo\.com\/|youtube.com\//)) {
+					btnStr1 = a11yStrs.skipBelowVideo;
+					btnStr2 = a11yStrs.skipAboveVideo;
+				}
+
+				var skipFrame = $('<button>', {
+					'class': 'visible-on-focus skip-iframe',
+					'text': btnStr1
+				});
+
+				var skipBack = $('<button>', {
+					'class': 'visible-on-focus skip-back',
+					'text': btnStr2
+				});
+
+				skipFrame.on('click', function() {
+					skipBack.focus();
+				});
+
+				skipBack.on('click', function() {
+					skipFrame.focus();
+				});
+
+				$frame.before(skipFrame);
+				$frame.after(skipBack);
 
 				// Don't use .data('src') on purpose (stored memory not persisted when added DOM later)
 				$frame
@@ -170,7 +207,24 @@ define(["dojo/topic",
 				title: imgNode.parents('figure').find('figcaption').html() || imgNode.attr('title'),
 				scalePhotos: true,
 				maxWidth: '90%',
-				maxHeight: '90%'
+				maxHeight: '90%',
+				// restore focus to where we came from (otherwise, focus is completely lost,
+				// and the user has to start over again). this will affect non-keyboard nav, and
+				// put the default focus ring around the fullscreen button on the image for all users
+				onClosed: function() {
+					imgNode.siblings('.btn-fullscreen').focus();
+					$('body').off('keydown');
+				},
+				onComplete: function() {
+					// trap focus in modal if you try to tab away from the close button
+					var closeBtn = $('#cboxClose');
+					$('body').on('keydown', function(evt) {
+						if (evt.keyCode === 9 && evt.target === closeBtn[0] && !evt.shiftKey) {
+							evt.preventDefault();
+							evt.stopImmediatePropagation();
+						}
+					});
+				}
 			});
 
 			setTimeout(function(){
@@ -189,9 +243,13 @@ define(["dojo/topic",
 					.addClass(hasWidth ? "has-width" : "no-width")
 					.addClass(floatRight ? "float-right" : "");
 				$(node)
-					.wrap("<div class='image-wrapper'></div>")
-					.after($('<span class="btn-fullscreen"></span>').click(mediaFullScreen))
+					.wrap("<div class='image-wrapper'></div>");
+				if (($(node).parents('#mobileView').length)) {
+					$(node).parents('.image-container').removeClass('activate-fullscreen');
+				} else {
+					$(node).after($('<button class="btn-fullscreen" title="' + i18n.viewer.common.expandImage + '"></button>').click(mediaFullScreen))
 					.click(mediaFullScreen);
+				}
 			});
 
 			$(document)
@@ -206,6 +264,17 @@ define(["dojo/topic",
 				if( _fullScreenMediaIsOpening )
 					return;
 				$.colorbox.close();
+			});
+		}
+
+		function createMainStageFocusButton() {
+
+			$('.descriptions .focus-mainstage').add('.accordion-content .focus-mainstage').on('click', function(evt) {
+				var index = $(this).parents('.entry').index();
+				if (index !== app.data.getCurrentSectionIndex()) {
+					app.ui.mainStage.updateMainMediaWithStoryMainMedia(index);
+				}
+				app.ui.mainStage.focusActiveMainstage(evt.target);
 			});
 		}
 
@@ -236,14 +305,14 @@ define(["dojo/topic",
 				}
 			}
 			else if ( action.type == "zoom" ) {
-				handleZoomAction(action.zoom, currentMedia, backBtnWasVisible);
+				handleZoomAction(action.zoom, currentMedia, backBtnWasVisible, link);
 			}
 			else if ( action.type == "media" ) {
-				handleMediaAction(action.media, currentMedia, backBtnWasVisible);
+				handleMediaAction(action.media, currentMedia, backBtnWasVisible, link);
 			}
 		}
 
-		function handleMediaAction(mediaAction, currentMedia, backBtnWasVisible) {
+		function handleMediaAction(mediaAction, currentMedia, backBtnWasVisible, link) {
 			var currentMediaIsWebmap = currentMedia && currentMedia.type == "webmap",
 				currentExtent = currentMediaIsWebmap ? new Extent(app.map.extent.toJson()) : null,
 				currentWebmapId = currentMediaIsWebmap ? currentMedia.webmap.id : null,
@@ -255,12 +324,32 @@ define(["dojo/topic",
 				actionChangeLayers = !! (actionIsWebmap && actionWebmap.layers);
 
 				topic.publish("story-perform-action-media", mediaAction);
+				var currentWebmap = actionIsWebmap ? app.maps[mediaAction.webmap.id] : null;
+				if (actionIsWebmap && !currentWebmap) {
+					var handle = topic.subscribe('story-loaded-map', function() {
+						handle.remove();
+						currentWebmap = app.maps[mediaAction.webmap.id];
+						if (actionChangeExtent && currentWebmap.mapCommand) {
+							app.maps[mediaAction.webmap.id].mapCommand.currentHomeExtent = new Extent(mediaAction.webmap.extent);
+						}
+
+						setTimeout(function() {
+							app.ui.mainStage.focusActiveMainstage(link, true);
+						}, 500);
+					});
+				} else {
+					if (actionChangeExtent && currentWebmap.mapCommand) {
+						app.maps[mediaAction.webmap.id].mapCommand.currentHomeExtent = new Extent(mediaAction.webmap.extent);
+					}
+					app.ui.mainStage.focusActiveMainstage(link, true);
+				}
 
 				if (!backBtnWasVisible) {
 					$('.backButton').off('click').click(lang.partial(
 						backBtnCb,
 						currentMedia,
-						currentExtent
+						currentExtent,
+						link
 					));
 				}
 
@@ -350,7 +439,7 @@ define(["dojo/topic",
 			$('.mediaBackContainer').show().css('margin', '-' + backBtnAdjust + ', 0');
 		}
 
-		function backBtnCb(sectionMedia, previousExtent) {
+		function backBtnCb(sectionMedia, previousExtent, link) {
 			topic.publish('story-navigate-entry', app.data.getCurrentEntryIndex());
 			if (sectionMedia && sectionMedia.webmap && app.map) {
 				app.map.infoWindow.hide();
@@ -366,6 +455,7 @@ define(["dojo/topic",
 				maybeShowLegend(sectionMedia.webmap);
 			}
 			$('.mediaBackContainer').hide();
+			app.ui.mainStage.exitMainstage(null, link);
 			showMobilePanel();
 			switchToMobileDesc();
 
@@ -411,7 +501,7 @@ define(["dojo/topic",
 
 		}
 
-		function handleZoomAction(zoomAction, currentMedia, backBtnWasVisible) {
+		function handleZoomAction(zoomAction, currentMedia, backBtnWasVisible, link) {
 			var currentMediaIsWebmap = currentMedia && currentMedia.type == "webmap",
 				currentExtent = currentMediaIsWebmap ? new Extent(app.map.extent.toJson()) : null;
 
@@ -439,7 +529,8 @@ define(["dojo/topic",
 				$('.backButton').off('click').click(lang.partial(
 					backBtnCb,
 					currentMedia,
-					currentExtent
+					currentExtent,
+					link
 				));
 			}
 			switchToMobileDesc();
@@ -533,6 +624,7 @@ define(["dojo/topic",
 			prepareEditorContent: prepareEditorContent,
 			createMainMediaActionLink: createMainMediaActionLink,
 			createMediaFullScreenButton: createMediaFullScreenButton,
+			createMainStageFocusButton: createMainStageFocusButton,
 			performAction: performAction,
 			styleSectionPanelContent: styleSectionPanelContent,
 			prepareContentIframe: prepareContentIframe,

@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Aizvērt"
+      "close": "Aizvērt",
+      "focusMainstage": "Sūtīt klaviatūras fokusu uz saturu",
+      "expandImage": "Izvērst attēlu"
+    },
+    "a11y": {
+      "skipToContent": "Pāriet uz saturu",
+      "headerAria": "Stāsta galvene",
+      "panelAria": "Stāsta saturs",
+      "mainStageAria": "Pašreizējā stāsta ieraksta multivide",
+      "logoLinkAria": "Logotipa saite",
+      "toTop": "Doties uz pirmo ierakstu",
+      "focusContent": "Atgriezties uz saturu",
+      "navAria": "Stāsta ieraksti",
+      "toEntryAria": "Doties uz ierakstu %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Ieraksts %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Notiek stāsta satura ielāde",
+      "skipBelowContent": "Pārlēkt zem šī satura",
+      "skipBelowVideo": "Pārlēkt zem šī video",
+      "skipAboveContent": "Pārlēkt virs šī satura",
+      "skipAboveVideo": "Pārlēkt virs šī video",
+      "moreEntries": "Citi ieraksti"
     },
     "loading": {
       "long": "Notiek stāsta inicializēšana",

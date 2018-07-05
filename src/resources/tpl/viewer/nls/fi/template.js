@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Sulje"
+      "close": "Sulje",
+      "focusMainstage": "Lähetä näppäimistön kohdistus mediaan",
+      "expandImage": "Laajenna kuva"
+    },
+    "a11y": {
+      "skipToContent": "Siirry sisältöön",
+      "headerAria": "Tarinan otsikko",
+      "panelAria": "Tarinan sisältö",
+      "mainStageAria": "Nykyisen tarinamerkinnän media",
+      "logoLinkAria": "Logolinkki",
+      "toTop": "Siirry ensimmäiseen merkintään",
+      "focusContent": "Palaa sisältöön",
+      "navAria": "Tarinan merkinnät",
+      "toEntryAria": "Siirry merkintään %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Merkintä %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Tarinan sisältö latautuu",
+      "skipBelowContent": "Siirry tämän sisällön alapuolelle",
+      "skipBelowVideo": "Siirry tämän videon alapuolelle",
+      "skipAboveContent": "Siirry tämän sisällön yläpuolelle",
+      "skipAboveVideo": "Siirry tämän videon yläpuolelle",
+      "moreEntries": "Lisää merkintöjä"
     },
     "loading": {
       "long": "Tarinaa alustetaan",

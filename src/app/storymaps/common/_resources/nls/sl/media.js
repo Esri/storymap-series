@@ -12,7 +12,8 @@ define({
       "disabled": "Administrator je onemogočil to funkcionalnost",
       "userLookup": "Naloži albume",
       "notImplemented": "Ni še uveljavljeno.",
-      "noData": "Javni albumi niso najdeni"
+      "noData": "Javni albumi niso najdeni",
+      "thirdPartyTerms": "Z uporabo storitve tretje osebe se strinjate z njenimi pogoji storitve: "
     },
     "imageSelector": {
       "lblStep1": "Izberite storitev",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Uporabniško ime",
       "signInMsg2": "Uporabnik ni najden",
       "loadingFailed": "Nalaganje ni uspelo"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Uporabnik Facebooka",
-      "rightHeader": "Facebook stran",
-      "pageExplain": "Facebook stran je javna blagovna znamka/izdelek ali znani subjekt, kot je <b>esrigis</b>. Ime strani vidite po prvem znaku »/« v URL-ju strani.",
-      "pageInputLbl": "Ime strani",
-      "lookupMsgError": "Stran ni najdena",
-      "warning": "Podpora za Facebook je opuščena, ${learn}.",
-      "learn": "izvedite več"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "E-pošta ali ID za Google",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Če ima spletna stran zvočno ali video vsebino, naj bo ta možnost obkljukana, da se predvajanje vsebine ustavi, ko bralec zapusti stran. Odkljukajte jo, če želite, da se zvočni posnetek predvaja, medtem ko bralec napreduje skozi zgodbo.<br />Če je spletna stran aplikacija, odkljukajte to možnost, da se zgodba ne bo ponovno naložila, če se bralec vrne na zgodbo.",
       "embedProtocolLabel": "Naložite stran prek varne povezave (HTTPS)",
       "embedProtocolWarning1": "Če se stran v vaši zgodbi ne naloži, je ne bo mogoče vdelati zaradi varnostnih razlogov. Namesto tega dodajte povezavo v zgodbo, da odprete stran v novem zavihku brskalnika.<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Izvedite več</a>",
-      "embedProtocolWarning2": "Če se stran v vaši zgodbi ne naloži, odkljukajte to možnost in poskusite znova. Če se stran še vedno ne naloži, je ni mogoče vdelati zaradi varnostnih razlogov. Namesto tega dodajte povezavo v zgodbo, da odprete stran v novem zavihku brskalnika.<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Izvedite več</a>"
+      "embedProtocolWarning2": "Če se stran v vaši zgodbi ne naloži, odkljukajte to možnost in poskusite znova. Če se stran še vedno ne naloži, je ni mogoče vdelati zaradi varnostnih razlogov. Namesto tega dodajte povezavo v zgodbo, da odprete stran v novem zavihku brskalnika.<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Izvedite več</a>",
+      "learn": "Več",
+      "lblAltText": "Nadomestno besedilo",
+      "placeholderAltText": "Vnesite opis tega medija za slabovidne bralce...",
+      "tooltipAltText": "Navedite opis te medijske vsebine, ki jo bodo uporabljale podporne tehnologije, kot je programska oprema bralnika zaslona. Opis je izbiren a priporočljiv za ustrezanje smernicam za dostop do spleta, kot sta WCAG in Razdelek 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Najdite naslov ali kraj",

@@ -12,7 +12,8 @@ define({
       "disabled": "Người quản trị đã vô hiệu hóa tính năng này",
       "userLookup": "Tải album",
       "notImplemented": "Chưa được thực hiện.",
-      "noData": "Không tìm thấy album công khai nào"
+      "noData": "Không tìm thấy album công khai nào",
+      "thirdPartyTerms": "Khi sử dụng dịch vụ của bên thứ ba, bạn đồng ý với các điều khoản dịch vụ của bên đó: "
     },
     "imageSelector": {
       "lblStep1": "Chọn dịch vụ",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Tên đăng nhập",
       "signInMsg2": "Không tìm thấy người dùng",
       "loadingFailed": "Tải thất bại"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Người dùng Facebook",
-      "rightHeader": "Trang Facebook",
-      "pageExplain": "Trang Facebook là một thương hiệu/sản phẩm công cộng hay nổi tiếng như <b>esrigis</b>. Bạn có thể lấy tên trang sau '/' đầu tiên trong URL trang.",
-      "pageInputLbl": "Tên trang",
-      "lookupMsgError": "Không tìm thấy trang",
-      "warning": "Hỗ trợ Facebook đã bị chấm dứt, ${learn}.",
-      "learn": "tìm hiểu thêm"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "ID Email hoặc Google",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Nếu trang web có âm thanh hoặc video, tiếp tục chọn tùy chọn này để dừng phát nội dung đó khi người đọc điều hướng ra ngoài. Ví dụ: bỏ chọn để tiếp tục phát âm thanh khi trình đọc chuyển qua câu chuyện.<br />Nếu trang web là một ứng dụng, bỏ chọn tùy chọn này để câu chuyện không tải lại nếu người đọc quay trở lại.",
       "embedProtocolLabel": "Tải trang qua kết nối bảo mật (HTTPS)",
       "embedProtocolWarning1": "Nếu trang này không tải bên trong câu chuyện của bạn, thì bạn không thể nhúng nó vì lý do bảo mật web. Thay vào đó, hãy thêm một liên kết trong câu chuyện của bạn để mở trang web ở một tab trình duyệt mới. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Tìm hiểu thêm</a>",
-      "embedProtocolWarning2": "Nếu trang này không tải trong câu chuyện của bạn, hãy bỏ chọn tùy chọn này và thử lại. Nếu trang vẫn không tải, thì bạn không thể nhúng nó vì lý do bảo mật web. Thay vào đó, hãy thêm một liên kết trong câu chuyện của bạn để mở trang web ở một tab trình duyệt mới. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Tìm hiểu thêm</a>"
+      "embedProtocolWarning2": "Nếu trang này không tải trong câu chuyện của bạn, hãy bỏ chọn tùy chọn này và thử lại. Nếu trang vẫn không tải, thì bạn không thể nhúng nó vì lý do bảo mật web. Thay vào đó, hãy thêm một liên kết trong câu chuyện của bạn để mở trang web ở một tab trình duyệt mới. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Tìm hiểu thêm</a>",
+      "learn": "Tìm hiểu thêm",
+      "lblAltText": "Văn bản Thay thế",
+      "placeholderAltText": "Nhập thông tin mô tả phương tiện này cho các người xem khiếm thị...",
+      "tooltipAltText": "Cung cấp thông tin mô tả nội dung phương tiện này mà sẽ được các công nghệ hỗ trợ như phần mềm đọc màn hình sử dụng. Thông tin mô tả không bắt buộc, nhưng được khuyến nghị để đáp ứng các hướng dẫn về khả năng truy cập web chẳng hạn như WCAG và Mục 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Định vị một địa chỉ hoặc địa điểm",

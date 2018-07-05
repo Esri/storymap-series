@@ -1,12 +1,14 @@
-<div class="mainMediaContainer">
-	
+<div class="mainMediaContainer" tabindex="0" aria-label="<%= altText %>">
+  <button class="visible-on-focus return-to-content top"><%= focusToPanel %></button>
+
     <% if ( url ){ %>
     	<iframe class="embedContainer" data-src="<%= url %>" data-unload="<%= unload %>" allowfullscreen="1"></iframe>
     <% } else if ( frameTag ){ %>
     	<%= frameTag %>
     <% } %>
-    
-    <div class="mobilePopup mobileInfo hideContent">
-    	<div class="description textEditorContent"></div>
-    </div>
+
+  <button class="visible-on-focus return-to-content bottom"><%= focusToPanel %></button>
+  <div class="mobilePopup mobileInfo hideContent">
+    <div class="description textEditorContent"></div>
+  </div>
 </div>

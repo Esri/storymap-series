@@ -91,8 +91,12 @@ define(["lib-build/css!./InlineFieldEdit",
 				}
 
 
-				// Basic XSS check
-				value = value.replace(/<\/?script>/g,'');
+				if(!app.data.getWebAppItem().created || app.data.getWebAppItem().created > app.cfg.HTML_SANITIZER_DATE) {
+					value = app.sanitizer.sanitize(value);
+				} else {
+					// Basic XSS check
+					value = value.replace(/<\/?script>/g,'');
+				}
 
 				label.parent().parent().removeClass("isEditing");
 				label.html(value);

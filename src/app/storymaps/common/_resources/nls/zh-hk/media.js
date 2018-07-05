@@ -12,7 +12,8 @@ define({
       "disabled": "管理員已停用此功能",
       "userLookup": "載入圖片集",
       "notImplemented": "尚未實作。",
-      "noData": "未找到公開圖片集"
+      "noData": "未找到公開圖片集",
+      "thirdPartyTerms": "使用協力廠商服務時，即表示您同意其服務條款。 "
     },
     "imageSelector": {
       "lblStep1": "選擇服務",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "使用者名稱",
       "signInMsg2": "未找到使用者",
       "loadingFailed": "載入失敗"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebook 使用者",
-      "rightHeader": "Facebook 頁面",
-      "pageExplain": "Facebook 頁面屬￿公開品牌/產品或像 <b>esrigis</b> 一樣的名品。您可以在 URL 頁面的第一個 '/' 後面取得頁面名稱。",
-      "pageInputLbl": "頁面名稱",
-      "lookupMsgError": "未找到頁面",
-      "warning": "Facebook 支援已中斷，${learn}。",
-      "learn": "瞭解詳細資訊"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "電子郵件或 Google ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "如果網頁中包含音頻或影片介質，請將該選項選中以在讀者定位到其他部分時停止內容播放。取消勾選該選項可使讀者在瀏覽故事的同時持續播放音軌。<br />如果網頁是應用程式，請取消勾選該選項，這樣故事不必在讀者返回此部分時重新載入。",
       "embedProtocolLabel": "透過安全連線 (HTTPS) 載入頁面",
       "embedProtocolWarning1": "若您的故事未載入此網頁，則基於 Web 安全性原因將無法內嵌它。替代方案是在敘述中新增連結，以便在新的瀏覽器頁籤中開啟網頁。<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>瞭解詳細資訊</a>",
-      "embedProtocolWarning2": "若您的故事未載入此網頁，請取消勾選此選項並再試一次。若仍未載入此網頁，則基於 Web 安全性原因將無法內嵌它。替代方案是在敘述中新增連結，以便在新的瀏覽器頁籤中開啟網頁。<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>瞭解詳細資訊</a>"
+      "embedProtocolWarning2": "若您的故事未載入此網頁，請取消勾選此選項並再試一次。若仍未載入此網頁，則基於 Web 安全性原因將無法內嵌它。替代方案是在敘述中新增連結，以便在新的瀏覽器頁籤中開啟網頁。<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>瞭解詳細資訊</a>",
+      "learn": "瞭解詳細資訊",
+      "lblAltText": "替代文字",
+      "placeholderAltText": "為視障讀者輸入此媒體的說明。",
+      "tooltipAltText": "提供此媒體內容的說明，供輔助技術 (如螢幕助讀程式軟體) 使用。 描述是選用的，但建議您遵循 WCAG 和第 508 節之類的 Web 協助工具指導方針。"
     },
     "editorActionGeocode": {
       "lblTitle": "定位地址或地點",

@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Sluiten"
+      "close": "Sluiten",
+      "focusMainstage": "Stuur toetsenbordfocus naar media",
+      "expandImage": "Beeld vergroten"
+    },
+    "a11y": {
+      "skipToContent": "Overslaan naar content",
+      "headerAria": "Koptekst verhaal",
+      "panelAria": "Verhaalinhoud",
+      "mainStageAria": "Huidige verhaalinvoer media",
+      "logoLinkAria": "Logolink",
+      "toTop": "Ga naar eerste invoer",
+      "focusContent": "Terug naar inhoud",
+      "navAria": "Verhaalinvoer",
+      "toEntryAria": "Ga naar invoer %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Invoer %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Verhaalinhoud wordt geladen",
+      "skipBelowContent": "Overslaan onder deze inhoud",
+      "skipBelowVideo": "Overslaan onder deze video",
+      "skipAboveContent": "Overslaan boven deze inhoud",
+      "skipAboveVideo": "Overslaan boven deze video",
+      "moreEntries": "Meer invoer"
     },
     "loading": {
       "long": "Verhaal wordt gestart",

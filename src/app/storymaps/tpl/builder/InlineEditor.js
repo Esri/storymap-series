@@ -38,6 +38,7 @@ define(["lib-build/css!./InlineEditor",
 					{ name: 'styles', items: [ 'FontSize' ] },
 					{ name: 'insert', groups: [ 'storymapsInlineMedia' ], items: [ 'InlineMedia' ] },
 					{ name: 'links', items: [ 'Link', 'Unlink' ] },
+					{ name: 'document', groups: [ 'mode', 'document', 'doctools', 'tools'], items: [ 'Source', 'Maximize' ] },
 					{ name: 'paragraph', groups: [ 'list', 'align' ], items: [ 'NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
 					{ name: 'storymapsAction', groups: [ 'storymapsAction' ], items: [ 'Media', 'Geocode', 'Navigate', 'PreviewAction', 'RemoveAction' ] }
 				],
@@ -49,15 +50,13 @@ define(["lib-build/css!./InlineEditor",
 				 * Content filtering
 				 */
 
-        // on the last line of extraAllowedContent below, *(*) means any element can have any class and
-        // *[*] means any element can have any attribute. otherwise, elements with classes or attributes _get stripped out entirely_
+				// extraAllowedContent is in addition to things you can add with the UI (ex: blockquote, strike, underline).
+				//
+        // the *(*) in extraAllowedContent means any element can have any class and *[*] means any element can have any attribute.
+        // otherwise, elements with classes or attributes _get stripped out entirely_
         // including all inserted media (images, webpages, etc)
-        extraAllowedContent: 'h1 h2 h3 h4 h5 h6 sub sup table tr th td caption div span button select option img figure figcaption style audio source embed iframe' +
-                             ' section article header footer' +
-                             ' thead tfoot' +
-                             ' dl dt dd dfn' +
-                             ' pre samp var kbd' + // note we've excluded <code> because on builder re-load this tag and its contents are stripped
-                             ' strike s u small del ins q cite abbr mark hr blockquote' +
+        // The separate sanitizer has its own whitelist of attributes, found in MainView.js
+        extraAllowedContent: 'h1 h2 h3 h4 h5 h6 sub sup table tr th td caption div span img figure figcaption style audio iframe' +
                              '; *(*); *[*]; a[data-*]',
 				disallowedContent: 'script; *[on*]',
 				// Elements to be removed when executing the "remove " format" command
@@ -386,8 +385,8 @@ define(["lib-build/css!./InlineEditor",
 				var editor = evt.editor;
 
 				// html editor and full screen
-				// container.find(".cke_button__source_label").hide();
-				// container.find(".cke_button__maximize").parents("cke_toolbar").css("float", "right");
+				container.find(".cke_button__source_label").hide();
+				container.find(".cke_button__maximize").parents("cke_toolbar").css("float", "right");
 
 				// fontawesome for preview action so we can change its color later
 				$('.cke_button__previewaction').addClass('fa fa-eye');
@@ -520,7 +519,7 @@ define(["lib-build/css!./InlineEditor",
 			}
 
 			function setEditorColors(editor, isMaximized) {
-				var colors = app.data.getWebAppData().getTheme().colors;
+				var colors = app.data.getWebAppData().getColors();
 				var editable = editor.editable();
 				var bgColor = 'transparent';
 
@@ -548,9 +547,9 @@ define(["lib-build/css!./InlineEditor",
 					editableHead.append('<style id="content-styles">' + styleTagContents + '</style>');
 					$('head').append('<style id="content-styles">' + styleTagContents + '</style>');
 				}
-				//if (colors.name && colors.name.match(/-org$|-modified$/) && colors.media) {
-				//editableHead.append('<style id="caption-style"> figure figcaption { color: ' + colors.media + '; } </style>');
-				//}
+				if (colors && colors.themeMajor && colors.themeMajor.match(/black/)) {
+					editableHead.append('<style id="caption-style"> figure figcaption { color: #aaa; } </style>');
+				}
 
 			}
 

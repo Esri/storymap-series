@@ -178,12 +178,15 @@ img {
 	max-height: 100%;
 }
 
+/* this is default figcaption color. if theme-major=black,
+ * we add a #caption-style inline style tag to the editor head
+ * in InlineEditor.js */
 figure figcaption
 {
 	text-align: left;
 	display: block; /* For IE8 */
 	font-size: 0.85em;
-	color: #ADADAD;
+	color: #5F5F5F;
 	margin-top: 6px;
 }
 
@@ -195,7 +198,6 @@ figure figcaption
 a[data-storymaps] {
  	border-bottom: 1px dashed #555;
 	text-decoration: none;
-	pointer-events: none;
 	cursor: default;
 }
 

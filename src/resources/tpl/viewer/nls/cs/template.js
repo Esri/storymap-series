@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Zavřít"
+      "close": "Zavřít",
+      "focusMainstage": "Poslat fokus klávesnice na média",
+      "expandImage": "Rozbalit obraz"
+    },
+    "a11y": {
+      "skipToContent": "Přeskočit na obsah",
+      "headerAria": "Záhlaví příběhu",
+      "panelAria": "Obsah příběhu",
+      "mainStageAria": "Aktuální média záznamu příběhu",
+      "logoLinkAria": "Odkaz na logo",
+      "toTop": "Přejít na první záznam",
+      "focusContent": "Vrátit se na obsah",
+      "navAria": "Záznamy příběhu",
+      "toEntryAria": "Přejít na záznam %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Záznam %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Načítá se obsah příběhu",
+      "skipBelowContent": "Přeskočit pod tento obsah",
+      "skipBelowVideo": "Přeskočit pod toto video",
+      "skipAboveContent": "Přeskočit nad tento obsah",
+      "skipAboveVideo": "Přeskočit nad toto video",
+      "moreEntries": "Více záznamů"
     },
     "loading": {
       "long": "Příběh se inicializuje",

@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Lukk"
+      "close": "Lukk",
+      "focusMainstage": "Send tastaturfokus til media",
+      "expandImage": "Utvid bilde"
+    },
+    "a11y": {
+      "skipToContent": "Gå til innhold",
+      "headerAria": "Historieoverskrift",
+      "panelAria": "Fortellingens innhold",
+      "mainStageAria": "Gjeldende oppføringsmedier for fortellinger",
+      "logoLinkAria": "Logokobling",
+      "toTop": "Gå til første oppføring",
+      "focusContent": "Gå tilbake til innhold",
+      "navAria": "Oppføringer av fortellinger",
+      "toEntryAria": "Gå til oppføring %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Oppføring %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Historieinnholdet lastes inn",
+      "skipBelowContent": "Gå til under dette innholdet",
+      "skipBelowVideo": "Gå til under denne videoen",
+      "skipAboveContent": "Gå til over dette innholdet",
+      "skipAboveVideo": "Gå til over denne videoen",
+      "moreEntries": "Flere oppføringer"
     },
     "loading": {
       "long": "Historien initialiseres",

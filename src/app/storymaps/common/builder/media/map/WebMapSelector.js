@@ -41,26 +41,13 @@ define(["lib-build/tpl!./WebMapSelector",
 				_mapConfig = null,
 				_errorDialog = new ErrorDialog($("#mapErrorDialog"));
 
-			container.append(viewTpl({
-				lblWebmap: i18n.commonWebmap.selector.lblWebMap,
+			container.append(viewTpl(lang.mixin({
+				learn: i18n.commonMedia.mediaConfigure.learn,
 				lblEdit: i18n.commonCore.common.edit,
-				lblLocation: i18n.commonWebmap.selector.lblLocation,
-				lblContent: i18n.commonWebmap.selector.lblContent,
-				lblPopup: i18n.commonWebmap.selector.lblPopup,
-				lblControls: i18n.commonWebmap.selector.lblControls,
-				lblOverview: i18n.commonWebmap.selector.lblOverview,
-				lblLegend: i18n.commonWebmap.selector.lblLegend,
-				webmapDefault: i18n.commonWebmap.selector.webmapDefault,
-				customCfg: i18n.commonWebmap.selector.customCfg,
-				tooltipLocation: i18n.commonWebmap.selector.tooltipLocation,
-				tooltipContent: i18n.commonWebmap.selector.tooltipContent,
-				tooltipPopup: i18n.commonWebmap.selector.tooltipPopup,
-				tooltipOverview: i18n.commonWebmap.selector.tooltipOverview,
-				tooltipLegend: i18n.commonWebmap.selector.tooltipLegend,
-				mapCfgInvite: i18n.commonWebmap.selector.mapCfgInvite,
-				lblLocationAlt: i18n.commonWebmap.selector.lblLocationAlt,
-				tooltipLocationAlt: i18n.commonWebmap.selector.tooltipLocationAlt
-			}));
+				lblAltText: i18n.commonMedia.mediaConfigure.lblAltText,
+				placeholderAltText: i18n.commonMedia.mediaConfigure.placeholderAltText,
+				tooltipAltText: i18n.commonMedia.mediaConfigure.tooltipAltText
+			}, i18n.commonWebmap.selector)));
 
 			initEvents();
 
@@ -79,7 +66,8 @@ define(["lib-build/tpl!./WebMapSelector",
 						layers: cfg.media.webmap.layers,
 						popup:  cfg.media.webmap.popup,
 						legend:  cfg.media.webmap.legend,
-						overview:  cfg.media.webmap.overview
+						overview:  cfg.media.webmap.overview,
+						altText: cfg.media.webmap.altText
 					};
 
 					// TODO should be able to know if this is the webmap initial extent or not
@@ -161,7 +149,8 @@ define(["lib-build/tpl!./WebMapSelector",
 					webmapId = getSelectedWebmap(),
 					isExtentCustom = container.find('.map-cfg .map-cfg-location .btn[data-value="custom"]').hasClass('btn-primary'),
 					isLayersCustom = container.find('.map-cfg .map-cfg-content .btn[data-value="custom"]').hasClass('btn-primary'),
-					isPopupCustom  = container.find('.map-cfg .map-cfg-popup .btn[data-value="custom"]').hasClass('btn-primary');
+					isPopupCustom  = container.find('.map-cfg .map-cfg-popup .btn[data-value="custom"]').hasClass('btn-primary'),
+					altText = container.find('textarea.alt-text').val().replace(/[<>'']/g, '');
 
 				if ( ! isSelectedWebmapValid() )
 					return null;
@@ -174,7 +163,8 @@ define(["lib-build/tpl!./WebMapSelector",
 					legend: {
 						enable: container.find('.opt-checkbox-legend').prop('checked'),
 						openByDefault: _mapConfig && _mapConfig.legend ? _mapConfig.legend.openByDefault : false
-					}
+					},
+					altText: altText
 				};
 
 				if ( ! _cfg.options.hideOverview ) {
@@ -356,7 +346,8 @@ define(["lib-build/tpl!./WebMapSelector",
 			function initEvents()
 			{
 				container.find('.help').tooltip({
-					trigger: 'hover'
+					trigger: 'hover',
+					container: container.parents('.modal')[0]
 				});
 
 				// TODO shouldn't subscribe to that topic globally
@@ -547,6 +538,8 @@ define(["lib-build/tpl!./WebMapSelector",
 
 				container.find('.map-cfg .map-cfg-popup .btn[data-value="default"]').toggleClass('btn-primary', ! definePopup);
 				container.find('.map-cfg .map-cfg-popup .btn[data-value="custom"]').toggleClass('btn-primary', definePopup);
+
+				container.find('textarea.alt-text').val(_mapConfig.altText || '');
 
 				if ( getSelectedWebmap() )
 					container.find('.map-cfg-row').show();

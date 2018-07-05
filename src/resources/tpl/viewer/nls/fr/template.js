@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Fermer"
+      "close": "Fermer",
+      "focusMainstage": "Placer le focus clavier sur le média",
+      "expandImage": "Développer l’image"
+    },
+    "a11y": {
+      "skipToContent": "Passer directement au contenu",
+      "headerAria": "En-tête du récit",
+      "panelAria": "Contenu du récit",
+      "mainStageAria": "Support de l’entrée narrative actuelle",
+      "logoLinkAria": "Lien vers le logo",
+      "toTop": "Aller à la première entrée",
+      "focusContent": "Revenir au contenu",
+      "navAria": "Entrées narratives",
+      "toEntryAria": "Aller à l’entrée %ENTRY_NUMBER% : %ENTRY_TITLE%",
+      "entryAria": "Entrée %ENTRY_NUMBER% : %ENTRY_TITLE%",
+      "loadingAria": "Le contenu du récit est en cours de chargement",
+      "skipBelowContent": "Passer ce contenu en dessous",
+      "skipBelowVideo": "Passer cette vidéo en dessous",
+      "skipAboveContent": "Passer ce contenu au-dessus",
+      "skipAboveVideo": "Passer cette vidéo au-dessus",
+      "moreEntries": "Autres entrées"
     },
     "loading": {
       "long": "Le récit est en cours d'initialisation",

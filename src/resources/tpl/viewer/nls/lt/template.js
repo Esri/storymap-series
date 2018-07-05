@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Užverti"
+      "close": "Užverti",
+      "focusMainstage": "Siųsti klaviatūros fokusavimą į mediją",
+      "expandImage": "Išplėsti atvaizdą"
+    },
+    "a11y": {
+      "skipToContent": "Pereiti prie turinio",
+      "headerAria": "Pasakojimo antraštė",
+      "panelAria": "Pasakojimo turinys",
+      "mainStageAria": "Dabartinio pasakojimo įrašo medija",
+      "logoLinkAria": "Logotipo nuoroda",
+      "toTop": "Eiti į pirmą įrašą",
+      "focusContent": "Grįžti į turinį",
+      "navAria": "Pasakojimo įrašai",
+      "toEntryAria": "Eiti į įrašą %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Įrašas %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Įkeliamas pasakojimo turinys",
+      "skipBelowContent": "Praleisti po šiuo turiniu",
+      "skipBelowVideo": "Praleisti po šiuo vaizdo įrašu",
+      "skipAboveContent": "Praleisti virš šio turinio",
+      "skipAboveVideo": "Praleisti virš šio vaizdo įrašo",
+      "moreEntries": "Daugiau įrašų"
     },
     "loading": {
       "long": "Pasakojimas paleidžiamas",

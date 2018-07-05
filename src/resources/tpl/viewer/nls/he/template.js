@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "סגור"
+      "close": "סגור",
+      "focusMainstage": "שלח פוקוס של המקלדת למדיה",
+      "expandImage": "הרחב תמונה"
+    },
+    "a11y": {
+      "skipToContent": "דלג לתוכן",
+      "headerAria": "כותרת של הסיפור",
+      "panelAria": "תוכן הסיפור",
+      "mainStageAria": "המדיה של רשומת הסיפור הנוכחי",
+      "logoLinkAria": "קישור ללוגו",
+      "toTop": "עבור לרשומה הראשונה",
+      "focusContent": "חזור לתוכן",
+      "navAria": "רשומות סיפור",
+      "toEntryAria": "עבור לרשומה ‎%ENTRY_NUMBER%‎‏: ‎%ENTRY_TITLE%‎",
+      "entryAria": "רשומה ‎%ENTRY_NUMBER%‎‏: ‎%ENTRY_TITLE%‎",
+      "loadingAria": "תוכן הסיפור נמצא בטעינה",
+      "skipBelowContent": "דלג מתחת לתוכן זה",
+      "skipBelowVideo": "דלג מתחת לסרטון זה",
+      "skipAboveContent": "דלג מעל תוכן זה",
+      "skipAboveVideo": "דלג מעל סרטון זה",
+      "moreEntries": "רשומות נוספות"
     },
     "loading": {
       "long": "הסיפור מבצע אתחול",

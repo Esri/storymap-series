@@ -12,7 +12,8 @@ define({
       "disabled": "Den här funktionen har inaktiverats av administratören",
       "userLookup": "Läs in album",
       "notImplemented": "Inte infört ännu.",
-      "noData": "Inget offentligt album hittades"
+      "noData": "Inget offentligt album hittades",
+      "thirdPartyTerms": "Genom att använda en tredje parts tjänst samtycker du till dess användarvillkor: "
     },
     "imageSelector": {
       "lblStep1": "Välj tjänst",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Användarnamn",
       "signInMsg2": "Det gick inte att hitta användaren",
       "loadingFailed": "Det gick inte att läsa in"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebook-användare",
-      "rightHeader": "Facebook-sida",
-      "pageExplain": "En Facebook-sida är ett offentligt varumärke/produkt eller en kändis, till exempel <b>esrigis</b>. Du kan hitta sidnamnet efter det första '/'-tecknet i sidans webbadress.",
-      "pageInputLbl": "Sidnamn",
-      "lookupMsgError": "Det gick inte att hitta sidan",
-      "warning": "Facebook-stödet har avslutats, ${learn}.",
-      "learn": "läs mer"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "E-post- eller Google-ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Om webbsidan innehåller ljud- eller videomedia behåller du det här alternativet markerat så att innehållet inte spelas när användaren navigerar vidare. Avmarkera det till exempel om du vill att ett ljudspår ska spelas när användaren bläddrar vidare genom berättelsen.<br />Om webbplatsen är en applikation avmarkerar du alternativet så att berättelsen inte läses in på nytt om användaren återvänder till den.",
       "embedProtocolLabel": "Läs in sidan via en säker anslutning (HTTPS)",
       "embedProtocolWarning1": "Om sidan inte läses in till din berättelse kan den inte bäddas in av webbsäkerhetsskäl. Som ett alternativ kan du lägga till en länk i din berättelse för att öppna sidan på en ny webbläsarflik. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Läs mer</a>",
-      "embedProtocolWarning2": "Om sidan inte läses in till din berättelse avmarkerar du alternativet och försöker igen. Om sidan fortfarande inte läses in kan den inte bäddas in av webbsäkerhetsskäl. Som ett alternativ kan du lägga till en länk i din berättelse för att öppna sidan på en ny webbläsarflik. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Läs mer</a>"
+      "embedProtocolWarning2": "Om sidan inte läses in till din berättelse avmarkerar du alternativet och försöker igen. Om sidan fortfarande inte läses in kan den inte bäddas in av webbsäkerhetsskäl. Som ett alternativ kan du lägga till en länk i din berättelse för att öppna sidan på en ny webbläsarflik. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Läs mer</a>",
+      "learn": "Läs mer",
+      "lblAltText": "Alternativ text",
+      "placeholderAltText": "Ange en beskrivning av mediematerialet för personer med nedsatt syn…",
+      "tooltipAltText": "Ange en beskrivning av det här medieinnehållet som ska användas av hjälpteknik som skärmläsarprogramvara. Beskrivningen är inte obligatorisk men den rekommenderas om man vill vara säker på att man följer Riktlinjer för tillgängligt webbinnehåll och amerikanska Section 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Hitta en adress eller plats",

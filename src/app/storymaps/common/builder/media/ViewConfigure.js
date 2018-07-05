@@ -49,7 +49,7 @@ define(["lib-build/css!./ViewConfigure",
 					imgCfg = null;
 				this.imageSizes = null;
 
-				if(params.media){
+				if(params.media && app.appCfg.mediaPickerConfigureForceMode === "shortlist"){
 					if(params.media.image){
 						if(params.media.pic_url && (params.media.pic_url.indexOf('flickr') || params.media.pic_url.indexOf('googleusercontent')))
 							params.fromService = true;
@@ -223,6 +223,7 @@ define(["lib-build/css!./ViewConfigure",
 				container.find('.mediaTitle').val(media ? media[media.type].title : '');
 				container.find('[value="opt-maximize"]').prop('checked', media ? media[media.type].activateFullScreen : false);
 
+				container.find('textarea.alt-text').val(media ? media[media.type].altText : '');
 
 				// Image information (inline)
 				/*
@@ -339,9 +340,11 @@ define(["lib-build/css!./ViewConfigure",
 			this.getData = function()
 			{
 				var display = container.find('.media-configure-position.selected').data('val'),
+					altText = container.find('textarea.alt-text').val() || '',
 					data = {
 						url: container.find('.mediaURL').val().trim(),
-						type: _mediaType
+						type: _mediaType,
+						altText: altText.replace(/[<>'']/g, '')
 					};
 
 					if (this.imageSizes) {
@@ -502,6 +505,11 @@ define(["lib-build/css!./ViewConfigure",
 				});
 				*/
 
+				container.find('.help').tooltip({
+					trigger: 'hover',
+					container: container.parents('.modal')[0]
+				});
+
 				container.find(".imageDetailsLbl").click(function(){
 					container.find(".imageDetailsContainer").toggleClass('expanded');
 				});
@@ -519,18 +527,21 @@ define(["lib-build/css!./ViewConfigure",
 				container.find('.dimHelp').tooltip('destroy').tooltip({
 					title: i18n.commonMedia.mediaConfigure.tooltipDimension,
 					html: true,
-					trigger: 'hover'
+					trigger: 'hover',
+					container: container
 				});
 
 				container.find('.dimHelp2').tooltip('destroy').tooltip({
 					title: i18n.commonMedia.mediaConfigure.tooltipDimension2,
 					html: true,
-					trigger: 'hover'
+					trigger: 'hover',
+					container: container
 				});
 
 				container.find('.maximizeHelp, .unloadHelp, .configureHelp').tooltip({
 					html: true,
 					trigger: 'hover',
+					container: container,
 					placement: app.appCfg.mediaPickerConfigureForceMode == "shortlist" ? 'bottom' : 'top'
 				});
 			}

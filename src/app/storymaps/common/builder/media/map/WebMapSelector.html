@@ -2,7 +2,7 @@
 	<table class="map-cfg">
 		<tr class="map-cfg-webmap">
 			<td class="map-cfg-title">
-				<%= lblWebmap %>
+				<%= lblWebMap %>
 			</td>
 			<td class="map-cfg-btns">
 				<div class="webmaps-list-container">
@@ -122,6 +122,15 @@
 						</a>
 					</label>
 				</div>
+			</td>
+		</tr>
+		<tr class="map-cfg-row">
+			<td class="map-cfg-title"><%= lblAltText %></td>
+			<td class="map-cfg-btns">
+				<textarea class="form-control alt-text" spellcheck="true" placeholder="<%= placeholderAltText %>"></textarea>
+				<a href="#" class="help" data-html="true" data-toggle="tooltip" data-placement="right" title="<%= tooltipAltText %>">
+					<img class="helpImg" src="resources/tpl/builder/icons/builder-help.png">
+				</a>
 			</td>
 		</tr>
 	</table>

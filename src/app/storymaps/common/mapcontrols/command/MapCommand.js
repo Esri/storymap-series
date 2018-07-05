@@ -26,7 +26,10 @@ define(["lib-build/css!./MapCommand",
 			var locateSymbol = new PictureMarkerSymbol('app/storymaps/common/_resources/icons/mapcommand-location-marker.png', 21, 21);
 			var locateLayer = new GraphicsLayer({id: 'locateLayer'});
 
-			homeButton.click(function(){
+			homeButton.on('click keydown', function(evt) {
+				if (evt.type === 'keydown' && evt.keyCode !== 32 && evt.keyCode !== 13) {
+					return;
+				}
 				// Prevent using the home button while it's spinning
 				if( tsUpdateStart !== 0 && $("body").hasClass("mobile-view") )
 					return;

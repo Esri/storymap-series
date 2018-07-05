@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Sulge"
+      "close": "Sulge",
+      "focusMainstage": "Saada klaviatuurisisestus meediumisisusse",
+      "expandImage": "Laienda kujutist"
+    },
+    "a11y": {
+      "skipToContent": "Edasi sisu juurde",
+      "headerAria": "Loo päis",
+      "panelAria": "Loo sisu",
+      "mainStageAria": "Praeguse loo kirje meediumisisu",
+      "logoLinkAria": "Logo link",
+      "toTop": "Esimesele kirjele",
+      "focusContent": "Tagasi sisu juurde",
+      "navAria": "Loo kirjed",
+      "toEntryAria": "Mine kirjele %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Kirje %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Loo sisu laaditakse",
+      "skipBelowContent": "Edasi selle sisu alla",
+      "skipBelowVideo": "Edasi selle video alla",
+      "skipAboveContent": "Edasi selle sisu kohale",
+      "skipAboveVideo": "Edasi selle video kohale",
+      "moreEntries": "Veel kirjeid"
     },
     "loading": {
       "long": "Lugu käivitub",

@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "关闭"
+      "close": "关闭",
+      "focusMainstage": "向介质发送键盘焦点",
+      "expandImage": "展开图像"
+    },
+    "a11y": {
+      "skipToContent": "跳转至内容",
+      "headerAria": "故事标题",
+      "panelAria": "故事内容",
+      "mainStageAria": "当前故事条目媒体",
+      "logoLinkAria": "徽标链接",
+      "toTop": "转到第一个条目",
+      "focusContent": "返回到内容",
+      "navAria": "故事条目",
+      "toEntryAria": "转到条目 %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "条目 %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "故事内容正在加载中",
+      "skipBelowContent": "跳过下方此内容",
+      "skipBelowVideo": "跳过下方此视频",
+      "skipAboveContent": "跳过上方此内容",
+      "skipAboveVideo": "跳过上方此视频",
+      "moreEntries": "更多条目"
     },
     "loading": {
       "long": "故事正在初始化",

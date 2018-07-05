@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Zatvori"
+      "close": "Zatvori",
+      "focusMainstage": "Pošalji fokus tipkovnice mediju",
+      "expandImage": "Proširi sliku"
+    },
+    "a11y": {
+      "skipToContent": "Preskoči na sadržaj",
+      "headerAria": "Zaglavlje priče",
+      "panelAria": "Sadržaj priče",
+      "mainStageAria": "Mediji unosa trenutne priče",
+      "logoLinkAria": "Poveznica logotipa",
+      "toTop": "Idi na prvi unos",
+      "focusContent": "Povratak na sadržaj",
+      "navAria": "Unosi priče",
+      "toEntryAria": "Idi na unos %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Unos %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Učitava se sadržaj priče",
+      "skipBelowContent": "Preskoči ispod ovog sadržaja",
+      "skipBelowVideo": "Preskoči ispod ovog videozapisa",
+      "skipAboveContent": "Preskoči iznad ovog sadržaja",
+      "skipAboveVideo": "Preskoči iznad ovog videozapisa",
+      "moreEntries": "Više unosa"
     },
     "loading": {
       "long": "Priča se pokreće",

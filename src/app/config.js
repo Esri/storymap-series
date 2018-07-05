@@ -25,6 +25,10 @@ app.cfg = {
 		}
 	},
 
+	// Date to enforce HTML sanitization for apps created after (06/27/18)
+	HTML_SANITIZER_DATE: 1530072000000,
+	JUNE_RELEASE_DATE: 1530072000000,
+
 	//
 	// Layouts
 	//
@@ -67,8 +71,8 @@ app.cfg = {
 					esriLogo: "white",
 					esriLogoMobile: "black",
 					tab: "#60788A",
-					tabActive: "#69B9D2",
-					tabHover: "#4B879D",
+					tabActive: "#2E8099",
+					tabHover: "#477D94",
 					tabText: "#FFFFFF",
 					tabTextHover: "#FFFFFF",
 					tabTextActive: "#FFFFFF"
@@ -311,8 +315,8 @@ app.cfg = {
 					esriLogo: "white",
 					esriLogoMobile: "black",
 					tab: "#60788A",
-					tabActive: "#68B9D2",
-					tabHover: "#4B879D",
+					tabActive: "#2E8099",
+					tabHover: "#477D94",
 					tabText: "#FFFFFF",
 					tabTextHover: "#FFFFFF",
 					tabTextActive: "#FFFFFF"
@@ -419,6 +423,12 @@ app.cfg = {
 
 	HELP_URL: "http://links.esri.com/storymaps/map_series_app",
 	HELP_URL_PORTAL: "#/Story_Map_Series/0193000000vs000000/",
+
+	// links to third-party terms of service
+	YOUTUBE_TERMS_LINK: "http://links.esri.com/storymaps/youtube-terms",
+	VIMEO_TERMS_LINK: "http://links.esri.com/storymaps/vimeo-terms",
+	FLICKR_TERMS_LINK: "http://links.esri.com/storymaps/flickr-terms",
+	GOOGLE_TERMS_LINK: "http://links.esri.com/storymaps/google-terms",
 
 	// Control the authorized data source (for initialization and import screen)
 	AUTHORIZED_IMPORT_SOURCE: {

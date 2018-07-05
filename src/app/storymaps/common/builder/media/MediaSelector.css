@@ -14,8 +14,8 @@
 .mediaSelector .media-type-wrapper {
 	display: inline-block;
 	position: relative;
-	height: 50px;
-	margin-right: 10px;
+	height: 40px;
+	margin-right: 3px;
 }
 
 .mediaSelector .media-type-wrapper.disabled {
@@ -25,14 +25,14 @@
 .mediaSelector .mediaContainersArrow {
 	position: absolute;
 	visibility: hidden;
-	top: 30px;
+	top: 25px;
 	left: 50%;
 	right: 50%;
 	width: 0;
 	height: 0;
 	margin-left: -15px;
 	border-style: solid;
-	border-width: 0 15px 20px 15px;
+	border-width: 0 15px 15px;
 	border-color: transparent transparent #F3F3F3 transparent;
 }
 
@@ -48,7 +48,7 @@
 	display: inline-block;
 	color: #4F4F4F;
 	cursor: pointer;
-	padding: 4px;
+	padding-left: 4px;
 }
 
 .mediaSelector .media-type .icon {
@@ -70,6 +70,26 @@
 	padding: 15px;
 }
 
+textarea.alt-text {
+	resize: vertical;
+	font-size: 12px;
+	color: black;
+}
+
 .mediaSelector .mainMediaTypeContainer.error {
 	/*background-color: red;*/
+}
+
+.mediaSelector .media-type-wrapper input[type="radio"] {
+	margin-top: 0;
+}
+
+.mainMediaTypeContainer .footnote {
+	margin-top: 1em;
+	font-size: 0.8em;
+	text-align: center;
+}
+
+.mainMediaTypeContainer .link {
+	text-decoration: underline;
 }

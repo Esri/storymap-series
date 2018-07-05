@@ -12,7 +12,8 @@ define({
       "disabled": "この機能は、管理者によって無効にされています",
       "userLookup": "アルバムを読み込む",
       "notImplemented": "まだ実装されていません。",
-      "noData": "パブリックなアルバムが見つかりませんでした"
+      "noData": "パブリックなアルバムが見つかりませんでした",
+      "thirdPartyTerms": "サードパーティのサービスを使用することによって、そのサービスの利用条件に同意します。 "
     },
     "imageSelector": {
       "lblStep1": "サービスの選択",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "ユーザ名",
       "signInMsg2": "ユーザが見つかりません",
       "loadingFailed": "読み込みに失敗しました"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebook ユーザ",
-      "rightHeader": "Facebook ページ",
-      "pageExplain": "Facebook ページは、<b>esrigis</b> などの、公開されたブランド/製品または著名人です。ページ URL 内の最初の「/」以降から、ページ名を取得できます。",
-      "pageInputLbl": "ページ名",
-      "lookupMsgError": "ページが見つかりません",
-      "warning": "Facebook のサポートは中止されました。${learn}。",
-      "learn": "詳細"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "電子メールまたは Google ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Web ページに音声やビデオ メディアが含まれている場合、このオプションをオンにすると、ユーザーが移動したときにコンテンツの再生が停止されます。たとえば、ユーザーが次のストーリーに進んでもサウンド トラックの再生を維持したいときはオフにします。<br />Web ページがアプリケーションである場合、ユーザーが戻ってもストーリーが再読み込みされないようにするには、このオプションをオフにします。",
       "embedProtocolLabel": "セキュリティで保護された接続 (HTTPS) を介してページを読み込みます",
       "embedProtocolWarning1": "このページがストーリーに読み込まれない場合、Web セキュリティ上の理由からこのページを埋め込むことはできません。代替操作として、注釈のリンクを追加して、新しいブラウザー タブでそのページを開きます。<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>詳細</a>",
-      "embedProtocolWarning2": "このページがストーリーに読み込まれない場合、このオプションをオフにしてもう一度試行してください。それでもまだページが読み込まれない場合は、Web セキュリティ上の理由からこのページを埋め込むことはできません。代替操作として、注釈のリンクを追加して、新しいブラウザー タブでそのページを開きます。<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>詳細</a>"
+      "embedProtocolWarning2": "このページがストーリーに読み込まれない場合、このオプションをオフにしてもう一度試行してください。それでもまだページが読み込まれない場合は、Web セキュリティ上の理由からこのページを埋め込むことはできません。代替操作として、注釈のリンクを追加して、新しいブラウザー タブでそのページを開きます。<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>詳細</a>",
+      "learn": "詳細",
+      "lblAltText": "代替テキスト",
+      "placeholderAltText": "視覚障害者向けに、このメディアの説明を入力します...",
+      "tooltipAltText": "スクリーン リーダー ソフトウェアなどの補助テクノロジで使用されるこのメディア コンテンツの説明を入力します。 説明はオプションですが、WCAG や Section 508 などの Web アクセシビリティ ガイドラインを満たすために推奨されます。"
     },
     "editorActionGeocode": {
       "lblTitle": "住所または位置の検索",

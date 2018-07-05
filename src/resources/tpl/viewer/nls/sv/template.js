@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Stäng"
+      "close": "Stäng",
+      "focusMainstage": "Skicka tangentbordsfokus till media",
+      "expandImage": "Expandera bild"
+    },
+    "a11y": {
+      "skipToContent": "Gå till innehåll",
+      "headerAria": "Berättelserubrik",
+      "panelAria": "Berättelseinnehåll",
+      "mainStageAria": "Media för aktuell berättelsepost",
+      "logoLinkAria": "Logotyplänk",
+      "toTop": "Gå till första posten",
+      "focusContent": "Återgå till innehållet",
+      "navAria": "Berättelseposter",
+      "toEntryAria": "Gå till posten %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Posten %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Berättelsens innehåll läses in",
+      "skipBelowContent": "Gå till plats under detta innehåll",
+      "skipBelowVideo": "Gå till plats under denna video",
+      "skipAboveContent": "Gå till plats ovanför detta innehåll",
+      "skipAboveVideo": "Gå till plats ovanför denna video",
+      "moreEntries": "Fler poster"
     },
     "loading": {
       "long": "Berättelsen initieras",

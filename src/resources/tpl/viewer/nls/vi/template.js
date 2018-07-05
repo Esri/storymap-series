@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Đóng"
+      "close": "Đóng",
+      "focusMainstage": "Gửi chức năng keyboard focus vào phương tiện",
+      "expandImage": "Mở rộng hình ảnh"
+    },
+    "a11y": {
+      "skipToContent": "Bỏ qua đến nội dung",
+      "headerAria": "Tiêu đề câu chuyện",
+      "panelAria": "Nội dung câu chuyện",
+      "mainStageAria": "Phương tiện media đầu vào của câu chuyện hiện tại",
+      "logoLinkAria": "Liên kết logo",
+      "toTop": "Đến trang mục nhập đầu tiên",
+      "focusContent": "Quay lại nội dung",
+      "navAria": "Các đầu vào của câu chuyện",
+      "toEntryAria": "Đến đầu vào %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Đầu vào %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Đang tải nội dung câu chuyện",
+      "skipBelowContent": "Bỏ qua phía dưới nội dung này",
+      "skipBelowVideo": "Bỏ qua phía dưới video này",
+      "skipAboveContent": "Bỏ qua phía trên nội dung này",
+      "skipAboveVideo": "Bỏ qua phía trên video này",
+      "moreEntries": "Thêm đầu vào"
     },
     "loading": {
       "long": "Câu chuyện đang khởi chạy",

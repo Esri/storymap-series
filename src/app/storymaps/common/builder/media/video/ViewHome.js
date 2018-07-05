@@ -8,7 +8,10 @@ define(["lib-build/tpl!./ViewHome",
 		{
 			container.append(viewTpl({
 				lblLink: i18n.commonMedia.mediaSelector.lblLink,
-				lblOther: i18n.commonMedia.videoSelectorHome.other
+				lblOther: i18n.commonMedia.videoSelectorHome.other,
+				thirdPartyTerms: i18n.commonMedia.mediaSelector.thirdPartyTerms,
+				youtubeTermsLink: app.cfg.YOUTUBE_TERMS_LINK || '',
+				vimeoTermsLink: app.cfg.VIMEO_TERMS_LINK || ''
 			}));
 
 			init();

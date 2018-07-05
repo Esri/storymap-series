@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "閉じる"
+      "close": "閉じる",
+      "focusMainstage": "キーボード フォーカスをメディアに送信",
+      "expandImage": "画像の拡大"
+    },
+    "a11y": {
+      "skipToContent": "コンテンツに移動",
+      "headerAria": "ストーリーのヘッダー",
+      "panelAria": "ストーリー コンテンツ",
+      "mainStageAria": "現在のストーリー エントリ メディア",
+      "logoLinkAria": "ロゴのリンク",
+      "toTop": "最初のエントリに移動",
+      "focusContent": "コンテンツに戻る",
+      "navAria": "ストーリー エントリ",
+      "toEntryAria": "エントリ %ENTRY_NUMBER%: %ENTRY_TITLE% に戻る",
+      "entryAria": "エントリ %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "ストーリーのコンテンツを読み込んでいます",
+      "skipBelowContent": "このコンテンツの下に移動",
+      "skipBelowVideo": "このビデオの下に移動",
+      "skipAboveContent": "このコンテンツの上に移動",
+      "skipAboveVideo": "このビデオの上に移動",
+      "moreEntries": "その他のエントリ"
     },
     "loading": {
       "long": "ストーリーを初期化しています",

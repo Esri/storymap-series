@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "ปิด"
+      "close": "ปิด",
+      "focusMainstage": "ส่งโฟกัสของแป้นพิมพ์ไปยังสื่อ",
+      "expandImage": "ขยายภาพ"
+    },
+    "a11y": {
+      "skipToContent": "ข้ามไปยังเนื้อหา",
+      "headerAria": "ส่วนหัวของเรื่องราว",
+      "panelAria": "เนื้อหาของเรื่องราว",
+      "mainStageAria": "สื่อรายการเรื่องราวปัจจุบัน",
+      "logoLinkAria": "โลโก้ที่เชื่องโยงไปยัง",
+      "toTop": "ไปที่รายการแรก",
+      "focusContent": "กลับไปยังเนื้อหา",
+      "navAria": "รายการเรื่องราว",
+      "toEntryAria": "ไปที่รายการ %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "รายการ %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "กำลังโหลดเนื้อหาเรื่องราว",
+      "skipBelowContent": "ข้ามไปด้านล่างเนื้อหานี้",
+      "skipBelowVideo": "ข้ามไปด้านล่างวิดีโอนี้",
+      "skipAboveContent": "ข้ามไปด้านล่างเนื้อหานี้",
+      "skipAboveVideo": "ข้ามไปด้านล่างวิดีโอนี้",
+      "moreEntries": "รายการเพิ่มเติม"
     },
     "loading": {
       "long": "เริ่มต้นดำเนินเรื่องราว",

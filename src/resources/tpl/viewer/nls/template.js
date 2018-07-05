@@ -2,7 +2,27 @@ define({
 	root: ({
 		viewer: {
 			common: {
-				close: "Close"
+				close: "Close",
+				focusMainstage: "Send keyboard focus to media",
+				expandImage: "Expand image"
+			},
+			a11y: {
+				skipToContent: "Skip to content",
+				headerAria: "Story header",
+				panelAria: "Story content",
+				mainStageAria: "Current story entry media",
+				logoLinkAria: "Logo link",
+				toTop: "Go to first entry",
+				focusContent: "Return to content",
+				navAria: "Story entries",
+				toEntryAria: "Go to entry %ENTRY_NUMBER%: %ENTRY_TITLE%",
+				entryAria: "Entry %ENTRY_NUMBER%: %ENTRY_TITLE%",
+				loadingAria: "Story content is loading",
+				skipBelowContent: "Skip below this content",
+				skipBelowVideo: "Skip below this video",
+				skipAboveContent: "Skip above this content",
+				skipAboveVideo: "Skip above this video",
+				moreEntries: "More entries"
 			},
 			loading: {
 				long: "Story is initializing",
@@ -97,6 +117,7 @@ define({
     }),
 	"ar": 1,
 	"bs": 1,
+	"ca": 1,
 	"cs": 1,
 	"da": 1,
 	"de": 1,
@@ -108,6 +129,7 @@ define({
 	"he": 1,
 	"hi": 1,
 	"hr": 1,
+	"hu": 1,
 	"id": 1,
 	"it": 1,
 	"ja": 1,

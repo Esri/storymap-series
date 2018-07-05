@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Fechar"
+      "close": "Fechar",
+      "focusMainstage": "Enviar foco de teclado para media",
+      "expandImage": "Expandir imagem"
+    },
+    "a11y": {
+      "skipToContent": "Saltar para conteúdo",
+      "headerAria": "Cabeçalho da história",
+      "panelAria": "Conteúdo da história",
+      "mainStageAria": "Formato atual de entrada de história",
+      "logoLinkAria": "Ligação ao logótipo",
+      "toTop": "Ir para a primeira entrada",
+      "focusContent": "Regressar a conteúdo",
+      "navAria": "Entradas de histórias",
+      "toEntryAria": "Ir para a entrada %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Entrada %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "O conteúdo da história está a carregar",
+      "skipBelowContent": "Saltar abaixo deste conteúdo",
+      "skipBelowVideo": "Saltar abaixo deste vídeo",
+      "skipAboveContent": "Saltar acima deste conteúdo",
+      "skipAboveVideo": "Saltar acima deste vídeo",
+      "moreEntries": "Mais entradas"
     },
     "loading": {
       "long": "A história está a inicializar",

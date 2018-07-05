@@ -63,7 +63,7 @@ define(["lib-build/css!./Desktop",
 
 					var switchBg = switchBuilderBtn.css('background-color');
 					if (!app.appCfg.noAppThemes) {
-						var appColors = app.data.getWebAppData().getTheme().colors;
+						var appColors = app.data.getWebAppData().getColors();
 						if (switchBg && appColors && appColors.header && CommonHelper.colorsAreSimilar(switchBg, appColors.header, true)) {
 							switchBuilderBtn.css('box-shadow', '0 0 2px 1px white');
 						}
@@ -189,7 +189,7 @@ define(["lib-build/css!./Desktop",
 					if (colors.name.match(/-org$|-modified$/)) {
 						subtitle.css({color: colors.headerTitle, opacity: 0.8});
 					} else {
-						subtitle.removeAttr('style');
+						subtitle.css({color: colors.headerText});
 					}
 				}
 			}
@@ -290,7 +290,7 @@ define(["lib-build/css!./Desktop",
 
 				var shareBg = shareBtn.css('background-color');
 				if (!app.appCfg.noAppThemes) {
-					var colors = app.data.getWebAppData().getTheme().colors;
+					var colors = app.data.getWebAppData().getColors();
 					if (shareBg && colors && colors.header && CommonHelper.colorsAreSimilar(shareBg, colors.header, true)) {
 						shareBtn.css('box-shadow', '0 0 2px 1px white');
 					}

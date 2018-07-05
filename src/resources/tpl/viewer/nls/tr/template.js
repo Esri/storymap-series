@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Kapat"
+      "close": "Kapat",
+      "focusMainstage": "Medyaya klavye odağı gönder",
+      "expandImage": "Görüntüyü genişlet"
+    },
+    "a11y": {
+      "skipToContent": "İçeriğe geç",
+      "headerAria": "Hikaye başlığı",
+      "panelAria": "Hikaye içeriği",
+      "mainStageAria": "Mevcut hikaye giriş medyası",
+      "logoLinkAria": "Logo bağlantısı",
+      "toTop": "İlk girişe git",
+      "focusContent": "İçeriğe dön",
+      "navAria": "Hikaye girişleri",
+      "toEntryAria": "Girişe git %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Giriş %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Hikaye içeriği yükleniyor",
+      "skipBelowContent": "Bu içeriğin alt kısmını atla",
+      "skipBelowVideo": "Bu videonun alt kısmını atla",
+      "skipAboveContent": "Bu içeriğin üst kısmını atla",
+      "skipAboveVideo": "Bu videonun üst kısmını atla",
+      "moreEntries": "Daha fazla giriş"
     },
     "loading": {
       "long": "Hikaye başlatılıyor",

@@ -12,7 +12,8 @@ define({
       "disabled": "Šią funkciją išjungė administratorius",
       "userLookup": "Įkelti albumus",
       "notImplemented": "Dar neįdiegta.",
-      "noData": "Viešųjų albumų nerasta"
+      "noData": "Viešųjų albumų nerasta",
+      "thirdPartyTerms": "Naudodamiesi trečiųjų šalių paslaugomis, sutinkate su jų paslaugų teikimo sąlygomis: "
     },
     "imageSelector": {
       "lblStep1": "Pasirinkite paslaugą",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Vartotojo vardas",
       "signInMsg2": "Vartotojas nerastas",
       "loadingFailed": "Įkelti nepavyko"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebook vartotojas",
-      "rightHeader": "Facebook puslapis",
-      "pageExplain": "Facebook puslapis yra viešas žymaus asmens ar prekės/produkto puslapis kaip <b>esrigis</b>. Puslapio pavadinimą galite rasti po pirmo '/' puslapio URL.",
-      "pageInputLbl": "Puslapio pavadinimas",
-      "lookupMsgError": "Puslapis nerastas",
-      "warning": "Facebook palaikymas nutrauktas, ${learn}.",
-      "learn": "sužinokite daugiau"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "El. paštas arba Picasa / Google+ ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Jeigu tinklalapyje yra garso arba vaizdo įrašų, palikite šią parinktį pažymėtą, kad sustabdytumėte turinio leidimą, kai skaitytojas išeina. Panaikinkite žymėjimą, jei norite leisti garso takelį, kai skaitytojas peržiūri pasakojimą.<br/>Jeigu tinklalapis yra aplikacija, panaikinkite šios parinkties žymėjimą, kad skaitytojui grįžus, pasakojimas nebūtų įkeliamas iš naujo.",
       "embedProtocolLabel": "Įkelkite puslapį naudodami saugų ryšį (HTTPS)",
       "embedProtocolWarning1": "Jei šis puslapis jūsų pasakojime neįkeliamas, jį galima įdėti interneto saugumo sumetimais. Arba pridėkite nuorodą savo pasakojime, kad atidarytumėte puslapį naujame naršyklės skirtuke. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Sužinokite daugiau</a>",
-      "embedProtocolWarning2": "Jei šis puslapis jūsų pasakojime neįkeliamas, atžymėkite šią parinktį ir bandykite dar kartą. Jei puslapis vis tiek neįkeliamas, jį galima įdėti interneto saugumo sumetimais. Arba pridėkite nuorodą savo pasakojime, kad atidarytumėte puslapį naujame naršyklės skirtuke. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Sužinokite daugiau</a>"
+      "embedProtocolWarning2": "Jei šis puslapis jūsų pasakojime neįkeliamas, atžymėkite šią parinktį ir bandykite dar kartą. Jei puslapis vis tiek neįkeliamas, jį galima įdėti interneto saugumo sumetimais. Arba pridėkite nuorodą savo pasakojime, kad atidarytumėte puslapį naujame naršyklės skirtuke. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Sužinokite daugiau</a>",
+      "learn": "Sužinokite daugiau",
+      "lblAltText": "Alternatyvus tekstas",
+      "placeholderAltText": "Įveskite šios medijos aprašą, skirtą skaitytojams su regos sutrikimais...",
+      "tooltipAltText": "Pateikite šio medijos aprašą, kuris bus naudojamas neįgaliesiems pritaikytose technologijose, pvz., ekrano skaitytuvo programinėje įrangoje. Aprašas nėra privalomas, tačiau rekomenduojamas norint atitikti žiniatinklio pritaikymo neįgaliesiems gaires, pavyzdžiui, WCAG ir Section 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Raskite adresą arba vietą",

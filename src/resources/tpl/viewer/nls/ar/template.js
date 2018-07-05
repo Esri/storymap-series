@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "إغلاق"
+      "close": "إغلاق",
+      "focusMainstage": "إرسال تركيز لوحة المفاتيح إلى الوسائط",
+      "expandImage": "توسيع الصورة"
+    },
+    "a11y": {
+      "skipToContent": "تخطي إلى المحتوى",
+      "headerAria": "عنوان القصة",
+      "panelAria": "محتوى القصة",
+      "mainStageAria": "وسائط إدخال القصة الحالية",
+      "logoLinkAria": "رابط الشعار",
+      "toTop": "انتقال إلى الإدخال الأول",
+      "focusContent": "رجوع إلى المحتوى",
+      "navAria": "إدخالات القصة",
+      "toEntryAria": "انتقل إلى الإدخال %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "الإدخال %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "جارِ تحميل محتوى القصة",
+      "skipBelowContent": "تخطي أسفل هذا المحتوى",
+      "skipBelowVideo": "تخطي أسفل هذا الفيديو",
+      "skipAboveContent": "تخطي أعلى هذا المحتوى",
+      "skipAboveVideo": "تخطي أعلى هذا الفيديو",
+      "moreEntries": "مزيد من الإدخالات"
     },
     "loading": {
       "long": "يتم تهيئة القصة",

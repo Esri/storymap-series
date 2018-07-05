@@ -1,6 +1,9 @@
 <div class="entry <%= optHtmlClass %>">
 	<div class="entry-inner">
 		<% if ( ! isInBuilder ) { %>
+			<div class="centering focus-mainstage-wrapper">
+				<button class="link visible-on-focus focus-mainstage"><%= lblMainstageBtn %></button>
+			</div>
 			<div class="description">
 				<%= description %>
 			</div>

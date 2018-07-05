@@ -29,7 +29,13 @@ define([],
 			mediaPickerDisableVideo: false,
 			mediaPickerDisableWebPage: false,
 			mediaPickerSkipConfigure: false,
-			mediaPickerConfigureForceMode: null
+			mediaPickerConfigureForceMode: null,
+
+			// all focusable elements (figured better to put this in a central location than
+			// reproduce it every time)
+			focusable: 'a[href], area[href], input:not([disabled]), select:not([disabled]), ' +
+									'textarea:not([disabled]), button:not([disabled]), iframe, object, ' +
+									'embed, [tabindex="0"], [contenteditable]'
 		};
 
 		app.appCfg.getLayoutThumbnail = function(params)

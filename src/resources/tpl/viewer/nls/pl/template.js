@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "Zamknij"
+      "close": "Zamknij",
+      "focusMainstage": "Prześlij fokus klawiatury do elementu multimedialnego",
+      "expandImage": "Rozwiń obraz"
+    },
+    "a11y": {
+      "skipToContent": "Przejdź do treści",
+      "headerAria": "Nagłówek narracji",
+      "panelAria": "Treść narracji",
+      "mainStageAria": "Multimedia wpisu bieżącej narracji",
+      "logoLinkAria": "Łącze do logotypu",
+      "toTop": "Przejdź do pierwszego wpisu",
+      "focusContent": "Wróć do treści",
+      "navAria": "Wpisy narracji",
+      "toEntryAria": "Przejdź do wpisu %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "Wpis %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "Treść narracji jest wczytywana",
+      "skipBelowContent": "Przejdź poniżej tej treści",
+      "skipBelowVideo": "Przejdź poniżej tego filmu",
+      "skipAboveContent": "Przejdź powyżej tej treści",
+      "skipAboveVideo": "Przejdź powyżej tego filmu",
+      "moreEntries": "Więcej wpisów"
     },
     "loading": {
       "long": "Trwa inicjowanie narracji",

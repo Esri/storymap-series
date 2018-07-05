@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "關閉"
+      "close": "關閉",
+      "focusMainstage": "將鍵盤焦點傳至媒體",
+      "expandImage": "展開圖片"
+    },
+    "a11y": {
+      "skipToContent": "跳至內容",
+      "headerAria": "故事標頭",
+      "panelAria": "故事內容",
+      "mainStageAria": "目前故事項目媒體",
+      "logoLinkAria": "標誌連結",
+      "toTop": "移至第一個項目",
+      "focusContent": "回到內容",
+      "navAria": "故事項目",
+      "toEntryAria": "移至項目 %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "entryAria": "項目 %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "正在載入故事內容",
+      "skipBelowContent": "跳至此內容下方",
+      "skipBelowVideo": "選擇此影片下方",
+      "skipAboveContent": "跳至此內容上方",
+      "skipAboveVideo": "跳至此影片上方",
+      "moreEntries": "更多項目"
     },
     "loading": {
       "long": "故事正在初始化",

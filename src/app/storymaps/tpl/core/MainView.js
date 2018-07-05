@@ -30,6 +30,7 @@ define(["lib-build/css!./MainView",
     "dojo/topic",
     "esri/arcgis/utils",
     "esri/geometry/Extent",
+    "lib-app/arcgis-html-sanitizer/umd/arcgis-html-sanitizer",
     "../ui/StoryText",
     "lib-build/css!../ui/Common",
     "lib-build/css!../ui/StoryText",
@@ -63,6 +64,7 @@ define(["lib-build/css!./MainView",
     topic,
     arcgisUtils,
     Extent,
+    Sanitizer,
     StoryText
   ){
     /**
@@ -124,6 +126,61 @@ define(["lib-build/css!./MainView",
 
         // Data Model
         app.data = new Data();
+
+        // HTML sanitizer
+        app.sanitizer = new Sanitizer({
+          whiteList: {
+            // styles
+            h1: [],
+            h2: [],
+            h3: [],
+            h4: [],
+            h5: [],
+            h6: [],
+            s: [],
+            u: [],
+            sub: [],
+            sup: [],
+            strike: [],
+            blockquote: [],
+            // containers and structural elements
+            div: [],
+            a: ['data-storymaps', 'data-storymaps-type', 'title'],
+            // lists and tables
+            ol: [],
+            ul: ['type'],
+            td: ['bgcolor'],
+            caption: [],
+            // media
+            figure: [],
+            figcaption: [],
+            iframe: [
+              'src',
+              'height',
+              'width',
+              'border',
+              'allowfullscreen',
+              'mozallowfullscreen',
+              'webkitallowfullscreen',
+              'frameborder',
+              'scrolling',
+              'allowtransparency',
+              'data-unload'
+            ],
+            // other
+            style: ['type']
+          },
+          onIgnoreTagAttr: function(tag, name, value) {
+            // if you take `style` off the universal attribute whitelist, you've gotta
+            // add it back for `li`, `p`, and `strong` above.
+            var universalAttrWhitelist = ['style', 'class', 'dir', 'lang', 'align', 'role'];
+            var attrAllowed = universalAttrWhitelist.indexOf(name) >= 0 || name.match(/^aria-/);
+            if (attrAllowed) {
+              return name + '="' + app.sanitizer.sanitize(value) + '"';
+            }
+          },
+          allowCommentTag: false // this also strips out vector markup elements
+        }, true);
 
         app.ui.mainStage = new MainStage(
           $("#mainStagePanel"),
@@ -214,6 +271,7 @@ define(["lib-build/css!./MainView",
         topic.subscribe("story-update-entry", updateStoryEntry);
         topic.subscribe("story-perform-action-media", app.ui.mainStage.updateMainMediaWithStoryAction);
         topic.subscribe("story-entry-reset-map-extent", resetEntryMapExtent);
+        topic.subscribe('story-focus-entry', focusEntry);
 
         topic.subscribe("ADDEDIT_LOAD_WEBMAP", app.ui.mainStage.loadTmpWebmap);
         topic.subscribe("ADDEDIT_SHOW_WEBMAP", app.ui.mainStage.showWebmapById);
@@ -225,42 +283,37 @@ define(["lib-build/css!./MainView",
             updateDescriptionPanelMinHeight();
         });
 
-        // Prevent focus on mousedown
-        // Focus stay allowed with keyboard with 508
-        $("body").on("mousedown", "*", function(e) {
-          if (($(this).is(":focus") || $(this).is(e.target)) && $(this).css("outline-style") == "none") {
-            $(this).css("outline", "none").on("blur", function() {
-              $(this).off("blur").css("outline", "");
+        // don't put focus outline on mouse click
+        $('body').on('mousedown', function(e) {
+          var jqTarget = $(e.target);
+          var focusableParent = jqTarget.parents(app.appCfg.focusable).eq(0);
+          if (jqTarget.is(app.appCfg.focusable) || focusableParent.length) {
+            if (focusableParent.length) {
+              jqTarget = focusableParent;
+            }
+            // stupid map selector pagination
+            if (!jqTarget.parents('.dgrid').length) {
+              jqTarget.addClass('clicked');
+            }
+            jqTarget.css('outline', 'none').on('blur', function() {
+              jqTarget.off('blur').css('outline', '').removeClass('clicked');
             });
-
-            // Prevent outline over image-container in description panel - Unsure why needed
-            if ( $(this).parents(".image-container").length ) {
-              $(this).parents(".image-container").css("outline", "none").on("blur", function() {
-                $(this).off("blur").css("outline", "");
-              });
-            }
-
-            // Prevent outline over image caption container in description panel - Unsure why needed
-            if ( $(this).parents("figure.caption").length ) {
-              $(this).parents("figure.caption").css("outline", "none").on("blur", function() {
-                $(this).off("blur").css("outline", "");
-              });
-            }
-
-            // Prevent outline over paragraph in description panel - Unsure why needed
-            if ( $(this).parents("p").length ) {
-              $(this).parents("p").css("outline", "none").on("blur", function() {
-                $(this).off("blur").css("outline", "");
-              });
-            }
-
-            // Prevent outline over title in description panel - Unsure why needed
-            if ( $(this).parents(".accordion-header-content").length ) {
-              $(this).parents(".accordion-header-content").css("outline", "none").on("blur", function() {
-                $(this).off("blur").css("outline", "");
-              });
-            }
           }
+        });
+
+        // add a user-is-tabbing class to better control/hide focus rings
+
+        var tabHandle = function(e) {
+          if (e.keyCode === 9) {
+            $('body').addClass('user-is-tabbing');
+            $('body').off('keydown', tabHandle);
+          }
+        };
+
+        $('body').on('keydown', tabHandle);
+
+        $('.skip-to-content').on('click', function() {
+          focusEntry(0);
         });
 
         // Tab navigation event from tab bar and side accordion
@@ -594,6 +647,7 @@ define(["lib-build/css!./MainView",
         StoryText.createMainMediaActionLink();
         StoryText.createMediaFullScreenButton();
         StoryText.styleSectionPanelContent();
+        StoryText.createMainStageFocusButton();
 
         navigateStoryToIndex(app.data.getCurrentSectionIndex());
 
@@ -806,8 +860,9 @@ define(["lib-build/css!./MainView",
           app.ui.descLegendPanel.resize(cfg);
         }
 
-        if ( hasMobileView() )
+        if ( hasMobileView() ) {
           app.ui.mobileFooter.resize(cfg);
+        }
 
         // Maintain the current section in all layouts
         //  TODO: can we maintain the slider activeIndex while it's not visible? (vis: hidden instead of display?)
@@ -822,6 +877,12 @@ define(["lib-build/css!./MainView",
         var isInIframe = (window.location != window.parent.location) ? true : false;
         if ( ! has("ios") && ! isInIframe ) {
           sizePopup(cfg);
+        }
+
+        if( app.embedBar && app.embedBar.initiated ) {
+          $("#footerMobile").css({"bottom": "26px"});
+          $("#contentPanel").height(cfg.height - 26);
+          $("#mainStagePanelInner, #accordionPanel > .content").height($("#contentPanel").height());
         }
 
         // Stop autoplay in mobile view
@@ -966,6 +1027,14 @@ define(["lib-build/css!./MainView",
         $('.mediaBackContainer').hide();
       }
 
+      function focusEntry(index) {
+        if (index < 0 || index > app.data.getStoryLength() - 1) {
+          return;
+        }
+        app.ui.descLegendPanel.focus();
+        app.ui.accordionPanel.focus();
+      }
+
       function getCurrentEntryLayoutCfg()
       {
         var entry = app.data.getCurrentSection(),
@@ -998,8 +1067,15 @@ define(["lib-build/css!./MainView",
             navigate = true;
           if ( currEntryIdx === 0 && p.direction == "backward" )
             navigate = true;
-          else if ( entryLayoutCfg.description && p.direction == "forward" )
-            app.ui.descLegendPanel.focus();
+          else if (p.direction == "forward" && p.to === "section") {
+            // either focus the panel or the mainstage
+            // (if the mainstage, pass back active tab/bullet for return focus)
+            if (entryLayoutCfg.description) {
+              app.ui.descLegendPanel.focus();
+            } else {
+              app.ui.mainStage.focusActiveMainstage($('li.entry.active a.entryLbl'));
+            }
+          }
           else
             navigate = true;
         }
@@ -1012,26 +1088,27 @@ define(["lib-build/css!./MainView",
 
         if ( navigate ) {
           if ( p.direction == "forward" ) {
-            if ( currEntryIdx < app.data.getStoryLength() - 1 )
+            if ( currEntryIdx < app.data.getStoryLength() - 1 ) {
               nextEntryIdx = currEntryIdx + 1;
+            }
             else {
               // If story is embedded get out to main page
               // TODO: the focus should still be given to the header but header is not ready yet
               if (window != window.top) {
                 parent.document.focus();
+              } else {
+                // we're at the very end of the last section. loop to the top.
+                $('body').find(app.appCfg.focusable).eq(0).focus();
+                return;
               }
-              else {
-                app.ui.headerDesktop.focus({ area: 'social' });
-              }
-              return false;
+              return;
             }
           }
           else if ( p.direction == "backward" ) {
-            if ( currEntryIdx > 0 )
+            if ( currEntryIdx > 0 ) {
               nextEntryIdx = currEntryIdx - 1;
-            else {
-              app.ui.headerDesktop.focus({ area: 'title' });
-              return false;
+            } else {
+              return;
             }
           }
 

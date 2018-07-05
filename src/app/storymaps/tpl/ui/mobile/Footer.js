@@ -86,14 +86,21 @@ define(["lib-build/css!./Footer",
 					// Only one item in the story, don't show anything
 					else if ( i === 0 )
 						lblNext = "";
-					
-					if ( appLayout == "bullet" || appLayout == "accordion" ) {
+
+					if ( appLayout == "bullet" ) {
 						if ( ! layoutOpt.reverse )
 							title = (i+1) + (title ? " - " + title : "");
 						else
 							title = (entriesLength - i) + (title ? " - " + title : "");
 					}
-					
+
+					else if ( appLayout == "accordion" ) {
+						if ( ! layoutOpt.reverse && layoutOpt.numbering )
+							title = (i+1) + (title ? " - " + title : "");
+						else if ( layoutOpt.numbering )
+							title = (entriesLength - i) + (title ? " - " + title : "");
+					}
+
 					entriesHTML += viewEntryTpl({
 						title: title || '&nbsp;',
 						next: lblNext,

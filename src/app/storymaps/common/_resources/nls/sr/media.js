@@ -12,7 +12,8 @@ define({
       "disabled": "Ova funkcija je onemogućena od strane administratora",
       "userLookup": "Učitaj albume",
       "notImplemented": "Još nije primenjeno.",
-      "noData": "Nijedan javni album nije pronađen"
+      "noData": "Nijedan javni album nije pronađen",
+      "thirdPartyTerms": "Korišćenjem usluge treće strane prihvatate odgovarajuće uslove korišćenja usluge: "
     },
     "imageSelector": {
       "lblStep1": "Odaberite servis",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Korisničko ime",
       "signInMsg2": "Korisnik nije pronađen",
       "loadingFailed": "Učitavanje nije uspelo"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebook korisnik",
-      "rightHeader": "Facebook stranica",
-      "pageExplain": "Facebook stranica je javni brend/proizvod ili svetski poznat <b>esrigis</b>. Možete da dobijete naziv stranice nakon prve ‘/’u URL adresi stranice.",
-      "pageInputLbl": "Naziv stranice",
-      "lookupMsgError": "Stranica nije pronađena",
-      "warning": "Podrška za Facebook je ukinuta, ${learn}.",
-      "learn": "saznajte više"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "E-pošta ili Google ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Ako veb stranica ima sadržaje audio ili video formata, označite ovu opciju kao potvrđenu da zaustavite reprodukciju tog sadržaja kada čitalac napusti stranicu. Označite je kao nepotvrđenu da zvuk nastavi sa reprodukcijom kako čitalac „ide“ kroz priču.<br />Ako je veb stranica aplikacija, označite ovu opciju kao nepotvrđenu tako da se priča ne učitava ponovo kada se čitalac vrati na nju.",
       "embedProtocolLabel": "Učitaj stranicu preko bezbedne veze (HTTPS)",
       "embedProtocolWarning1": "Ako se ova stranica ne učitava u vašoj priči, može da bude ugrađena iz veb sigurnosnih razloga. Kao alternativu, dodajte link u svom narativu da biste otvorili stranicu u novoj kartici pregledača. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Saznajte više</a>",
-      "embedProtocolWarning2": "Ako se ova stranica ne učitava u vašoj priči, poništite izbor ove opcije i pokušajte ponovo. Ako se stranica i dalje ne učitava, može da bude ugrađena iz veb sigurnosnih razloga. Kao alternativu, dodajte link u svom narativu da biste otvorili stranicu u novoj kartici pregledača. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Saznajte više</a>"
+      "embedProtocolWarning2": "Ako se ova stranica ne učitava u vašoj priči, poništite izbor ove opcije i pokušajte ponovo. Ako se stranica i dalje ne učitava, može da bude ugrađena iz veb sigurnosnih razloga. Kao alternativu, dodajte link u svom narativu da biste otvorili stranicu u novoj kartici pregledača. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Saznajte više</a>",
+      "learn": "Saznaj više",
+      "lblAltText": "Alternativni tekst",
+      "placeholderAltText": "Unesite opis ovih medija za osobe oštećenog vida...",
+      "tooltipAltText": "Unesite opis sadržaja ovih medija koji će koristiti pomoćne tehnologije, kao što je softver čitača ekrana. Opis je opcioni, ali se preporučuje radi ispunjavanja uputstava za veb pristupačnost poput WCAG i Odeljak 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Locirajte adresu ili mesto",

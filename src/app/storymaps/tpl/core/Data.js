@@ -150,8 +150,9 @@ define(["./WebApplicationData",
 
 				// Filter by status
 				$.each(allEntries || [], function(i, entry){
-					if ( entry.status == "PUBLISHED" )
+					if ( entry.status == "PUBLISHED" ) {
 						filteredEntries.push(entry);
+					}
 				});
 
 				return filteredEntries;
@@ -299,35 +300,88 @@ define(["./WebApplicationData",
 			 * Utils
 			 */
 
-			/*
-			 * Get an array of webmaps id used in the series
-			 */
-			this.getWebmaps = function()
-			{
-				// Main Stage webmaps
-				var webmaps = $.map(this.getStoryEntries(), function(entry){
-					return entry.media && entry.media.type == "webmap" && entry.media.webmap ? entry.media.webmap.id : null;
+			function getMediasByType(mediaType, ctx) {
+				var mediaTypeCompare = mediaType === 'embed' ? /webpage|video/ : mediaType;
+
+				// Main Stage media
+				var mediasArr = $.map(ctx.getStoryEntries(), function(entry) {
+					if (!entry || !entry.media || !entry.media.type) {
+						return null;
+					}
+					var thisMediaType = entry.media.type;
+					return thisMediaType.match(mediaTypeCompare) && entry.media[thisMediaType] ? entry.media[thisMediaType] : null;
 				});
 
-				// Story actions webmaps
-				$.each(this.getStoryEntries(), function(i, entry) {
+				// Story Action media
+				$.each(ctx.getStoryEntries(), function(i, entry) {
 					if (entry.contentActions) {
 						$.each(entry.contentActions, function(j, action) {
-							if (action.type === 'media' && action.media.webmap) {
-								webmaps.push(action.media.webmap.id);
+							if (action.type === 'media') {
+								var thisMediaType = action.media.type;
+								if (thisMediaType.match(mediaTypeCompare) && action.media[thisMediaType]) {
+									mediasArr.push(action.media[thisMediaType]);
+								}
 							}
 						});
 					}
 				});
 
 				// Make the array unique
-				webmaps = $.grep(webmaps, function(webmap, index) {
-					if ( ! webmap || webmap.length != 32 )
-						return false;
-					return index == $.inArray(webmap, webmaps);
+				mediasArr = $.grep(mediasArr, function(media, index) {
+					if (mediaType === 'webmap' || mediaType === 'image') {
+						var idProp = mediaType === 'image' ? 'url' : 'id';
+						var found = _.some(mediasArr, function(m) {
+							return media[idProp] === m[idProp] && media.altText === m.altText;
+						});
+						return found;
+					}
+					return index === $.inArray(media, mediasArr);
+				});
+				return mediasArr;
+			}
+
+			function getMediaIdsByType(mediaType) {
+
+				var idProp = mediaType === 'image' ? 'url' : 'id';
+
+				// Main Stage media
+				var mediaIdsArr = $.map(this.getStoryEntries(), function(entry) {
+					return entry && entry.media && entry.media.type === mediaType && entry.media[mediaType] ? entry.media[mediaType][idProp] : null;
 				});
 
-				return webmaps;
+				// Story Action media
+				$.each(this.getStoryEntries(), function(i, entry) {
+					if (entry.contentActions) {
+						$.each(entry.contentActions, function(j, action) {
+							if (action.type === 'media' && action.media[mediaType]) {
+								mediaIdsArr.push(action.media[mediaType][idProp]);
+							}
+						});
+					}
+				});
+
+				// Make the array unique
+				mediaIdsArr = $.grep(mediaIdsArr, function(media, index) {
+					if (mediaType === 'webmap') {
+						if (!media || media.length != 32) {
+							return false;
+						}
+					}
+					return index == $.inArray(media, mediaIdsArr);
+				});
+
+				return mediaIdsArr;
+			}
+
+			/*
+			 * Get an array of webmaps id used in the series
+			 */
+			this.getWebmaps = function() {
+				return getMediaIdsByType('webmap');
+			};
+
+			this.getWebmapObjects = function() {
+				return getMediasByType('webmap', this);
 			};
 
 			this.getFirstWebmapInfo = function() {
@@ -466,31 +520,12 @@ define(["./WebApplicationData",
 				});
 			}
 
-			// TODO those three functions should be refactored
-			this.getImages = function()
-			{
-				// Story Main Stage images
-				var images = $.map(this.getStoryEntries(), function(entry){
-					return entry.media && entry.media.type == "image" && entry.media.image ? entry.media.image.url : null;
-				});
+			this.getImages = function() {
+				return this.getMediaIdsByType('image');
+			};
 
-				// story action images
-				$.each(this.getStoryEntries(), function(i, entry) {
-					if (entry.contentActions) {
-						$.each(entry.contentActions, function(j, action) {
-							if (action.type == 'media' && action.media.image) {
-								images.push(action.media.image.url);
-							}
-						});
-					}
-				});
-
-				// Make the array unique
-				images = $.grep(images, function(image, index) {
-					return index == $.inArray(image, images);
-				});
-
-				return images;
+			this.getImageObjects = function() {
+				return getMediasByType('image', this);
 			};
 
 			this.getAllImageUrls = function() {
@@ -514,33 +549,8 @@ define(["./WebApplicationData",
 			};
 
 			// TODO those three functions should be refactored
-			this.getEmbeds = function()
-			{
-				// Story Main Stage embeds
-				var embeds = $.map(this.getStoryEntries(), function(section){
-					if ( ! section || ! section.media || (section.media.type != "video" && section.media.type != "webpage") || ! section.media[section.media.type] )
-						return null;
-
-					return section.media[section.media.type];
-				});
-
-				// story action embeds
-				$.each(this.getStoryEntries(), function(i, entry) {
-					if (entry.contentActions) {
-						$.each(entry.contentActions, function(j, action) {
-							if (action.type === 'media' && (action.media.webpage || action.media.video)) {
-								embeds.push(action.media.webpage || action.media.video);
-							}
-						});
-					}
-				});
-
-				// Make the array unique
-				embeds = $.grep(embeds, function(embed, index) {
-					return index == $.inArray(embed, embeds);
-				});
-
-				return embeds;
+			this.getEmbeds = function() {
+				return getMediasByType('embed', this);
 			};
 
 			this.getContentActions = function()

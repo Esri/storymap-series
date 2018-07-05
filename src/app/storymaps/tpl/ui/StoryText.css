@@ -7,6 +7,13 @@
 	max-width: 100%;
 }
 
+.section .title:focus {
+	outline-width: thin;
+}
+
+body:not(.user-is-tabbing) .title:focus {
+	outline: none;
+}
 /*
  * Map Actions
  * Partially duplicated in storymaps/common/builder/ckeditor/editor.css
@@ -55,12 +62,22 @@ figure img {
 	max-width: 100%;
 }
 
+/* this is default figcaption color. if you change this here,
+ * you also have to change the rule that gets applied in builder
+ * in ckeditor/editor.css */
 figure figcaption {
 	text-align: left;
 	display: block; /* For IE8 */
 	font-size: 0.85em;
-	color: #ADADAD;
+	color: #5F5F5F;
 	margin-top: 6px;
+}
+
+/* if you change this here, you also have to change the
+ * #caption-style inline style tag to the editor head
+ * in InlineEditor.js */
+body[data-theme-major=black] figure figcaption {
+	color: #aaa;
 }
 
 /*
@@ -91,11 +108,20 @@ figure figcaption {
 	background: url('../../../../resources/tpl/viewer/icons/media-fullscreen.png') 0 0;
 	opacity: 0.6;
 	margin-top: 10px;
+	border: none;
 }
 
-.btn-fullscreen:hover {
+.btn-fullscreen:hover,
+.btn-fullscreen:focus {
 	opacity: 1.0;
 	cursor: pointer;
+}
+
+/* focus mainstage button: hidden until focused with keyboard navigation */
+
+.centering {
+	width: 100%;
+	text-align: center;
 }
 
 .image-container.has-width img {
@@ -146,6 +172,7 @@ p[tabindex='0'] > .image-wrapper {
 	pointer-events: all;
 }
 
+/* if an image is a link, don't show fullscreen btn */
 .image-container > a > .image-wrapper img {
 	pointer-events: none;
 }
@@ -186,7 +213,10 @@ p[tabindex='0'] > .image-wrapper {
 }
 
 #cboxClose {
-	top: 0px;
+	/* give focus ring a bit of space */
+	top: 3px;
+	right: 3px !important;
+	outline-width: medium;
 	bottom: initial !important;
 	width: 39px !important;
 	height: 39px;
@@ -205,10 +235,30 @@ p[tabindex='0'] > .image-wrapper {
 .textEditorContent iframe {
 	border: none;
 	background-color: transparent;
+	display: block;
+}
+
+.iframe-container {
+	position: relative;
 }
 
 .iframe-container.custom iframe {
 	max-width: 100%;
+}
+
+.iframe-container .visible-on-focus.skip-iframe,
+.iframe-container .visible-on-focus.skip-back {
+	padding: 5px 10px;
+	position: absolute;
+	z-index: 10;
+}
+
+.iframe-container .visible-on-focus.skip-iframe {
+	top: 0;
+}
+
+.iframe-container .visible-on-focus.skip-back {
+	bottom: 0;
 }
 
 .cke_inner.cke_reset {
@@ -225,6 +275,8 @@ p[tabindex='0'] > .image-wrapper {
 	top: 0px;
 	text-align:center;
 	z-index: 30;
+	border: none;
+	padding: 0;
 }
 
 .backButton {

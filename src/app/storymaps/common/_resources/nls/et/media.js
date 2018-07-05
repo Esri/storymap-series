@@ -12,7 +12,8 @@ define({
       "disabled": "Administraator on selle võimaluse keelanud",
       "userLookup": "Laadi albumid",
       "notImplemented": "Pole veel kasutusele võetud.",
-      "noData": "Avalikku albumit ei leitud"
+      "noData": "Avalikku albumit ei leitud",
+      "thirdPartyTerms": "Kolmanda osapoole pakutava teenuse kasutamisel nõustute selle teenusetingimustega: "
     },
     "imageSelector": {
       "lblStep1": "Valige teenus",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Kasutajanimi",
       "signInMsg2": "Kasutajat ei leitud",
       "loadingFailed": "Laadimine nurjus"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Facebooki kasutajanimi",
-      "rightHeader": "Facebooki leht",
-      "pageExplain": "Facebooki leht on avalik kaubamärk/toode nagu <b>esrigis</b>. Lehe nime leiate lehe URL-ist pärast '/'.",
-      "pageInputLbl": "Lehe nimi",
-      "lookupMsgError": "Lehte ei leitud",
-      "warning": "Facebooki tuge ei pakuta enam, ${learn}.",
-      "learn": "lisateave"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "Meiliaadress või Google ID",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Kui veebileht sisaldab audio- või videosisu, jätke see valik märgituks, et lõpetada selle sisu esitamine, kui lugeja liigub mujale. Tühjendage see valik näiteks siis, kui soovite, et heliriba esitataks samal ajal, kui lugeja läbi loo liigub.<br />Kui veebileht on rakendus, tühjendage see valik, et kasutaja naasmisel ei laaditaks lugu uuesti.",
       "embedProtocolLabel": "Lehe laadimine turvalise ühenduse (HTTPS) kaudu",
       "embedProtocolWarning1": "Kui seda lehte teie loos ei laadita, ei saa seda veebilehe turvalisusega seotud põhjustel manustada. Teise võimalusena saate oma loole lisada lingi, et avada leht uues brauseriaknas. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Lisateave</a>",
-      "embedProtocolWarning2": "Kui seda lehte teie loos ei laadita, tühjendage see valik ja proovige uuesti. Kui lehte ikkagi ei laadita, ei saa seda veebilehe turvalisusega seotud põhjustel manustada. Teise võimalusena saate oma loole lisada lingi, et avada leht uues brauseriaknas. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Lisateave</a>"
+      "embedProtocolWarning2": "Kui seda lehte teie loos ei laadita, tühjendage see valik ja proovige uuesti. Kui lehte ikkagi ei laadita, ei saa seda veebilehe turvalisusega seotud põhjustel manustada. Teise võimalusena saate oma loole lisada lingi, et avada leht uues brauseriaknas. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Lisateave</a>",
+      "learn": "Lisateave",
+      "lblAltText": "Alternatiivne tekst",
+      "placeholderAltText": "Sisestage selle meediasisu kirjeldus nägemispuudega lugejate jaoks...",
+      "tooltipAltText": "Sisestage selle meediasisu kirjeldus, mida saavad kasutada hõlbustustehnoloogiad, näiteks ekraanilugeri tarkvara. Kirjeldus pole kohustuslik, kuid veebihõlbustusjuhiste (nt WCAG ja Section 508) täitmiseks on seda siiski soovitatav kasutada."
     },
     "editorActionGeocode": {
       "lblTitle": "Märgi aadress või asukoht",

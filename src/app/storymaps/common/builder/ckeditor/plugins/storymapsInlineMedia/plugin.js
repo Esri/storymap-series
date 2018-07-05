@@ -4,6 +4,9 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 
 		var inlineMediaExec = function(isEditing, editingNode)
 		{
+			if (app.appCfg.mediaPickerConfigureForceMode !== 'shortlist' && !$(editor.element.$).parents('.entry.active').parents('body').length) {
+				return;
+			}
 			var sel = editor.getSelection();
 
 			// Search for the media container node specificed in param
@@ -30,6 +33,7 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 
 			require(["dojo/topic", "dojo/has", "storymaps/common/utils/CommonHelper"], function(topic, has, CommonHelper){
 				var media = null;
+				var altText;
 
 				if ( elemIsImg ) {
 					var mediaImg = elem.find('img').eq(0),
@@ -37,6 +41,7 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 						title = caption && caption.length ? caption.html() : mediaImg.attr('title'),
 						figureContainer = mediaImg.parents('figure'),
 						activateFullScreen = false;
+						altText = elem.find('img').attr('alt');
 
 					if (figureContainer.length) {
 						activateFullScreen = (figureContainer.find('.activate-fullscreen').length > 0);
@@ -52,7 +57,8 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 							title: title,
 							width: mediaImg.attr('width'),
 							height: mediaImg.attr('height'),
-							activateFullScreen: activateFullScreen
+							activateFullScreen: activateFullScreen,
+							altText: altText
 						}
 					};
 				}
@@ -61,6 +67,7 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 						mediaIframe = mediaContainer.find("iframe").eq(0),
 						isVideo = mediaContainer.hasClass("mj-video-by-url"),
 						isFrameByUrl = mediaContainer.hasClass("mj-frame-by-url");
+						altText = mediaContainer.attr('aria-label');
 						//frameStr = decodeURIComponent(mediaIframe.data('ckeRealelement'));
 
 					if ( isVideo ) {
@@ -81,7 +88,8 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 						frameTag: isVideo || isFrameByUrl ? null : mediaIframe.prop('outerHTML'),
 						display: mediaContainer.hasClass("custom") ? "custom" : "fit",
 						width: mediaIframe.attr('width'),
-						height: mediaIframe.attr('height')
+						height: mediaIframe.attr('height'),
+						altText: altText
 					};
 
 					if ( media.type == "webpage" )
@@ -95,11 +103,12 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 						var DEFAULT_WIDTH = '100%',
 							outputEl = "",
 							mediaTpl = "",
-							captionTpl = "";
+							captionTpl = "",
+							altText = cfg.altText || '';
 
 						if ( cfg.type == "image" ) {
 							var fullScreenOpt = cfg.activateFullScreen ? ' activate-fullscreen' : '';
-							mediaTpl = '<div class="image-container' + fullScreenOpt + '"><img src="" /></div>';
+							mediaTpl = '<div class="image-container' + fullScreenOpt + '"><img src="" alt="' + altText + '" /></div>';
 							captionTpl = '<figure class="caption">' + mediaTpl + '<figcaption></figcaption>' + '</figure>';
 						}
 						else {
@@ -113,10 +122,10 @@ CKEDITOR.plugins.add('storymapsInlineMedia', {
 							// Fit or custom
 							editTag += " " + (! cfg.width && ! cfg.height ? " fit" : " custom");
 
-							mediaTpl = '<div class="iframe-container' + editTag + '"><iframe src="" frameborder="0" allowfullscreen="1"/></iframe></div>';
+							mediaTpl = '<div class="iframe-container' + editTag + '" aria-label="' + altText + '" ><iframe src="" frameborder="0" allowfullscreen="1"/></iframe></div>';
 
 							if ( cfg.type == "webpage" && cfg.frameTag ) {
-								mediaTpl = '<div class="iframe-container' + editTag + '">' + cfg.frameTag + '</div>';
+								mediaTpl = '<div class="iframe-container' + editTag + '" aria-label="' + altText + '" >' + cfg.frameTag + '</div>';
 							}
 						}
 

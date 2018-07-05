@@ -95,6 +95,7 @@ define(["lib-build/tpl!./NavBar",
 			this.showEntryIndex = function(index)
 			{
 				var nbEntryVisible = container.find('.nav-tabs > .entry.visible').length;
+				var dropdown = container.find('.dropdown');
 
 				container.find('li').removeClass('active');
 
@@ -105,22 +106,23 @@ define(["lib-build/tpl!./NavBar",
 					if ( ! app.isLoading ) {
 						container.find('.entry').eq(index).find('.entryLbl').focus();
 						// Close the dropdown if open
-						if ( container.find('.dropdown').hasClass("open") )
+						if ( dropdown.hasClass("open") )
 							container.find('.dropdown-toggle').click();
 					}
 				}
 				// The entry is in the more list
 				else {
-					container.find('.dropdown').addClass('active');
-					container.find('.dropdown .entry').eq(index).addClass('active');
+					dropdown.addClass('active');
+					container.find('.dropdown .entry').eq(index).addClass('active').find('a').focus();
 
 					if ( ! app.isLoading ) {
 						// Open the dropdown if not open
-						if ( ! container.find('.dropdown').hasClass("open") )
+						if ( ! dropdown.hasClass("open") ) {
 							container.find('.dropdown-toggle').click();
+						}
 
 						// Focus on the dropdown entry
-						container.find('.dropdown .entry').eq(index).focus();
+						dropdown.find('.entry').eq(index).find('button').focus();
 					}
 				}
 
@@ -149,9 +151,12 @@ define(["lib-build/tpl!./NavBar",
 
 				$.each(_entries, function(i, entry) {
 					var value = entry.title;
+					var sectionNumber = i + 1;
 
-					if ( layout == "bullet" )
+					if ( layout == "bullet" ) {
 						value = layoutOptions.reverse ? nbEntries - i : i + 1;
+						sectionNumber = value;
+					}
 
 					// Can happen when switching from bullet where title isn't mandatory
 					if ( ! value )
@@ -165,13 +170,14 @@ define(["lib-build/tpl!./NavBar",
 					entriesHTML += viewEntryTpl({
 						value: value,
 						tooltip: layout == "bullet" ? entry.title : "",
-						optHtmlClass: entry.status != "PUBLISHED" ? "hidden-entry" : ""
+						optHtmlClass: entry.status != "PUBLISHED" ? "hidden-entry" : "",
+						ariaLabel: i18n.viewer.a11y.toEntryAria.replace('%ENTRY_NUMBER%', sectionNumber).replace('%ENTRY_TITLE%', entry.title)
 					});
 				});
 
 				container.find('.nav-tabs').html(
 					entriesHTML
-					+ viewEntryMoreTpl({ entries: entriesHTML })
+					+ viewEntryMoreTpl({ entries: entriesHTML, dropdownAria: i18n.viewer.a11y.moreEntries })
 				);
 
 				// On touch device for some reason enabling the tooltip sometimes make touching one bullet go to the following
@@ -191,13 +197,51 @@ define(["lib-build/tpl!./NavBar",
 
 				// Tab navigation
 				container.find('.entryLbl').on('keydown', function(e) {
-					if( e.keyCode === 9 ) {
-						topic.publish("story-tab-navigation", {
-							from: "nav",
-							direction: e.shiftKey ? "backward" : "forward"
-						});
-						return false;
-					}
+          var jqTarget = $(this);
+          // allowable navigation on tabs/bullets:
+          // tab (9) or enter (13) -- enter section
+          // shift+tab or left arrow (37) -- back a tab
+          // right arrow (39) -- forward a tab
+          if (!e.keyCode.toString().match(/^(9|13|37|39)$/)) {
+            // ignore up/down arrows on dropdown. moves the focus ring without moving the focus. :\
+            if (jqTarget.parents('.dropdown').length && (e.keyCode === 40 || e.keyCode === 38)) {
+              return false;
+            }
+            return;
+          }
+
+          // on keyboard navigation with voiceover, if the focused tab isn't actually
+          // active, we need to navigate to that tab before anything else happens.
+          // this occurs naturally if we just return and allow the <enter> to be
+          // processed as a click.
+          var jqEntry = jqTarget.parents('li.entry');
+          if (e.keyCode === 13 && !jqEntry.hasClass('active')) {
+            return;
+          }
+          // default, and remains unchanged for tab or enter.
+          var params = {
+            from: 'nav',
+            direction: 'forward',
+            to: 'section'
+          };
+          var trap = false;
+          if ((e.keyCode === 9 && e.shiftKey) || e.keyCode === 37) {
+            params.direction = 'backward';
+            params.to = 'nav';
+            if (e.keyCode === 37) {
+              trap = true;
+            }
+          } else if (e.keyCode === 39) {
+            params.to = 'nav';
+            trap = true;
+          }
+          // don't publish a navigation event if we're on the first tab and tabbing
+          // backwards -- allow focus to return to the header naturally
+          if (app.data.getCurrentEntryIndex() === 0 && params.direction === 'backward' && !trap) {
+            return;
+          }
+          topic.publish('story-tab-navigation', params);
+          return false;
 				});
 
 				// Fire a click event when focusing through keyboard and prevent double event when clicking with mouse

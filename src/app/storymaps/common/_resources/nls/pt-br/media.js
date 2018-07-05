@@ -12,7 +12,8 @@ define({
       "disabled": "Este recurso foi desabilitado pelo Administrador",
       "userLookup": "Carregar álbuns",
       "notImplemented": "Não implementado ainda.",
-      "noData": "Nenhum álbum público localizado"
+      "noData": "Nenhum álbum público localizado",
+      "thirdPartyTerms": "Ao utilizar um serviço de terceiros, você concorda com seus termos de serviço: "
     },
     "imageSelector": {
       "lblStep1": "Escolha o serviço",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Nome de usuário",
       "signInMsg2": "Usuário não encontrado",
       "loadingFailed": "Falha ao carregar"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Usuário do Facebook",
-      "rightHeader": "Página do Facebook",
-      "pageExplain": "A página do Facebook é um produto/marca pública ou figura pública como<b>esrigis</b>. Você pode obter um nome de página após o primeiro '/' na URL da página.",
-      "pageInputLbl": "Nome da página",
-      "lookupMsgError": "Página não encontrada",
-      "warning": "O suporte do Facebook foi descontinuado, ${learn}.",
-      "learn": "mais informações"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "E-mail ou ID do Google",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Se a página da web tiver mídia de áudio ou de vídeo, mantenha esta opção marcada para interromper a execução do conteúdo quando o leitor navegar fora da página. Desmarque isto, por exemplo, para manter uma trilha sonora tocando quando o leitor avançar pela história.<br />Se a página da web for um aplicativo, desmarque esta opção de forma que a história não recarregue se o leitor retornar a ela.",
       "embedProtocolLabel": "Carregar página ao longo de uma conexão segura (HTTPS)",
       "embedProtocolWarning1": "Se esta página não for carregada na sua história, ela não poderá ser embutida por razões de segurança da web. Como alternativa, adicione um link na sua narrativa para abrir a página em uma nova guia do navegador. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Mais informações</a>",
-      "embedProtocolWarning2": "Se esta página não for carregada na sua história, desmarque esta opção e tente novamente. Se a página ainda não estiver carregada, ela não poderá ser embutida por razões de segurança da web. Como alternativa, adicione um link na sua narrativa para abrir a página em uma nova guia do navegador. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Mais informações</a>"
+      "embedProtocolWarning2": "Se esta página não for carregada na sua história, desmarque esta opção e tente novamente. Se a página ainda não estiver carregada, ela não poderá ser embutida por razões de segurança da web. Como alternativa, adicione um link na sua narrativa para abrir a página em uma nova guia do navegador. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Mais informações</a>",
+      "learn": "Mais informações",
+      "lblAltText": "Texto Alternativo",
+      "placeholderAltText": "Insira uma descrição desta mídia para leitores com deficiência visual ...",
+      "tooltipAltText": "Forneça uma descrição deste conteúdo de mídia que será utilizado pelas tecnologias assistidas, como o software leitor de tela. Uma descrição é opcional, mas recomendado para atender às diretrizes de acessibilidade da web, como WCAG e Seção 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Localizar um endereço ou lugar",

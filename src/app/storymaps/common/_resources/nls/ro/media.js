@@ -12,7 +12,8 @@ define({
       "disabled": "Acest obiect spaţial a fost dezactivat de administrator",
       "userLookup": "Încărcare albume",
       "notImplemented": "Neimplementat încă.",
-      "noData": "Nu a fost găsit niciun album public"
+      "noData": "Nu a fost găsit niciun album public",
+      "thirdPartyTerms": "Utilizând un serviciu terț, sunteți de acord cu termenii săi asociați serviciilor: "
     },
     "imageSelector": {
       "lblStep1": "Alegere serviciu",
@@ -35,15 +36,6 @@ define({
       "userInputLbl": "Nume utilizator",
       "signInMsg2": "Utilizator negăsit",
       "loadingFailed": "Încărcare eşuată"
-    },
-    "imageSelectorFacebook": {
-      "leftHeader": "Utilizator Facebook",
-      "rightHeader": "Pagină Facebook",
-      "pageExplain": "O pagină de Facebook este o marcă sau un produs public sau o celebritate precum <b>esrigis</b>. Puteţi prelua numele paginii după primul caracter „/” din URL-ul paginii.",
-      "pageInputLbl": "Nume pagină",
-      "lookupMsgError": "Pagină negăsită",
-      "warning": "Asistenţa Facebook a fost suspendată, ${learn}.",
-      "learn": "aflaţi mai multe"
     },
     "imageSelectorPicasa": {
       "userInputLbl": "E-mail sau ID Google",
@@ -120,7 +112,11 @@ define({
       "unloadHelp": "Dacă pagina web conţine materiale audio sau video, păstraţi această opţiune bifată pentru a opri redarea în momentul în care cititorul trece în altă secţiune. Debifaţi-o, de exemplu, pentru a continua redarea unei melodii când cititorul avansează în jurnal.<br />Dacă pagina web este o aplicaţie, debifaţi această opţiune pentru ca povestea să nu fie nevoită să se încarce din nou când cititorul revine în secţiunea respectivă.",
       "embedProtocolLabel": "Încărcaţi pagina printr-o conexiune securizată (HTTPS)",
       "embedProtocolWarning1": "Dacă pagina nu se încarcă în povestea dvs., nu poate fi încorporată din motive de securitate web. Ca alternativă, adăugaţi un link la naraţiunea dvs. pentru a deschide pagina într-o filă de browser nouă. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Aflaţi mai multe</a>",
-      "embedProtocolWarning2": "Dacă pagina nu se încarcă în povestea dvs., debifaţi această opţiune şi încercaţi din nou. Dacă pagina tot nu se încarcă, nu poate fi încorporată din motive de securitate web. Ca alternative, adăugaţi un link la naraţiunea dvs. pentru a deschide pagina într-o filă de browser nouă. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Aflaţi mai multe</a>"
+      "embedProtocolWarning2": "Dacă pagina nu se încarcă în povestea dvs., debifaţi această opţiune şi încercaţi din nou. Dacă pagina tot nu se încarcă, nu poate fi încorporată din motive de securitate web. Ca alternative, adăugaţi un link la naraţiunea dvs. pentru a deschide pagina într-o filă de browser nouă. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Aflaţi mai multe</a>",
+      "learn": "Aflați mai multe",
+      "lblAltText": "Text alternativ",
+      "placeholderAltText": "Introduceți o descriere a acestui conținut media pentru cititorii cu probleme de vedere...",
+      "tooltipAltText": "Oferiți o descriere a acestui conținut media, care va fi folosită de tehnologiile de asistență, precum software-ul de citire a ecranului. O descriere este opțională, dar recomandată pentru a respecta liniile directoare privind accesibilitatea web, precum WCAG și Secțiunea 508."
     },
     "editorActionGeocode": {
       "lblTitle": "Localizaţi o adresă sau un loc",

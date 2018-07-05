@@ -1,7 +1,27 @@
 define({
   "viewer": {
     "common": {
-      "close": "बंद करें"
+      "close": "बंद करें",
+      "focusMainstage": "कीबोर्ड का फ़ोकस मीडिया पर भेजें",
+      "expandImage": "छवि का विस्तार करें"
+    },
+    "a11y": {
+      "skipToContent": "इसे छोड़ कर सामग्री पर जाएं",
+      "headerAria": "कहानी का शीर्षक",
+      "panelAria": "कथा सामग्री",
+      "mainStageAria": "मौजूदा कथा प्रविष्टि मीडिया",
+      "logoLinkAria": "लोगो लिंक",
+      "toTop": "पहली प्रविष्टि पर जाएं",
+      "focusContent": "सामग्री पर वापस जाएं",
+      "navAria": "कथा प्रविष्टियां",
+      "toEntryAria": "प्रविष्टि %ENTRY_NUMBER% पर जाएं: %ENTRY_TITLE%",
+      "entryAria": "प्रविष्टि %ENTRY_NUMBER%: %ENTRY_TITLE%",
+      "loadingAria": "कहानी की विषय वस्तु लोड हो रही है",
+      "skipBelowContent": "इस सामग्री को नीचे छोड़ें",
+      "skipBelowVideo": "इस वीडियो को नीचे छोड़ें",
+      "skipAboveContent": "इस सामग्री ऊपर छोड़ें",
+      "skipAboveVideo": "इस वीडियो ऊपर छोड़ें",
+      "moreEntries": "और प्रविष्टियां"
     },
     "loading": {
       "long": "कहानी प्रांरभ हो रही है",

@@ -117,10 +117,6 @@
 	float: right;
 }
 
-#headerDesktop .logoLink {
-	outline: none;
-}
-
 #headerDesktop .shareBtns {
 	margin-left: 8px;
 }
@@ -128,6 +124,10 @@
 #headerDesktop .shareIcon {
 	opacity: 0.9;
 	color: inherit !important;
+	/* since we changed these to buttons, get rid of button styling */
+	background: none;
+	border: none;
+	padding: 0;
 }
 
 #headerDesktop .shareIcon:hover {
