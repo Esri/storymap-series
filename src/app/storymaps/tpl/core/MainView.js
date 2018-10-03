@@ -152,6 +152,7 @@ define(["lib-build/css!./MainView",
             td: ['bgcolor'],
             caption: [],
             // media
+            source: ['src', 'type'], // match tour, which needs this for audio
             figure: [],
             figcaption: [],
             iframe: [

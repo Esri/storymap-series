@@ -82,6 +82,7 @@
 
 .accordionPanel .accordion-header-number.twodigits {
 	min-width: 87px;
+	word-break: normal; /* don't allow the accordion section numbers to wrap */
 }
 
 .accordionPanel:not(.is-numbered) .accordion-header-number {

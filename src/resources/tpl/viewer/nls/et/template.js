@@ -45,7 +45,7 @@ define({
       "appLoadingFail": "Midagi läks valesti, rakendust %TPL_NAME% ei laaditud õigesti.",
       "notConfiguredDesktop": "Lugu pole veel konfigureeritud.",
       "notConfiguredMobile": "Selle kuvasuuruse korral koosturit %TPL_NAME% ei toetata. Võimaluse korral muutke koosturile juurdepääsemiseks oma brauseri suurust või looge oma lugu suurema ekraaniga seadmes.",
-      "notConfiguredMobile2": "Koosturi %TPL_NAME% kasutamiseks pöörake oma seadet ja kasutage horisontaalpaigutust.",
+      "notConfiguredMobile2": "Koostaja %TPL_NAME% kasutamiseks pöörake oma seadet ja kasutage horisontaalpaigutust.",
       "notAuthorized": "Teil puudub õigus sellele loole juurde pääseda",
       "notAuthorizedBuilder": "Teil pole õigust koosturit %TPL_NAME% kasutada.",
       "noBuilderIE": "Internet Exploreri versioonist %VERSION% varasemad versioonid ei toeta koostajat. %UPGRADE%",
@@ -73,7 +73,7 @@ define({
       "lblLegendMobileErrorExplain": "Legend pole saadaval, kui seade pööratakse pärast rakenduse laadimist vertikaalasendisse."
     },
     "mobileFooter": {
-      "swipeInvite": "Nipsake loos liikumiseks",
+      "swipeInvite": "Rullige  loos liikumiseks",
       "lblNext": "Järgmine",
       "lblEnd": "Jõudsite loo lõppu"
     },
@@ -82,9 +82,9 @@ define({
       "builderButton": "Muuda",
       "facebookTooltip": "Jaga Facebookis",
       "twitterTooltip": "Jaga Twitteris",
-      "bitlyTooltip": "Hangi lühike link",
-      "templateTitle": "Määra mallile pealkiri",
-      "templateSubtitle": "Määra mallile alampealkiri",
+      "bitlyTooltip": "Hankige lühike link",
+      "templateTitle": "Määrake mallile pealkiri",
+      "templateSubtitle": "Määrake mallile alapealkiri",
       "share": "Jaga",
       "checking": "Loo sisu vaatamine",
       "fix": "Parandage loos ilmnevad probleemid",
@@ -105,7 +105,7 @@ define({
       "embedExplain": "Kasutage loo veebilehele lisamiseks järgmist HTML-koodi.",
       "size": "Suurus (laius/kõrgus):",
       "autoplayLabel": "Automaatesituse režiim",
-      "autoplayExplain1": "Automaatesituse režiimis keritakse teie lugu kindla ajavahemiku järel edasi. Seda on hea kasutada kioskite või avalike kohtade ekraanidel, kuid arvestage, et muudel juhtudel võib see raskendada teie loo lugemist. See funktsioon pole väikestel ekraanidel toetatud.",
+      "autoplayExplain1": "Automaatesituse režiimis keritakse Teie lugu kindla ajavahemiku järel edasi. Seda on hea kasutada kioskite või avalike kohtade ekraanidel, kuid arvestage, et muudel juhtudel võib see raskendada Teie loo lugemist. See funktsioon pole väikestel ekraanidel toetatud.",
       "autoplayExplain2": "Kui see režiim on aktiveeritud, saate kasutada loo esitamise või peatamise ja liikumiskiiruse reguleerimise juhtelemente.",
       "linksupdated": "Lingid on värskendatud!"
     },

@@ -882,9 +882,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					newVisibility = override.length ? override[0].visibility : layerInfo.visibility;
 
 					if ( layerObj.loaded && layerObj.visible !== newVisibility) {
-						setTimeout(function() {
 							layerObj.setVisibility(newVisibility);
-						}, 100);
 					}
 					else {
 						layerObj.on("load", function() {
@@ -1200,7 +1198,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			 */
 			function setPopupPosition(map, popup)
 			{
-				if (! map || ! popup || ! popup.getSelectedFeature() || ! popup.location) {
+				if (! map || ! popup || (! popup.getSelectedFeature() && !popup.deferreds) || ! popup.location) {
 					return;
 				}
 

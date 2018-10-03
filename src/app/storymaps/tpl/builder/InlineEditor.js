@@ -54,9 +54,9 @@ define(["lib-build/css!./InlineEditor",
 				//
         // the *(*) in extraAllowedContent means any element can have any class and *[*] means any element can have any attribute.
         // otherwise, elements with classes or attributes _get stripped out entirely_
-        // including all inserted media (images, webpages, etc)
+        // including all inserted media (images, webpages, etc). source tag added back in for <audio><source src="..."></source></audio> syntax
         // The separate sanitizer has its own whitelist of attributes, found in MainView.js
-        extraAllowedContent: 'h1 h2 h3 h4 h5 h6 sub sup table tr th td caption div span img figure figcaption style audio iframe' +
+        extraAllowedContent: 'h1 h2 h3 h4 h5 h6 sub sup table tr th td caption div span img figure figcaption style audio source iframe' +
                              '; *(*); *[*]; a[data-*]',
 				disallowedContent: 'script; *[on*]',
 				// Elements to be removed when executing the "remove " format" command

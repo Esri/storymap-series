@@ -173,7 +173,7 @@ define(["lib-build/tpl!./DescriptionAndLegendPanelEntry",
 
 					// Legend
 					if ( entry.media.type == "webmap" ) {
-						self.getOrCreateLegendContainer();
+						self.getOrCreateLegendContainer(entry.media.webmap.id);
 					}
 				});
 

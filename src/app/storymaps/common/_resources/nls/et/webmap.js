@@ -9,7 +9,7 @@ define({
       "lblOverview": "Ülevaatekaart",
       "lblLegend": "Legend",
       "lblGeocoder": "Aadressi-, koha- ja objektileidja",
-      "tooltipGeocoder": "Võimaldab lugejatel teie kaardilt aadresse, kohti ja/või objekte otsida. Otsinguseadeid saab konfigureerida veebikaardi sisuobjekti lehelt, kui avate Seaded > Veebikaart > Rakendus > Otsi asukohti.",
+      "tooltipGeocoder": "Võimaldab lugejatel Teie kaardilt aadresse, kohti ja/või objekte otsida. Otsinguseadeid saab konfigureerida veebikaardi sisuobjekti lehelt, kui avate Seaded > Veebikaart > Rakendus > Otsi asukohti.",
       "lblEsriGeocoder": "Kohaleidja (maailm)",
       "loadingTitle": "Pealkirja laadimine",
       "entry": "Sissekanne",

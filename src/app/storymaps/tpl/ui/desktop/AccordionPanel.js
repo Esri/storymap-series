@@ -75,9 +75,13 @@ define(["lib-build/tpl!./AccordionPanelEntry",
 
 					newActiveEntry.addClass("active");
 					if ( ! noSliding )
-						newActiveEntry.find(".accordion-content").slideDown();
+						newActiveEntry.find(".accordion-content").slideDown({
+							complete: possiblyScrollAfterSlideDown
+						});
 					else
-						newActiveEntry.find(".accordion-content").show();
+						newActiveEntry.find(".accordion-content").show({
+							complete: possiblyScrollAfterSlideDown
+						});
 
 					/*
 					if($(this).hasClass("active") && $("#application-window").width() <= 780 && $(this).next().height() > 20){
@@ -91,9 +95,36 @@ define(["lib-build/tpl!./AccordionPanelEntry",
 							_inlineEditor.init(container.find(".entry.active"));
 					}
 
+
 					_entryIndex = index;
 				}
 			};
+
+			function possiblyScrollAfterSlideDown() {
+				var activeEntry = container.find('.entry.active');
+				if (!activeEntry.length) {
+					return;
+				}
+
+				var activeElRect = activeEntry[0].getBoundingClientRect();
+
+				var entryParent = activeEntry.parent();
+				var panelTop = entryParent[0].getBoundingClientRect().top;
+				var parentScrollTopBase = entryParent.scrollTop() - panelTop;
+
+				var offScreenBottom = activeElRect.bottom > $('body').height() + 5;
+				var offScreenTop = (activeElRect.top < panelTop - 5) || (offScreenBottom && activeElRect.height > entryParent.height());
+				var newScrollTop = null;
+
+				if (offScreenTop) {
+					newScrollTop = parentScrollTopBase + activeElRect.top;
+				} else if (offScreenBottom) {
+					newScrollTop = parentScrollTopBase + activeElRect.bottom - entryParent.height() + 10;
+				}
+				if (newScrollTop !== null) {
+					entryParent.animate({scrollTop: newScrollTop});
+				}
+			}
 
 			this.getEntryIndex = function()
 			{

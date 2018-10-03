@@ -28,8 +28,8 @@ define({
       "lblDrop": "Thả ảnh tại đây hoặc",
       "infoUpload": "Ảnh sẽ được lưu trong tài khoản ArcGIS và chỉ có thể truy cập bên trong câu chuyện của bạn.",
       "warningFileTypes": "Ảnh có thể ở định dạng .jpg, .png, .gif, hoặc .bmp",
-      "warningOneFile": "Chấp nhận một tệp mỗi lần.",
-      "warningFileSize": "Tệp vượt quá kích thước tải lên tối đa cho phép. Vui lòng chọn tệp khác.",
+      "warningOneFile": "Mỗi lần chỉ có thể tải lên một hình ảnh.",
+      "warningFileSize": "Hình ảnh không được quá 10 MB.",
       "tooltipRemove": "Xóa ảnh không sử dụng này khỏi tài khoản ArcGIS. <br> (Bạn sẽ phải tải lại ảnh nếu muốn sử dụng nó sau này.)"
     },
     "imageSelectorFlickr": {

@@ -331,12 +331,16 @@ define([
       </div>\
     ';
 
+    // global var
+    var waitingForRecenter = false;
+    var fullscreenMapDimensions = null;
+
     var createMessage = function() {
       // Add DOM elements
       document.querySelector('body').appendChild(embedBarWrapper);
       document.querySelector('body').appendChild(shareModalWrapper);
 
-      if(!document.fullscreenEnabled && !document.webkitFullscreenEnabled && !document.mozFullScreenEnabled && !document.msFullscreenEnabled){
+      if(!checkFullScreenEnabled()){
         document.querySelector(".fullscreen-embed").style.display = "none";
       } else {
         document.querySelector(".open-newtab-embed").style.display = "none";
@@ -344,6 +348,14 @@ define([
 
       hideParentElements();
       createEvents();
+    };
+
+    var checkFullScreenEnabled = function() {
+      return (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled);
+    };
+
+    var checkFullScreenElement = function() {
+      return (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
     };
 
     var hideParentElements = function() {
@@ -388,26 +400,27 @@ define([
     };
 
     var checkFullscreenChange = function(){
-      if((document.fullscreenEnabled && !document.fullscreenElement)
-        || (document.webkitFullscreenEnabled && !document.webkitFullscreenElement)
-        || (document.mozFullScreenEnabled && !document.mozFullScreenElement)
-        || (document.msFullscreenEnabled && !document.msFullscreenElement)
-      ){
-        if(document.querySelector("body").classList.contains("fullscreen"))
-          document.querySelector("body").classList.toggle("fullscreen");
-        document.querySelectorAll(".fullscreen-embed svg")[0].style.display = "block";
-        document.querySelectorAll(".fullscreen-embed svg")[1].style.display = "none";
+      if (checkFullScreenEnabled()) {
+        if (!checkFullScreenElement()) {
+          if (document.querySelector("body").classList.contains("fullscreen")) {
+            document.querySelector("body").classList.toggle("fullscreen");
+          }
+          document.querySelectorAll(".fullscreen-embed svg")[0].style.display = "block";
+          document.querySelectorAll(".fullscreen-embed svg")[1].style.display = "none";
+          if (!waitingForRecenter) {
+            adjustMapCenter();
+          }
+        } else {
+          recordMapSize();
+        }
       }
     };
 
     var manageFullscreen = function() {
       var embeddedApp = document.querySelector("body");
 
-      if (document.fullscreenEnabled ||
-        document.webkitFullscreenEnabled ||
-        document.mozFullScreenEnabled ||
-        document.msFullscreenEnabled)
-      {
+      if (checkFullScreenEnabled()) {
+        recenterMapAfterResize();
 
         // Enter fullscreen
         if(!embeddedApp.classList.contains("fullscreen")) {
@@ -445,6 +458,64 @@ define([
         document.querySelector(".open-newtab-embed").style.display = "block";
         console.log("Full screen not available");
       }
+    };
+
+    var recordMapSize = function() {
+      var map = app && app.map;
+      if (!map) {
+        return;
+      }
+      fullscreenMapDimensions = {
+        height: map.height,
+        width: map.width
+      };
+    };
+
+    var adjustMapCenter = function() {
+      var ctr = (app && app.map) ? app.map.extent.getCenter() : null;
+      if (!ctr || !fullscreenMapDimensions) {
+        return;
+      }
+      // get a screenpoint, then change it
+      var screenCtr = app.map.toScreen(ctr);
+      screenCtr.x = fullscreenMapDimensions.width / 2;
+      screenCtr.y = fullscreenMapDimensions.height / 2;
+      app.map.centerAt(app.map.toMap(screenCtr));
+
+    };
+
+    var recenterMapAfterResize = function() {
+      var ctr = (app && app.map) ? app.map.extent.getCenter() : null;
+      if (!ctr) {
+        return;
+      }
+      waitingForRecenter = true;
+      var handleFullscreenResize = debounce(function() {
+        app.map.centerAt(ctr);
+        handle.remove();
+        waitingForRecenter = false;
+      }, 250);
+      var handle = app.map.on('resize', handleFullscreenResize);
+    };
+
+    // https://davidwalsh.name/javascript-debounce-function
+    var debounce = function(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) {
+            func.apply(context, args);
+          }
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) {
+          func.apply(context, args);
+        }
+      };
     };
 
     var toggleShare = function() {

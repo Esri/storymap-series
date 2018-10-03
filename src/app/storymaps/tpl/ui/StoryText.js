@@ -509,6 +509,7 @@ define(["dojo/topic",
 				return;
 			}
 
+			app.ui.mainStage.updateMainMediaWithStoryMainMedia(app.data.getCurrentEntryIndex(), false);
 			var pointLayer = findOrCreateLocateLayer(zoomAction);
 			var zoomPoint = new Point(zoomAction.center);
 			if (zoomAction.mapMarker) {
