@@ -161,6 +161,9 @@ define({
       "enlarge": "Povečaj",
       "newTab": "Odpri v novem zavihku",
       "tagline": "Karta z zgodbo"
+    },
+    "licenseChange2018": {
+      "noAccess": "Vaš račun (%USER_NAME%) ni licenciran za odpiranje Karte z zgodbo, ki ni javna. Prosite administratorja v svoji organizaciji, da vam dodeli vrsto uporabnika, ki vsebuje aplikacije Karto z zgodbo ali licenco za dodatne aplikacije Essential Apps."
     }
   }
 });

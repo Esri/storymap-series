@@ -9,6 +9,10 @@
 	color: #444;
 }
 
+td.btn-container.btn-select-picasa {
+    display: none;
+}
+
 .imageSelectorHome .imageSelectorTable .fa {
 	font-size: 26px;
 	margin-right: 4px;
@@ -24,7 +28,6 @@
 
 .imageSelectorHome .imageSelectorTable .btn-container {
 	padding: 10px 0;
-	width: auto;
 }
 
 .mediaSelector.smallSize .imageSelectorHome .imageSelectorTable .btn-container {

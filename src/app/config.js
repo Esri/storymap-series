@@ -428,7 +428,6 @@ app.cfg = {
 	YOUTUBE_TERMS_LINK: "http://links.esri.com/storymaps/youtube-terms",
 	VIMEO_TERMS_LINK: "http://links.esri.com/storymaps/vimeo-terms",
 	FLICKR_TERMS_LINK: "http://links.esri.com/storymaps/flickr-terms",
-	GOOGLE_TERMS_LINK: "http://links.esri.com/storymaps/google-terms",
 
 	// Control the authorized data source (for initialization and import screen)
 	AUTHORIZED_IMPORT_SOURCE: {
