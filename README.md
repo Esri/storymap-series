@@ -266,25 +266,25 @@ themes: [
 ```
 
 ### Other customization
-Most of the look and feel customization can be done using the [regular Application Download](http://links.esri.com/storymaps/map_series_template_zip) and including the css/html overrides directly into `index.html`.
+Most of the customizations for the look and feel of the Map Series can be done using the [regular Application Download](http://links.esri.com/storymaps/map_series_template_zip), and including the css/html overrides directly into `index.html`.
 
-As the application Javascript and CSS are minified, **we don't recommend that you directely edit those files** (e.g. `app-viewer-min.css`, `app-viewer-min.js`, ...). In addition to being hard to edit, this will make application update complex for you.
+As the application's Javascript and CSS files are minified, **we don't recommend that you directely edit those files** (e.g. `app-viewer-min.css`, `app-viewer-min.js`, ...). In addition to being hard to edit, this will make updating the application complex for you.
 
-If you want to change the behavior of one functionality or want to add new one, follow the [developer guide](#developer-guide) below.
+If you want to change the behavior of some functionality, or want to add new functionality, follow the [developer guide](#developer-guide) below.
 
-The easiest way to find the id or path of a DOM element that you want to customize is to use your browser developer tool, read documentation for [Chrome](https://developers.google.com/chrome-developer-tools/), [Safari](https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html), [Firefox](https://developer.mozilla.org/en-US/docs/Tools).
+The easiest way to find the id or path of a DOM element that you want to customize is to use your browser's developer tools.  Read documentation for [Chrome](https://developers.google.com/chrome-developer-tools/), [Safari](https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html), [Firefox](https://developer.mozilla.org/en-US/docs/Tools).
 
-Customization can achieved through the `style` tag already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
+Customization can be achieved through the `style` tag already present for you in `index.html` (search for `/* CUSTOM CSS RULES */`).
 
 ## Developer guide
-This developer guide is intended for developers who want to modify the behavior of or add new functionalities to the Map Series application.
-It requires knowledge of HTML, Javascript and CSS languages.
+This developer guide is intended for developers who want to modify the behavior of specific functionality, or add new functionalities to the Map Series application.
+It requires knowledge of the HTML, Javascript and CSS languages.
 If you only need to customize the look and feel, you should be able to do so using the [customize section above](#customize-the-look-and-feel).
 
 ### Application life cycle
-Map Series fires events that allow customization with lose integration. This mean that you don't need to understand the application internals to implement simple extension.
+Map Series fires events that allow customization with loose integration.  This means that you may not need to understand the internal workings of the application to implement simple extensions.
 
-To try those events, look for the `Custom Javascript` block at the far end of index.html.
+To test these events, look for the `Custom Javascript` block at the far end of index.html.
 
 ```
 ...
@@ -319,7 +319,7 @@ require(["dojo/topic"], function(topic) {
 ```
 
 ### Developer helpers
-In addition to the events described above, the story data, configuration and useful helpers functions can be accessed through the global variable `app`.
+In addition to the events described above, the story data, configuration and useful helper functions can be accessed through the global variable `app`.
 
 ```
 console.log("Entry", app.data.getCurrentEntryIndex(), "/", app.data.getStoryLength() - 1);
