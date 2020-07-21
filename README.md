@@ -13,7 +13,7 @@ The Story Map Series app lets you present a series of maps via tabs, numbered bu
 [Download](http://links.esri.com/storymaps/map_series_template_zip) |
 [Map Series page on Esri Story Maps website](http://links.esri.com/storymaps/map_series_app)
 
-**Latest release is version 1.14.0**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
+**Latest release is version 1.20.1**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
 
 For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
 
@@ -420,7 +420,7 @@ Find a bug or want to request a new feature?  Please let us know by submitting a
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
 ## Licensing
-Copyright 2018 Esri
+Copyright 2020 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
