@@ -155,13 +155,17 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 						embedInfo.hash = embedhash;
 					}
 
+					if (useParentOriginUrl(embedInfo, embedUrl)) {
+						embedUrl = getParentOriginUrl(embedUrl);
+					}
+
 					// Encode the URL when possible
 					try {
 						embedUrl = btoa(embedUrl);
 					} catch ( e ) { }
 
 					var embedContainer = $('.embedContainer[data-src="' + embedUrl + '"]');
-					if ( ! embedContainer.length ) {
+					if (!embedContainer.length) {
 						embedContainer = $('.embedContainer[data-ts="' + embedInfo.ts + '"]');
 					}
 
@@ -213,8 +217,14 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 					var embedInUse = $.grep(embeds, function(embed){
 						var embedUrl = embed.url;
 
-						if ( embedUrl.lastIndexOf('#') > 0 )
+						if ( embedUrl.lastIndexOf('#') > 0 ) {
 							embedUrl = embedUrl.substring(0, embedUrl.lastIndexOf('#'));
+						}
+
+						// replace embedUrl test variable with parentOriginUrl
+						if (useParentOriginUrl(embed, embedUrl)) {
+							embedUrl = getParentOriginUrl(embedUrl);
+						}
 
 						return embedSRC == embedUrl || embedSRC == embed.ts;
 					}).length > 0;
@@ -238,6 +248,16 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 				// Mobile popups
 				$('.mainMediaContainer').find('.mobilePopup').off('click').click(MobilePopupUtils.onPopupClick);
 			};
+
+			function useParentOriginUrl(embedInfo, embedUrl) {
+				return embedInfo && embedInfo.useParentOrigin && window.location.origin.match(/arcgis\.com/) &&
+					embedUrl && embedUrl.match && embedUrl.match(/arcgis\.com/);
+			}
+
+			function getParentOriginUrl(storedUrl) {
+				var urlAsURL = new window.URL(storedUrl);
+				return window.location.origin + urlAsURL.pathname + urlAsURL.search;
+			}
 
 			//
 			// Management of Main Stage: all media
@@ -879,7 +899,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 
 				if ( layerObj) {
 					override = $(layerCfg).filter(function(i, l){ return l.id == layerObj.id; });
-					newVisibility = override.length ? override[0].visibility : layerInfo.visibility;
+					newVisibility = override.length ? override[0].visibility : (layerInfo.visibility === undefined ? true : layerInfo.visibility);
 
 					if ( layerObj.loaded && layerObj.visible !== newVisibility) {
 							layerObj.setVisibility(newVisibility);
@@ -898,7 +918,7 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 							// Should change that and keep V1.0 compatibility
 							return l.id.split('_').slice(0,-1).join('_') == lyrObj.id.split('_').slice(0,-1).join('_');
 						});
-						newVisibility = override.length ? override[0].visibility : fcLayer.visibility;
+						newVisibility = override.length ? override[0].visibility : (fcLayer.visibility === undefined ? true : fcLayer.visibility);
 						if (lyrObj.visible !== newVisibility) {
 							// need to take this out of the execution loop. Not really sure why, but setting visibility
 							// to true here wasn't working correctly. The <g> element of the layer still had `display: none;`
@@ -1388,6 +1408,9 @@ define(["lib-build/tpl!./MainMediaContainerMap",
 			function updateMainMediaEmbed(rawUrl, cfg, animateTransition)
 			{
 				var url = rawUrl;
+				if (useParentOriginUrl(cfg, url)) {
+					rawUrl = getParentOriginUrl(url);
+				}
 				try {
 					url = btoa(rawUrl);
 				} catch ( e ) { }

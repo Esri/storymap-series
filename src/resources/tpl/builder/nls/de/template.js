@@ -111,7 +111,7 @@ define({
       "content6AltDiv4": "Um die Synchronisierung zu deaktivieren, wechseln Sie zu Einstellungen > Kartenoptionen, und deaktivieren Sie das Kontrollkästchen \"Kartenpositionen synchronisieren\"."
     },
     "landing": {
-      "lblAdd": "Welchen Namen möchten Sie der %LAYOUT_TITLE% Map Series geben?",
+      "lblAdd": "Welchen Namen möchten Sie der Map Series %LAYOUT_TITLE%  geben?",
       "phAdd": "Titel eingeben...",
       "lblOR": "Oder",
       "lblHelp": "Einführung",

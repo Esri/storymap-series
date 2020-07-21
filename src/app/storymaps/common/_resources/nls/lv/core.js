@@ -10,7 +10,7 @@ define({
       "apply": "Lietot",
       "close": "Aizvērt",
       "open": "Atvērt",
-      "start": "Starts",
+      "start": "Sākt",
       "loading": "Ielādē",
       "disabledAdmin": "Šo elementu ir atspējojis administrators",
       "width": "Platums",
@@ -23,7 +23,7 @@ define({
     "inlineFieldEdit": {
       "editMe": "Rediģē mani!",
       "enterTitle": "Ievadiet virsrakstu...",
-      "enterSubtitle": "Ievadiet neobligātu apakšvirsrakstu..."
+      "enterSubtitle": "Ievadiet apakšvirsrakstu (pēc izvēles)..."
     },
     "builderPanel": {
       "panelHeader": "%TPL_NAME% veidotājs",
@@ -102,7 +102,7 @@ define({
       "title": "Izkārtojums",
       "explain": "Kādu izkārtojumu vēlaties izmantot?",
       "explainInit": "Varat mainīt izkārtojumu jebkurā laikā iestatījumu dialoglodziņā.",
-      "viewExample": "Skatiet piemēru tiešraidē"
+      "viewExample": "Skatīt piemēru"
     },
     "settingsTheme": {
       "title": "Tēma"
@@ -164,6 +164,9 @@ define({
     },
     "licenseChange2018": {
       "noAccess": "Jūsu kontam (%USER_NAME%) nav licences, lai atvērtu Kartes stāstu, kas nav publisks. Pieprasiet savas organizācijas administratoram piešķirt jums lietotāja veidu, kurā iekļauts Story Maps vai papildinājumlietotņu Essential Apps licence."
+    },
+    "storyTellerUserType": {
+      "notCreatorError": "Jūsu kontam (%USER_NAME%) nav atļaujas izmantot klasisko stāstu karšu veidotājus. Lūdzu, sazinieties ar savas organizācijas administratoru, lai jums tiktu piešķirts lietotāja veids Creator."
     }
   }
 });

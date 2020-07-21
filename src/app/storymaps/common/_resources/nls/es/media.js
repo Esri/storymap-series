@@ -113,6 +113,8 @@ define({
       "embedProtocolLabel": "Cargue la página a través de una conexión de Internet segura (HTTPS)",
       "embedProtocolWarning1": "Si esta página no se carga en su historia, no se puede incorporar por motivos de seguridad web. Como alternativa, agregue un vínculo en su narración para abrir la página en una nueva pestaña del navegador. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Más información</a>",
       "embedProtocolWarning2": "Si esta página no se carga en su historia, desactive esta opción e inténtelo de nuevo. Si la página sigue sin cargarse, no se puede incorporar por motivos de seguridad web. Como alternativa, agregue un vínculo en su narración para abrir la página en una nueva pestaña del navegador. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Más información</a>",
+      "useParentOriginLabel": "Permitir a los miembros de otras organizaciones el acceso a este contenido.",
+      "useParentOriginTooltip": "Permitir esta opción solo si la página web es una aplicación web de ArcGIS compartida con miembros de otras organizaciones. Su organización debe tener habilitada la opción de iniciar sesión para otras organizaciones.",
       "learn": "Más información",
       "lblAltText": "Texto alternativo",
       "placeholderAltText": "Introduzca una descripción del contenido multimedia para invidentes...",

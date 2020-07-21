@@ -113,6 +113,8 @@ define({
       "embedProtocolLabel": "Ielādēt lapu, izmantojot drošu savienojumu (HTTPS)",
       "embedProtocolWarning1": "Ja šī lapa jūsu stāstā neielādējas, to nevar iegult web drošības iemeslu dēļ. Alternatīva iespēja — stāstījumā ievietojiet saiti, lai lapu atvērtu jaunā pārlūka cilnē. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Uzzināt vairāk</a>",
       "embedProtocolWarning2": "Ja šī lapa jūsu stāstā neielādējas, noņemiet atzīmi no šīs iespējas un mēģiniet vēlreiz. Ja lapa joprojām neielādējas, to nevar iegult web drošības iemeslu dēļ. Alternatīva iespēja — stāstījumā ievietojiet saiti, lai lapu atvērtu jaunā pārlūka cilnē. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Uzzināt vairāk</a>",
+      "useParentOriginLabel": "Atļaujiet citu organizāciju dalībniekiem piekļūt šim saturam.",
+      "useParentOriginTooltip": "Iespējojiet šo opciju tikai tad, ja tīmekļa lapa ir ArcGIS tīmekļa lietotne, kas koplietota ar citas organizācijas dalībniekiem. Jūsu organizācijai jābūt iespējotai opcijai Pieteikties citās organizācijās.",
       "learn": "Uzziniet vairāk",
       "lblAltText": "Alternatīvais teksts",
       "placeholderAltText": "Ievadiet šīs multivides aprakstu lasītājiem ar redzes traucējumiem…",

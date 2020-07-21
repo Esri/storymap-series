@@ -50,6 +50,7 @@ function defineDojoConfig()
 		isDebug: false,
 		useDeferredInstrumentation: true,
 		async: !app.isProduction,
+		has: { "esri-webgl-max-contexts": -1 },
 		//cacheBust: ! app.isProduction,
 		packages: [
 			{

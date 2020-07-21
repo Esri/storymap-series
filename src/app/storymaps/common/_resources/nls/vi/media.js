@@ -113,6 +113,8 @@ define({
       "embedProtocolLabel": "Tải trang qua kết nối bảo mật (HTTPS)",
       "embedProtocolWarning1": "Nếu trang này không tải bên trong câu chuyện của bạn, thì bạn không thể nhúng nó vì lý do bảo mật web. Thay vào đó, hãy thêm một liên kết trong câu chuyện của bạn để mở trang web ở một tab trình duyệt mới. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Tìm hiểu thêm</a>",
       "embedProtocolWarning2": "Nếu trang này không tải trong câu chuyện của bạn, hãy bỏ chọn tùy chọn này và thử lại. Nếu trang vẫn không tải, thì bạn không thể nhúng nó vì lý do bảo mật web. Thay vào đó, hãy thêm một liên kết trong câu chuyện của bạn để mở trang web ở một tab trình duyệt mới. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Tìm hiểu thêm</a>",
+      "useParentOriginLabel": "Cho phép thành viên của tổ chức khác truy cập nội dung này.",
+      "useParentOriginTooltip": "Chỉ kích hoạt tùy chọn này nếu trang web là một ứng dụng web của ArcGIS được chia sẻ cho thành viên của các tổ chức khác. Tổ chức của bạn phải được kích hoạt tùy chọn để đăng nhập vào tổ chức khác.",
       "learn": "Tìm hiểu thêm",
       "lblAltText": "Văn bản Thay thế",
       "placeholderAltText": "Nhập thông tin mô tả phương tiện này cho các người xem khiếm thị...",

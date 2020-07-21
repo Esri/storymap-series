@@ -1,6 +1,6 @@
 {
   "name": "Storymaps-MapSeries",
-  "version": "1.14.0",
+  "version": "1.20.1",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.4.0",

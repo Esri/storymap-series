@@ -113,6 +113,8 @@ define({
       "embedProtocolLabel": "Naložite stran prek varne povezave (HTTPS)",
       "embedProtocolWarning1": "Če se stran v vaši zgodbi ne naloži, je ne bo mogoče vdelati zaradi varnostnih razlogov. Namesto tega dodajte povezavo v zgodbo, da odprete stran v novem zavihku brskalnika.<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Izvedite več</a>",
       "embedProtocolWarning2": "Če se stran v vaši zgodbi ne naloži, odkljukajte to možnost in poskusite znova. Če se stran še vedno ne naloži, je ni mogoče vdelati zaradi varnostnih razlogov. Namesto tega dodajte povezavo v zgodbo, da odprete stran v novem zavihku brskalnika.<a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Izvedite več</a>",
+      "useParentOriginLabel": "Uporabnikom drugih organizacij dovoli dostop do te vsebine.",
+      "useParentOriginTooltip": "To možnost omogoči le, če je spletna stran spletna aplikacija ArcGIS, deljena z uporabniki drugih organizacij. Vaša organizacija mora imeti omogočeno možnost prijave v druge organizacije.",
       "learn": "Več",
       "lblAltText": "Nadomestno besedilo",
       "placeholderAltText": "Vnesite opis tega medija za slabovidne bralce...",

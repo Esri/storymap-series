@@ -113,6 +113,8 @@ define({
       "embedProtocolLabel": "Nahrát stránku přes zabezpečené připojení (HTTPS)",
       "embedProtocolWarning1": "Pokud se tato webová stránka ve vašem příběhu nenačítá, nelze ji z důvodů zabezpečení webu vložit. Máte však možnost přidat do příběhu odkaz, který otevře stránku na nové kartě prohlížeče. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Další informace</a>",
       "embedProtocolWarning2": "Pokud se tato webová stránka ve vašem příběhu nenačítá, zrušte označení této možnosti a zkuste to znovu. Pokud se stránka stále nenačítá, nelze ji z důvodů zabezpečení webu vložit. Máte však možnost přidat do příběhu odkaz, který otevře stránku na nové kartě prohlížeče. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Další informace</a>",
+      "useParentOriginLabel": "Povolit členům jiných organizací přístup k tomuto obsahu.",
+      "useParentOriginTooltip": "Tuto možnost povolte pouze v případě, že webová stránka je webovou aplikací ArcGIS, která je sdílena členům jiných organizací. Vaše organizace musí mít povolenou možnost přihlášení do jiných organizací.",
       "learn": "Více informací",
       "lblAltText": "Alternativní text",
       "placeholderAltText": "Vložte popis tohoto média pro zrakově postižené čtenáře...",

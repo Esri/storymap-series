@@ -49,7 +49,7 @@ define({
       "lblGeocoder": "Adresas, vieta ir elementų ieškiklis",
       "tooltipGeocoder": "Leiskite skaitytojams ieškoti adresų, vietų ir (arba) elementų jūsų žemėlapyje. Paieškos parinktis galima sukonfigūruoti internetinio žemėlapio elementų puslapyje pasirinkus Parametrai > Internetinis žemėlapis > Aplikacija > Ieškoti vietų.",
       "lblSync": "Sinchronizuoti žemėlapio vietas",
-      "tooltipSync": "Kai įgalinta, pradinė pirmojo žemėlapio vieta jūsų serijoje bus taikoma visiems žemėlapiams, o vartotojų navigacija bet kuriame žemėlapyje bus atvaizduota visuose žemėlapiuose. Išjunkite kiekvieną žemėlapio vietą, kad liktumėte nepriklausomi."
+      "tooltipSync": "Kai įgalinta, pradinė pirmojo žemėlapio vieta jūsų serijoje bus taikoma visiems žemėlapiams, o naudotojų navigacija bet kuriame žemėlapyje bus atvaizduota visuose žemėlapiuose. Išjunkite kiekvieną žemėlapio vietą, kad liktumėte nepriklausomi."
     },
     "settingsThemeOptions": {
       "lblOrgTheme": "Organizacijos tema",

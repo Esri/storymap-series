@@ -36,8 +36,8 @@ define({
     "errors": {
       "boxTitle": "Kļūda",
       "invalidConfig": "Nederīga konfigurācija",
-      "invalidConfigNoApp": "Web kartēšanas aplikācijas identifikators nav norādīts šeit: index.html.",
-      "invalidConfigNoAppDev": "URL parametros nav norādīts web kartēšanas aplikācijas identifikators (?appid=). Izstrādes režīmā lapā index.html ir ignorēta appid konfigurācija.",
+      "invalidConfigNoApp": "Tīmekļa kartēšanas lietotnes identifikators nav norādīts šeit: index.html.",
+      "invalidConfigNoAppDev": "URL parametros nav norādīts tīmekļa kartēšanas lietotnes identifikators (?appid=). Izstrādes režīmā lapā index.html ir ignorēta appid konfigurācija.",
       "unspecifiedConfigOwner": "Autorizētais īpašnieks nav konfigurēts.",
       "invalidConfigOwner": "Stāsta īpašnieks nav autorizēts.",
       "createMap": "Nevar izveidot karti",
@@ -69,11 +69,11 @@ define({
     "mobileInfo": {
       "legend": "Apzīmējumi",
       "description": "Apraksts",
-      "lblLegendMobileError": "Atvainojiet! Leģenda nav pieejama. Ielādējiet stāstu atkārtoti.",
-      "lblLegendMobileErrorExplain": "Leģenda nav pieejama, ja ierīce pēc stāsta ielādēšanas tiek pagriezta portreta režīmā."
+      "lblLegendMobileError": "Atvainojiet! Apzīmējumi nav pieejama. Ielādējiet stāstu atkārtoti.",
+      "lblLegendMobileErrorExplain": "Apzīmējumi nav pieejami, ja ierīce pēc stāsta ielādēšanas tiek pagriezta portreta režīmā."
     },
     "mobileFooter": {
-      "swipeInvite": "Pārvelciet, lai navigētu stāstā",
+      "swipeInvite": "Pārvelciet, lai pārvietotos stāstā",
       "lblNext": "Tālāk",
       "lblEnd": "Ir sasniegtas stāsta beigas"
     },
@@ -101,7 +101,7 @@ define({
       "copy": "Kopēt",
       "copied": "Kopēts",
       "open": "Atvērt",
-      "embed": "Iegult web lapā",
+      "embed": "Iegult tīmekļa lapā",
       "embedExplain": "Lai iedarinātu stāstu tīmekļa lapā, izmantojiet šo HTML kodu.",
       "size": "Izmēri (platums/augstums):",
       "autoplayLabel": "Automātiskās demonstrēšanas režīms",

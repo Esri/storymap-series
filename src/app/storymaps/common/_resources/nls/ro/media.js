@@ -113,6 +113,8 @@ define({
       "embedProtocolLabel": "Încărcaţi pagina printr-o conexiune securizată (HTTPS)",
       "embedProtocolWarning1": "Dacă pagina nu se încarcă în povestea dvs., nu poate fi încorporată din motive de securitate web. Ca alternativă, adăugaţi un link la naraţiunea dvs. pentru a deschide pagina într-o filă de browser nouă. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Aflaţi mai multe</a>",
       "embedProtocolWarning2": "Dacă pagina nu se încarcă în povestea dvs., debifaţi această opţiune şi încercaţi din nou. Dacă pagina tot nu se încarcă, nu poate fi încorporată din motive de securitate web. Ca alternative, adăugaţi un link la naraţiunea dvs. pentru a deschide pagina într-o filă de browser nouă. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Aflaţi mai multe</a>",
+      "useParentOriginLabel": "Permiteți membrilor altor organizații să acceseze acest conținut.",
+      "useParentOriginTooltip": "Activați această opțiune doar dacă pagina web este o aplicație web ArcGIS partajată cu membrii altor organizații. Organizația dvs. trebuie să aibă activată opțiunea de a se conecta la alte organizații.",
       "learn": "Aflați mai multe",
       "lblAltText": "Text alternativ",
       "placeholderAltText": "Introduceți o descriere a acestui conținut media pentru cititorii cu probleme de vedere...",

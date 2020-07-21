@@ -33,8 +33,8 @@ define({
       "tooltipRemove": "Ištrinkite šį nenaudojamą atvaizdą iš savo ArcGIS paskyros. <br> (Jei vėliau nuspręsite jį naudoti, turėsite įkelti dar kartą.)"
     },
     "imageSelectorFlickr": {
-      "userInputLbl": "Vartotojo vardas",
-      "signInMsg2": "Vartotojas nerastas",
+      "userInputLbl": "Naudotojo vardas",
+      "signInMsg2": "Naudotojas nerastas",
       "loadingFailed": "Įkelti nepavyko"
     },
     "imageSelectorPicasa": {
@@ -54,10 +54,10 @@ define({
     },
     "videoSelectorYoutube": {
       "url": "Youtube vaizdo įrašo nuoroda",
-      "pageInputLbl": "Vartotojo vardas",
-      "lookupMsgError": "Vartotojas nerastas",
-      "howToFind": "Kaip rasti YouTube vartotojo vardą",
-      "howToFind2": "Vartotojo vardas rodomas po vaizdo įrašo",
+      "pageInputLbl": "Naudotojo vardas",
+      "lookupMsgError": "Naudotojas nerastas",
+      "howToFind": "Kaip rasti YouTube naudotojo vardą",
+      "howToFind2": "Naudotojo vardas rodomas po vaizdo įrašo",
       "found": "Surasta",
       "noData": "Nerasta viešų vaizdo įrašų",
       "videoNotChecked": "Vaizdo įrašas nebuvo patikrintas „YouTube“, bet jo adresas atrodo tinkamas.",
@@ -113,6 +113,8 @@ define({
       "embedProtocolLabel": "Įkelkite puslapį naudodami saugų ryšį (HTTPS)",
       "embedProtocolWarning1": "Jei šis puslapis jūsų pasakojime neįkeliamas, jį galima įdėti interneto saugumo sumetimais. Arba pridėkite nuorodą savo pasakojime, kad atidarytumėte puslapį naujame naršyklės skirtuke. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Sužinokite daugiau</a>",
       "embedProtocolWarning2": "Jei šis puslapis jūsų pasakojime neįkeliamas, atžymėkite šią parinktį ir bandykite dar kartą. Jei puslapis vis tiek neįkeliamas, jį galima įdėti interneto saugumo sumetimais. Arba pridėkite nuorodą savo pasakojime, kad atidarytumėte puslapį naujame naršyklės skirtuke. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>Sužinokite daugiau</a>",
+      "useParentOriginLabel": "Leisti kitų organizacijų nariams pasiekti šį turinį.",
+      "useParentOriginTooltip": "Šią parinktį įjunkite tik jei internetinis puslapis yra ArcGIS internetinė aplikacija, bendrinama su kitų organizacijų nariais. Jūsų organizacijoje turi būti įjungta parinktis, leidžianti prisijungti prie kitų organizacijų.",
       "learn": "Sužinokite daugiau",
       "lblAltText": "Alternatyvus tekstas",
       "placeholderAltText": "Įveskite šios medijos aprašą, skirtą skaitytojams su regos sutrikimais...",
@@ -120,7 +122,7 @@ define({
     },
     "editorActionGeocode": {
       "lblTitle": "Raskite adresą arba vietą",
-      "mapMarkerExplain": "Spustelėjęs nuorodą, vartotojas matys žemėlapio žymeklį"
+      "mapMarkerExplain": "Spustelėjęs nuorodą, naudotojas matys žemėlapio žymeklį"
     },
     "editorActions": {
       "navigate": "Eiti į kitą įrašą",

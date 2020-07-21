@@ -113,6 +113,8 @@ define({
       "embedProtocolLabel": "Oldal betöltése biztonságos kapcsolaton (HTTPS) keresztül",
       "embedProtocolWarning1": "Ha az oldalon nem töltődik be a történet, az azt jelenti, hogy webbiztonsági okok miatt nem ágyazható be. Másik megoldásként helyezzen el egy hivatkozást a történetben, amellyel az oldal új böngészőlapon nyitható meg. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>További információk</a>",
       "embedProtocolWarning2": "Ha az oldalon nem töltődik be a történet, kapcsolja ki ezt a beállítást, és próbálja meg újra. Ha az oldal továbbra sem töltődik be, az azt jelenti, hogy webbiztonsági okok miatt nem ágyazható be. Másik megoldásként helyezzen el egy hivatkozást a történetben, amellyel az oldal új böngészőlapon nyitható meg. <a href='http://links.esri.com/storymaps/blogs_mixed_content/' target='_blank'>További információk</a>",
+      "useParentOriginLabel": "Lehetővé teszi más szerevezetek tagjai számára ennek a tartalomnak az elérését.",
+      "useParentOriginTooltip": "Csak abban az esetben engedélyezze ezt az opciót, ha a weboldal egy olyan ArcGIS webalkalmazás, amely más szervezetek tagjaival van megosztva. A szervezetének rendelkeznie kell olyan opcióval, mely szerint bejelentkezhet más szervezetekbe is.",
       "learn": "További információk",
       "lblAltText": "Helyettesítő szöveg",
       "placeholderAltText": "Adja meg a média leírását a gyengén látó olvasók számára...",

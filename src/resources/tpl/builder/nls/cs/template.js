@@ -75,8 +75,8 @@ define({
       "mainStageDisabled": "Akce příběhu jsou vypnuty, pokud je editor maximalizován."
     },
     "organizePopup": {
-      "title": "Organizovat",
-      "lblHeader": "Zorganizujte svůj příběh kliknutím a přetažením %LBL_LAYOUT%.",
+      "title": "Uspořádat",
+      "lblHeader": "Uspořádejte svůj příběh kliknutím a přetažením %LBL_LAYOUT%.",
       "lblColTitle": "Název",
       "lblColStatus": "Stav",
       "btnApplyWarning": "Potvrďte odstranění %NB% %LBL_LAYOUT%",
@@ -87,7 +87,7 @@ define({
       "lblHelp": "Nápověda",
       "lblAdd": "Přidat",
       "lblSettings": "Nastavení",
-      "lblOrga": "Organizovat",
+      "lblOrga": "Uspořádat",
       "lblEdit": "Úpravy",
       "lblPublish": "Sdílení",
       "lblTips": "Tipy",
@@ -97,7 +97,7 @@ define({
       "content1Div2": "Po kliknutí na tlačítko Přidat se zobrazí dialogové okno umožňující zvolit a nastavit mapu nebo další obsah, který chcete přidat. Můžete například určit oblast, kterou bude mapa zobrazovat, povolit legendu a další.",
       "content2Div1": "V dialogovém okně Nastavení můžete měnit vzhled %TPL_NAME%. Můžete měnit rozvržení, barevné schéma, polohu legendy mapy a další.",
       "content2Div2": "Můžete také nahradit logo Esri v záhlaví %TPL_NAME% logem své vlastní značky. Dále můžete určit webové stránky s dalšími informacemi, na které bude čtenář přesměrován po kliknutí na logo.",
-      "content3Div1": "Dialogové okno Organizovat umožňuje spravovat %TPL_NAME%. Můžete v něm přetahováním měnit pořadí sérií.",
+      "content3Div1": "Dialogové okno Uspořádat umožňuje spravovat %TPL_NAME%. Můžete v něm přetahováním měnit pořadí sérií.",
       "content3Div2": "Můžete také odstraňovat a skrývat obsah. Skrytí obsahu je užitečné v případě, že připravujete nový obsah, který zatím není připraven pro použití v mapě s příběhem.",
       "content4Div1": "Našli jste chybu nebo chcete změnit svůj materiál? Žádný problém. Hledejte v aplikaci ikonu úprav, která vám umožní změnit obsah. Funkce úprav použijete při vytváření %TPL_NAME% mnohokrát!",
       "content5Div1": "Šablona %TPL_NAME% se poprvé uloží v soukromém režimu. Chcete-li ji sdílet s ostatními, použijte tlačítko Sdílení. Šablonu %TPL_NAME% můžete sdílet s veřejností.",
