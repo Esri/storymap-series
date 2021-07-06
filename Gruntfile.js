@@ -6,7 +6,7 @@
 		/*
 		 * Tasks:
 		 *  - grunt 			Create the production build
-		 *  - grunt server		Run a webserver on 8080
+		 *  - grunt server		Run a webserver on 9090
 		 *  - grunt jshint		Run JSHint once
 		 *  - grunt watch		Run JSHint every time a JS file change
 		 *  - grunt jsapioptim	Generate the JS API modules list used by the app in deploy/
@@ -401,7 +401,7 @@
 			connect: {
 				server: {
 					options: {
-						port: 8080,
+						port: 9090,
 						keepalive: true,
 						hostname: '*'
 					}
@@ -415,7 +415,7 @@
 		});
 
 		/*
-		 * Create a web server on port 8080
+		 * Create a web server on port 9090
 		 * Run 'start grunt server' or 'grunt server &'
 		 */
 		grunt.registerTask('server', ['connect']);

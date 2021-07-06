@@ -528,8 +528,9 @@ define(["lib-build/css!./MainView",
               CommonHelper.switchToBuilder();
             //}, 1200);
           }
-          else
+          else {
             _core.initError("notConfiguredDesktop");
+          }
         }
         // No data in preview mode (should not happen)
         else {

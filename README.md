@@ -1,4 +1,4 @@
-﻿Story Map Series
+Story Map Series
 ================
 
 The Story Map Series app lets you present a series of maps via tabs, numbered bullets, or a side accordion. In addition to maps, you can also include images, video and web content in your series to tell your story and engage your audience. For example the first tab in a tabbed series can be a compelling photo that sets the scene. Actions can also be defined in an entry's text so that, for instance, clicking a word automatically zooms the entry's map to a particular location.

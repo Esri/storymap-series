@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
+		<title>Eskilstuna Översiktsplan</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
-		<link type="image/ico" rel="shortcut icon" href="resources/tpl/viewer/icons/favicon.ico">
-		<link type="image/ico" rel="icon"  href="resources/tpl/viewer/icons/favicon.ico">
 
 		<!--
 			To correctly reference your Map Series in search engine:
@@ -36,10 +33,10 @@
 			//-------------------------------------------------------------------------------------------
 			var configOptions = {
 				// Enter an application ID created through the Map Series builder
-				appid: "",
+				appid: "66ea1e35082640b4b1f9720bad14a9d2",
 				// Optionally to secure Series's access, use an OAuth application ID (example: 6gyOg377fLUhUk6f)
 				// User will need to sign-in to access the viewer even if your application is public
-				oAuthAppId: "",
+				oAuthAppId: "He4wEjV4u5UwRUY4",
 				// Optionally, to use the appid URL parameter, configure authorizedOwners to reference
 				//    members whose stories can be viewed by this storytelling app.
 				// To authorize stories owned by...
@@ -78,6 +75,140 @@
 	<body class="claro">
 		<style>
 			/* CUSTOM CSS RULES */
+			h1.title {
+				color:#00ADB8 !important;
+			}
+			#headerDesktop .linkContainer {
+			  display: none;
+			}			
+
+			.nav-bar.isTab{
+				height: 60px;
+			}
+			.nav-bar .nav-tabs > li.visible > button{
+			    -webkit-transform: skew(-26deg);
+			    transform: skew(-26deg);
+			    border-right: 2px solid #00ADB8;
+			    padding:0 20px;
+			    min-height: 60px;
+			    margin:0px;
+			}
+
+			.nav-bar .nav-tabs > li.visible.active > button, 
+			.nav-bar .dropdown:not(.active):hover .dropdown-toggle, 
+			.nav-bar li:not(.active) .entryLbl:hover {
+			    background-color: #00ADB8 !important;
+			    color:#000 !important;
+			}
+
+			.nav-bar .nav > .entry .entryLbl,
+			.nav-bar .dropdown-toggle {
+				color:#fff !important;
+				background-color: #000 !important;
+			}		
+
+			.nav-bar .nav-tabs > li.visible > button span{
+			    -webkit-transform: skew(26deg);
+			    transform: skew(26deg);
+			}			
+
+			.nav-bar .nav > .entry .entryLbl, 
+			.nav-bar .dropdown-toggle,
+			.nav-bar .entry.active > .entryLbl, 
+			.nav-bar .dropdown.active .dropdown-toggle {
+				color:#fff;
+				border-radius: 0px !important;
+			    height: 100%;
+			    display: -webkit-box;
+			    display: -ms-flexbox;
+			    display: flex;
+			    -webkit-box-pack: center;
+			    -ms-flex-pack: center;
+			    justify-content: center;
+			    -webkit-box-align: center;
+			    -ms-flex-align: center;
+			    align-items: center;
+			    background-size: auto;
+			}
+
+			.nav-bar .entry.active > .entryLbl{
+				color: #000 !important;
+				font-weight: bold;
+			}
+
+			.nav-bar .dropdown-menu, .nav-bar .dropdown-menu .entryLbl  {
+				background-color:#000 !important;
+				color:#ccc !important;
+				justify-content: left !important;
+			}
+			.nav-bar .dropdown-menu{
+				border:1px solid #efefef !important;
+			}
+
+			#header{
+				background:#000;
+			}
+			#headerDesktop.compact{
+				height:90px;
+				padding:20px 0;
+			}
+			#headerDesktop.compact .logoContainer{
+    			margin: 0px 16px;
+    			float: left;
+			}
+
+			.headerMobile {
+				color: #00ADB8 !important;
+			}
+			.headerMobile .menu {
+				padding:0px !important;
+				text-align: center;:;
+			}
+
+			.headerMobile .menu-entry {
+				padding:12px 20px;
+				color:#fff;
+				border-bottom:none;
+			}
+			.headerMobile .menu-entry.active {
+				background-color: #00adb8;
+			}
+
+			.headerMobile .menu-entry.active .menu-title {
+				font-weight: normal !important;
+			}
+
+			.linkSocialContainer a{
+				color:#fff;
+				font-size: 16px;
+				font-weight: normal;
+				margin-left: 20px;
+			}
+
+			@font-face {
+			  font-family: 'eskilstuna-icons';
+			  src:  url('resources/tpl/viewer/eskilstuna-icons/eskilstuna-icons.eot?2e6shw');
+			  src:  url('resources/tpl/viewer/eskilstuna-icons/eskilstuna-icons.eot?2e6shw#iefix') format('embedded-opentype'),
+			    url('resources/tpl/viewer/eskilstuna-icons/eskilstuna-icons.ttf?2e6shw') format('truetype'),
+			    url('resources/tpl/viewer/eskilstuna-icons/eskilstuna-icons.woff?2e6shw') format('woff'),
+			    url('resources/tpl/viewer/eskilstuna-icons/eskilstuna-icons.svg?2e6shw#eskilstuna-icons') format('svg');
+			  font-weight: normal;
+			  font-style: normal;
+			}
+
+			.icon-contact:before {
+			  content: "\e907";     
+			  color: #fff;
+			  font-family: 'eskilstuna-icons' !important;
+			  speak: none;
+			  font-style: normal;
+			  font-weight: normal;
+			  font-variant: normal;
+			  text-transform: none;
+			  line-height: 1;    
+			  margin-right: 10px;			 
+			}
+
 		</style>
 
 		<!-- Builder top panel is injected here -->
@@ -101,31 +232,32 @@
 			</div>
 			<!-- Desktop header -->
 			<header id="headerDesktop" role="banner">
+				<div class="logoContainer">
+					<table class="logoContainerInner">
+						<tr>
+							<td class="logoWrapper">
+								<a class="logoLink" target="_blank">
+									<img class="logoImg"/>
+								</a>
+							</td>
+						</tr>
+					</table>
+				</div>				
 				<div class="rightArea">
 					<div class="linkSocialContainer">
+						<a href="https://karta.eskilstuna.se/eskilstunakartan/oversiktsplan2030/#maps/613" title="Visa stort karta över Eskilstuna">Visa karta</a>
+						<a href="https://eskilstuna.se" title="Visa kontaktinformation"><i class="icon-contact"></i> Kontakt</a>
 						<span class="error-status">
 							<button class="btn btn-xs btn-warning check-story"></button>
 							<button class="btn btn-xs btn-warning share-story"></button>
 						</span>
 						<button type="button" class="switchBuilder btn btn-xs btn-primary" tabindex="-1"></button>
-						<span class="linkContainer"></span>
 						<span class="shareBtns">
 							<button class="shareIcon blackHover share_facebook icon-facebook-squared"></button>
 							<button class="shareIcon blackHover share_twitter icon-twitter"></button>
 							<button class="shareIcon blackHover share_bitly icon-link"></button>
 						</span>
-					</div>
-					<div class="logoContainer">
-						<table class="logoContainerInner">
-							<tr>
-								<td class="logoWrapper">
-									<a class="logoLink" target="_blank">
-										<img class="logoImg"/>
-									</a>
-								</td>
-							</tr>
-						</table>
-					</div>
+					</div>					
 				</div>
 				<div class="textArea">
 					<h1 class="title"></h1>
