@@ -1,4 +1,7 @@
-﻿Story Map Series
+﻿_Note: Classic Esri Story Maps templates are in extended support on ArcGIS Online as of September 2021 and mature support on ArcGIS Enterprise 10.9.1. For the latest information on the transition from classic Esri Story Maps to ArcGIS StoryMaps, click [here](https://www.esri.com/arcgis-blog/?s=#&tag=classic-esri-story-maps-transition)._
+
+
+Story Map Series
 ================
 
 The Story Map Series app lets you present a series of maps via tabs, numbered bullets, or a side accordion. In addition to maps, you can also include images, video and web content in your series to tell your story and engage your audience. For example the first tab in a tabbed series can be a compelling photo that sets the scene. Actions can also be defined in an entry's text so that, for instance, clicking a word automatically zooms the entry's map to a particular location.
@@ -13,7 +16,7 @@ The Story Map Series app lets you present a series of maps via tabs, numbered bu
 [Download](http://links.esri.com/storymaps/map_series_template_zip) |
 [Map Series page on Esri Story Maps website](http://links.esri.com/storymaps/map_series_app)
 
-**Latest release is version 1.20.1**, if you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
+**This release is version 1.27.0**, which corresponds to the June 2022 release of ArcGIS Online and the 11.0 release of Enterprise. If you want to be informed of new releases, we recommend you to watch this repository ([see GitHub help](https://help.github.com/articles/watching-repositories)). See the [release page](https://github.com/Esri/map-series-storytelling-template-js/releases) for release notes.
 
 For more infomation about using and customizing Esri's Storytelling Apps follow the [Story Maps Developers' Corner](https://developerscorner.storymaps.arcgis.com).
 

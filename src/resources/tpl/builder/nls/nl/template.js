@@ -119,7 +119,7 @@ define({
       "quote1": "Verhalen vertellen is de meest krachtige manier om vandaag de dag ideeën in de wereld te zetten.",
       "quote2": "De verhalen die we vertellen maken de wereld letterlijk. Als je de wereld wilt veranderen, moet je je verhaal veranderen. Deze waarheid geldt zowel voor individuen als instellingen.",
       "quote3": "TDe kortste afstand tussen een mens en de waarheid is een verhaal.",
-      "quote4": "Mensen willen geen meer informatie. Ze worden al overladen met informatie. Ze willen vertrouwen in jou, je doelen, je succes, in het verhaal dat je vertelt.",
+      "quote4": "Mensen willen niet meer informatie. Ze worden al overladen met informatie. Ze willen vertrouwen in jou, je doelen, je succes, in het verhaal dat je vertelt.",
       "quote5": "Ik geloof echt dat mensen op zoek zijn naar verhalen die echt iets betekenen, verhalen die verlossen, inspireren en groter zijn dan een individu.",
       "quote6": "Als je een persoon of een groep wilt beïnvloeden om een ​​bepaalde waarde in hun dagelijks leven te omarmen, vertel ze dan een meeslepend verhaal.",
       "quote7": "Als je het mij vertelt, het is een essay. Als je het me laat zien, is het een verhaal.",

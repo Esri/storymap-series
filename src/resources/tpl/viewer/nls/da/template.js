@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Opdatér din browser</a>.",
       "mapLoadingFail": "Noget gik galt, kortet blev ikke indlæst korrekt.",
       "signOut": "Log ud",
-      "attention": "Bemærk!"
+      "attention": "Bemærk!",
+      "nonOwnerOrgUrl": "Den %TPL_NAME%, du prøver at få adgang til, stammer ikke fra den URL, som du har angivet.",
+      "nonOwnerOrgProceedToGeneric": "Fortsæt til %HREF%",
+      "advanced": "Avanceret"
     },
     "mainStage": {
       "back": "Tilbage",

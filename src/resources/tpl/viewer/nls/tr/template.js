@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Tarayıcınızı güncelleyin</a>.",
       "mapLoadingFail": "Hata oluştu, harita düzgün şekilde yüklenmedi.",
       "signOut": "Oturumu Kapat",
-      "attention": "Dikkat!"
+      "attention": "Dikkat!",
+      "nonOwnerOrgUrl": "Erişim sağlamaya çalıştığınız %TPL_NAME%, sağladığınız URL'den kaynaklanmıyor.",
+      "nonOwnerOrgProceedToGeneric": "%HREF%'e devam edin",
+      "advanced": "Advanced"
     },
     "mainStage": {
       "back": "Geri",

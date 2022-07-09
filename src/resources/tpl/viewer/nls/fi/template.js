@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Päivitä selain</a>.",
       "mapLoadingFail": "Tapahtui virhe, eikä kartta latautunut oikein.",
       "signOut": "Kirjaudu ulos",
-      "attention": "Huomio!"
+      "attention": "Huomio!",
+      "nonOwnerOrgUrl": "%TPL_NAME%, jota yrität käyttää, ei ole peräisin määrittämästäsi URL-osoitteesta.",
+      "nonOwnerOrgProceedToGeneric": "Jatka kohtaan %HREF%",
+      "advanced": "Advanced"
     },
     "mainStage": {
       "back": "Edellinen",

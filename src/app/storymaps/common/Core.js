@@ -266,36 +266,39 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 				// Pass cookie onto API to avoid infinite redirects
 				IdentityManager.checkSignInStatus(app.portal.portalUrl);
 
-				// If app is configured to use OAuth
-				if ( app.indexCfg.oAuthAppId ) {
-					var info = new ArcGISOAuthInfo({
-						appId: app.indexCfg.oAuthAppId,
-						popup: false,
-						portalUrl: 'https:' + app.indexCfg.sharingurl.split('/sharing/')[0]
-					});
+				CommonHelper.fetchPortalSelfInfo().then(function() {
+					// If app is configured to use OAuth
+					if ( app.indexCfg.oAuthAppId ) {
+						var info = new ArcGISOAuthInfo({
+							appId: app.indexCfg.oAuthAppId,
+							popup: false,
+							portalUrl: 'https:' + app.indexCfg.sharingurl.split('/sharing/')[0]
+						});
 
-					IdentityManager.registerOAuthInfos([info]);
+						IdentityManager.registerOAuthInfos([info]);
 
-					IdentityManager.checkSignInStatus(info.portalUrl).then(
-						function() {
-							// User has signed-in using oAuth
-							if ( ! builder )
-								portalLogin().then(initStep2);
-							else
-								portalLogin().then(initStep2);
-						},
-						function() {
-							// Not signed-in, redirecting to OAuth sign-in page if builder
-							if (!builder){
-								initStep2();
-							} else {
-								portalLogin().then(initStep2);
+						IdentityManager.checkSignInStatus(info.portalUrl).then(
+							function() {
+								// User has signed-in using oAuth
+								if ( ! builder )
+									portalLogin().then(initStep2);
+								else
+									portalLogin().then(initStep2);
+							},
+							function() {
+								// Not signed-in, redirecting to OAuth sign-in page if builder
+								if (!builder){
+									initStep2();
+								} else {
+									portalLogin().then(initStep2);
+								}
 							}
-						}
-					);
-				}
-				else
-					initStep2();
+						);
+					}
+					else
+						initStep2();
+				});
+
 			});
 		}
 
@@ -617,6 +620,10 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 							initError("notAuthorizedLicense");
 							return;
 						});
+					} else if (!app.isPortal && response.item.contentOrigin && response.item.contentOrigin !== "self" && (!app.portal || (!CommonHelper.getPortalUser() && !app.portal.getPortalUser())) && window.top === window.self) {
+						// if contentOrigin exists (only happens on org urls) and isn't "self", that means the org shorturl doesn't match the org of the content owner.
+						// we only throw an error if we're on agol (not portal) and the user is anonymous.
+						initError("nonOwnerOrgUrl");
 					} else {
 						loadWebMappingAppStep3(response);
 						return;
@@ -747,11 +754,13 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 						initError("notAuthorizedBuilder");
 						return;
 					}
+					// do this again just to be safe...
+					CommonHelper.fetchPortalSelfInfo().then(function() {
+						app.userCanEdit = app.data.userIsAppOwner();
 
-					app.userCanEdit = app.data.userIsAppOwner();
-
-					definePortalConfig();
-					resultDeferred.resolve();
+						definePortalConfig();
+						resultDeferred.resolve();
+					});
 				},
 				function() {
 					resultDeferred.reject();
@@ -934,6 +943,20 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 
 			if ( error == "notAuthorized" && app.indexCfg.oAuthAppId ) {
 				errorMsg += '<div><button class="btn btn-sm btn-default" onclick="esri.id.destroyCredentials(); window.location.reload();">' + i18n.viewer.errors.signOut + '</button></div>';
+			}
+
+			if (error == "nonOwnerOrgUrl") {
+				// we can use portalHostname here because we're definitely not on enterprise, so there shouldn't be an instance name like "home" to get rid of
+				var hostName = (app.portal && app.portal.portalHostname) || app.cfg.DEFAULT_SHARING_URL.split('/sharing')[0].replace(/\//g, '');
+				var genericUrl = 'https://' + hostName + '/apps/' + app.cfg.TPL_DIR + '/index.html?appid=' + CommonHelper.getAppID(isProd());
+				// gotta put this on window, no way to pass it into the string template otherwise.
+				window.showLink = function() {
+					$("#proceed-to-btn").hide();
+					$("#proceed-to-link").show();
+				};
+				var linkTag = '<a id="proceed-to-link" style="display: none;" href="' + genericUrl + '">' + i18n.viewer.errors.nonOwnerOrgProceedToGeneric.replace(/%HREF%/g, genericUrl); + '</a>';
+				var btnTag = '<button id="proceed-to-btn" class="btn btn-default btn-sm" onclick="showLink();">' + i18n.viewer.errors.advanced + '</button>';
+				errorMsg += '<div class="error-details">' + btnTag + linkTag + '</div>';
 			}
 
 			if ( error == "appLoadingFail" ) {

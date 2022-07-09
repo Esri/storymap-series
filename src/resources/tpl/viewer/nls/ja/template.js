@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>ブラウザを更新してください</a>。",
       "mapLoadingFail": "問題が発生しました。マップを正しく読み込みませんでした。",
       "signOut": "サイン アウト",
-      "attention": "注意"
+      "attention": "注意",
+      "nonOwnerOrgUrl": "アクセスしようとしている %TPL_NAME% は、指定した URL からのものではありません。",
+      "nonOwnerOrgProceedToGeneric": "%HREF% に進む",
+      "advanced": "Advanced"
     },
     "mainStage": {
       "back": "戻る",

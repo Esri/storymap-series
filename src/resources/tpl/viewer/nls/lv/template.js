@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Lūdzu, atjauniniet savu pārlūku</a>.",
       "mapLoadingFail": "Ir atgadījusies kļūme — karte netika ielādēta pareizi.",
       "signOut": "Izrakstīties",
-      "attention": "Uzmanību!"
+      "attention": "Uzmanību!",
+      "nonOwnerOrgUrl": "%TPL_NAME% kam mēģināt piekļūt, nav no jūsu norādītā vietrāža (URL).",
+      "nonOwnerOrgProceedToGeneric": "Turpināt ar %HREF%",
+      "advanced": "Papildus"
     },
     "mainStage": {
       "back": "Atpakaļ",
@@ -69,7 +72,7 @@ define({
     "mobileInfo": {
       "legend": "Apzīmējumi",
       "description": "Apraksts",
-      "lblLegendMobileError": "Atvainojiet! Apzīmējumi nav pieejama. Ielādējiet stāstu atkārtoti.",
+      "lblLegendMobileError": "Atvainojiet! Apzīmējumi nav pieejami. Ielādējiet stāstu atkārtoti.",
       "lblLegendMobileErrorExplain": "Apzīmējumi nav pieejami, ja ierīce pēc stāsta ielādēšanas tiek pagriezta portreta režīmā."
     },
     "mobileFooter": {
@@ -83,8 +86,8 @@ define({
       "facebookTooltip": "Koplietot Facebook",
       "twitterTooltip": "Koplietot Twitter",
       "bitlyTooltip": "Iegūt īso saiti",
-      "templateTitle": "Iestatīt šablona virsrakstu",
-      "templateSubtitle": "Iestatīt šablona apakšvirsrakstu",
+      "templateTitle": "Iestatīt veidnes virsrakstu",
+      "templateSubtitle": "Iestatīt veidnes apakšvirsrakstu",
       "share": "Kopīgot",
       "checking": "Pārbauda jūsu stāsta saturu",
       "fix": "Problēmu labošana jūsu stāstā",

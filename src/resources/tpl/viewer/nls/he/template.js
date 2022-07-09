@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>עדכן את הדפדפן שלך</a>.",
       "mapLoadingFail": "משהו השתבש, המפה לא נטענה באופן תקין.",
       "signOut": "התנתק",
-      "attention": "שים לב!"
+      "attention": "שים לב!",
+      "nonOwnerOrgUrl": "ה-%TPL_NAME% שאתה מנסה לגשת אליו לא נמצא בכתובת ה-URL שציינת.",
+      "nonOwnerOrgProceedToGeneric": "המשך אל %HREF%",
+      "advanced": "מתקדם"
     },
     "mainStage": {
       "back": "חזור",

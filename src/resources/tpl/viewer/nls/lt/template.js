@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Atnaujinkite naršyklę</a>.",
       "mapLoadingFail": "Įvyko klaida ir žemėlapio nepavyko tinkamai įkelti.",
       "signOut": "Atsijungti",
-      "attention": "Dėmesio!"
+      "attention": "Dėmesio!",
+      "nonOwnerOrgUrl": "Aplikacija %TPL_NAME%, kurią bandote pasiekti, nėra pasiekiama naudojant jūsų nurodytą URL.",
+      "nonOwnerOrgProceedToGeneric": "Tęskite %HREF%",
+      "advanced": "Kiti parametrai"
     },
     "mainStage": {
       "back": "Atgal",

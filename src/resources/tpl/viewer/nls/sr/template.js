@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href=’http://browsehappy.com/’ target=’_blank’>Ažurirajte pregledač</a>.",
       "mapLoadingFail": "Došlo je do greške, mapa se nije učitala pravilno.",
       "signOut": "Odjavite se",
-      "attention": "Napomena!"
+      "attention": "Napomena!",
+      "nonOwnerOrgUrl": "%TPL_NAME% kojoj pokušavate da pristupite ne potiče sa URL adrese koju ste naveli.",
+      "nonOwnerOrgProceedToGeneric": "Nastavite da %HREF%",
+      "advanced": "Napredna"
     },
     "mainStage": {
       "back": "Nazad",

@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Efectuaţi un upgrade al browserului</a>.",
       "mapLoadingFail": "Ceva nu a mers bine şi harta nu a fost încărcată corect.",
       "signOut": "Ieşire",
-      "attention": "Atenţie!"
+      "attention": "Atenţie!",
+      "nonOwnerOrgUrl": "%TPL_NAME% pe care încercați să îl accesați nu are originea în URL-ul pus la dispoziție de dvs.",
+      "nonOwnerOrgProceedToGeneric": "Continuați la %HREF%",
+      "advanced": "Avansat"
     },
     "mainStage": {
       "back": "Înapoi",

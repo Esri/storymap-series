@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Оновіть свій браузер</a>.",
       "mapLoadingFail": "Щось пішло не так, карта не завантажилась правильно.",
       "signOut": "Вийти із системи",
-      "attention": "Увага!"
+      "attention": "Увага!",
+      "nonOwnerOrgUrl": "Додаток %TPL_NAME%, до якого ви намагаєтесь отримати доступ, не походить з вказаної вами URL-адреси",
+      "nonOwnerOrgProceedToGeneric": "Перейти до %HREF%",
+      "advanced": "Розширені"
     },
     "mainStage": {
       "back": "Назад",

@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Perbarui browser Anda</a>.",
       "mapLoadingFail": "Terjadi kesalahan, peta tidak dimuat dengan benar.",
       "signOut": "Keluar",
-      "attention": "Perhatian!"
+      "attention": "Perhatian!",
+      "nonOwnerOrgUrl": "%TPL_NAME% yang hendak Anda akses tidak berasal dari URL yang Anda berikan.",
+      "nonOwnerOrgProceedToGeneric": "Lanjutkan ke %HREF%",
+      "advanced": "Advanced"
     },
     "mainStage": {
       "back": "Kembali",

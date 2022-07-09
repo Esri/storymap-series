@@ -99,7 +99,7 @@ define({
       "content2Div2": "Taip pat galite Esri logotipą, esantį %TPL_NAME% antraštėje, pakeisti savo logotipu, kuris atvaizduotų jūsų prekės ženklą. Taip pat galite nurodyti svetainę, kuri bus paleista skaitytojams paspaudus jūsų logotipą, kad jie galėtų gauti daugiau informacijos.",
       "content3Div1": "Tvarkymo dialogo langas les jums tvarkyti %TPL_NAME%. Šiame dialogo lange galite pakeisti serijų tvarką jas nuvilkdami.",
       "content3Div2": "Taip pat galite pašalinti turinį arba jį paslėpti. Paslėpti naudinga, kai rengiate naują turinį, kuris dar neparengtas įtraukti į jūsų žemėlapį su pasakojimu.",
-      "content4Div1": "Radote klaidą ar norite pakeisti duomenis? Nesirūpinkite. Norėdami pakeisti turinį, ieškokite aplikacijos redagavimo piktogramos. Kurdami %TPL_NAME% daug kartų naudosite redagavimo funkcijas!",
+      "content4Div1": "Radote klaidą arba norite pakeisti savo turinį? Jokių problemų. Norėdami keisti turinį, aplikacijoje ieškokite redagavimo piktogramos. Kurdami savo %TPL_NAME% galite redagavimo funkcijas naudoti tiek kartų, kiek tik norite!",
       "content5Div1": "Kai išsaugote savo %TPL_NAME%, ir pradžių jis yra privatus. Norėdami bendrinti su kitais, naudokite bendrinimo mygtuką. Galite %TPL_NAME% bendrinti viešai, kad galėtų pasiekti visi.",
       "content5Div2": "Priklausomai nuo paskyros tipo, galite %TPL_NAME% bendrinti tik su savo organizacijos nariais, kad jo negalėtų pasiekti kiti.",
       "content6Div1": "Pagal numatytuosius nustatymus serijų žemėlapiai sinchronizuojami, kad atvaizduotų tą pačią vietovę. Vadinasi, vieta, rodoma pirmajame žemėlapyje, bus automatiškai taikoma visiems kitiems žemėlapiams, o jei skaitytojas pritrauks arba perstums į kitą žemėlapio, kurį dabar peržiūri, vietą, taip taip pat bus taikoma kitiems žemėlapiams.",
@@ -119,15 +119,15 @@ define({
       "quote1": "Šiais laikais istorijų pasakojimas yra veiksmingiausias būdas dalintis idėjomis.",
       "quote2": "Iš esmės mūsų pasakojimai sudaro pasaulį. Norėdami jį pakeisti, turite pakeisti pasakojimą. Ši tiesa taikoma visiems.",
       "quote3": "Pasakojimas yra trumpiausias kelias tarp žmogaus ir tiesos.",
-      "quote4": "Žmonėms nereikia daugiau informacijos. Jie jos perpildyti. Pasakojime žmonėms reikia tikėjimo jumis, jūsų tikslais, jūsų sėkme.",
-      "quote5": "Tikiu, kad žmonės ieško pasakojimų, kurie iš tiesų kažką reiškia, kurie yra pagrįsti, įkvepiantys ir svarbesni už asmenybę.",
+      "quote4": "Žmonės nenori daugiau informacijos. Jie jau skęsta informacijoje. Jie nori pasitikėti – pasitikėti jumis, jūsų tikslais, jūsų sėkme, jūsų pasakojimu.",
+      "quote5": "Tikiu, kad žmonės ieško pasakojimų, kurie iš tiesų kažką reiškia, kurie pasakoja apie atpirkimą, yra įkvepiantys ir svarbesni už asmenybę.",
       "quote6": "Papasakokite istoriją, jei norite daryti įtaką kitiems, kad jie priimtų tam tikras vertybes į savo kasdienį gyvenimą.",
-      "quote7": "Jei papasakosite tai man – sukursite esė. Jei parodysite – sukursite pasakojimą.",
+      "quote7": "Jei man papasakosite – sukursite esė. Jei parodysite – sukursite pasakojimą.",
       "quote8": "Jei nepažįstate medžių, galite pasiklysti miške, bet jei nežinote pasakojimų, galite pasiklysti gyvenime.",
       "quote9": "Pasakojimai yra kūrybingas pokalbis apie gyvenimą su aiškesne ir prasmingesne patirtimi.",
       "quote10": "Nėra didesnės kančios nei nešiotis savyje nepapasakotą istoriją.",
       "quote11": "Gali būti, kad pasakojimai yra duomenys su siela.",
-      "quote12": "Pasakojimai gali daryti didelę įtaką kitiems.",
+      "quote12": "Pasakojimai yra galingiausias tikro lyderio ginklas.",
       "quote13": "Pasakojimų prasmė atsiskleidžia, kai jie skaitomi tarp eilučių."
     }
   }

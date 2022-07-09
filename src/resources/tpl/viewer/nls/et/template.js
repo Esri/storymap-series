@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Värskendage oma brauserit</a>.",
       "mapLoadingFail": "Midagi läks valesti ning kaarti ei laaditud õigesti.",
       "signOut": "Logi välja",
-      "attention": "Tähelepanu!"
+      "attention": "Tähelepanu!",
+      "nonOwnerOrgUrl": "%TPL_NAME%, mida proovite avada, pole pärit teie esitatud URL-ilt.",
+      "nonOwnerOrgProceedToGeneric": "Kas soovite liikuda kohta %HREF%",
+      "advanced": "Täiustatud"
     },
     "mainStage": {
       "back": "Tagasi",

@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Aktualizujte prohlížeč</a>.",
       "mapLoadingFail": "Něco se pokazilo, mapa se nenahrála správně.",
       "signOut": "Odhlásit",
-      "attention": "Upozornění!"
+      "attention": "Upozornění!",
+      "nonOwnerOrgUrl": "%TPL_NAME%, kam se snažíte získat přístup, nepochází z adresy URL, kterou jste zadali.",
+      "nonOwnerOrgProceedToGeneric": "Pokračujte na %HREF%",
+      "advanced": "Pokročilé"
     },
     "mainStage": {
       "back": "Zpět",

@@ -57,7 +57,7 @@ define({
     },
     "saveErrorSocial": {
       "title": "Sociālās multivides kopīgošanas atjaunināšana",
-      "panel1": "Ir uzlabots jūsu stāsta izskats sociālajā multividē, bet jūsu ArcGIS Web lietotnes vienības virsraksts atšķiras no stāsta virsraksta.",
+      "panel1": "Jūsu stāsta izskats sociālajos tīklos ir uzlabots, bet jūsu ArcGIS tīmekļa lietotnes vienības virsraksts atšķiras no stāsta virsraksta.",
       "panel1tooltip": "Kad būsiet definējis virsrakstu, kopsavilkumu un sīktēla attēlu, jūsu stāsts izskatīsies šādi:",
       "panel2": "Kādu virsrakstu vēlaties izmantot sociālajā multividē:",
       "panel2q1": "Stāsta virsraksts (ieteicams)",
@@ -148,6 +148,27 @@ define({
       "action2": "Pārbaudīt manus stāstus tūlīt",
       "action3": "Uzziniet vairāk"
     },
+    "extendedSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps ir Extended atbalsta fāzē.",
+      "s1h1": "Svarīgs ziņojums par Esri Story Maps.",
+      "s1p1": "Classic Esri Story Maps veidnes ir Extended atbalsta fāzē. Visi klienti tiek mudināti izmantot ArcGIS StoryMaps, kas ir jaunās paaudzes Esri kartes stāstu veidošanas rīks.",
+      "s1p2": "Klasiskās veidnes vairs netiek aktīvi izstrādātas un nav ieteicamas jaunajiem projektiem. To iespējām nav plānoti turpmāki atjauninājumi. Stāsti, kurus jūs izveidojāt, izmantojot klasiskās veidnes, joprojām būs pieejami.",
+      "s1p3": "2021. gada decembrī klasiskās veidnes tiks noņemtas no noklusējuma konfigurējamo lietotņu galerijas. Ja ir nepieciešams atbalstīt esošās darbplūsmas pārejā uz ArcGIS StoryMaps, jūsu organizācijas pielāgotajai konfigurējamo lietotņu grupai var pievienot vienu vai vairākas klasiskās veidnes.",
+      "s1p4": "Lai uzzinātu vairāk, klikšķiniet uz zemāk redzamās saites.",
+      "action1": "Aizvērt",
+      "action2": "Uzzināt vairāk",
+      "action3": "Izmēģināt ArcGIS StoryMaps"
+    },
+    "matureSupportMessage": {
+      "bannerMsg": "Classic Esri Story Maps atrodas Mature atbalsta fāzē",
+      "s1h1": "Svarīgs ziņojums par Classic Esri Story Maps",
+      "s1p1": "Classic Esri Story Maps kartes stāstu veidnes ir Mature atbalsta fāzē. Visi klienti tiek mudināti izmantot ArcGIS StoryMaps, kas ir jaunās paaudzes Esri kartes stāstu veidošanas rīks.",
+      "s1p2": "Klasiskās veidnes vairs netiek aktīvi izstrādātas un nav ieteicamas jaunajiem projektiem. To iespējām nav plānoti turpmāki atjauninājumi. Stāsti, kurus jūs izveidojāt, izmantojot klasiskās veidnes, joprojām būs pieejami.",
+      "s1p3": "Lai uzzinātu vairāk, klikšķiniet uz zemāk redzamās saites.",
+      "action1": "Aizvērt",
+      "action2": "Uzzināt vairāk",
+      "action3": "Izmēģināt ArcGIS StoryMaps"
+    },
     "sectionNavigation": {
       "select": "Izvēlieties ierakstu...",
       "section": "Ieraksts",
@@ -166,7 +187,7 @@ define({
       "noAccess": "Jūsu kontam (%USER_NAME%) nav licences, lai atvērtu Kartes stāstu, kas nav publisks. Pieprasiet savas organizācijas administratoram piešķirt jums lietotāja veidu, kurā iekļauts Story Maps vai papildinājumlietotņu Essential Apps licence."
     },
     "storyTellerUserType": {
-      "notCreatorError": "Jūsu kontam (%USER_NAME%) nav atļaujas izmantot klasisko stāstu karšu veidotājus. Lūdzu, sazinieties ar savas organizācijas administratoru, lai jums tiktu piešķirts lietotāja veids Creator."
+      "notCreatorError": "Jūsu kontam (%USER_NAME%) nav atļaujas izmantot klasisko kartes stāstu veidotāju. Lūdzu, sazinieties ar savas organizācijas administratoru, lai jums tiktu piešķirts lietotāja veids Creator."
     }
   }
 });

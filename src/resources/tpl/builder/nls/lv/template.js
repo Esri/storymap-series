@@ -99,7 +99,7 @@ define({
       "content2Div2": "Varat arī aizvietot Esri logotipu savas %TPL_NAME% galvenē ar savu logotipu, lai demonstrētu savu zīmolu. Varat arī norādīt tīmekļa vietni, kas jāpalaiž, ja lasītāji noklikšķina uz logotipa, lai tie varētu saņemt papildinformāciju.",
       "content3Div1": "Dialogs Kārtot ļauj pārvaldīt savu %TPL_NAME%. Šajā dialogā varat mainīt sēriju kārtību, tās velkot un nometot.",
       "content3Div2": "Varat arī izdzēst saturu vai to paslēpt. Paslēpšana ir noderīga, ja gatavojat jaunu saturu, kas vēl nav gatavs iekļaušanai stāsta kartē.",
-      "content4Div1": "Atradāt kļūdu vai vēlaties mainīt savus materiālus? Tas ir viegli paveicams! Lai saturā veiktu izmaiņas, lietotnē atrodiet rediģēšanas ikonu. Izstrādājot %TPL_NAME%, rediģēšanas funkciju nāksies bieži izmantot.",
+      "content4Div1": "Pamanījāt kļūdu vai vēlaties mainīt savu saturu? Neuztraucieties. Meklējiet lietotnē rediģēšanas ikonu, lai veiktu izmaiņas saturā. Veidojot savu %TPL_NAME%, rediģēšanas funkcijas jūs izmantosiet daudzas reizes!",
       "content5Div1": "Kad saglabājat savu %TPL_NAME%, tas sākotnēji ir konfidenciāls. Lai kopīgotu to ar citiem, izmantojiet pogu Kopīgot. Savu %TPL_NAME% varat kopīgot publiski, lai tam varētu piekļūt ikviens.",
       "content5Div2": "Atkarībā no jūsu konta, jums var būt pieejama opcija kopīgot savu %TPL_NAME% tikai ar personām jūsu organizācijā, lai tam nevarētu piekļūt citas personas.",
       "content6Div1": "Kartes sērijā pēc noklusējuma ir sinhronizētas, lai rādītu vienu un to pašu novietojumu. Tas nozīmē, ka pirmajā kartē rādītais novietojums tiks automātiski lietots visām pārējām kartēm un, ja lietotājs mainīs mērogu vai pārbīdīs uz citu novietojumu pašreiz aplūkotajā kartē, tas arī attieksies uz pārējām kartēm.",
@@ -119,15 +119,15 @@ define({
       "quote1": "Stāstījums mūsdienās ir vislabākais veids, kā pasaulei darīt zināmas savas idejas.",
       "quote2": "Mūsu stāsti tiešā nozīmē veido pasauli. Ja vēlaties izmainīt pasauli, ir jāizmaina stāsts — tas attiecas gan uz indivīdiem, gan uzņēmumiem.",
       "quote3": "Īsākais attālums no cilvēka līdz patiesībai ir stāsts.",
-      "quote4": "Cilvēkiem nav nepieciešama jauna informācija— tiem informācijas ir pietiekoši. Viņi vēlas uzticēties jums, jūsu mērķiem, jūsu panākumiem un stāstam, ko vēlaties pastāstīt.",
-      "quote5": "Es patiesi ticu, ka cilvēki meklē jēgpilnus stāstus, kas tos iedvesmos un rosinās domāt plašāk.",
+      "quote4": "Cilvēki dzīvo informācijas pārbagātības laikmetā. Viņiem nav nepieciešama vēl plašāka informācija. Viņi vēlas uzticēties jums, jūsu mērķiem, piemēram un stāstam.",
+      "quote5": "Es patiesi ticu, ka cilvēki meklē jēgpilnus stāstus, kas ir atslogojoši, iedvesmojoši un ar plašu nozīmi.",
       "quote6": "Ja vēlaties ietekmēt indivīdu vai grupu un panākt vērtību maiņu, izstāstiet aizraujošu stāstu.",
       "quote7": "Ja informācija tiek stāstīta, tā ir eseja. Ja informācija tiek rādīta, tas ir stāsts.",
       "quote8": "Ja nepazīstat kokus, varat apmaldīties mežā. Ja jūsu rīcībā nav stāstu, varat apmaldīties dzīvē.",
       "quote9": "Stāsti ir radošs veids, kā dzīves notikumus pārveidot par spēcīgāku, skaidrāku un jēgpilnāku pieredzi. Stāsti ir cilvēku savstarpējās saskarsmes valūta.",
       "quote10": "Ir neizsakāmi grūti “nēsāt” neizstāstītu stāstu.",
       "quote11": "Iespējams, stāsti ir dati ar dvēseli.",
-      "quote12": "Stāsti ir vislabākais līdera rīcībā esošais ierocis.",
+      "quote12": "Stāsti ir vislabākais vadītāja rīcībā esošais ierocis.",
       "quote13": "Lielāka daļa stāsta satura vienmēr tiek atstāta iztēlei."
     }
   }

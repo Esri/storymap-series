@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Vui lòng cập nhật trình duyệt của bạn</a>.",
       "mapLoadingFail": "Đã xảy ra lỗi, bản đồ không tải đúng.",
       "signOut": "Đăng xuất",
-      "attention": "Chú ý!"
+      "attention": "Chú ý!",
+      "nonOwnerOrgUrl": "%TPL_NAME% bạn đang cố gắng truy cập không có nguồn gốc từ URL bạn đã cung cấp.",
+      "nonOwnerOrgProceedToGeneric": "Tiếp tục tới %HREF%",
+      "advanced": "Nâng cao"
     },
     "mainStage": {
       "back": "Quay lại",

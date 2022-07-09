@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>يرجى تحديث المستعرض</a>.",
       "mapLoadingFail": "‏‏حدث خطأ ما، لم يتم تحميل الخريطة بشكل صحيح.",
       "signOut": "تسجيل المغادرة",
-      "attention": "انتبه!"
+      "attention": "انتبه!",
+      "nonOwnerOrgUrl": "لا يأتي %TPL_NAME% الذي تحاول الوصول إليه من عنوان URL الذي قدمته.",
+      "nonOwnerOrgProceedToGeneric": "الانتقال إلى %HREF%",
+      "advanced": "متقدم"
     },
     "mainStage": {
       "back": "الخلف",

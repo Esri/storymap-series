@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Ενημερώστε το πρόγραμμα περιήγησης</a>.",
       "mapLoadingFail": "Υπήρξε κάποιο πρόβλημα, ο χάρτης δεν φορτώθηκε σωστά.",
       "signOut": "Έξοδος",
-      "attention": "Προσοχή!"
+      "attention": "Προσοχή!",
+      "nonOwnerOrgUrl": "Το %TPL_NAME% στο οποίο επιχειρείτε να αποκτήσετε πρόσβαση δεν προέρχεται από τη διεύθυνση URL που καταχωρίσατε.",
+      "nonOwnerOrgProceedToGeneric": "Μετάβαση σε %HREF%",
+      "advanced": "Advanced"
     },
     "mainStage": {
       "back": "Πίσω",

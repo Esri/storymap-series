@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>브라우저를 업데이트하세요</a>.",
       "mapLoadingFail": "오류가 발생했습니다. 맵을 올바르게 불러오지 않았습니다.",
       "signOut": "로그아웃",
-      "attention": "주의!"
+      "attention": "주의!",
+      "nonOwnerOrgUrl": "접근하려는 %TPL_NAME%이(가) 제공한 URL에서 생성되지 않았습니다.",
+      "nonOwnerOrgProceedToGeneric": "%HREF%로 계속 진행",
+      "advanced": "Advanced"
     },
     "mainStage": {
       "back": "뒤로",

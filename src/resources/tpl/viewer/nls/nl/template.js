@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Werk uw browser bij</a>.",
       "mapLoadingFail": "Er is een probleem opgetreden. De kaart is niet correct geladen.",
       "signOut": "Afmelden",
-      "attention": "Let op!"
+      "attention": "Let op!",
+      "nonOwnerOrgUrl": "De %TPL_NAME% die u probeert te openen, is niet afkomstig van de URL die u hebt ingevoerd.",
+      "nonOwnerOrgProceedToGeneric": "Ga door naar %HREF%",
+      "advanced": "Geavanceerd"
     },
     "mainStage": {
       "back": "Terug",

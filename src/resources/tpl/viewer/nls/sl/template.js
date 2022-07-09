@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Nadgradite svoj brskalnik</a>.",
       "mapLoadingFail": "Nekaj ni v redu, karta se ni pravilno naložila.",
       "signOut": "Odjava",
-      "attention": "Pozor!"
+      "attention": "Pozor!",
+      "nonOwnerOrgUrl": "%TPL_NAME%, do katere želite dostopati, ne izvira iz navedenega URL-ja.",
+      "nonOwnerOrgProceedToGeneric": "Nadaljuj na %HREF%",
+      "advanced": "Napredno"
     },
     "mainStage": {
       "back": "Nazaj",

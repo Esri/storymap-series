@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Пожалуйста, обновите браузер</a>.",
       "mapLoadingFail": "Произошла ошибка, карта загрузилась некорректно.",
       "signOut": "Выйти",
-      "attention": "Внимание!"
+      "attention": "Внимание!",
+      "nonOwnerOrgUrl": "%TPL_NAME%, к которому вы пытаетесь получить доступ, не соответствует источнику по URL",
+      "nonOwnerOrgProceedToGeneric": "Продолжить до %HREF%",
+      "advanced": "Дополнительно"
     },
     "mainStage": {
       "back": "Назад",
@@ -74,7 +77,7 @@ define({
     },
     "mobileFooter": {
       "swipeInvite": "Перелистните, чтобы просмотреть историю",
-      "lblNext": "Следующий",
+      "lblNext": "Далее",
       "lblEnd": "Вы дошли до конца истории"
     },
     "headerFromCommon": {

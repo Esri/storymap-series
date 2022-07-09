@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Aktualisieren Sie Ihren Browser</a>.",
       "mapLoadingFail": "Ein Fehler ist aufgetreten. Die Karte wurde nicht korrekt geladen.",
       "signOut": "Abmelden",
-      "attention": "Achtung!"
+      "attention": "Achtung!",
+      "nonOwnerOrgUrl": "Die Vorlage %TPL_NAME%, auf die Sie zugreifen möchten, stammt nicht von der von Ihnen angegebenen URL.",
+      "nonOwnerOrgProceedToGeneric": "Mit %HREF% fortfahren",
+      "advanced": "Erweitert"
     },
     "mainStage": {
       "back": "Zurück",
@@ -78,7 +81,7 @@ define({
       "lblEnd": "Sie haben das Ende der Story erreicht"
     },
     "headerFromCommon": {
-      "storymapsText": "Eine Story-Map",
+      "storymapsText": "Eine Story Map",
       "builderButton": "Bearbeiten",
       "facebookTooltip": "Auf Facebook freigeben",
       "twitterTooltip": "Auf Twitter freigeben",

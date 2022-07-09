@@ -99,7 +99,7 @@ define({
       "content2Div2": "È anche possibile sostituire il logo Esri di %TPL_NAME% con un logo personalizzato in base al marchio, nonché specificare il sito Web che verrà aperto quando i lettori fanno clic su tale logo per visualizzare ulteriori informazioni",
       "content3Div1": "La finestra di dialogo Organizza consente di gestire %TPL_NAME%. In questa finestra di dialogo è possibile modificare l'ordine della serie mediante il trascinamento e il rilascio della selezione.",
       "content3Div2": "È inoltre possibile eliminare il contenuto o nasconderlo. La disattivazione della visualizzazione del contenuto risulta utile se si sta preparando nuovo contenuto che non è ancora pronto per l'inclusione nella story map.",
-      "content4Div1": "Se è stato rilevato un errore o si desidera modificare il materiale, è sufficiente individuare l'icona di modifica nell'applicazione per apportare modifiche al contenuto. Durante la fase di sviluppo di %TPL_NAME%, è possibile utilizzare le funzioni di modifica ogni volta che è necessario.",
+      "content4Div1": "È stato trovato un errore o si desidera modificare il materiale? Non vi preoccupate. Cercare l'icona di modifica nell'app per apportare modifiche al contenuto. Si useranno le funzioni di modifica molte volte quando si sviluppa il %TPL_NAME%!",
       "content5Div1": "Quando viene salvato, %TPL_NAME% inizialmente è privato. Utilizzare il pulsante Condividi per condividerlo con altri utenti. È possibile condividere %TPL_NAME% pubblicamente in modo che tutti gli utenti possano accedervi.",
       "content5Div2": "A seconda dell'account, è anche possibile condividere %TPL_NAME% con gli utenti all'interno della propria organizzazione in modo che gli altri utenti non possano accedervi.",
       "content6Div1": "Per impostazione predefinita, le mappe incluse in una serie sono sincronizzate in modo da visualizzare la stessa località. Ciò significa che la località visualizzata nella prima mappa sarà automaticamente applicata a tutte le altre mappe e che se un lettore applica lo zoom o esegue il pan su una località diversa sulla mappa attiva, tali modifiche verranno applicate anche a tutte le altre mappe.",
@@ -119,15 +119,15 @@ define({
       "quote1": "Storytelling è il modo attualmente più efficace per proporre idee al mondo intero.",
       "quote2": "Le storie che raccontiamo modellano letteralmente il mondo. Se si desidera cambiare il mondo, si deve cominciare cambiando le storie. Questa verità è valida per le istituzioni e per ciascun individuo.",
       "quote3": "La distanza più breve tra un essere umano e la verità è una storia.",
-      "quote4": "Le persone non hanno bisogno di più informazioni, ne hanno fin sopra i capelli delle informazioni. Quello che vogliono è avere fede in qualcuno, nei suoi obiettivi, nei suoi successi e nella storia che racconta.",
-      "quote5": "Sono alla ricerca di storie che abbiano un significato vero, che siano redentrici e servano d’ispirazione e che siano più grandi del singolo individuo.",
+      "quote4": "Le persone non desiderano maggiori informazioni. Sono pieni di informazioni. Desiderano avere fede - fede in voi, nei vostri obiettivi, nel vostro successo, nella storia che raccontate.",
+      "quote5": "Credo pienamente che le persone stiano cercando storie che significhino davvero qualcosa, storie che sono redentrici, d'ispirazione e più grandi del singolo individuo.",
       "quote6": "Se si desidera influenzare un singolo individuo o un intero gruppo affinché abbracci un determinato valore nella vita di tutti i giorni, è necessario raccontare una storia avvincente.",
-      "quote7": "Un saggio descrive un avvenimento. Una storia lo mostra.",
+      "quote7": "Se me lo dici, è un saggio. Se me la mostri, è una storia.",
       "quote8": "Se non si conoscono gli alberi ci si può perdere nella foresta, ma se non si conoscono le storie ci si può perdere nella vita.",
       "quote9": "Le storie sono la trasformazione creativa della vita stessa in un’esperienza più potente, chiara e significativa. Sono la valuta del contatto umano.",
       "quote10": "Non esiste agonia più profonda di quella di chi ha dentro di sé una storia non raccontata.",
       "quote11": "Forse non sono altro che dati con un’anima.",
-      "quote12": "Ma le storie sono l'arma più potente nell'arsenale di un leader.",
+      "quote12": "Le storie sono l'arma più potente nell'arsenale di un leader.",
       "quote13": "Ed è nella loro natura lasciare all’esterno più di quanto ci sia al loro interno."
     }
   }

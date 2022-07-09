@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>กรุณาอัพเดทเบราว์เซอร์ของคุณ</a>.",
       "mapLoadingFail": "เกิดข้อผิดพลาดบางอย่างขึ้น ทำให้แผนที่ไม่สามารถเปิดขึ้นได้ถูกต้อง",
       "signOut": "ลงชื่อออก",
-      "attention": "ความสนใจ!"
+      "attention": "ความสนใจ!",
+      "nonOwnerOrgUrl": "%TPL_NAME% ที่คุณพยายามเข้าใช้งาน ไม่ได้มีที่มาจาก URL ที่คุณระบุ",
+      "nonOwnerOrgProceedToGeneric": "ดำเนินการต่อไปยัง %HREF%",
+      "advanced": "ขั้นสูง"
     },
     "mainStage": {
       "back": "กลับ",

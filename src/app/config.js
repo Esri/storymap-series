@@ -452,6 +452,7 @@ app.cfg = {
 	// Text to be used as the browser page title during app creation
 	TPL_NAME: "Map Series",
 	TPL_ID: "mapseries",
+	TPL_DIR: "MapSeries", // for app redirect
 	WEBAPP_TAG: ["Story Map", "Map Series"],
 	WEBAPP_KEYWORD_GENERIC: ["JavaScript", "Map", "Mapping Site", "Online Map", "Ready To Use", "selfConfigured", "Web Map"],
 	WEBAPP_KEYWORD_APP: ["Story Map", "Story Maps", "MapSeries"],
@@ -491,6 +492,7 @@ app.cfg = {
 	// If you are using ArcGIS Online or deploying the template on a Portal instance, you don't have to edit those URL
 	DEFAULT_SHARING_URL: "//www.arcgis.com/sharing/rest/content/items",
 	//DEFAULT_SHARING_URL: "//portal.internal.com/arcgis/sharing/rest/content/items",
-	DEFAULT_PROXY_URL: "//www.arcgis.com/sharing/proxy"
+	DEFAULT_PROXY_URL: "//www.arcgis.com/sharing/proxy",
 	//DEFAULT_PROXY_URL: "//portal.internal.com/arcgis/sharing/proxy"
+ 	DEFAULT_CLIENT_ID: "storymaps"
 };

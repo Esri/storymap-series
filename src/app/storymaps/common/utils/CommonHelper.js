@@ -46,7 +46,47 @@ define(["dojo/cookie",
 		i18n,
 		i18nMedia)
 	{
+		// from /platformSelf
+		var fetchedUser, fetchedToken;
+
 		return {
+			fetchPortalSelfInfo: function() {
+				var deferred = new Deferred();
+				var portalUrl = arcgisUtils.arcgisUrl.split('/sharing/')[0];
+				var url = portalUrl.replace("http://", "https://") + "/sharing/rest/oauth2/platformSelf?f=json";
+
+				$.ajax(url, {
+					method: 'POST',
+					dataType: 'json',
+					data: {
+						f: 'json'
+					},
+					xhrFields: {
+						withCredentials: true
+					},
+					headers: {
+						'X-Esri-Auth-Client-Id': app.cfg.DEFAULT_CLIENT_ID,
+						'X-Esri-Auth-Redirect-Uri': window.location.href
+					},
+					success: function(data) {
+						if (data) {
+							if (data.username) {
+								fetchedUser = data.username;
+							}
+							if (data.token) {
+								fetchedToken = data.token;
+							}
+						}
+						// always resolve
+						deferred.resolve();
+					},
+					error: function() {
+						deferred.resolve();
+					}
+				});
+
+				return deferred.promise;
+			},
 			isMobile: function()
 			{
 				return navigator.userAgent.match(/iPhone|iPad|iPod/i)
@@ -245,21 +285,9 @@ define(["dojo/cookie",
 			},
 			getPortalUser: function()
 			{
-				var esriCookie = cookie('esri_auth');
-
-				if( ! esriCookie )
-					return;
-
-				esriCookie = JSON.parse(esriCookie.replace('"ssl":undefined','"ssl":""'));
-
-				// Cookie has to be set on the same organization
-				if( esriCookie.urlKey
-						&& esriCookie.customBaseUrl
-						&& (esriCookie.urlKey + '.' + esriCookie.customBaseUrl).toLowerCase() != document.location.hostname.toLowerCase())
-					return;
-
-				return esriCookie ? esriCookie.email : null;
+        return fetchedUser;
 			},
+			/* this seems to not be used */
 			getPortalRole: function()
 			{
 				var esriCookie = cookie('esri_auth');
@@ -887,21 +915,7 @@ define(["dojo/cookie",
 			},
 
 			getCookieToken: function() {
-				var esriCookie = cookie('esri_auth');
-
-				if(!esriCookie) {
-					return;
-				}
-
-				esriCookie = JSON.parse(esriCookie.replace('"ssl":undefined','"ssl":""'));
-
-				// Cookie has to be set on the same organization
-				if(esriCookie.urlKey && esriCookie.customBaseUrl
-						&& (esriCookie.urlKey + '.' + esriCookie.customBaseUrl).toLowerCase() != document.location.hostname.toLowerCase()) {
-					return;
-				}
-
-				return esriCookie ? esriCookie.token : null;
+				return fetchedToken;
 			},
 
 			possiblyRemoveToken: function(url) {

@@ -56,7 +56,10 @@ define({
 				upgradeBrowser: "<a href='http://browsehappy.com/' target='_blank'>Please update your browser</a>.",
 				mapLoadingFail: "Something went wrong, the map did not load correctly.",
 				signOut: "Sign Out",
-				attention: "Attention!"
+				attention: "Attention!",
+				nonOwnerOrgUrl: "The %TPL_NAME% you are trying to access does not originate from the URL you provided.",
+				nonOwnerOrgProceedToGeneric: "Proceed to %HREF%",
+				advanced: "Advanced"
 			},
 			mainStage: {
 				back: "Back",
@@ -116,6 +119,7 @@ define({
         }
     }),
 	"ar": 1,
+	"bg": 1,
 	"bs": 1,
 	"ca": 1,
 	"cs": 1,
@@ -143,6 +147,7 @@ define({
 	"ro": 1,
 	"ru": 1,
 	"sl": 1,
+	"sk": 1,
 	"sr": 1,
 	"sv": 1,
 	"th": 1,

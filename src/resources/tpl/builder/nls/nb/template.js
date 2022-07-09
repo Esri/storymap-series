@@ -99,7 +99,7 @@ define({
       "content2Div2": "Du kan også bytte ut Esri-logoen i toppteksten i %TPL_NAME% med din egen logo for ditt varemerke. I tillegg kan du angi hvilken webside som skal åpnes når leserne klikker på logoen din, slik at de kan få mer informasjon.",
       "content3Div1": "I dialogboksen Organiser kan du administrere %TPL_NAME%. I denne dialogboksen kan du endre rekkefølgen på serien ved å dra og slippe.",
       "content3Div2": "Du kan også slette innhold eller skjule det. Muligheten til å skjule innhold er nyttig når du forbereder nytt innhold som ikke er klart til å tas med i fortellingskartet ennå.",
-      "content4Div1": "Har du funnet en feil eller ønsker å endre materialet? Ikke noe problem. Se etter redigeringsikonet i programmet for å gjøre endringer av innholdet. Du kommer til å bruke redigeringsfunksjonene mange ganger etter hvert som du utvikler %TPL_NAME%!",
+      "content4Div1": "Har du funnet en feil, eller vil du endre noe? Ingen problem. Finn redigeringssymbolet i appen for å gjøre endringer i innholdet ditt. Du kommer til å bruke redigeringsfunksjonene mange ganger mens du lager %TPL_NAME%.",
       "content5Div1": "Når du lagrer din %TPL_NAME%, er den som standard privat. Du kan bruke delingsknappen for å dele den med andre. Du kan dele din %TPL_NAME% offentlig, slik at den er tilgjengelig for alle.",
       "content5Div2": "Avhengig av hvilken konto du har, kan det hende du også har muligheten til å dele din %TPL_NAME% bare med personer i organisasjonen din, slik at andre ikke har tilgang til den.",
       "content6Div1": "Kartene i en serie synkroniseres som standard til å vise samme lokasjon. Det betyr at lokasjonen som vises i det første kartet, automatisk brukes i alle de andre kartene, og hvis en bruker zoomer inn eller panorerer til en annen lokasjon i kartet han eller hun ser på, så brukes denne lokasjonen i de andre kartene også.",
@@ -119,15 +119,15 @@ define({
       "quote1": "Det å fortelle historier er den mest effektive måten å dele ideer med verden på i dag.",
       "quote2": "Fortellingene våre kan bokstavelig talt skape verden. Om du vil forandre verden, må du forandre fortellingen din. Dette gjelder både for enkeltpersoner og institusjoner.",
       "quote3": "Den korteste veien mellom et menneske og sannheten er en fortelling.",
-      "quote4": "Folk vil ikke ha mer informasjon. De holder på å drukne i informasjon. De vil kunne føle tiltro til deg, målene dine, suksessen din og fortellingen din.",
-      "quote5": "Jeg er overbevist om at folk leter etter fortellinger som virkelig betyr noe – fortellinger som er forsonende, inspirerende og større enn individet.",
+      "quote4": "Folk vil ikke ha mer informasjon. De holder på å drukne i informasjon. De vil ha tillit til deg, målene dine, suksessen din og historien du forteller.",
+      "quote5": "Jeg er overbevist om at folk vil ha historier som virkelig betyr noe, historier som er forsonende, inspirerende og større enn individet.",
       "quote6": "Om du vil påvirke en person eller en gruppe slik at de tar til seg en bestemt verdi i dagliglivet, forteller du en overbevisende historie.",
-      "quote7": "Hvis du forteller meg noe, blir det bare ord. Hvis du viser meg, blir det en fortelling.",
+      "quote7": "Hvis du forteller meg noe, blir det bare ord. Hvis du viser meg, blir det en historie.",
       "quote8": "Om du ikke kjenner trærne, kan du gå deg vill i skogen, men om du ikke kjenner historiene, kan du gå deg vill i selve livet.",
       "quote9": "Historier er den kreative omskrivningen av selve livet til en mektigere, tydeligere og mer meningsfylt opplevelse. De er essensen av menneskelig kontakt.",
       "quote10": "Det er ikke noe som er verre enn å brenne inne med en historie.",
       "quote11": "Kanskje er fortellinger informasjon med sjel.",
-      "quote12": "Fortellinger er det mest effektive våpenet i en leders arsenal.",
+      "quote12": "Historier er det mest effektive våpenet i en leders arsenal.",
       "quote13": "Det ligger i historienes natur at de utelater langt mer enn de tar med."
     }
   }

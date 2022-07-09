@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Frissítse a böngészőjét</a>.",
       "mapLoadingFail": "Hiba történt, a térkép nem töltődött be megfelelően.",
       "signOut": "Kijelentkezés",
-      "attention": "Figyelem!"
+      "attention": "Figyelem!",
+      "nonOwnerOrgUrl": "A(z) %TPL_NAME% alkalmazás, amelyhez megpróbál hozzáférni, nem a megadott URL-ből eredeztethető.",
+      "nonOwnerOrgProceedToGeneric": "Folytatás: %HREF%",
+      "advanced": "Haladó"
     },
     "mainStage": {
       "back": "Vissza",

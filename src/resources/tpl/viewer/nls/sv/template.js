@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Uppdatera din webbläsare</a>.",
       "mapLoadingFail": "Något gick fel, kartan lästes inte in på rätt sätt.",
       "signOut": "Logga ut",
-      "attention": "Obs!"
+      "attention": "Obs!",
+      "nonOwnerOrgUrl": "%TPL_NAME% du försöker öppna hämtas inte från den URL du angav.",
+      "nonOwnerOrgProceedToGeneric": "Fortsätt till %HREF%",
+      "advanced": "Avancerad"
     },
     "mainStage": {
       "back": "BACKA",

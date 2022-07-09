@@ -197,7 +197,7 @@ define(["./WebApplicationData",
 				});
 
 				entry.contentActions = _.filter(entry.contentActions, function(action) {
-					return _.contains(linkActionIds, action.id);
+					return _.includes(linkActionIds, action.id);
 				});
 
 			};
@@ -535,9 +535,9 @@ define(["./WebApplicationData",
 			this.getSidebarImages = function() {
 				var entries = this.getStoryEntries();
 				var imgUrls = [];
-				_.each(entries, function(section) {
+				_.forEach(entries, function(section) {
 					var jqSection = $(section.description);
-					_.each(jqSection.find('img'), function(img) {
+					_.forEach(jqSection.find('img'), function(img) {
 						imgUrls.push(CommonHelper.possiblyRemoveToken(img.src));
 					});
 				});
@@ -569,12 +569,12 @@ define(["./WebApplicationData",
 			this.getContentStyles = function() {
 				var entries = this.getStoryEntries();
 				var contentStyles = [];
-				_.each(entries, function(section) {
+				_.forEach(entries, function(section) {
 					var jqSection = $(section.description);
-					_.each(jqSection.find('style'), function(styleTag) {
+					_.forEach(jqSection.find('style'), function(styleTag) {
 						contentStyles.push(styleTag.textContent);
 					});
-					_.each(jqSection.filter('style'), function(styleTag) {
+					_.forEach(jqSection.filter('style'), function(styleTag) {
 						contentStyles.push(styleTag.textContent);
 					});
 				});

@@ -6,7 +6,7 @@ define({
       "lblMap": "Karte",
       "lblImage": "Attēls",
       "lblVideo": "Video",
-      "lblExternal": "Web lapa",
+      "lblExternal": "Tīmekļa lapa",
       "lblUpload": "Augšupielāde",
       "lblLink": "Saite",
       "disabled": "Šo elementu ir atspējojis administrators",
@@ -17,7 +17,7 @@ define({
     },
     "imageSelector": {
       "lblStep1": "Izvēlēties servisu",
-      "lblStep2": "Izvēlēties mediju",
+      "lblStep2": "Izvēlēties multividi",
       "lblStep3": "Konfigurēt"
     },
     "imageSelectorHome": {
@@ -70,10 +70,10 @@ define({
       "explain1": "Šajā karšu stāstā nevar atskaņot neapstrādātus video failus (piem., .avi un .mpeg), bet var atskaņot viesotus video ar iebūvētiem atskaņotājiem (piem., YouTube vai Vimeo).",
       "explain2": "Vairums viesošanas pakalpojumu piedāvā šo līdzekli. Atrodiet opciju video iegulšanai, nokopējiet norādīto kodu un pievienojiet to savam stāstam, izmantojot tīmekļa vietnes %WEBPAGE% satura opciju.",
       "explain3": "Varat arī pats viesot video kopā ar HTML lapu, kurā tiek izmantots video atskaņotājs, piemēram, %EXAMPLE%. Pēc tam jūs savam stāstam pievienosiet šīs HTML lapas URL kā %WEBPAGE%.",
-      "webpage": "Web lapa"
+      "webpage": "Tīmekļa lapa"
     },
     "webpageSelectorHome": {
-      "lblUrl": "Web lapas saite",
+      "lblUrl": "Tīmekļa lapas saite",
       "lblEmbed": "Iedarināt kodu",
       "lblMustUseHTTPS": "Saitēm uz tīmekļa saturu ir jāsākas ar HTTPS",
       "lblOR": "VAI",
@@ -133,7 +133,7 @@ define({
       "lblTitle": "Galvenā posma satura maiņa"
     },
     "editorInlineMedia": {
-      "lblTitle": "Attēla, video vai web lapas ievietošana"
+      "lblTitle": "Attēla, video vai tīmekļa lapas ievietošana"
     }
   }
 });

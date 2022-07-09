@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>请更新您的浏览器</a>。",
       "mapLoadingFail": "发生了一些错误，地图未正确加载。",
       "signOut": "登出",
-      "attention": "注意!"
+      "attention": "注意!",
+      "nonOwnerOrgUrl": "您正在尝试访问的 %TPL_NAME% 并非源自您已提供的 URL。",
+      "nonOwnerOrgProceedToGeneric": "跳转至 %HREF%",
+      "advanced": "高级"
     },
     "mainStage": {
       "back": "返回",

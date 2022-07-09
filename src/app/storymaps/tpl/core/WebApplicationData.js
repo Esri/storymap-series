@@ -359,10 +359,10 @@ define(["dojo/_base/lang",
 				if ( logoURL == app.cfg.HEADER_LOGO_URL && this.getColors() ) {
 					if ( useMobileLogo ) {
 						if ( this.getColors().esriLogoMobile == "white" )
-							logoURL = "resources/tpl/viewer/icons/esri-logo-white.png";
+							logoURL = "";
 					}
 					else if ( this.getColors().esriLogo == "white" )
-						logoURL = "resources/tpl/viewer/icons/esri-logo-white.png";
+						logoURL = "";
 				}
 
 				return CommonHelper.possiblyRemoveToken(logoURL);

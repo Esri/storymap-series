@@ -55,7 +55,10 @@ define({
       "upgradeBrowser": "<a href='http://browsehappy.com/' target='_blank'>Aggiornare il browser</a>.",
       "mapLoadingFail": "Si è verificato un errore. La mappa non è stata caricata correttamente.",
       "signOut": "Disconnetti",
-      "attention": "Attenzione."
+      "attention": "Attenzione.",
+      "nonOwnerOrgUrl": "Il %TPL_NAME%a cui si sta tentando di accedere non ha origine dall'URL fornito.",
+      "nonOwnerOrgProceedToGeneric": "Procedere a %HREF%",
+      "advanced": "Avanzato"
     },
     "mainStage": {
       "back": "Indietro",
