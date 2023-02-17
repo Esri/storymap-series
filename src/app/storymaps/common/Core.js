@@ -129,16 +129,20 @@ define(["lib-build/css!lib-app/bootstrap/css/bootstrap.min",
 			if( has("touch") )
 				$("body").addClass("hasTouch");
 
-			if(!app.appCfg.noFastClick){
-				FastClick.prototype._needsClick = FastClick.prototype.needsClick;
-				FastClick.prototype.needsClick = function(target) {
-					if ($(target).parents('.esriPopup').length) {
-						return true;
-					}
-					return FastClick.prototype._needsClick.call(this, target);
-				};
 
-				FastClick.attach(document.body);
+			// Don't use fast click for touch devices
+			if (!has("touch")) {
+				if(!app.appCfg.noFastClick){
+					FastClick.prototype._needsClick = FastClick.prototype.needsClick;
+					FastClick.prototype.needsClick = function(target) {
+						if ($(target).parents('.esriPopup').length) {
+							return true;
+						}
+						return FastClick.prototype._needsClick.call(this, target);
+					};
+
+					FastClick.attach(document.body);
+				}
 			}
 
 			// App is embedded
